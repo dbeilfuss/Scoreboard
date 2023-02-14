@@ -883,10 +883,10 @@
                                                         <rect key="frame" x="0.0" y="47.5" width="828.5" height="34"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JYf-dK-FGs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320.5" height="34"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="321" height="34"/>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR8-qS-Z1o" userLabel="Sign In to Use">
-                                                                <rect key="frame" x="320.5" y="0.0" width="171" height="34"/>
+                                                                <rect key="frame" x="321" y="0.0" width="169" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="C2K-pA-Rye"/>
                                                                 </constraints>
@@ -898,7 +898,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIC-mp-LkV">
-                                                                <rect key="frame" x="491.5" y="0.0" width="337" height="34"/>
+                                                                <rect key="frame" x="490" y="0.0" width="338.5" height="34"/>
                                                             </view>
                                                         </subviews>
                                                     </stackView>

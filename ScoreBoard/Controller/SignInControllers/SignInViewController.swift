@@ -128,7 +128,7 @@ class SignInViewController: UIViewController {
                 feedbackLabel.text = "Signing You In"
                 Auth.auth().createUser(withEmail: email, password: password) {
                     authResult, error in
-                    if let e = error {
+                    if let _ = error {
 //                        self.feedbackLabel.text = e.localizedDescription
                         self.signIn(email: email, password: password)
                     } else {
@@ -225,5 +225,13 @@ extension SignInViewController: UITableViewDataSource {
 extension SignInViewController: textInputDelegate {
     func storeUserData(textField: String, dataEntered: String) {
         userEnteredData[textField] = dataEntered
+    }
+    
+    func editing (currentlyEditing: Bool) {
+        if currentlyEditing {
+            continueButton.isHidden = true
+        } else {
+            continueButton.isHidden = false
+        }
     }
 }

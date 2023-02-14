@@ -9,6 +9,7 @@ import UIKit
 
 protocol textInputDelegate {
     func storeUserData (textField: String, dataEntered: String)
+    func editing (currentlyEditing: Bool)
 }
 
 class TextInputCell: UITableViewCell, UITextFieldDelegate {
@@ -48,6 +49,19 @@ class TextInputCell: UITableViewCell, UITextFieldDelegate {
         if let dataIdentity = label.text, let dataEntered = sender.text {
             delegate?.storeUserData(textField: dataIdentity, dataEntered: dataEntered)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.editing(currentlyEditing: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.editing(currentlyEditing: false)
     }
     
     

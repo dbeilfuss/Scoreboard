@@ -133,7 +133,7 @@ class ScoreBoardViewController: UIViewController {
                 label.font = UIFont(name:theme.subtitleFont!.fontName, size: label.font.pointSize)
                 label.textColor = theme.subtitleColor
                 label.shadowColor = theme.shadowColor
-//                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
+                //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
             }
         }
         
@@ -142,7 +142,7 @@ class ScoreBoardViewController: UIViewController {
                 label.font = UIFont(name:theme.scoreFont!.fontName, size: label.font.pointSize)
                 label.textColor = theme.scoreColor
                 label.shadowColor = theme.shadowColor
-//                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
+                //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
             }
         }
         
@@ -262,8 +262,9 @@ class ScoreBoardViewController: UIViewController {
             view.isHidden = hidden
         }
     }
-    
 }
+
+//MARK: - Extensions
 
 //MARK: - Transmitter Delegate
 extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
@@ -316,31 +317,3 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
     }
     
 }
-
-////MARK: - Setup Remote Transmitter
-//
-//extension ScoreBoardViewController: UpdateForRemoteDelegate {
-//
-//    func setupRemoteTransmitter(userEmail: String) {
-//        print("setting up remote transmitter")
-//        self.userEmail = userEmail
-//        remoteControlTransmitter.delegate = remoteDelegate
-//        remoteControlTransmitter.listenForUpdatedScores(sender: userEmail)
-//        self.remoteDisplay = true
-//    }
-//    
-//    func disableRemoteTransmitter() {
-//        print("disabling remote transmitter")
-//        remoteControlTransmitter.delegate = nil
-//        self.userEmail = nil
-//    }
-//
-//    func setForRemoteDisplay(set: Bool, userEmail: String?) {
-//        //        print("setting up remote display: \(set)")
-//        remoteDisplay = set
-//        if let safeUserEmail = userEmail {
-//            self.userEmail = safeUserEmail
-//        }
-//        scoreBoardDelegate?.refreshScreen(reTransmit: false)
-//    }
-//}
