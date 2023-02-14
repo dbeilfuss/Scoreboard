@@ -1,0 +1,826 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77149321297A255F0040ABD3 /* FractalLandscape.swift */; };
+		77239FDF29525B2C00569AB9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FDE29525B2C00569AB9 /* IQKeyboardManagerSwift */; };
+		77239FE1295264B800569AB9 /* RemoteSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE0295264B800569AB9 /* RemoteSetupViewController.swift */; };
+		77239FE32952828900569AB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE22952828900569AB9 /* SignInViewController.swift */; };
+		77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE62952872700569AB9 /* RemoteViewController.swift */; };
+		77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE92953AF6000569AB9 /* SignInButton.swift */; };
+		77239FEC2954A9C900569AB9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77239FEB2954A9C900569AB9 /* GoogleService-Info.plist */; };
+		77239FEF2954AB3600569AB9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FEE2954AB3600569AB9 /* FirebaseAnalytics */; };
+		77239FF12954AB3600569AB9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FF02954AB3600569AB9 /* FirebaseAuth */; };
+		77239FF32954AB3600569AB9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FF22954AB3600569AB9 /* FirebaseFirestore */; };
+		77239FF52954CCC400569AB9 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FF42954CCC400569AB9 /* SignOutViewController.swift */; };
+		7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7754E9032986F5EF006CE85A /* WelcomeViewController.swift */; };
+		7754E91A29888CCD006CE85A /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90729888CCB006CE85A /* Rubik-MediumItalic.ttf */; };
+		7754E91B29888CCD006CE85A /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90829888CCB006CE85A /* Rubik-Light.ttf */; };
+		7754E91C29888CCD006CE85A /* Karla700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90929888CCB006CE85A /* Karla700.ttf */; };
+		7754E91D29888CCD006CE85A /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90A29888CCC006CE85A /* Rubik-BlackItalic.ttf */; };
+		7754E91E29888CCD006CE85A /* Poppins500.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90B29888CCC006CE85A /* Poppins500.ttf */; };
+		7754E91F29888CCD006CE85A /* Poppins600.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90C29888CCC006CE85A /* Poppins600.ttf */; };
+		7754E92029888CCD006CE85A /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90D29888CCC006CE85A /* Rubik-Italic.ttf */; };
+		7754E92129888CCD006CE85A /* Poppins300.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90E29888CCC006CE85A /* Poppins300.ttf */; };
+		7754E92229888CCD006CE85A /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90F29888CCC006CE85A /* Rubik-Medium.ttf */; };
+		7754E92329888CCD006CE85A /* Karlaregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91029888CCC006CE85A /* Karlaregular.ttf */; };
+		7754E92429888CCD006CE85A /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91129888CCC006CE85A /* Rubik-Regular.ttf */; };
+		7754E92529888CCD006CE85A /* Poppins700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91229888CCC006CE85A /* Poppins700.ttf */; };
+		7754E92629888CCD006CE85A /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91329888CCC006CE85A /* Rubik-BoldItalic.ttf */; };
+		7754E92729888CCD006CE85A /* Karlaitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91429888CCD006CE85A /* Karlaitalic.ttf */; };
+		7754E92829888CCD006CE85A /* Rubik-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91529888CCD006CE85A /* Rubik-LightItalic.ttf */; };
+		7754E92929888CCD006CE85A /* Poppinsregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91629888CCD006CE85A /* Poppinsregular.ttf */; };
+		7754E92A29888CCD006CE85A /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91729888CCD006CE85A /* Rubik-Black.ttf */; };
+		7754E92B29888CCD006CE85A /* Karla700italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91829888CCD006CE85A /* Karla700italic.ttf */; };
+		7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91929888CCD006CE85A /* Rubik-Bold.ttf */; };
+		778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */; };
+		7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */; };
+		7790E82D295C06A600DC5D6B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82C295C06A600DC5D6B /* Theme.swift */; };
+		7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */; };
+		7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */; };
+		7790E834295CAEF800DC5D6B /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E833295CAEF800DC5D6B /* DefaultTheme.swift */; };
+		77952A0329933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */; };
+		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
+		77A11797293ACD1A00ED74C2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* Team.swift */; };
+		77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */; };
+		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
+		77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B024692956336E0017C542 /* RemoteTeamViewCell.swift */; };
+		77B0246C2956336E0017C542 /* RemoteTeamViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */; };
+		77B0D994293AC9DA00E2BEB0 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */; };
+		77B1115E293AB78E00553E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B1115D293AB78E00553E37 /* AppDelegate.swift */; };
+		77B11160293AB78E00553E37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B1115F293AB78E00553E37 /* SceneDelegate.swift */; };
+		77B11162293AB78E00553E37 /* MainDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B11161293AB78E00553E37 /* MainDisplayViewController.swift */; };
+		77B11165293AB78E00553E37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77B11163293AB78E00553E37 /* Main.storyboard */; };
+		77B11167293AB78F00553E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77B11166293AB78F00553E37 /* Assets.xcassets */; };
+		77B1116A293AB78F00553E37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77B11168293AB78F00553E37 /* LaunchScreen.storyboard */; };
+		77CEA6FA297C449D00E853DC /* Railway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6F9297C449D00E853DC /* Railway.swift */; };
+		77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */; };
+		77CEA6FE297CA9F800E853DC /* ThemesDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FD297CA9F800E853DC /* ThemesDatabase.swift */; };
+		77CEA700297DB75500E853DC /* ThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FF297DB75500E853DC /* ThemeChooserViewController.swift */; };
+		77CEA70B297EF01C00E853DC /* ThemePreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */; };
+		77CEA70C297EF01C00E853DC /* ThemePreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */; };
+		77D090772988D5390034D200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D090762988D5390034D200 /* Constants.swift */; };
+		77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D09078298991FD0034D200 /* WelcomeOptionsCell.swift */; };
+		77D0907B298991FD0034D200 /* WelcomeOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */; };
+		77D0907D298995DB0034D200 /* WelcomeScreenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */; };
+		77D0907F298998CC0034D200 /* Myriad Pro Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77D0907E298998CC0034D200 /* Myriad Pro Regular.ttf */; };
+		77D98FCC297AF34300927949 /* FractalLandscapeBlue1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FCB297AF34300927949 /* FractalLandscapeBlue1.swift */; };
+		77D98FCE297AFE4B00927949 /* FractalLandscapeBlue2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FCD297AFE4B00927949 /* FractalLandscapeBlue2.swift */; };
+		77D98FD0297B01B100927949 /* FractalLandscapeBlue3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FCF297B01B100927949 /* FractalLandscapeBlue3.swift */; };
+		77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD1297B03D100927949 /* FractalLandscapeBlue4.swift */; };
+		77D98FD4297B069300927949 /* FractalLandscapeFire1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD3297B069300927949 /* FractalLandscapeFire1.swift */; };
+		77D98FD6297B08C000927949 /* FractalLandscapeGreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD5297B08C000927949 /* FractalLandscapeGreen1.swift */; };
+		77D98FD8297B096B00927949 /* FractalLandscapeGreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD7297B096B00927949 /* FractalLandscapeGreen2.swift */; };
+		77D98FDA297B097400927949 /* FractalLandscapeGreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD9297B097400927949 /* FractalLandscapeGreen3.swift */; };
+		77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FDB297B097F00927949 /* FractalLandscapeGreen4.swift */; };
+		77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FDD297B099600927949 /* FractalLandscapeOcean1.swift */; };
+		77D98FE0297B099E00927949 /* FractalLandscapeOcean2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FDF297B099E00927949 /* FractalLandscapeOcean2.swift */; };
+		77D98FE2297B09A800927949 /* FractalLandscapeOcean3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE1297B09A800927949 /* FractalLandscapeOcean3.swift */; };
+		77D98FE4297B09BF00927949 /* FractalLandscapePurple1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE3297B09BF00927949 /* FractalLandscapePurple1.swift */; };
+		77D98FE6297B09C700927949 /* FractalLandscapePurple2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE5297B09C700927949 /* FractalLandscapePurple2.swift */; };
+		77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */; };
+		77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */; };
+		77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */; };
+		77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E238512981E6F80069A260 /* Remotev2ViewController.swift */; };
+		77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6CFEA298F044A0006E8CE /* TextInputCell.swift */; };
+		77E6CFED298F044A0006E8CE /* TextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6CFEB298F044A0006E8CE /* TextInputCell.xib */; };
+		77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F519152990C65000708BFE /* LargeTransparentButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
+		77239FE0295264B800569AB9 /* RemoteSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSetupViewController.swift; sourceTree = "<group>"; };
+		77239FE22952828900569AB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		77239FE62952872700569AB9 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
+		77239FE92953AF6000569AB9 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
+		77239FEB2954A9C900569AB9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		77239FF42954CCC400569AB9 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
+		7754E9032986F5EF006CE85A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		7754E90729888CCB006CE85A /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
+		7754E90829888CCB006CE85A /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		7754E90929888CCB006CE85A /* Karla700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karla700.ttf; sourceTree = "<group>"; };
+		7754E90A29888CCC006CE85A /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
+		7754E90B29888CCC006CE85A /* Poppins500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Poppins500.ttf; sourceTree = "<group>"; };
+		7754E90C29888CCC006CE85A /* Poppins600.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Poppins600.ttf; sourceTree = "<group>"; };
+		7754E90D29888CCC006CE85A /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
+		7754E90E29888CCC006CE85A /* Poppins300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Poppins300.ttf; sourceTree = "<group>"; };
+		7754E90F29888CCC006CE85A /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		7754E91029888CCC006CE85A /* Karlaregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karlaregular.ttf; sourceTree = "<group>"; };
+		7754E91129888CCC006CE85A /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		7754E91229888CCC006CE85A /* Poppins700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Poppins700.ttf; sourceTree = "<group>"; };
+		7754E91329888CCC006CE85A /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
+		7754E91429888CCD006CE85A /* Karlaitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karlaitalic.ttf; sourceTree = "<group>"; };
+		7754E91529888CCD006CE85A /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
+		7754E91629888CCD006CE85A /* Poppinsregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Poppinsregular.ttf; sourceTree = "<group>"; };
+		7754E91729888CCD006CE85A /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
+		7754E91829888CCD006CE85A /* Karla700italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karla700italic.ttf; sourceTree = "<group>"; };
+		7754E91929888CCD006CE85A /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTransmitter.swift; sourceTree = "<group>"; };
+		7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
+		7790E82C295C06A600DC5D6B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTheme.swift; sourceTree = "<group>"; };
+		7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasTheme.swift; sourceTree = "<group>"; };
+		7790E833295CAEF800DC5D6B /* DefaultTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
+		77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScoreboardDisplayDatabase.swift; sourceTree = "<group>"; };
+		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
+		77A11796293ACD1A00ED74C2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSetupViewController.swift; sourceTree = "<group>"; };
+		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
+		77B024692956336E0017C542 /* RemoteTeamViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTeamViewCell.swift; sourceTree = "<group>"; };
+		77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoteTeamViewCell.xib; sourceTree = "<group>"; };
+		77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
+		77B1115A293AB78E00553E37 /* ScoreBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77B1115D293AB78E00553E37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		77B1115F293AB78E00553E37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		77B11161293AB78E00553E37 /* MainDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDisplayViewController.swift; sourceTree = "<group>"; };
+		77B11164293AB78E00553E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		77B11166293AB78F00553E37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		77B11169293AB78F00553E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		77B1116B293AB78F00553E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77CEA6F9297C449D00E853DC /* Railway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Railway.swift; sourceTree = "<group>"; };
+		77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeGroupChooserViewController.swift; sourceTree = "<group>"; };
+		77CEA6FD297CA9F800E853DC /* ThemesDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesDatabase.swift; sourceTree = "<group>"; };
+		77CEA6FF297DB75500E853DC /* ThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserViewController.swift; sourceTree = "<group>"; };
+		77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePreviewCell.swift; sourceTree = "<group>"; };
+		77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemePreviewCell.xib; sourceTree = "<group>"; };
+		77D090762988D5390034D200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		77D09078298991FD0034D200 /* WelcomeOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeOptionsCell.swift; sourceTree = "<group>"; };
+		77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeOptionsCell.xib; sourceTree = "<group>"; };
+		77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenDatabase.swift; sourceTree = "<group>"; };
+		77D0907E298998CC0034D200 /* Myriad Pro Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myriad Pro Regular.ttf"; sourceTree = "<group>"; };
+		77D98FCB297AF34300927949 /* FractalLandscapeBlue1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue1.swift; sourceTree = "<group>"; };
+		77D98FCD297AFE4B00927949 /* FractalLandscapeBlue2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue2.swift; sourceTree = "<group>"; };
+		77D98FCF297B01B100927949 /* FractalLandscapeBlue3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue3.swift; sourceTree = "<group>"; };
+		77D98FD1297B03D100927949 /* FractalLandscapeBlue4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue4.swift; sourceTree = "<group>"; };
+		77D98FD3297B069300927949 /* FractalLandscapeFire1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeFire1.swift; sourceTree = "<group>"; };
+		77D98FD5297B08C000927949 /* FractalLandscapeGreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen1.swift; sourceTree = "<group>"; };
+		77D98FD7297B096B00927949 /* FractalLandscapeGreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen2.swift; sourceTree = "<group>"; };
+		77D98FD9297B097400927949 /* FractalLandscapeGreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen3.swift; sourceTree = "<group>"; };
+		77D98FDB297B097F00927949 /* FractalLandscapeGreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen4.swift; sourceTree = "<group>"; };
+		77D98FDD297B099600927949 /* FractalLandscapeOcean1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeOcean1.swift; sourceTree = "<group>"; };
+		77D98FDF297B099E00927949 /* FractalLandscapeOcean2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeOcean2.swift; sourceTree = "<group>"; };
+		77D98FE1297B09A800927949 /* FractalLandscapeOcean3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeOcean3.swift; sourceTree = "<group>"; };
+		77D98FE3297B09BF00927949 /* FractalLandscapePurple1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple1.swift; sourceTree = "<group>"; };
+		77D98FE5297B09C700927949 /* FractalLandscapePurple2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple2.swift; sourceTree = "<group>"; };
+		77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple3.swift; sourceTree = "<group>"; };
+		77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite1.swift; sourceTree = "<group>"; };
+		77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite2.swift; sourceTree = "<group>"; };
+		77E238512981E6F80069A260 /* Remotev2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remotev2ViewController.swift; sourceTree = "<group>"; };
+		77E6CFEA298F044A0006E8CE /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
+		77E6CFEB298F044A0006E8CE /* TextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputCell.xib; sourceTree = "<group>"; };
+		77F519152990C65000708BFE /* LargeTransparentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTransparentButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		77B11157293AB78E00553E37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77239FEF2954AB3600569AB9 /* FirebaseAnalytics in Frameworks */,
+				77239FF32954AB3600569AB9 /* FirebaseFirestore in Frameworks */,
+				77239FF12954AB3600569AB9 /* FirebaseAuth in Frameworks */,
+				77239FDF29525B2C00569AB9 /* IQKeyboardManagerSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		77149320297A252A0040ABD3 /* Fractal Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				77149321297A255F0040ABD3 /* FractalLandscape.swift */,
+				77D98FCB297AF34300927949 /* FractalLandscapeBlue1.swift */,
+				77D98FCD297AFE4B00927949 /* FractalLandscapeBlue2.swift */,
+				77D98FCF297B01B100927949 /* FractalLandscapeBlue3.swift */,
+				77D98FD1297B03D100927949 /* FractalLandscapeBlue4.swift */,
+				77D98FD3297B069300927949 /* FractalLandscapeFire1.swift */,
+				77D98FD5297B08C000927949 /* FractalLandscapeGreen1.swift */,
+				77D98FD7297B096B00927949 /* FractalLandscapeGreen2.swift */,
+				77D98FD9297B097400927949 /* FractalLandscapeGreen3.swift */,
+				77D98FDB297B097F00927949 /* FractalLandscapeGreen4.swift */,
+				77D98FDD297B099600927949 /* FractalLandscapeOcean1.swift */,
+				77D98FDF297B099E00927949 /* FractalLandscapeOcean2.swift */,
+				77D98FE1297B09A800927949 /* FractalLandscapeOcean3.swift */,
+				77D98FE3297B09BF00927949 /* FractalLandscapePurple1.swift */,
+				77D98FE5297B09C700927949 /* FractalLandscapePurple2.swift */,
+				77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */,
+				77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */,
+				77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */,
+			);
+			path = "Fractal Landscape";
+			sourceTree = "<group>";
+		};
+		7754E9052986F78F006CE85A /* ScoreBoardControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */,
+				77B11161293AB78E00553E37 /* MainDisplayViewController.swift */,
+				77239FE62952872700569AB9 /* RemoteViewController.swift */,
+				77E238512981E6F80069A260 /* Remotev2ViewController.swift */,
+			);
+			path = ScoreBoardControllers;
+			sourceTree = "<group>";
+		};
+		7754E90629888CB6006CE85A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7754E90929888CCB006CE85A /* Karla700.ttf */,
+				7754E91829888CCD006CE85A /* Karla700italic.ttf */,
+				7754E91429888CCD006CE85A /* Karlaitalic.ttf */,
+				7754E91029888CCC006CE85A /* Karlaregular.ttf */,
+				7754E90E29888CCC006CE85A /* Poppins300.ttf */,
+				7754E90B29888CCC006CE85A /* Poppins500.ttf */,
+				7754E90C29888CCC006CE85A /* Poppins600.ttf */,
+				7754E91229888CCC006CE85A /* Poppins700.ttf */,
+				7754E91629888CCD006CE85A /* Poppinsregular.ttf */,
+				7754E91729888CCD006CE85A /* Rubik-Black.ttf */,
+				7754E90A29888CCC006CE85A /* Rubik-BlackItalic.ttf */,
+				7754E91929888CCD006CE85A /* Rubik-Bold.ttf */,
+				7754E91329888CCC006CE85A /* Rubik-BoldItalic.ttf */,
+				7754E90D29888CCC006CE85A /* Rubik-Italic.ttf */,
+				7754E90829888CCB006CE85A /* Rubik-Light.ttf */,
+				7754E91529888CCD006CE85A /* Rubik-LightItalic.ttf */,
+				7754E90F29888CCC006CE85A /* Rubik-Medium.ttf */,
+				7754E90729888CCB006CE85A /* Rubik-MediumItalic.ttf */,
+				7754E91129888CCC006CE85A /* Rubik-Regular.ttf */,
+				77D0907E298998CC0034D200 /* Myriad Pro Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7790E832295CAEEA00DC5D6B /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				77CEA6F8297C446500E853DC /* Board Games */,
+				77149320297A252A0040ABD3 /* Fractal Landscape */,
+				77CEA701297DB7E700E853DC /* Holidays */,
+				7790E82C295C06A600DC5D6B /* Theme.swift */,
+				7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */,
+				7790E833295CAEF800DC5D6B /* DefaultTheme.swift */,
+				77CEA6FD297CA9F800E853DC /* ThemesDatabase.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		7790E835295DD45300DC5D6B /* SignInControllers */ = {
+			isa = PBXGroup;
+			children = (
+				77239FE22952828900569AB9 /* SignInViewController.swift */,
+				77239FF42954CCC400569AB9 /* SignOutViewController.swift */,
+			);
+			path = SignInControllers;
+			sourceTree = "<group>";
+		};
+		7790E836295DD47500DC5D6B /* SettingsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */,
+				77239FE0295264B800569AB9 /* RemoteSetupViewController.swift */,
+			);
+			path = SettingsControllers;
+			sourceTree = "<group>";
+		};
+		77B0D990293AC98600E2BEB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77D090762988D5390034D200 /* Constants.swift */,
+				77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */,
+				77A11796293ACD1A00ED74C2 /* Team.swift */,
+				77239FE92953AF6000569AB9 /* SignInButton.swift */,
+				778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */,
+				77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */,
+				77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */,
+				77F519152990C65000708BFE /* LargeTransparentButton.swift */,
+				77952A062995599400BC0354 /* TeamTextSizeStruct.swift */,
+				7790E832295CAEEA00DC5D6B /* Themes */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		77B0D991293AC99200E2BEB0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				77B11163293AB78E00553E37 /* Main.storyboard */,
+				77B11168293AB78F00553E37 /* LaunchScreen.storyboard */,
+				77B024692956336E0017C542 /* RemoteTeamViewCell.swift */,
+				77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */,
+				77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */,
+				77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */,
+				77D09078298991FD0034D200 /* WelcomeOptionsCell.swift */,
+				77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */,
+				77E6CFEA298F044A0006E8CE /* TextInputCell.swift */,
+				77E6CFEB298F044A0006E8CE /* TextInputCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		77B0D992293AC99800E2BEB0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7754E9032986F5EF006CE85A /* WelcomeViewController.swift */,
+				7790E836295DD47500DC5D6B /* SettingsControllers */,
+				7754E9052986F78F006CE85A /* ScoreBoardControllers */,
+				7790E835295DD45300DC5D6B /* SignInControllers */,
+				77CEA704297DDFE700E853DC /* ThemeChooser */,
+				77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		77B11151293AB78E00553E37 = {
+			isa = PBXGroup;
+			children = (
+				77B1115C293AB78E00553E37 /* ScoreBoard */,
+				77B1115B293AB78E00553E37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		77B1115B293AB78E00553E37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				77B1115A293AB78E00553E37 /* ScoreBoard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		77B1115C293AB78E00553E37 /* ScoreBoard */ = {
+			isa = PBXGroup;
+			children = (
+				77B1115D293AB78E00553E37 /* AppDelegate.swift */,
+				77B1115F293AB78E00553E37 /* SceneDelegate.swift */,
+				7754E90629888CB6006CE85A /* Fonts */,
+				77B0D990293AC98600E2BEB0 /* Model */,
+				77B0D991293AC99200E2BEB0 /* View */,
+				77B0D992293AC99800E2BEB0 /* Controller */,
+				77B11166293AB78F00553E37 /* Assets.xcassets */,
+				77B1116B293AB78F00553E37 /* Info.plist */,
+				77239FEB2954A9C900569AB9 /* GoogleService-Info.plist */,
+			);
+			path = ScoreBoard;
+			sourceTree = "<group>";
+		};
+		77CEA6F8297C446500E853DC /* Board Games */ = {
+			isa = PBXGroup;
+			children = (
+				77CEA6F9297C449D00E853DC /* Railway.swift */,
+			);
+			path = "Board Games";
+			sourceTree = "<group>";
+		};
+		77CEA701297DB7E700E853DC /* Holidays */ = {
+			isa = PBXGroup;
+			children = (
+				7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */,
+			);
+			path = Holidays;
+			sourceTree = "<group>";
+		};
+		77CEA704297DDFE700E853DC /* ThemeChooser */ = {
+			isa = PBXGroup;
+			children = (
+				77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */,
+				77CEA6FF297DB75500E853DC /* ThemeChooserViewController.swift */,
+			);
+			path = ThemeChooser;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		77B11159293AB78E00553E37 /* ScoreBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77B1116E293AB78F00553E37 /* Build configuration list for PBXNativeTarget "ScoreBoard" */;
+			buildPhases = (
+				77B11156293AB78E00553E37 /* Sources */,
+				77B11157293AB78E00553E37 /* Frameworks */,
+				77B11158293AB78E00553E37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScoreBoard;
+			packageProductDependencies = (
+				77239FDE29525B2C00569AB9 /* IQKeyboardManagerSwift */,
+				77239FEE2954AB3600569AB9 /* FirebaseAnalytics */,
+				77239FF02954AB3600569AB9 /* FirebaseAuth */,
+				77239FF22954AB3600569AB9 /* FirebaseFirestore */,
+			);
+			productName = ScoreBoard;
+			productReference = 77B1115A293AB78E00553E37 /* ScoreBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		77B11152293AB78E00553E37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					1,
+				);
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					77B11159293AB78E00553E37 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 77B11155293AB78E00553E37 /* Build configuration list for PBXProject "ScoreBoard" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 77B11151293AB78E00553E37;
+			packageReferences = (
+				77239FDD29525B2C00569AB9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				77239FED2954AB3600569AB9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 77B1115B293AB78E00553E37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				77B11159293AB78E00553E37 /* ScoreBoard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		77B11158293AB78E00553E37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7754E91E29888CCD006CE85A /* Poppins500.ttf in Resources */,
+				7754E91D29888CCD006CE85A /* Rubik-BlackItalic.ttf in Resources */,
+				7754E92529888CCD006CE85A /* Poppins700.ttf in Resources */,
+				77B1116A293AB78F00553E37 /* LaunchScreen.storyboard in Resources */,
+				77CEA70C297EF01C00E853DC /* ThemePreviewCell.xib in Resources */,
+				7754E92129888CCD006CE85A /* Poppins300.ttf in Resources */,
+				7754E92A29888CCD006CE85A /* Rubik-Black.ttf in Resources */,
+				77239FEC2954A9C900569AB9 /* GoogleService-Info.plist in Resources */,
+				7754E91F29888CCD006CE85A /* Poppins600.ttf in Resources */,
+				7754E92729888CCD006CE85A /* Karlaitalic.ttf in Resources */,
+				7754E92829888CCD006CE85A /* Rubik-LightItalic.ttf in Resources */,
+				7754E91C29888CCD006CE85A /* Karla700.ttf in Resources */,
+				77D0907F298998CC0034D200 /* Myriad Pro Regular.ttf in Resources */,
+				77B11167293AB78F00553E37 /* Assets.xcassets in Resources */,
+				7754E92329888CCD006CE85A /* Karlaregular.ttf in Resources */,
+				7754E92229888CCD006CE85A /* Rubik-Medium.ttf in Resources */,
+				7754E91A29888CCD006CE85A /* Rubik-MediumItalic.ttf in Resources */,
+				7754E92929888CCD006CE85A /* Poppinsregular.ttf in Resources */,
+				7754E91B29888CCD006CE85A /* Rubik-Light.ttf in Resources */,
+				7754E92429888CCD006CE85A /* Rubik-Regular.ttf in Resources */,
+				7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */,
+				7754E92029888CCD006CE85A /* Rubik-Italic.ttf in Resources */,
+				7754E92629888CCD006CE85A /* Rubik-BoldItalic.ttf in Resources */,
+				77B0246C2956336E0017C542 /* RemoteTeamViewCell.xib in Resources */,
+				7754E92B29888CCD006CE85A /* Karla700italic.ttf in Resources */,
+				77B11165293AB78E00553E37 /* Main.storyboard in Resources */,
+				77D0907B298991FD0034D200 /* WelcomeOptionsCell.xib in Resources */,
+				77E6CFED298F044A0006E8CE /* TextInputCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		77B11156293AB78E00553E37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77239FE1295264B800569AB9 /* RemoteSetupViewController.swift in Sources */,
+				77D98FDA297B097400927949 /* FractalLandscapeGreen3.swift in Sources */,
+				77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */,
+				77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */,
+				7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */,
+				77D98FD6297B08C000927949 /* FractalLandscapeGreen1.swift in Sources */,
+				77D98FCE297AFE4B00927949 /* FractalLandscapeBlue2.swift in Sources */,
+				77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */,
+				77CEA700297DB75500E853DC /* ThemeChooserViewController.swift in Sources */,
+				77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */,
+				77D98FD4297B069300927949 /* FractalLandscapeFire1.swift in Sources */,
+				77D98FD0297B01B100927949 /* FractalLandscapeBlue3.swift in Sources */,
+				77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */,
+				77D98FE4297B09BF00927949 /* FractalLandscapePurple1.swift in Sources */,
+				77CEA70B297EF01C00E853DC /* ThemePreviewCell.swift in Sources */,
+				77B0D994293AC9DA00E2BEB0 /* TeamManager.swift in Sources */,
+				77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */,
+				77D98FE2297B09A800927949 /* FractalLandscapeOcean3.swift in Sources */,
+				77952A0329933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift in Sources */,
+				77D0907D298995DB0034D200 /* WelcomeScreenDatabase.swift in Sources */,
+				77B11162293AB78E00553E37 /* MainDisplayViewController.swift in Sources */,
+				77CEA6FA297C449D00E853DC /* Railway.swift in Sources */,
+				7790E834295CAEF800DC5D6B /* DefaultTheme.swift in Sources */,
+				77B1115E293AB78E00553E37 /* AppDelegate.swift in Sources */,
+				77D98FD8297B096B00927949 /* FractalLandscapeGreen2.swift in Sources */,
+				77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */,
+				77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */,
+				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,
+				77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */,
+				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
+				77CEA6FE297CA9F800E853DC /* ThemesDatabase.swift in Sources */,
+				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
+				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
+				77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */,
+				77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */,
+				77A11797293ACD1A00ED74C2 /* Team.swift in Sources */,
+				77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */,
+				77B11160293AB78E00553E37 /* SceneDelegate.swift in Sources */,
+				77239FF52954CCC400569AB9 /* SignOutViewController.swift in Sources */,
+				77D090772988D5390034D200 /* Constants.swift in Sources */,
+				77D98FE0297B099E00927949 /* FractalLandscapeOcean2.swift in Sources */,
+				77D98FE6297B09C700927949 /* FractalLandscapePurple2.swift in Sources */,
+				7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */,
+				7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */,
+				77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */,
+				77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */,
+				77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */,
+				778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */,
+				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
+				77D98FCC297AF34300927949 /* FractalLandscapeBlue1.swift in Sources */,
+				77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		77B11163293AB78E00553E37 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77B11164293AB78E00553E37 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		77B11168293AB78F00553E37 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77B11169293AB78F00553E37 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		77B1116C293AB78F00553E37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		77B1116D293AB78F00553E37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		77B1116F293AB78F00553E37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52P6SF79ST;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScoreBoard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Living Room Scoreboard";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DanielB.Score;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		77B11170293AB78F00553E37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52P6SF79ST;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScoreBoard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Living Room Scoreboard";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DanielB.Score;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		77B11155293AB78E00553E37 /* Build configuration list for PBXProject "ScoreBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77B1116C293AB78F00553E37 /* Debug */,
+				77B1116D293AB78F00553E37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77B1116E293AB78F00553E37 /* Build configuration list for PBXNativeTarget "ScoreBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77B1116F293AB78F00553E37 /* Debug */,
+				77B11170293AB78F00553E37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		77239FDD29525B2C00569AB9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		77239FED2954AB3600569AB9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		77239FDE29525B2C00569AB9 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77239FDD29525B2C00569AB9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		77239FEE2954AB3600569AB9 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77239FED2954AB3600569AB9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		77239FF02954AB3600569AB9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77239FED2954AB3600569AB9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		77239FF22954AB3600569AB9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77239FED2954AB3600569AB9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 77B11152293AB78E00553E37 /* Project object */;
+}
