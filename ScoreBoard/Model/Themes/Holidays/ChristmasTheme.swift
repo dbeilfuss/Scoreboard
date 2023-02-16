@@ -15,25 +15,15 @@ class ChristmasTheme {
         name: "Christmas",
         
         /// Background
-        backgroundImage: UIImage.init(named: "Christmas Background Zoomed"),
-        backgroundOverlayOpacity: 0.0,
+        backgroundImage: UIImage.init(named: "Christmas Background Zoomed")!,
         
         /// Fonts
-        titleFontName: nil,
-        titleFontSize: nil,
-        titleFont: nil,
-        
-        subtitleFontName: "Rockwell Bold",
-        subtitleFontSize: 40,
-        subtitleFont: UIFont(name: "Rockwell Bold", size: 40),
-
-        
-        scoreFontName: "Marker Felt Wide",
-        scoreFontSize: 175,
-        scoreFont: UIFont(name: "Marker Felt Wide", size: 175),
+        titleFont: UIFont(name: "Rockwell Bold", size: 45)!,
+        subtitleFont: UIFont(name: "Rockwell Bold", size: 40)!,
+        scoreFont: UIFont(name: "Marker Felt Wide", size: 175)!,
 
         /// Font Colors
-        titleColor: nil,
+        titleColor: UIColor.systemRed,
         subtitleColor: UIColor.systemRed,
         scoreColor: UIColor.systemRed,
         
@@ -44,11 +34,10 @@ class ChristmasTheme {
         
         /// Button Colors
         buttonColor: UIColor.systemGray,
-        buttonSelectedColor1: UIColor.systemRed,
-        buttonSelectedColor2: nil,
-        buttonHighlightedColor1: nil,
-        buttonHighlightedColor2: nil,
+        buttonSelectedColor: UIColor.systemRed,
+        
+        /// Dark Mode
         darkMode: false
-    
+        
         )
 }

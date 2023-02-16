@@ -15,24 +15,15 @@ class Railway {
         name: "Railway",
         
         /// Background
-        backgroundImage: UIImage.init(named: "TrainBridge"),
-        backgroundOverlayOpacity: 0.0,
+        backgroundImage: UIImage.init(named: "TrainBridge")!,
         
         /// Fonts
-        titleFontName: nil,
-        titleFontSize: nil,
-        titleFont: nil,
-
-        subtitleFontName: "DIN Alternate Bold",
-        subtitleFontSize: 75,
-        subtitleFont: UIFont(name: "DIN Alternate Bold", size: 50),
-
-        scoreFontName: "DIN Alternate Bold",
-        scoreFontSize: 175,
-        scoreFont: UIFont(name: "DIN Alternate Bold", size: 175),
+        titleFont: UIFont(name: "DIN Alternate Bold", size: 85)!,
+        subtitleFont: UIFont(name: "DIN Alternate Bold", size: 50)!,
+        scoreFont: UIFont(name: "DIN Alternate Bold", size: 175)!,
 
         /// Font Colors
-        titleColor: nil,
+        titleColor: UIColor.init(red: 0.621, green: 0.178, blue: 0.131, alpha: 1),
         subtitleColor: UIColor.init(red: 0.621, green: 0.178, blue: 0.131, alpha: 1),
         scoreColor: UIColor.init(red: 0.621, green: 0.178, blue: 0.131, alpha: 1),
         
@@ -43,10 +34,8 @@ class Railway {
         
         /// Button Colors
         buttonColor: UIColor.systemGray,
-        buttonSelectedColor1: UIColor.init(red: 0.621, green: 0.178, blue: 0.131, alpha: 1),
-        buttonSelectedColor2: nil,
-        buttonHighlightedColor1: nil,
-        buttonHighlightedColor2: nil,
+        buttonSelectedColor: UIColor.init(red: 0.621, green: 0.178, blue: 0.131, alpha: 1),
+
         darkMode: false
     
         )

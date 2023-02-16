@@ -10,6 +10,14 @@ import UIKit
 class FractalLandscapePurple2: FractalLandscape {
     
     var theme: Theme {
+        var modifiedTheme: Theme = templateTheme
+        modifiedTheme.name = "Amethyst"
+        modifiedTheme.backgroundImage = UIImage.init(named: "fractalLandscapePurple2")!
+        return modifiedTheme
+    }
+    
+    /*
+    var theme: Theme {
         Theme(
             
         /// Definition
@@ -53,4 +61,5 @@ class FractalLandscapePurple2: FractalLandscape {
         darkMode: fractalLandscapeTemplate.darkMode
         )
     }
+     */
 }

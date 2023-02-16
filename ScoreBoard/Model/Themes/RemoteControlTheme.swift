@@ -15,26 +15,17 @@ class RemoteControlTheme {
         name: "Remote Control",
         
         /// Background
-        backgroundImage: nil,
-        backgroundOverlayOpacity: nil,
+        backgroundImage: UIImage.init(named: "BackgroundDark")!,
         
         /// Fonts
-        titleFontName: nil,
-        titleFontSize: nil,
-        titleFont: nil,
-
-        subtitleFontName: nil,
-        subtitleFontSize: nil,
-        subtitleFont: nil,
-
-        scoreFontName: nil,
-        scoreFontSize: nil,
-        scoreFont: nil,
+        titleFont: UIFont.systemFont(ofSize: 17),
+        subtitleFont: UIFont.systemFont(ofSize: 17),
+        scoreFont: UIFont.systemFont(ofSize: 17),
 
         /// Font Colors
-        titleColor: nil,
-        subtitleColor: nil,
-        scoreColor: nil,
+        titleColor: UIColor.label,
+        subtitleColor: UIColor.label,
+        scoreColor: UIColor.label,
         
         /// Text Shadows
         shadowColor: UIColor.clear,
@@ -43,10 +34,9 @@ class RemoteControlTheme {
         
         /// Button Colors
         buttonColor: UIColor.systemGray5,
-        buttonSelectedColor1: UIColor.systemGreen,
-        buttonSelectedColor2: UIColor.systemRed,
-        buttonHighlightedColor1: UIColor.systemGreen,
-        buttonHighlightedColor2: UIColor.systemRed,
+        buttonSelectedColor: UIColor.systemGreen,
+        
+        /// Dark Mode
         darkMode: true
 
     )

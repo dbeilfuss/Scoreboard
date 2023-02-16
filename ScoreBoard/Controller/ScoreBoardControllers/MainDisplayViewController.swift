@@ -283,8 +283,8 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
                 hideUI(viewsToHide: [bottomRowView], hidden: false)
             }
             
-            resizeFonts(labels: nameLabelsArray, themeFont: theme.subtitleFont!)
-            resizeFonts(labels: scoreLabelsArray, themeFont: theme.scoreFont!)
+            resizeFonts(labels: nameLabelsArray, themeFont: theme.subtitleFont)
+            resizeFonts(labels: scoreLabelsArray, themeFont: theme.scoreFont)
         } else {
             print("Partial Refresh")
         }

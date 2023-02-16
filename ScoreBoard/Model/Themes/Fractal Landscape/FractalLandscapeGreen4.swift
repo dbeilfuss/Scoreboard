@@ -10,6 +10,14 @@ import UIKit
 class FractalLandscapeGreen4: FractalLandscape {
     
     var theme: Theme {
+        var modifiedTheme: Theme = templateTheme
+        modifiedTheme.name = "Mint"
+        modifiedTheme.backgroundImage = UIImage.init(named: "fractalLandscapeGreen4")!
+        return modifiedTheme
+    }
+    
+    /*
+    var theme: Theme {
         Theme(
             
         /// Definition
@@ -53,4 +61,5 @@ class FractalLandscapeGreen4: FractalLandscape {
         darkMode: fractalLandscapeTemplate.darkMode
         )
     }
+     */
 }

@@ -130,7 +130,7 @@ class ScoreBoardViewController: UIViewController {
         
         if subtitleLabels != nil {
             for label in subtitleLabels! {
-                label.font = UIFont(name:theme.subtitleFont!.fontName, size: label.font.pointSize)
+                label.font = UIFont(name:theme.subtitleFont.fontName, size: label.font.pointSize)
                 label.textColor = theme.subtitleColor
                 label.shadowColor = theme.shadowColor
                 //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
@@ -139,7 +139,7 @@ class ScoreBoardViewController: UIViewController {
         
         if scoreLabels != nil {
             for label in scoreLabels! {
-                label.font = UIFont(name:theme.scoreFont!.fontName, size: label.font.pointSize)
+                label.font = UIFont(name:theme.scoreFont.fontName, size: label.font.pointSize)
                 label.textColor = theme.scoreColor
                 label.shadowColor = theme.shadowColor
                 //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
@@ -168,9 +168,9 @@ class ScoreBoardViewController: UIViewController {
     func updateUIForButtonSelection(buttons: [UIButton]) {
         for i in buttons {
             if i.isSelected == true {
-                i.tintColor = theme.buttonSelectedColor1!
+                i.tintColor = theme.buttonSelectedColor
             } else {
-                i.tintColor = theme.buttonColor!
+                i.tintColor = theme.buttonColor
             }
         }
     }

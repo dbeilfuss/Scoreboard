@@ -10,6 +10,14 @@ import UIKit
 class FractalLandscapeOcean1: FractalLandscape {
     
     var theme: Theme {
+        var modifiedTheme: Theme = templateTheme
+        modifiedTheme.name = "Ocean Sky"
+        modifiedTheme.backgroundImage = UIImage.init(named: "fractalLandscapeOcean1")!
+        return modifiedTheme
+    }
+    
+    /*
+    var theme: Theme {
         Theme(
             
         /// Definition
@@ -53,4 +61,5 @@ class FractalLandscapeOcean1: FractalLandscape {
         darkMode: fractalLandscapeTemplate.darkMode
         )
     }
+     */
 }
