@@ -69,23 +69,6 @@
 		77D0907B298991FD0034D200 /* WelcomeOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */; };
 		77D0907D298995DB0034D200 /* WelcomeScreenDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */; };
 		77D0907F298998CC0034D200 /* Myriad Pro Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77D0907E298998CC0034D200 /* Myriad Pro Regular.ttf */; };
-		77D98FCC297AF34300927949 /* FractalLandscapeBlue1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FCB297AF34300927949 /* FractalLandscapeBlue1.swift */; };
-		77D98FCE297AFE4B00927949 /* FractalLandscapeBlue2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FCD297AFE4B00927949 /* FractalLandscapeBlue2.swift */; };
-		77D98FD0297B01B100927949 /* FractalLandscapeBlue3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FCF297B01B100927949 /* FractalLandscapeBlue3.swift */; };
-		77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD1297B03D100927949 /* FractalLandscapeBlue4.swift */; };
-		77D98FD4297B069300927949 /* FractalLandscapeFire1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD3297B069300927949 /* FractalLandscapeFire1.swift */; };
-		77D98FD6297B08C000927949 /* FractalLandscapeGreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD5297B08C000927949 /* FractalLandscapeGreen1.swift */; };
-		77D98FD8297B096B00927949 /* FractalLandscapeGreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD7297B096B00927949 /* FractalLandscapeGreen2.swift */; };
-		77D98FDA297B097400927949 /* FractalLandscapeGreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FD9297B097400927949 /* FractalLandscapeGreen3.swift */; };
-		77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FDB297B097F00927949 /* FractalLandscapeGreen4.swift */; };
-		77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FDD297B099600927949 /* FractalLandscapeOcean1.swift */; };
-		77D98FE0297B099E00927949 /* FractalLandscapeOcean2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FDF297B099E00927949 /* FractalLandscapeOcean2.swift */; };
-		77D98FE2297B09A800927949 /* FractalLandscapeOcean3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE1297B09A800927949 /* FractalLandscapeOcean3.swift */; };
-		77D98FE4297B09BF00927949 /* FractalLandscapePurple1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE3297B09BF00927949 /* FractalLandscapePurple1.swift */; };
-		77D98FE6297B09C700927949 /* FractalLandscapePurple2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE5297B09C700927949 /* FractalLandscapePurple2.swift */; };
-		77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */; };
-		77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */; };
-		77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */; };
 		77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E238512981E6F80069A260 /* Remotev2ViewController.swift */; };
 		77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6CFEA298F044A0006E8CE /* TextInputCell.swift */; };
 		77E6CFED298F044A0006E8CE /* TextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6CFEB298F044A0006E8CE /* TextInputCell.xib */; };
@@ -153,23 +136,6 @@
 		77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeOptionsCell.xib; sourceTree = "<group>"; };
 		77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenDatabase.swift; sourceTree = "<group>"; };
 		77D0907E298998CC0034D200 /* Myriad Pro Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Myriad Pro Regular.ttf"; sourceTree = "<group>"; };
-		77D98FCB297AF34300927949 /* FractalLandscapeBlue1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue1.swift; sourceTree = "<group>"; };
-		77D98FCD297AFE4B00927949 /* FractalLandscapeBlue2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue2.swift; sourceTree = "<group>"; };
-		77D98FCF297B01B100927949 /* FractalLandscapeBlue3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue3.swift; sourceTree = "<group>"; };
-		77D98FD1297B03D100927949 /* FractalLandscapeBlue4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeBlue4.swift; sourceTree = "<group>"; };
-		77D98FD3297B069300927949 /* FractalLandscapeFire1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeFire1.swift; sourceTree = "<group>"; };
-		77D98FD5297B08C000927949 /* FractalLandscapeGreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen1.swift; sourceTree = "<group>"; };
-		77D98FD7297B096B00927949 /* FractalLandscapeGreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen2.swift; sourceTree = "<group>"; };
-		77D98FD9297B097400927949 /* FractalLandscapeGreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen3.swift; sourceTree = "<group>"; };
-		77D98FDB297B097F00927949 /* FractalLandscapeGreen4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeGreen4.swift; sourceTree = "<group>"; };
-		77D98FDD297B099600927949 /* FractalLandscapeOcean1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeOcean1.swift; sourceTree = "<group>"; };
-		77D98FDF297B099E00927949 /* FractalLandscapeOcean2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeOcean2.swift; sourceTree = "<group>"; };
-		77D98FE1297B09A800927949 /* FractalLandscapeOcean3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeOcean3.swift; sourceTree = "<group>"; };
-		77D98FE3297B09BF00927949 /* FractalLandscapePurple1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple1.swift; sourceTree = "<group>"; };
-		77D98FE5297B09C700927949 /* FractalLandscapePurple2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple2.swift; sourceTree = "<group>"; };
-		77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple3.swift; sourceTree = "<group>"; };
-		77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite1.swift; sourceTree = "<group>"; };
-		77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite2.swift; sourceTree = "<group>"; };
 		77E238512981E6F80069A260 /* Remotev2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remotev2ViewController.swift; sourceTree = "<group>"; };
 		77E6CFEA298F044A0006E8CE /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
 		77E6CFEB298F044A0006E8CE /* TextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputCell.xib; sourceTree = "<group>"; };
@@ -195,23 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				77149321297A255F0040ABD3 /* FractalLandscape.swift */,
-				77D98FCB297AF34300927949 /* FractalLandscapeBlue1.swift */,
-				77D98FCD297AFE4B00927949 /* FractalLandscapeBlue2.swift */,
-				77D98FCF297B01B100927949 /* FractalLandscapeBlue3.swift */,
-				77D98FD1297B03D100927949 /* FractalLandscapeBlue4.swift */,
-				77D98FD3297B069300927949 /* FractalLandscapeFire1.swift */,
-				77D98FD5297B08C000927949 /* FractalLandscapeGreen1.swift */,
-				77D98FD7297B096B00927949 /* FractalLandscapeGreen2.swift */,
-				77D98FD9297B097400927949 /* FractalLandscapeGreen3.swift */,
-				77D98FDB297B097F00927949 /* FractalLandscapeGreen4.swift */,
-				77D98FDD297B099600927949 /* FractalLandscapeOcean1.swift */,
-				77D98FDF297B099E00927949 /* FractalLandscapeOcean2.swift */,
-				77D98FE1297B09A800927949 /* FractalLandscapeOcean3.swift */,
-				77D98FE3297B09BF00927949 /* FractalLandscapePurple1.swift */,
-				77D98FE5297B09C700927949 /* FractalLandscapePurple2.swift */,
-				77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */,
-				77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */,
-				77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */,
 			);
 			path = "Fractal Landscape";
 			sourceTree = "<group>";
@@ -500,30 +449,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				77239FE1295264B800569AB9 /* RemoteSetupViewController.swift in Sources */,
-				77D98FDA297B097400927949 /* FractalLandscapeGreen3.swift in Sources */,
 				77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */,
-				77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */,
 				7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */,
-				77D98FD6297B08C000927949 /* FractalLandscapeGreen1.swift in Sources */,
-				77D98FCE297AFE4B00927949 /* FractalLandscapeBlue2.swift in Sources */,
 				77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */,
 				77CEA700297DB75500E853DC /* ThemeChooserViewController.swift in Sources */,
 				77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */,
-				77D98FD4297B069300927949 /* FractalLandscapeFire1.swift in Sources */,
-				77D98FD0297B01B100927949 /* FractalLandscapeBlue3.swift in Sources */,
-				77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */,
-				77D98FE4297B09BF00927949 /* FractalLandscapePurple1.swift in Sources */,
 				77CEA70B297EF01C00E853DC /* ThemePreviewCell.swift in Sources */,
 				77B0D994293AC9DA00E2BEB0 /* TeamManager.swift in Sources */,
-				77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */,
-				77D98FE2297B09A800927949 /* FractalLandscapeOcean3.swift in Sources */,
 				77952A0329933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift in Sources */,
 				77D0907D298995DB0034D200 /* WelcomeScreenDatabase.swift in Sources */,
 				77B11162293AB78E00553E37 /* MainDisplayViewController.swift in Sources */,
 				77CEA6FA297C449D00E853DC /* Railway.swift in Sources */,
 				7790E834295CAEF800DC5D6B /* DefaultTheme.swift in Sources */,
 				77B1115E293AB78E00553E37 /* AppDelegate.swift in Sources */,
-				77D98FD8297B096B00927949 /* FractalLandscapeGreen2.swift in Sources */,
 				77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */,
 				77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */,
 				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,
@@ -533,22 +471,16 @@
 				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
 				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
 				77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */,
-				77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */,
 				77A11797293ACD1A00ED74C2 /* Team.swift in Sources */,
 				77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */,
 				77B11160293AB78E00553E37 /* SceneDelegate.swift in Sources */,
 				77239FF52954CCC400569AB9 /* SignOutViewController.swift in Sources */,
 				77D090772988D5390034D200 /* Constants.swift in Sources */,
-				77D98FE0297B099E00927949 /* FractalLandscapeOcean2.swift in Sources */,
-				77D98FE6297B09C700927949 /* FractalLandscapePurple2.swift in Sources */,
 				7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */,
 				7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */,
-				77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */,
-				77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */,
 				77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */,
 				778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */,
 				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
-				77D98FCC297AF34300927949 /* FractalLandscapeBlue1.swift in Sources */,
 				77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
