@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Team: Encodable, Decodable {
-    var number: Int = 1
-    var name: String = "Team 1"
-    var score: Int = 0
-    var isActive: Bool = true
+struct Team {
+    var number: Int
+    var name: String
+    var score: Int
+    var isActive: Bool
 }

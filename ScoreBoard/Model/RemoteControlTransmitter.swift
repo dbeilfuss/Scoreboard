@@ -12,7 +12,7 @@ protocol RemoteControlTransmitterDelegate {
     func userFeedback(feedback: String)
     func transmitData()
     func resetTeams()
-    func recordTeamInfo(teamInfo: Team)
+    func recordTeamInfo(teamInfo: Team, refreshScreen: Bool)
     func updateTheme(newTheme: String)
 }
 
@@ -58,7 +58,7 @@ class RemoteControlTransmitter {
             }
         }
     }
-    
+
     //MARK: - Sending Scores to FireStore
     func transmitUpdatedScores(sender: String, teamList: [Team]) {
         print("transmitting team data")
@@ -87,12 +87,10 @@ class RemoteControlTransmitter {
     
     //MARK: - Receiving Data from FireStore
     
-    
     func listenForUpdatedScores (sender: String) {
         print("listening for updated scores")
         
         db.collection(sender)
-        //            .order(by: numberText)
             .addSnapshotListener { querySnapshot,
                 error in
                 
@@ -102,6 +100,10 @@ class RemoteControlTransmitter {
                     
                 } else {
                     if let snapshotDocs = querySnapshot?.documents {
+                        
+                        // docsCount: used for determining when to signal refresh of screen
+                        var docsCount = snapshotDocs.count - 1
+                        
                         for doc in snapshotDocs {
                             if doc[self.typeText] != nil {
                                 if doc[self.typeText] as! String == "team" {
@@ -116,7 +118,8 @@ class RemoteControlTransmitter {
                                         DispatchQueue.main.async {
                                             self.thisTeam = thisTeam
                                             if let safeThisTeam = self.thisTeam {
-                                                self.delegate?.recordTeamInfo(teamInfo: safeThisTeam)
+                                                var refresh: Bool { docsCount == thisTeamNumber }
+                                                self.delegate?.recordTeamInfo(teamInfo: safeThisTeam, refreshScreen: refresh)
                                             }
                                         }
                                     }
