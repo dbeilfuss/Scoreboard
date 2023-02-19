@@ -256,19 +256,19 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         print("refreshing screen")
         
         /// Determine whether to perform a full refresh, or a partial refresh, based on whether the Active Team Count has changed
-        let oldTeamCount: Int = self.activeTeams
-        var newTeamCount: Int {
-            var activeTeams: Int = 0
-            let isActiveList = teamManager.fetchIsActiveList()
-            for team in isActiveList {
-                if team {
-                    activeTeams += 1
-                }
-            }
-            return activeTeams
-        }
-        
-        if newTeamCount != oldTeamCount { /// Full Refresh
+//        let oldTeamCount: Int = self.activeTeams
+//        var newTeamCount: Int {
+//            var activeTeams: Int = 0
+//            let isActiveList = teamManager.fetchIsActiveList()
+//            for team in isActiveList {
+//                if team {
+//                    activeTeams += 1
+//                }
+//            }
+//            return activeTeams
+//        }
+//        
+//        if newTeamCount != oldTeamCount { /// Full Refresh
             print("Full Refresh")
             /// Re-Tag Views Based on Team Count:
             reTagViews(viewsToRetag: viewsArray)
@@ -285,9 +285,9 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
             
             resizeFonts(labels: nameLabelsArray, themeFont: theme.subtitleFont!)
             resizeFonts(labels: scoreLabelsArray, themeFont: theme.scoreFont!)
-        } else {
-            print("Partial Refresh")
-        }
+//        } else {
+//            print("Partial Refresh")
+//        }
         
         /// Update Steppers
         updateStepperValues(steppers: steppersArray)
@@ -309,7 +309,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         }
         
         /// Update ActiveTeam Count
-        activeTeams = newTeamCount
+//        activeTeams = newTeamCount
     }
     
     /// Re-Tag Views Based on Team Count:
