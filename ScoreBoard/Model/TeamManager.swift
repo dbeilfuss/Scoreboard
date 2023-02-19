@@ -14,25 +14,25 @@ class TeamManager: SettingsDelegate {
     //MARK: - Team List
     
     let startingTeamList = [
-        Team(),
-        Team(number: 2, name: "Team 2", isActive: true),
-        Team(number: 3, name: "Team 3", isActive: false),
-        Team(number: 4, name: "Team 4", isActive: false),
-        Team(number: 5, name: "Team 5", isActive: false),
-        Team(number: 6, name: "Team 6", isActive: false),
-        Team(number: 7, name: "Team 7", isActive: false),
-        Team(number: 8, name: "Team 8", isActive: false)
+        Team(number: 1, name: "Team 1", score: 0, isActive: true),
+        Team(number: 2, name: "Team 2", score: 0, isActive: true),
+        Team(number: 3, name: "Team 3", score: 0, isActive: false),
+        Team(number: 4, name: "Team 4", score: 0, isActive: false),
+        Team(number: 5, name: "Team 5", score: 0, isActive: false),
+        Team(number: 6, name: "Team 6", score: 0, isActive: false),
+        Team(number: 7, name: "Team 7", score: 0, isActive: false),
+        Team(number: 8, name: "Team 8", score: 0, isActive: false)
         ]
     
     var teamList = [
-        Team(),
-        Team(number: 2, name: "Team 2", isActive: true),
-        Team(number: 3, name: "Team 3", isActive: false),
-        Team(number: 4, name: "Team 4", isActive: false),
-        Team(number: 5, name: "Team 5", isActive: false),
-        Team(number: 6, name: "Team 6", isActive: false),
-        Team(number: 7, name: "Team 7", isActive: false),
-        Team(number: 8, name: "Team 8", isActive: false)
+        Team(number: 1, name: "Team 1", score: 0, isActive: true),
+        Team(number: 2, name: "Team 2", score: 0, isActive: true),
+        Team(number: 3, name: "Team 3", score: 0, isActive: false),
+        Team(number: 4, name: "Team 4", score: 0, isActive: false),
+        Team(number: 5, name: "Team 5", score: 0, isActive: false),
+        Team(number: 6, name: "Team 6", score: 0, isActive: false),
+        Team(number: 7, name: "Team 7", score: 0, isActive: false),
+        Team(number: 8, name: "Team 8", score: 0, isActive: false)
         ]
     
     func resetTeams() {

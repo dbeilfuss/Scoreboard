@@ -285,10 +285,12 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
     }
     
     
-    func recordTeamInfo(teamInfo: Team) {
+    func recordTeamInfo(teamInfo: Team, refreshScreen: Bool) {
         //        print("recording team info")
         teamManager.recordTeamInfo(teamInfo: teamInfo)
-        scoreBoardDelegate?.refreshScreen(reTransmit: false)
+        if refreshScreen {
+            scoreBoardDelegate?.refreshScreen(reTransmit: false)
+        }
     }
     
     func userFeedback(feedback: String) {
