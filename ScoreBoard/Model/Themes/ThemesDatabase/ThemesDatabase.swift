@@ -13,12 +13,12 @@ class ThemesDatabase {
         "Fractured Sky": fracturedSkyThemeSet,
 //        "Board Games": cardsAndBoardGames,
         "Holidays": holidays,
-        "Landscapes": landscapes
+        "Landscapes": landscapesThemeSet
     ]}
     
     var themeGroups: [[Theme]] {[
         fracturedSkyThemeSet,
-        cardsAndBoardGames,
+        landscapesThemeSet,
         holidays,
     ]}
     
@@ -33,9 +33,6 @@ class ThemesDatabase {
         ChristmasTheme().theme
     ]
     
-    let landscapes: [Theme] = [
-        Railway().theme,
-        
-    ]
+    let landscapesThemeSet: [Theme] = Landscapes().themeList
     
 }

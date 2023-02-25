@@ -120,6 +120,7 @@ class ScoreBoardViewController: UIViewController {
     
     //MARK: - Themes
     var theme: Theme = DefaultTheme().theme
+    var backgroundZoom: Double = 1
     
     func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, transmit: Bool) {
         self.theme = theme
@@ -235,21 +236,24 @@ class ScoreBoardViewController: UIViewController {
     
     func resizeFonts(labels: [UILabel], themeFont: UIFont) {
         
-        /// Determine the appropriate font point size
+        /// Determine the appropriate font point size depending on Team Count
         let themeFontSize: CGFloat = themeFont.pointSize
         let device: String = UIDevice.current.localizedModel
         var sizeMultiplyers: [Int: CGFloat] {
             if device == "iPad" {
-                return TeamTextSizeStruct().iPadSizes
+                return SizeAdaptationStruct().iPadSizes
             } else {
-                return TeamTextSizeStruct().iPhoneSizes
+                return SizeAdaptationStruct().iPhoneSizes
             }
         }
-        let adjustedFontSize: CGFloat = themeFontSize * sizeMultiplyers[numberOfTeams]!
+        let fontSizeForTeamCount: CGFloat = themeFontSize * sizeMultiplyers[numberOfTeams]!
+        
+        /// Adjust font size based on Background Zoom
+        let fontSizeForBackgroundZoom: CGFloat = fontSizeForTeamCount / backgroundZoom
         
         /// Resize all point sizes to adjusted size
         for label in labels {
-            label.font = UIFont(name: label.font.fontName, size: adjustedFontSize)
+            label.font = UIFont(name: label.font.fontName, size: fontSizeForBackgroundZoom)
             label.shadowOffset.height = label.shadowOffset.height * sizeMultiplyers[numberOfTeams]! + 0.5
             label.shadowOffset.width = label.shadowOffset.width * sizeMultiplyers[numberOfTeams]! + 0.5
         }

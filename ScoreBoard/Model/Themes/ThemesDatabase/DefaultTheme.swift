@@ -9,7 +9,7 @@ import UIKit
 
 class DefaultTheme {
     
-    let theme = Railway().theme
+    let theme = Landscapes().templateTheme
     
 //    let theme = Theme(
 //

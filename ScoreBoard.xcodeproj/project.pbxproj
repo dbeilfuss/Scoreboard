@@ -46,7 +46,7 @@
 		7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */; };
 		7790E834295CAEF800DC5D6B /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E833295CAEF800DC5D6B /* DefaultTheme.swift */; };
 		77952A0329933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */; };
-		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
+		77952A072995599400BC0354 /* SizeAdaptationStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* SizeAdaptationStruct.swift */; };
 		77A11797293ACD1A00ED74C2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* Team.swift */; };
 		77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */; };
 		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
@@ -112,7 +112,7 @@
 		7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasTheme.swift; sourceTree = "<group>"; };
 		7790E833295CAEF800DC5D6B /* DefaultTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
 		77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScoreboardDisplayDatabase.swift; sourceTree = "<group>"; };
-		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
+		77952A062995599400BC0354 /* SizeAdaptationStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAdaptationStruct.swift; sourceTree = "<group>"; };
 		77A11796293ACD1A00ED74C2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSetupViewController.swift; sourceTree = "<group>"; };
 		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +172,15 @@
 			path = ThemesDatabase;
 			sourceTree = "<group>";
 		};
+		773E0C6929A9D06400604493 /* Custom UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				77239FE92953AF6000569AB9 /* SignInButton.swift */,
+				77F519152990C65000708BFE /* LargeTransparentButton.swift */,
+			);
+			path = "Custom UIElements";
+			sourceTree = "<group>";
+		};
 		7754E9052986F78F006CE85A /* ScoreBoardControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				7790E82C295C06A600DC5D6B /* Theme.swift */,
-				77952A062995599400BC0354 /* TeamTextSizeStruct.swift */,
 				772E238629A982FB00656B1D /* BackgroundCenterPoint.swift */,
 				77149320297A252A0040ABD3 /* ThemesDatabase */,
 			);
@@ -245,11 +253,11 @@
 				77D090762988D5390034D200 /* Constants.swift */,
 				77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */,
 				77A11796293ACD1A00ED74C2 /* Team.swift */,
-				77239FE92953AF6000569AB9 /* SignInButton.swift */,
 				778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */,
 				77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */,
 				77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */,
-				77F519152990C65000708BFE /* LargeTransparentButton.swift */,
+				77952A062995599400BC0354 /* SizeAdaptationStruct.swift */,
+				773E0C6929A9D06400604493 /* Custom UIElements */,
 				7790E832295CAEEA00DC5D6B /* Themes */,
 			);
 			path = Model;
@@ -469,7 +477,7 @@
 				77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */,
 				778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */,
 				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
-				77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */,
+				77952A072995599400BC0354 /* SizeAdaptationStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -177,7 +177,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
 //    var settingsViewController = TeamSetupViewController()
     
     /// Theme
-    var newTheme: Theme = Railway().theme
+    var newTheme: Theme = DefaultTheme().theme
     
     /// Arrangement
     var arrangementList: [Int : [Bool]] {
