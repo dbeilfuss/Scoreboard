@@ -14,6 +14,7 @@ struct Theme {
     
     /// Background
     var backgroundImage: UIImage
+    var backgroundCenterPoint: BackgroundCenterPoint?
     
     /// Fonts
     var titleFont: UIFont
