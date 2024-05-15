@@ -279,6 +279,7 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
                 }
             }
         }
+        
         if themeSelected != nil {
             themeDelegate?.implementTheme(theme: themeSelected!)
         }
