@@ -38,6 +38,8 @@
 		7754E92A29888CCD006CE85A /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91729888CCD006CE85A /* Rubik-Black.ttf */; };
 		7754E92B29888CCD006CE85A /* Karla700italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91829888CCD006CE85A /* Karla700italic.ttf */; };
 		7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91929888CCD006CE85A /* Rubik-Bold.ttf */; };
+		7776DDE52BF64154008E9C65 /* TeamView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7776DDE42BF64154008E9C65 /* TeamView.xib */; };
+		7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776DDE62BF642EA008E9C65 /* TeamView.swift */; };
 		778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */; };
 		7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */; };
 		7790E82D295C06A600DC5D6B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82C295C06A600DC5D6B /* Theme.swift */; };
@@ -120,6 +122,8 @@
 		7754E91729888CCD006CE85A /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		7754E91829888CCD006CE85A /* Karla700italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karla700italic.ttf; sourceTree = "<group>"; };
 		7754E91929888CCD006CE85A /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		7776DDE42BF64154008E9C65 /* TeamView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamView.xib; sourceTree = "<group>"; };
+		7776DDE62BF642EA008E9C65 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTransmitter.swift; sourceTree = "<group>"; };
 		7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
 		7790E82C295C06A600DC5D6B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 				77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */,
 				77E6CFEA298F044A0006E8CE /* TextInputCell.swift */,
 				77E6CFEB298F044A0006E8CE /* TextInputCell.xib */,
+				7776DDE42BF64154008E9C65 /* TeamView.xib */,
+				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				7754E92A29888CCD006CE85A /* Rubik-Black.ttf in Resources */,
 				77239FEC2954A9C900569AB9 /* GoogleService-Info.plist in Resources */,
 				7754E91F29888CCD006CE85A /* Poppins600.ttf in Resources */,
+				7776DDE52BF64154008E9C65 /* TeamView.xib in Resources */,
 				7754E92729888CCD006CE85A /* Karlaitalic.ttf in Resources */,
 				7754E92829888CCD006CE85A /* Rubik-LightItalic.ttf in Resources */,
 				7754E91C29888CCD006CE85A /* Karla700.ttf in Resources */,
@@ -530,6 +537,7 @@
 				77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
 				77CEA6FE297CA9F800E853DC /* ThemesDatabase.swift in Sources */,
+				7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */,
 				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
 				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
 				77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */,
