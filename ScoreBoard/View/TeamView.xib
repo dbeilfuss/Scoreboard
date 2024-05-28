@@ -3,9 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +12,7 @@
             <connections>
                 <outlet property="nameLabel" destination="R9r-je-e8S" id="zzs-Zz-SxC"/>
                 <outlet property="scoreLabel" destination="gc9-RN-rad" id="8nr-4D-3Wy"/>
+                <outlet property="scoreStepper" destination="Nzb-iM-Vr7" id="qD0-jP-GJq"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -41,12 +41,15 @@
                         </label>
                         <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10000" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Nzb-iM-Vr7" userLabel="Score Stepper">
                             <rect key="frame" x="228" y="334" width="94" height="42"/>
+                            <connections>
+                                <action selector="scoreStepperPressed:" destination="-1" eventType="valueChanged" id="Fbl-Ey-sLo"/>
+                            </connections>
                         </stepper>
                     </subviews>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="AQ2-ao-TAf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0Zc-Ky-x2d"/>
                 <constraint firstAttribute="bottom" secondItem="AQ2-ao-TAf" secondAttribute="bottom" id="3SW-fS-VTJ"/>
@@ -59,9 +62,4 @@
             <point key="canvasLocation" x="187.78625954198472" y="-147.88732394366198"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

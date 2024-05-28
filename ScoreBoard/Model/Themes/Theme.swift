@@ -47,5 +47,16 @@ struct Theme {
     let buttonHighlightedColor2: UIColor?
     let darkMode: Bool
     
+    func format(teamNameLabel: UILabel) {
+        teamNameLabel.font = UIFont(name:subtitleFont!.fontName, size: teamNameLabel.font.pointSize)
+        teamNameLabel.textColor = subtitleColor
+        teamNameLabel.shadowColor = shadowColor
+    }
+    
+    func format(scoreLabel: UILabel) {
+        scoreLabel.font = UIFont(name:subtitleFont!.fontName, size: scoreLabel.font.pointSize)
+        scoreLabel.textColor = subtitleColor
+        scoreLabel.shadowColor = shadowColor
+    }
 }
 

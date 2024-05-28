@@ -3,7 +3,7 @@
     <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="F8q-kP-qt4">
-                            <rect key="frame" x="0.0" y="-140" width="0.0" height="49"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem systemItem="done" id="5a1-my-E58">
@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="9Lr-jR-HKp">
-                            <rect key="frame" x="0.0" y="-140" width="0.0" height="43"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem systemItem="done" id="t7e-NU-kEY">
@@ -515,6 +515,8 @@
                         <outlet property="mainScoreBoardStackHeight" destination="lco-5g-qST" id="GbM-dr-4Sh"/>
                         <outlet property="onePointButton" destination="Jeu-ZF-t97" id="ncf-a6-xN6"/>
                         <outlet property="resetButton" destination="8iN-tB-rfg" id="fZX-CC-gZ2"/>
+                        <outlet property="scoresBottomRow" destination="mQv-9s-eRb" id="n1O-sb-E4T"/>
+                        <outlet property="scoresTopRow" destination="5LN-3Z-gzt" id="2xj-eS-I3l"/>
                         <outlet property="team1NameLabel" destination="AoR-zG-GrG" id="9TF-aW-L2Y"/>
                         <outlet property="team1ScoreLabel" destination="9jr-SQ-r63" id="lJs-D2-PnC"/>
                         <outlet property="team1Stepper" destination="iA3-Pb-ANt" id="iPV-MO-zTv"/>
@@ -887,7 +889,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="315.5" height="34"/>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VR8-qS-Z1o" userLabel="Sign In to Use">
-                                                                <rect key="frame" x="315.5" y="0.0" width="168.5" height="34"/>
+                                                                <rect key="frame" x="315.5" y="0.0" width="168" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="C2K-pA-Rye"/>
                                                                 </constraints>
@@ -899,7 +901,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIC-mp-LkV">
-                                                                <rect key="frame" x="484" y="0.0" width="337.5" height="34"/>
+                                                                <rect key="frame" x="483.5" y="0.0" width="338" height="34"/>
                                                             </view>
                                                         </subviews>
                                                     </stackView>
@@ -1597,7 +1599,7 @@ You must be signed in to the same account on two devices to use this feature.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Jud-eT-ZW8" userLabel="Bottom Buttons">
-                                <rect key="frame" x="219.5" y="935" width="265" height="34.5"/>
+                                <rect key="frame" x="219.5" y="935.5" width="265" height="34.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wm6-9l-wkr" userLabel="Reset">
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="34.5"/>
@@ -1663,13 +1665,13 @@ You must be signed in to the same account on two devices to use this feature.
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="r8P-Oq-BGl" userLabel="Remote Stack View">
-                                <rect key="frame" x="97.5" y="109" width="509" height="806"/>
+                                <rect key="frame" x="97.5" y="109" width="509" height="806.5"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mjG-Zq-r1z" userLabel="Left Buffer View">
-                                        <rect key="frame" x="254.5" y="0.0" width="0.0" height="806"/>
+                                        <rect key="frame" x="254.5" y="0.0" width="0.0" height="806.5"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="If4-y4-2PE">
-                                        <rect key="frame" x="0.0" y="0.0" width="509" height="806"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="509" height="806.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaE-pG-GCA" userLabel="Team View">
                                                 <rect key="frame" x="0.0" y="0.0" width="509" height="203.5"/>
@@ -1684,7 +1686,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                         <rect key="frame" x="20" y="50.5" width="469" height="102.5"/>
                                                         <subviews>
                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cH-oP-2AO" userLabel="Team 1 Button">
-                                                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="102.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102" height="102.5"/>
                                                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" title="1" cornerStyle="small"/>
@@ -1693,7 +1695,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goV-2C-LkX" userLabel="Team 2 Button">
-                                                                <rect key="frame" x="122.5" y="0.0" width="102" height="102.5"/>
+                                                                <rect key="frame" x="122" y="0.0" width="102.5" height="102.5"/>
                                                                 <color key="tintColor" systemColor="systemGray5Color"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" title="2" cornerStyle="small"/>
@@ -1733,13 +1735,13 @@ You must be signed in to the same account on two devices to use this feature.
                                                         <rect key="frame" x="20" y="163" width="469" height="19"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpf-pi-bJw" userLabel="Team 1 Label">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="19"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="19"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwp-HD-L3o" userLabel="Team 2 Label">
-                                                                <rect key="frame" x="120" y="0.0" width="109.5" height="19"/>
+                                                                <rect key="frame" x="119.5" y="0.0" width="110" height="19"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1792,7 +1794,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                                 <rect key="frame" x="0.0" y="0.0" width="469" height="102"/>
                                                                 <subviews>
                                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxq-zj-qWU" userLabel="Point Button 1">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="102"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="102" height="102"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Jxq-zj-qWU" secondAttribute="height" multiplier="1:1" id="oe1-BP-R9S"/>
                                                                         </constraints>
@@ -1806,7 +1808,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-9u-HOF" userLabel="Point Button 2">
-                                                                        <rect key="frame" x="122.5" y="0.0" width="102" height="102"/>
+                                                                        <rect key="frame" x="122" y="0.0" width="102.5" height="102"/>
                                                                         <color key="tintColor" systemColor="systemGray5Color"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="5" cornerStyle="small"/>
@@ -1852,7 +1854,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                                 <rect key="frame" x="0.0" y="122" width="469" height="102.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33y-Cx-xEH" userLabel="Point Button 5">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="102.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="102" height="102.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="33y-Cx-xEH" secondAttribute="height" multiplier="1:1" id="vQy-DT-2Oc"/>
                                                                         </constraints>
@@ -1866,7 +1868,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mm8-dw-G7r" userLabel="Point Button 6">
-                                                                        <rect key="frame" x="122.5" y="0.0" width="102" height="102.5"/>
+                                                                        <rect key="frame" x="122" y="0.0" width="102.5" height="102.5"/>
                                                                         <color key="tintColor" systemColor="systemGray5Color"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="filled" title="100" cornerStyle="small"/>
@@ -1922,7 +1924,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5m-Mc-wTr" userLabel="Positive/Negative View">
-                                                <rect key="frame" x="0.0" y="602.5" width="509" height="203.5"/>
+                                                <rect key="frame" x="0.0" y="602.5" width="509" height="204"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ / -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl6-Ey-kgw" userLabel="+ / -">
                                                         <rect key="frame" x="239" y="5" width="31.5" height="20.5"/>
@@ -1931,10 +1933,10 @@ You must be signed in to the same account on two devices to use this feature.
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EOA-qz-x2q" userLabel="+ / - Buttons">
-                                                        <rect key="frame" x="142.5" y="50.5" width="224.5" height="102.5"/>
+                                                        <rect key="frame" x="142" y="51" width="225" height="102"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nma-ew-hEf" userLabel="+ Button">
-                                                                <rect key="frame" x="0.0" y="0.0" width="102" height="102.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="102"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Nma-ew-hEf" secondAttribute="height" multiplier="1:1" id="nBe-IK-x53"/>
                                                                 </constraints>
@@ -1946,7 +1948,7 @@ You must be signed in to the same account on two devices to use this feature.
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iI9-a3-nwV" userLabel="- Button">
-                                                                <rect key="frame" x="122" y="0.0" width="102.5" height="102.5"/>
+                                                                <rect key="frame" x="122.5" y="0.0" width="102.5" height="102"/>
                                                                 <color key="tintColor" systemColor="systemGray5Color"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="filled" title="-" cornerStyle="small"/>
@@ -1979,7 +1981,7 @@ You must be signed in to the same account on two devices to use this feature.
                                         </constraints>
                                     </stackView>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prI-57-jUl" userLabel="Right Buffer View">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="806"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="806.5"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -2069,19 +2071,19 @@ You must be signed in to the same account on two devices to use this feature.
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

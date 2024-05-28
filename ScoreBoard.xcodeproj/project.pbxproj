@@ -48,6 +48,7 @@
 		7790E834295CAEF800DC5D6B /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E833295CAEF800DC5D6B /* DefaultTheme.swift */; };
 		77952A0329933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */; };
 		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
+		7797E96F2C0510F0007D7EEF /* ControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797E96E2C0510F0007D7EEF /* ControlState.swift */; };
 		77A11797293ACD1A00ED74C2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* Team.swift */; };
 		77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */; };
 		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
@@ -132,6 +133,7 @@
 		7790E833295CAEF800DC5D6B /* DefaultTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
 		77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScoreboardDisplayDatabase.swift; sourceTree = "<group>"; };
 		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
+		7797E96E2C0510F0007D7EEF /* ControlState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlState.swift; sourceTree = "<group>"; };
 		77A11796293ACD1A00ED74C2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSetupViewController.swift; sourceTree = "<group>"; };
 		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		77B0D990293AC98600E2BEB0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7797E96E2C0510F0007D7EEF /* ControlState.swift */,
 				77D090762988D5390034D200 /* Constants.swift */,
 				77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */,
 				77A11796293ACD1A00ED74C2 /* Team.swift */,
@@ -537,6 +540,7 @@
 				77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
 				77CEA6FE297CA9F800E853DC /* ThemesDatabase.swift in Sources */,
+				7797E96F2C0510F0007D7EEF /* ControlState.swift in Sources */,
 				7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */,
 				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
 				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
