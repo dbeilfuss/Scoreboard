@@ -44,7 +44,7 @@ class TeamView: UIView {
         scoreStepper.value = Double(teamInfo.score)
     }
     
-    func set(controlState: ControlState) {
+    func set(controlState: ControlState, teamSetup: [Team]) {
         print("updating for controlState")
         // Deconstruct
         let theme = controlState.theme
@@ -53,8 +53,8 @@ class TeamView: UIView {
         print("uiIsHidden: \(uiIsHidden)")
         
         // Theme
-        theme.format(teamNameLabel: nameLabel)
-        theme.format(scoreLabel: scoreLabel)
+        theme.format(label: nameLabel, labelType: .teamNameLabel, teamSetup: teamSetup)
+        theme.format(label: scoreLabel, labelType: .scoreLabel, teamSetup: teamSetup)
 
         // ScoreStepper
         scoreStepper.stepValue = Double(pointIncrement)

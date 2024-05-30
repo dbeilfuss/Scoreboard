@@ -267,11 +267,13 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     //MARK: - New TeamView Creation
     
     func createTeamView(_ teamInfo: Team) -> TeamView {
+        let teamSetup = teamManager.teamList
+        
         // Setup TeamView
         let teamView = TeamView()
         teamView.translatesAutoresizingMaskIntoConstraints = false
         teamView.set(teamInfo: teamInfo)
-        teamView.set(controlState: controlState)
+        teamView.set(controlState: controlState, teamSetup: teamSetup)
         teamView.set(delegate: self)
         
         // Adjust Constraints
@@ -288,13 +290,14 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     //MARK: - Refresh New TeamViews
     // Refresh New TeamViews
     func refreshTeamViews() {
+        let teamSetup = teamManager.teamList
         for view in newTeamViews {
             let teamNumber = view.teamInfo.number
             let teamInfo = teamManager.teamList[teamNumber - 1]
             view.set(teamInfo: teamInfo)
             print("controlState: \(controlState)")
 
-            view.set(controlState: controlState)
+            view.set(controlState: controlState, teamSetup: teamSetup)
         }
     }
     
