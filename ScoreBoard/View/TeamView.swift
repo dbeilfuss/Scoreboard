@@ -39,18 +39,21 @@ class TeamView: UIView {
     //MARK: - Set
         
     func set(teamInfo: Team) {
+        // Save TeamInfo
+        self.teamInfo = teamInfo
+        
+        // Update Labels
         nameLabel.text = teamInfo.name
         scoreLabel.text = String(teamInfo.score)
         scoreStepper.value = Double(teamInfo.score)
     }
     
-    func set(controlState: ControlState, teamSetup: [Team]) {
-        print("updating for controlState")
+    func set(scoreboardState: ScoreboardState, teamSetup: [Team]) {
+        print("set ScoreboardState")
+        print(scoreboardState)
+        
         // Deconstruct
-        let theme = controlState.theme
-        let pointIncrement = controlState.pointIncrement
-        let uiIsHidden = controlState.uiIsHidden
-        print("uiIsHidden: \(uiIsHidden)")
+        let (theme, pointIncrement, uiIsHidden) = (scoreboardState.theme, scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
         // Theme
         theme.format(label: nameLabel, labelType: .teamNameLabel, teamSetup: teamSetup)
@@ -68,7 +71,7 @@ class TeamView: UIView {
     //MARK: - Actions
     
     @IBAction func scoreStepperPressed(_ sender: UIStepper) {
-        let newScore = teamInfo.score + Int(sender.value)
+        let newScore = Int(sender.value)
         let teamNumber = teamInfo.number
         delegate?.updateScore(newScore: newScore, teamIndex: teamNumber)
     }

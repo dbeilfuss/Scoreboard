@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ControlState {
+struct ScoreboardState {
     var theme: Theme
     var pointIncrement: Double
     var uiIsHidden: Bool
