@@ -14,7 +14,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     
     /// Stacks
     @IBOutlet weak var mainScoreBoardStack: UIStackView!
-    @IBOutlet weak var mainScoreBoardStackHeight: NSLayoutConstraint!
     @IBOutlet weak var scoresTopRow: UIStackView!
     @IBOutlet weak var scoresBottomRow: UIStackView!
     
@@ -266,12 +265,14 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     func createTeamViews() {
         var teamList = teamManager.fetchActiveTeams()
         teamList = teamList.reversed()
+        var teamCount = teamList.count
         
         for team in teamList {
             /// Create New TeamView
             let teamView = createTeamView(team)
             newTeamViews.append(teamView)
-            displayView(teamView)
+            displayView(teamView, teamCount: teamCount)
+            NSLayoutConstraint.activate([            teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
         }
         
     }
@@ -293,14 +294,48 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         return teamView
     }
     
-    func displayView(_ view: TeamView) {
-        scoresTopRow.insertArrangedSubview(view, at: 0)
+    func displayView(_ view: TeamView, teamCount: Int) {
+        
+        // create top row if needed
+        if mainScoreBoardStack.arrangedSubviews.count == 0 {
+            createScoreboardStackView()
+        }
+        
+        // choose bottom or top row
+        var scoreRow: UIStackView = mainScoreBoardStack.arrangedSubviews.first! as! UIStackView
+        
+        var idealTeamsPerRow = 3
+        if UIDevice.current.localizedModel == "iPhone" {
+            idealTeamsPerRow = 4
+        }
+        
+        if teamCount > idealTeamsPerRow {
+            print("newTeamViews.count: \(newTeamViews.count)")
+            print("teamCount: \(teamCount)")
+            if newTeamViews.count < ((teamCount / 2) + 1) {
+                
+                // create bottom row if needed
+                if mainScoreBoardStack.arrangedSubviews.count < 2 {
+                    createScoreboardStackView()
+                }
+                
+                // use bottom row
+                scoreRow = mainScoreBoardStack.arrangedSubviews.last! as! UIStackView
+            }
+        }
+        
+        scoreRow.insertArrangedSubview(view, at: 0)
+        print("arrangedSubviews: \(scoreRow.arrangedSubviews)")
     }
     
     func teamViewsNeedReInitialized() -> Bool {
+        
+        // Gather Information
         var teamViewTeamNumbers = newTeamViews.map() {$0.teamInfo.number}
         teamViewTeamNumbers = teamViewTeamNumbers.reversed()
         let teamManagerTeamNumbers = teamManager.fetchActiveTeamNumbers()
+        
+        // Return True or False
         if teamViewTeamNumbers == teamManagerTeamNumbers {
             print("teamViews do not need ReInitialized")
             return false
@@ -308,27 +343,45 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
             print("teamViews need ReInitialized")
             return true
         }
+        
     }
     
     func reInitializeTeamViews() {
         print("reInitilizeTeamViews")
         // Delete Current TeamViews
         newTeamViews = []
-        for view in scoresTopRow.arrangedSubviews {
-            view.removeFromSuperview()
+        for stackView in mainScoreBoardStack.arrangedSubviews {
+            stackView.removeFromSuperview()
         }
         
         // Refill the ScoresRows
         createTeamViews()
     }
     
+    func createScoreboardStackView() {
+        let scoreboardStackView = UIStackView()
+        mainScoreBoardStack.addArrangedSubview(scoreboardStackView)
+        
+        // configure
+        scoreboardStackView.alignment = .center
+        scoreboardStackView.distribution = .fillEqually
+        
+        // constraints
+        NSLayoutConstraint.activate([
+            scoreboardStackView.leadingAnchor.constraint(equalTo: mainScoreBoardStack.leadingAnchor, constant: 0), scoreboardStackView.trailingAnchor.constraint(equalTo: mainScoreBoardStack.trailingAnchor, constant: 0)
+                                     ])
+    }
+    
     //MARK: - Refresh New TeamViews
     // Refresh New TeamViews
     func refreshTeamViews() {
+        
+        // Reinitialize teamViews if needed
         if teamViewsNeedReInitialized() {
             reInitializeTeamViews()
         }
         
+        // Pass Data into the team views
         let teamSetup = teamManager.teamList
         for view in newTeamViews {
             let teamNumber = view.teamInfo.number
