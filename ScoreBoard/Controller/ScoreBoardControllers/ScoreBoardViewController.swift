@@ -72,16 +72,6 @@ class ScoreBoardViewController: UIViewController {
         teamManager.replaceScore(teamNumber: teamNumber, newScore: newScore)
     }
     
-    func updateAllScores(scores: [Int]) {
-        //        print("updating all scores")
-        var i = 1
-        for score in scores {
-            print("recording \(score)")
-            teamManager.replaceScore(teamNumber: i, newScore: score)
-            i += 1
-        }
-    }
-    
     func fetchScores() -> [Int] {
         //        print("fetching score")
         return teamManager.fetchScores()
@@ -181,80 +171,6 @@ class ScoreBoardViewController: UIViewController {
         }
     }
     
-    //MARK: - Update UI for Team Updates
-    
-    func updateStepperValues(steppers: [UIStepper]) {
-        let scores = teamManager.fetchScores()
-        var i = 1
-        for score in scores {
-            for stepper in steppers {
-                if stepper.tag == i {
-                    stepper.value = Double(score)
-                }
-            }
-            i += 1
-        }
-    }
-    
-    func updateUI(scoreLabels: [UILabel]) {
-        let scores = teamManager.fetchScores()
-        var i = 1
-        for score in scores {
-            for label in scoreLabels {
-                if label.tag == i {
-                    label.text = String(score)
-                }
-            }
-            i += 1
-        }
-    }
-    
-    func updateUI(teamNamesLabels: [UILabel]) {
-        let names = teamManager.fetchNames()
-        var i = 1
-        
-        for name in names {
-            for label in teamNamesLabels {
-                if label.tag == i {
-                    label.text = String(name)
-                }
-            }
-            i += 1
-        }
-    }
-    
-    func updateUIForActiveTeams(views: [UIView]) {
-        for thisView in views {
-            if thisView.tag != 0 {
-                thisView.isHidden = false
-            } else {
-                thisView.isHidden = true
-            }
-        }
-    }
-    
-    func resizeFonts(labels: [UILabel], themeFont: UIFont) {
-        
-        /// Determine the appropriate font point size
-        let themeFontSize: CGFloat = themeFont.pointSize
-        let device: String = UIDevice.current.localizedModel
-        var sizeMultiplyers: [Int: CGFloat] {
-            if device == "iPad" {
-                return TeamTextSizeStruct().iPadSizes
-            } else {
-                return TeamTextSizeStruct().iPhoneSizes
-            }
-        }
-        let adjustedFontSize: CGFloat = themeFontSize * sizeMultiplyers[numberOfTeams]!
-        
-        /// Resize all point sizes to adjusted size
-        for label in labels {
-            label.font = UIFont(name: label.font.fontName, size: adjustedFontSize)
-            label.shadowOffset.height = label.shadowOffset.height * sizeMultiplyers[numberOfTeams]! + 0.5
-            label.shadowOffset.width = label.shadowOffset.width * sizeMultiplyers[numberOfTeams]! + 0.5
-        }
-    }
-    
     //MARK: - Hide UI
     
     func hideUI (viewsToHide: [UIView], hidden: Bool) {
@@ -263,8 +179,6 @@ class ScoreBoardViewController: UIViewController {
         }
     }
 }
-
-//MARK: - Extensions
 
 //MARK: - Transmitter Delegate
 extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
