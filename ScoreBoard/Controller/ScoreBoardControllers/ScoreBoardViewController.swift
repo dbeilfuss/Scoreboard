@@ -46,7 +46,6 @@ class ScoreBoardViewController: UIViewController {
     var themeDelegate: ThemeDisplayDelegate?
     
     func declareScoreboardDelegate(scoreBoardDelegate: ScoreBoardDelegate, remoteDelegate: RemoteControlTransmitterDelegate, themeDelegate: ThemeDisplayDelegate) {
-        //        print("declaring scoreboard delegate")
         self.scoreBoardDelegate = scoreBoardDelegate
         self.remoteDelegate = remoteDelegate
         self.themeDelegate = themeDelegate
@@ -62,44 +61,36 @@ class ScoreBoardViewController: UIViewController {
     var teamManager = TeamManager()
     
     func addToScore(teamNumber: Int, add: Int) {
-        //        print("adding to score")
         teamManager.addToScore(teamNumber: teamNumber, scoreToAdd: add)
         transmitData()
     }
     
     func replaceScore(teamNumber: Int, newScore: Int) {
-        //        print("replacing score")
         teamManager.replaceScore(teamNumber: teamNumber, newScore: newScore)
     }
     
     func fetchScores() -> [Int] {
-        //        print("fetching score")
         return teamManager.fetchScores()
     }
     
     func fetchTeamNames() -> [String] {
-        //        print("fetching team names")
         return teamManager.fetchNames()
     }
     
     func fetchIsActive() -> [Bool] {
-        //        print("fetching is active status")
         return teamManager.fetchIsActiveList()
     }
     
     func resetScores() {
-        //        print("resetting scores")
         teamManager.resetScores(resetScoreValue: 0)
     }
     
     func resetTeams() {
-        //        print("resetting teams")
         teamManager.resetTeams()
         transmitData()
     }
     
     func setIsActive(isActive: Bool, teamIndex: Int) {
-        print("TeamManager: updating isActive Status")
         teamManager.updateTeamIsActive(teamNumber: teamIndex + 1, isActive: isActive)
         transmitData()
     }
@@ -201,7 +192,6 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
     
     
     func recordTeamInfo(teamInfo: Team, refreshScreen: Bool) {
-        //        print("recording team info")
         teamManager.recordTeamInfo(teamInfo: teamInfo)
         if refreshScreen {
             scoreBoardDelegate?.refreshScreen(reTransmit: false)
@@ -209,12 +199,10 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
     }
     
     func userFeedback(feedback: String) {
-        //        print("recording user feedback")
         scoreBoardDelegate?.displayUserFeedback(feedback: feedback)
     }
     
     func transmitData() {
-        //        print("transmitting data")
         let teamList = teamManager.teamList
         
         if let safeEmail = userEmail {

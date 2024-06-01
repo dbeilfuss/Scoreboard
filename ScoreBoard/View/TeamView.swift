@@ -45,7 +45,6 @@ class TeamView: UIView {
         // Update Labels
         nameLabel.text = teamInfo.name
         scoreLabel.text = String(teamInfo.score)
-        print("scoreLabel.text: \(scoreLabel.text!)")
         scoreStepper.value = Double(teamInfo.score)
     }
     
@@ -53,7 +52,6 @@ class TeamView: UIView {
         
         // Deconstruct / Gather Information
         let (theme, pointIncrement, uiIsHidden) = (scoreboardState.theme, scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
-        let activeTeamsCount = teamSetup.filter() {$0.isActive}.count
         
         // Theme
         theme.format(label: nameLabel, labelType: .teamNameLabel, teamSetup: teamSetup)

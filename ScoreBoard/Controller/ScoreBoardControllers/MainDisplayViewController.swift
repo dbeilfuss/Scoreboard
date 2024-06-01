@@ -155,7 +155,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     func createTeamViews() {
         var teamList = teamManager.fetchActiveTeams()
         teamList = teamList.reversed()
-        var teamCount = teamList.count
+        let teamCount = teamList.count
         
         for team in teamList {
             /// Create New TeamView
@@ -196,8 +196,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         }
         
         if teamCount > idealTeamsPerRow {
-            print("newTeamViews.count: \(newTeamViews.count)")
-            print("teamCount: \(teamCount)")
             if newTeamViews.count < ((teamCount / 2) + 1) {
                 
                 // create bottom row if needed
@@ -211,7 +209,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         }
         
         scoreRow.insertArrangedSubview(view, at: 0)
-        print("arrangedSubviews: \(scoreRow.arrangedSubviews)")
     }
     
     func teamViewsNeedReInitialized() -> Bool {
@@ -223,17 +220,14 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         
         // Return True or False
         if teamViewTeamNumbers == teamManagerTeamNumbers {
-            print("teamViews do not need ReInitialized")
             return false
         } else {
-            print("teamViews need ReInitialized")
             return true
         }
         
     }
     
     func reInitializeTeamViews() {
-        print("reInitilizeTeamViews")
         // Delete Current TeamViews
         newTeamViews = []
         for stackView in mainScoreBoardStack.arrangedSubviews {
@@ -282,7 +276,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     
     /// Refresh Screen
     func refreshScreen(reTransmit: Bool) {
-        print("refreshing screen")
 
         /// Update UI Elements
         updateUIForButtonSelection(buttons: pointIncrementButtonsArray)
@@ -463,7 +456,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
 //MARK: - Theme Display Delegate
 extension MainDisplayViewController: ThemeDisplayDelegate {
     func implementTheme(theme: Theme) {
-        print("implementing theme")
         updateTheme(theme: theme, backgroundImage: backgroundView, subtitleLabels: nil, scoreLabels: nil, buttons: allButtonsArray, transmit: true)
         scoreboardState.theme = theme
         refreshTeamViews()
