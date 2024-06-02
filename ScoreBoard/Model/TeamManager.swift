@@ -45,6 +45,10 @@ class TeamManager: SettingsDelegate {
         }
     }
     
+    func fetchTeamInfo(teamNumber: Int) -> Team? {
+        return teamList.first() {$0.number == teamNumber}
+    }
+    
     //MARK: - Scores
     
     func replaceScore(teamNumber: Int, newScore: Int) {
@@ -85,6 +89,16 @@ class TeamManager: SettingsDelegate {
     func fetchIsActiveList() -> [Bool] {
         let isActiveList = teamList.map { $0.isActive }
         return isActiveList
+    }
+    
+    func fetchActiveTeams() -> [Team] {
+        let activeTeamList = teamList.filter { $0.isActive }
+        return activeTeamList
+    }
+    
+    func fetchActiveTeamNumbers() -> [Int] {
+        let activeTeamNumbers = teamList.filter({ $0.isActive }).map() {$0.number}
+        return activeTeamNumbers
     }
     
     //MARK: - Team Names
