@@ -17,7 +17,7 @@ struct WelcomeScreenDatabase {
     
     /// Themes
     var themeAssignments: [String: Theme] {[
-        tableData[0]: DefaultTheme().theme,
+        tableData[0]: Constants().defaultTheme,
         tableData[1]: RemoteControlTheme().theme
     ]}
     

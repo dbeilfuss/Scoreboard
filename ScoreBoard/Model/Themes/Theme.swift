@@ -99,5 +99,12 @@ struct Theme {
         label.shadowOffset.height = label.shadowOffset.height * sizeMultiplyers[numberOfTeams]! + 0.5
         label.shadowOffset.width = label.shadowOffset.width * sizeMultiplyers[numberOfTeams]! + 0.5
     }
+    
+    func format(button: UIButton) {
+        button.tintColor = buttonColor
+        if button.isSelected {
+            button.tintColor = buttonSelectedColor1
+        }
+    }
 }
 

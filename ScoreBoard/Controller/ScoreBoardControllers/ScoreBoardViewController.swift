@@ -30,7 +30,7 @@ class ScoreBoardViewController: UIViewController {
      */
     
     //MARK: - Inititial Setup
-    let k = Constants()
+    let constants = Constants()
     
     var remoteControlTransmitter = RemoteControlTransmitter()
     //    var remoteControlTransmitterDelegate: RemoteControlTransmitterDelegate?
@@ -100,7 +100,7 @@ class ScoreBoardViewController: UIViewController {
     }
     
     //MARK: - Themes
-    var theme: Theme = DefaultTheme().theme
+    var theme: Theme = Constants().defaultTheme
     
     func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, transmit: Bool) {
         self.theme = theme

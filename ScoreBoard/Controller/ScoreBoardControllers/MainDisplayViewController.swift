@@ -413,9 +413,9 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         
         /// Orientation Locks
         if UIDevice.current.localizedModel == "iPhone" {
-            AppDelegate.AppUtility.lockOrientation(k.screenOrientationStandardiPhone, andRotateTo: k.screenOrientationToRotateTo)
+            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone, andRotateTo: constants.screenOrientationToRotateTo)
         } else if UIDevice.current.localizedModel == "iPad" {
-            AppDelegate.AppUtility.lockOrientation(k.screenOrientationStandardiPad)
+            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPad)
         }
         
         /// Dismiss
@@ -430,7 +430,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         if segue.identifier == "mainDisplayToRemote" || segue.identifier == "mainDisplayToRemoteModal" {
             if UIDevice.current.localizedModel == "iPhone" {
                 print("iPhone")
-                AppDelegate.AppUtility.lockOrientation(k.screenOrientationStandardiPhone, andRotateTo: k.screenOrientationToRotateTo)
+                AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone, andRotateTo: constants.screenOrientationToRotateTo)
             }
             let destinationVC = segue.destination as! Remotev2ViewController
             destinationVC.userEmail = self.userEmail

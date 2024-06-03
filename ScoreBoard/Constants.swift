@@ -41,4 +41,6 @@ struct Constants {
     let screenOrientationToRotateTo: UIInterfaceOrientation = UIInterfaceOrientation.portrait
     let screenOrientationStandardiPad: UIInterfaceOrientationMask = UIInterfaceOrientationMask.all
 
+    // Theme
+    let defaultTheme: Theme = FractalLandscapeBlue1().theme
 }
