@@ -116,7 +116,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         super.viewDidLoad()
         print("viewDidLoad")
         
-        /// Delegate
+        /// ScoreboardDelegate
         declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
         
         /// User Email
@@ -143,6 +143,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         }
         
         /// Refresh Screen after Setup
+        implementTheme(theme: scoreboardState.theme)
         refreshScreen(reTransmit: false)
         
     }
