@@ -8,21 +8,18 @@
 import UIKit
 
 class scoreboardUIButton: UIButton {
-    let constants = Constants()
     var selfCanHide: Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupButton(constants.defaultTheme)
     }
     
-    func setupButton(_ theme: Theme) {
+    func setupButton(state: ScoreboardState) {
         
-    }
-    
-    func setupButton(_ state: ScoreboardState) {
+        // Theme
+        state.theme.format(button: self)
         
-        // Opacity
+        // HideUI
         if selfCanHide {
             self.isHidden = state.uiIsHidden
         }

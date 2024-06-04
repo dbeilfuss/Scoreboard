@@ -16,11 +16,11 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     @IBOutlet weak var mainScoreBoardStack: UIStackView!
     
     /// Point Increment Buttons
-    @IBOutlet weak var onePointButton: UIButton!
-    @IBOutlet weak var fivePointButton: UIButton!
-    @IBOutlet weak var tenPointButton: UIButton!
-    @IBOutlet weak var hundredPointButton: UIButton!
-    var pointIncrementButtonsArray: [UIButton] {
+    @IBOutlet weak var onePointButton: scoreboardUIButton!
+    @IBOutlet weak var fivePointButton: scoreboardUIButton!
+    @IBOutlet weak var tenPointButton: scoreboardUIButton!
+    @IBOutlet weak var hundredPointButton: scoreboardUIButton!
+    var pointIncrementButtonsArray: [scoreboardUIButton] {
         return [onePointButton,
                 fivePointButton,
                 tenPointButton,
@@ -29,13 +29,13 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     }
     
     /// Control Buttons
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var teamSetupButton: UIButton!
-    @IBOutlet weak var toggleUIButton: UIButton!
-    @IBOutlet weak var troubleShootingButton: UIButton!
-    @IBOutlet weak var themesButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
-    var controlButtonsArray: [UIButton] {
+    @IBOutlet weak var resetButton: scoreboardUIButton!
+    @IBOutlet weak var teamSetupButton: scoreboardUIButton!
+    @IBOutlet weak var toggleUIButton: scoreboardUIButton!
+    @IBOutlet weak var troubleShootingButton: scoreboardUIButton!
+    @IBOutlet weak var themesButton: scoreboardUIButton!
+    @IBOutlet weak var doneButton: scoreboardUIButton!
+    var controlButtonsArray: [scoreboardUIButton] {
         return [resetButton,
                 teamSetupButton,
                 troubleShootingButton,
@@ -45,7 +45,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     }
     
     /// All Buttons Array
-    var allButtonsArray: [UIButton] {
+    var allButtonsArray: [scoreboardUIButton] {
         return [resetButton,
                 teamSetupButton,
                 troubleShootingButton,
@@ -61,7 +61,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
 
     
     /// Views To Hide In Display Mode
-    var viewsToHideInDisplayMode: [UIView] {[
+    var viewsToHideInDisplayMode: [scoreboardUIButton] {[
         onePointButton,
         fivePointButton,
         tenPointButton,
@@ -71,7 +71,13 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         themesButton
     ]}
     
-    var newTeamViews: [TeamView] = []
+    // Buttons With Permanent Visibility
+    var buttonsToKeepVisible: [scoreboardUIButton] {[
+        doneButton,
+        toggleUIButton
+    ]}
+    
+    var teamViews: [TeamView] = []
     
     // User Feedback
     @IBOutlet weak var userFeedbackLabel: UILabel!
@@ -81,15 +87,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     
     
     //MARK: - Variables
-    
-//    /// Install Settings Controller - can be deprecated?
-//    var settingsViewController = TeamSetupViewController()
-    
-    var scoreboardState = ScoreboardState(theme: Railway().theme, pointIncrement: 1, uiIsHidden: true)
-    
-    /// Theme
-    var newTheme: Theme = Railway().theme
-    
+        
     /// Arrangement
     var arrangementList: [Int : [Bool]] {
         if UIDevice.current.localizedModel == "iPad" {
@@ -111,11 +109,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         }
         return hideTheView
     }
-    
-    /// How Many of Teams were active before screen refresh
-    /// For comparison on whether to perform a full screen refresh, or a partial screen refresh
-    var activeTeams: Int = 0
-
     
     //MARK: - ViewDidLoad
     
@@ -143,14 +136,18 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         }
         
         createTeamViews()
-        scoreboardState.theme = theme
+        
+        /// Inform Buttons Which Must Remain Visible even when UI is switched off
+        for button in buttonsToKeepVisible {
+            button.selfCanHide = false
+        }
         
         /// Refresh Screen after Setup
         refreshScreen(reTransmit: false)
         
     }
     
-    //MARK: - New TeamView Creation
+    //MARK: - TeamViews
     
     func createTeamViews() {
         var teamList = teamManager.fetchActiveTeams()
@@ -160,8 +157,8 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         for team in teamList {
             /// Create New TeamView
             let teamView = createTeamView(team)
-            newTeamViews.append(teamView)
-            displayView(teamView, teamCount: teamCount)
+            teamViews.append(teamView)
+            displayTeamView(teamView, teamCount: teamCount)
             NSLayoutConstraint.activate([            teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
         }
         
@@ -180,7 +177,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         return teamView
     }
     
-    func displayView(_ view: TeamView, teamCount: Int) {
+    func displayTeamView(_ view: TeamView, teamCount: Int) {
         
         // create top row if needed
         if mainScoreBoardStack.arrangedSubviews.count == 0 {
@@ -196,7 +193,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         }
         
         if teamCount > idealTeamsPerRow {
-            if newTeamViews.count < ((teamCount / 2) + 1) {
+            if teamViews.count < ((teamCount / 2) + 1) {
                 
                 // create bottom row if needed
                 if mainScoreBoardStack.arrangedSubviews.count < 2 {
@@ -214,7 +211,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     func teamViewsNeedReInitialized() -> Bool {
         
         // Gather Information
-        var teamViewTeamNumbers = newTeamViews.map() {$0.teamInfo.number}
+        var teamViewTeamNumbers = teamViews.map() {$0.teamInfo.number}
         teamViewTeamNumbers = teamViewTeamNumbers.reversed()
         let teamManagerTeamNumbers = teamManager.fetchActiveTeamNumbers()
         
@@ -229,7 +226,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     
     func reInitializeTeamViews() {
         // Delete Current TeamViews
-        newTeamViews = []
+        teamViews = []
         for stackView in mainScoreBoardStack.arrangedSubviews {
             stackView.removeFromSuperview()
         }
@@ -248,12 +245,11 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         
         // constraints
         NSLayoutConstraint.activate([
-            scoreboardStackView.leadingAnchor.constraint(equalTo: mainScoreBoardStack.leadingAnchor, constant: 0), scoreboardStackView.trailingAnchor.constraint(equalTo: mainScoreBoardStack.trailingAnchor, constant: 0)
+            scoreboardStackView.leadingAnchor.constraint(equalTo: mainScoreBoardStack.leadingAnchor, constant: 0),
+            scoreboardStackView.trailingAnchor.constraint(equalTo: mainScoreBoardStack.trailingAnchor, constant: 0)
                                      ])
     }
-    
-    //MARK: - Refresh New TeamViews
-    // Refresh New TeamViews
+
     func refreshTeamViews() {
         
         // Reinitialize teamViews if needed
@@ -263,7 +259,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         
         // Pass Data into the team views
         let teamSetup = teamManager.teamList
-        for view in newTeamViews {
+        for view in teamViews {
             let teamNumber = view.teamInfo.number
             if let newTeamInfo: Team = teamManager.fetchTeamInfo(teamNumber: teamNumber) {
                 view.set(teamInfo: newTeamInfo)
@@ -271,84 +267,30 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
             view.set(scoreboardState: scoreboardState, teamSetup: teamSetup)
         }
     }
-    
+        
     //MARK: - Update UI
     
     /// Refresh Screen
     func refreshScreen(reTransmit: Bool) {
-
-        /// Update UI Elements
-        updateUIForButtonSelection(buttons: pointIncrementButtonsArray)
-        updateUIForButtonTint(buttons: controlButtonsArray)
-        hideUI(viewsToHide: viewsToHideInDisplayMode, hidden: remoteDisplay)
-        
-        /// New TeamViews
+        refreshButtons()
         refreshTeamViews()
-        
-        /// User Feedback Label
         userFeedbackLabel.text = ""
-        
-        /// ReTransmit Data as Needed
         if reTransmit {
             transmitData()
         }
-        
     }
-    
-    /// Re-Tag Views Based on Team Count:
-    func reTagViews(viewsToRetag: [UIView]) {
-        
-        /// Compile List of Only the Active Teams
-        var activeTeamList: [Int] {
-            var activeTeams: [Int] = []
-            var x = 0
-            for team in fetchIsActive() {
-                if team {
-                    activeTeams.append(x + 1)
-                }
-                x += 1
-            }
-            return activeTeams
-        }
-        
-        /// Fetch Arrangement based on count of Active Teams
-        self.numberOfTeams = activeTeamList.count
-        let arrangement = self.arrangementList[numberOfTeams]
-        
-        /// Tag views according to fetched arrangement
-        if activeTeamList.count != 0 {
-            var nextArrangementInstruction = 0
-            var i = 0
-            for view in viewsToRetag {
-                if arrangement![nextArrangementInstruction] != false {
-                    view.tag = activeTeamList[i]
-                    i += 1
-                } else {
-                    view.tag = 0
-                }
-                nextArrangementInstruction += 1
-            }
-        } else {
-            for view in viewsToRetag {
-                view.tag = 0
-            }
-        }
-    }
-
     
     /// Toggle UI
     @IBAction func toggleUIPressed(_ sender: UIButton) {
-        if remoteDisplay == true {
-            remoteDisplay = false
-        } else {
-            remoteDisplay = true
-        }
-        hideUI(viewsToHide: viewsToHideInDisplayMode, hidden: remoteDisplay)
-        
-        // update controlState
-        let uiIsHidden = remoteDisplay
-        scoreboardState.uiIsHidden = uiIsHidden
+        scoreboardState.uiIsHidden = !scoreboardState.uiIsHidden
+        refreshButtons()
         refreshTeamViews()
+    }
+    
+    func refreshButtons() {
+        for button in allButtonsArray {
+            button.setupButton(state: scoreboardState)
+        }
     }
     
     /// User Feedback
@@ -362,9 +304,8 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     }
     
     
-    //MARK: - Change Scores Buttons
+    //MARK: - Point Increment Buttons
     
-    /// Point Increment Buttons
     @IBAction func pointIncrementButton(_ sender: UIButton) {
         
         let currentPointValue = Double(sender.titleLabel!.text!)!
@@ -456,9 +397,11 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
 //MARK: - Theme Display Delegate
 extension MainDisplayViewController: ThemeDisplayDelegate {
     func implementTheme(theme: Theme) {
-        updateTheme(theme: theme, backgroundImage: backgroundView, subtitleLabels: nil, scoreLabels: nil, buttons: allButtonsArray, transmit: true)
+        updateTheme(theme: theme, backgroundImage: backgroundView, subtitleLabels: nil, scoreLabels: nil, buttons: allButtonsArray, shouldTransmit: true)
+        backgroundView.image = theme.backgroundImage
         scoreboardState.theme = theme
         refreshTeamViews()
+        refreshButtons()
     }
 }
 
@@ -472,6 +415,7 @@ extension MainDisplayViewController: ResetDelegate {
 
 //MARK: - TeamCellDelegate
 extension MainDisplayViewController: TeamCellDelegate {
+    
     func updateScore(newScore: Int, teamIndex: Int) {
         replaceScore(teamNumber: teamIndex, newScore: newScore)
         refreshTeamViews()

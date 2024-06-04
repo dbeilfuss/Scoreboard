@@ -39,6 +39,10 @@ class ScoreBoardViewController: UIViewController {
     var remoteDisplay = false
     var numberOfTeams: Int = 0
     
+    // New Scoreboard State
+    var scoreboardState = ScoreboardState(theme: Constants().defaultTheme, pointIncrement: 1, uiIsHidden: false)
+
+    
     //MARK: - Declare Delegates
     
     var scoreBoardDelegate: ScoreBoardDelegate?
@@ -100,10 +104,9 @@ class ScoreBoardViewController: UIViewController {
     }
     
     //MARK: - Themes
-    var theme: Theme = Constants().defaultTheme
     
-    func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, transmit: Bool) {
-        self.theme = theme
+    func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, shouldTransmit: Bool) {
+        scoreboardState.theme = theme
         
         if backgroundImage != nil {
             backgroundImage!.image = theme.backgroundImage
@@ -138,7 +141,7 @@ class ScoreBoardViewController: UIViewController {
             
         }
         
-        if transmit {
+        if shouldTransmit {
             if userEmail != nil {
                 remoteControlTransmitter.transmitTheme(sender: userEmail!, themeName: theme.name)
             }
@@ -149,16 +152,16 @@ class ScoreBoardViewController: UIViewController {
     func updateUIForButtonSelection(buttons: [UIButton]) {
         for i in buttons {
             if i.isSelected == true {
-                i.tintColor = theme.buttonSelectedColor1!
+                i.tintColor = scoreboardState.theme.buttonSelectedColor1!
             } else {
-                i.tintColor = theme.buttonColor!
+                i.tintColor = scoreboardState.theme.buttonColor!
             }
         }
     }
     
     func updateUIForButtonTint(buttons: [UIButton]) {
         for i in buttons {
-            i.tintColor = theme.buttonColor
+            i.tintColor = scoreboardState.theme.buttonColor
         }
     }
     
