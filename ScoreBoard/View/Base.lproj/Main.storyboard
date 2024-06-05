@@ -111,55 +111,55 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iN-tB-rfg" userLabel="Reset Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iN-tB-rfg" userLabel="Reset Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="60" y="0.0" width="75" height="34.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34.5" id="F7x-zK-ijr"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="PVa-3e-j54"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="exclamationmark.arrow.circlepath" catalog="system" title="" imagePadding="10"/>
                                         <connections>
                                             <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQV-lA-O7t"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wn-7z-emx" userLabel="Team Setup Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wn-7z-emx" userLabel="Team Setup Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="145" y="0.0" width="75" height="34.5"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="person.2.fill" catalog="system" title="" imagePadding="10"/>
                                         <connections>
                                             <action selector="settingsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Tr-CL-ynh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akW-Z7-1ui" userLabel="Theme Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akW-Z7-1ui" userLabel="Theme Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="230" y="0.0" width="75" height="34.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34.5" id="CfA-Fg-cat"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="VYU-BF-umM"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="photo.on.rectangle" catalog="system" title="" imagePadding="10"/>
                                         <connections>
                                             <action selector="themesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8qf-xV-LdY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhX-Ar-808" userLabel="Toggle UI Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhX-Ar-808" userLabel="Toggle UI Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="315" y="0.0" width="75" height="34.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34.5" id="X11-vc-0ls"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="fsb-2g-M1G"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="eye.slash.circle.fill" catalog="system" title="" imagePadding="10"/>
                                         <connections>
                                             <action selector="toggleUIPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oVD-JV-gEK"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bn-aI-UIU" userLabel="Troubleshooting Button">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bn-aI-UIU" userLabel="Troubleshooting Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="390" y="0.0" width="75" height="34.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="75W-Hv-v8h"/>
@@ -177,11 +177,16 @@
                                     <constraint firstItem="5Wn-7z-emx" firstAttribute="width" secondItem="8iN-tB-rfg" secondAttribute="width" id="vGy-lu-Bi4"/>
                                     <constraint firstItem="5Wn-7z-emx" firstAttribute="height" secondItem="8iN-tB-rfg" secondAttribute="height" id="zT7-Ii-Njh"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="4Bn-aI-UIU"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zdO-9E-FHO" userLabel="Points Value Buttons">
                                 <rect key="frame" x="760" y="10" width="400" height="34.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jeu-ZF-t97">
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jeu-ZF-t97" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="92.5" height="34.5"/>
                                         <color key="tintColor" red="0.82872829534343428" green="0.45544863327221191" blue="0.55704390434333706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -191,7 +196,7 @@
                                             <action selector="pointIncrementButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47a-qF-vvs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzB-4V-sz0" userLabel="Five Point Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzB-4V-sz0" userLabel="Five Point Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="102.5" y="0.0" width="92.5" height="34.5"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -203,18 +208,18 @@
                                             <action selector="pointIncrementButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5pZ-Cn-psj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxL-tw-dHW" userLabel="10 Points">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxL-tw-dHW" userLabel="10 Points" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="205" y="0.0" width="92.5" height="34.5"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="10"/>
                                         <connections>
                                             <action selector="pointIncrementButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NGw-Se-gJc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBk-my-W7k" userLabel="100 Point">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBk-my-W7k" userLabel="100 Point" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="307.5" y="0.0" width="92.5" height="34.5"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="100"/>
                                         <connections>
@@ -226,13 +231,13 @@
                                     <constraint firstAttribute="width" constant="400" id="yv8-Hm-xM3"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eav-mv-js7" userLabel="Done Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eav-mv-js7" userLabel="Done Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                 <rect key="frame" x="20" y="765.5" width="75" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34.5" id="DRt-6t-hor"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="WfQ-Me-uMD"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="systemGrayColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Done"/>
                                 <connections>

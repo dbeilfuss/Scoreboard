@@ -109,7 +109,7 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
         }
         
         /// Theme
-        updateTheme(theme: RemoteControlTheme().theme, backgroundImage: nil, subtitleLabels: nil, scoreLabels: nil, buttons: nil, transmit: false)
+        updateTheme(theme: RemoteControlTheme().theme, backgroundImage: nil, subtitleLabels: nil, scoreLabels: nil, buttons: nil, shouldTransmit: false)
         updateUIForButtonTint(buttons: incrementButtonsArray)
 
     }

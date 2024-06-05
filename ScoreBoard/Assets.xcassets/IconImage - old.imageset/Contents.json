@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "LivingRoom Scoreboard icon.jpg",
+      "filename" : "Screenshot 2023-01-30 at 6.19.12 PM.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "LivingRoom Scoreboard icon@2x.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "LivingRoom Scoreboard icon@3x.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

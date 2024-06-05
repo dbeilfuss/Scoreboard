@@ -41,4 +41,6 @@ struct Constants {
     let screenOrientationToRotateTo: UIInterfaceOrientation = UIInterfaceOrientation.portrait
     let screenOrientationStandardiPad: UIInterfaceOrientationMask = UIInterfaceOrientationMask.all
 
+    // State
+    let defaultScoreboardState: ScoreboardState = ScoreboardState(theme: FractalLandscapeBlue1().theme, pointIncrement: 1, uiIsHidden: false)
 }

@@ -99,5 +99,27 @@ struct Theme {
         label.shadowOffset.height = label.shadowOffset.height * sizeMultiplyers[numberOfTeams]! + 0.5
         label.shadowOffset.width = label.shadowOffset.width * sizeMultiplyers[numberOfTeams]! + 0.5
     }
+    
+    func format(button: UIButton) {
+        button.tintColor = buttonColor
+        if button.isSelected {
+            button.tintColor = buttonSelectedColor1
+        }
+    }
+    
+    func colorIsInTheme(color passedColor: UIColor) -> Bool {
+        let colorList = [
+            titleColor, subtitleColor, scoreColor, shadowColor, buttonColor, buttonSelectedColor1, buttonSelectedColor2, buttonHighlightedColor1, buttonHighlightedColor2
+        ]
+        
+        for color in colorList {
+            if passedColor == color {
+                print("color - \(passedColor) - IS in theme")
+                return true
+            }
+        }
+        
+        print("color = \(passedColor) - is NOT in theme")
+        return false
+    }
 }
-

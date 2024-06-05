@@ -30,7 +30,7 @@ class ScoreBoardViewController: UIViewController {
      */
     
     //MARK: - Inititial Setup
-    let k = Constants()
+    let constants = Constants()
     
     var remoteControlTransmitter = RemoteControlTransmitter()
     //    var remoteControlTransmitterDelegate: RemoteControlTransmitterDelegate?
@@ -38,6 +38,10 @@ class ScoreBoardViewController: UIViewController {
     var userEmail: String?
     var remoteDisplay = false
     var numberOfTeams: Int = 0
+    
+    // New Scoreboard State
+    var scoreboardState = Constants().defaultScoreboardState
+
     
     //MARK: - Declare Delegates
     
@@ -100,10 +104,27 @@ class ScoreBoardViewController: UIViewController {
     }
     
     //MARK: - Themes
-    var theme: Theme = DefaultTheme().theme
     
-    func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, transmit: Bool) {
-        self.theme = theme
+    func newUpdateTheme(theme: Theme, backgroundView: UIImageView, shouldTransmit: Bool) {
+        
+        backgroundView.image = theme.backgroundImage
+        
+        if theme.darkMode {
+            self.overrideUserInterfaceStyle = .dark
+        } else {
+            self.overrideUserInterfaceStyle = .light
+        }
+        
+        if shouldTransmit {
+            if userEmail != nil {
+                remoteControlTransmitter.transmitTheme(sender: userEmail!, themeName: theme.name)
+            }
+        }
+        
+    }
+    
+    func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, shouldTransmit: Bool) {
+        scoreboardState.theme = theme
         
         if backgroundImage != nil {
             backgroundImage!.image = theme.backgroundImage
@@ -138,7 +159,7 @@ class ScoreBoardViewController: UIViewController {
             
         }
         
-        if transmit {
+        if shouldTransmit {
             if userEmail != nil {
                 remoteControlTransmitter.transmitTheme(sender: userEmail!, themeName: theme.name)
             }
@@ -149,16 +170,16 @@ class ScoreBoardViewController: UIViewController {
     func updateUIForButtonSelection(buttons: [UIButton]) {
         for i in buttons {
             if i.isSelected == true {
-                i.tintColor = theme.buttonSelectedColor1!
+                i.tintColor = scoreboardState.theme.buttonSelectedColor1!
             } else {
-                i.tintColor = theme.buttonColor!
+                i.tintColor = scoreboardState.theme.buttonColor!
             }
         }
     }
     
     func updateUIForButtonTint(buttons: [UIButton]) {
         for i in buttons {
-            i.tintColor = theme.buttonColor
+            i.tintColor = scoreboardState.theme.buttonColor
         }
     }
     
