@@ -398,7 +398,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
 //MARK: - Theme Display Delegate
 extension MainDisplayViewController: ThemeDisplayDelegate {
     func implementTheme(theme: Theme) {
-        updateTheme(theme: theme, backgroundImage: backgroundView, subtitleLabels: nil, scoreLabels: nil, buttons: allButtonsArray, shouldTransmit: true)
+        newUpdateTheme(theme: theme, backgroundView: backgroundView, shouldTransmit: true)
         backgroundView.image = theme.backgroundImage
         scoreboardState.theme = theme
         refreshTeamViews()
@@ -424,11 +424,11 @@ extension MainDisplayViewController: TeamCellDelegate {
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {
-        
+        refreshTeamViews()
     }
     
     func updateName(newName: String, teamIndex: Int) {
-        
+        refreshTeamViews()
     }
     
 }

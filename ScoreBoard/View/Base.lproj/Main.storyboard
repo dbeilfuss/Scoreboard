@@ -117,7 +117,7 @@
                                             <constraint firstAttribute="height" constant="34.5" id="F7x-zK-ijr"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="PVa-3e-j54"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="exclamationmark.arrow.circlepath" catalog="system" title="" imagePadding="10"/>
                                         <connections>
@@ -126,7 +126,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wn-7z-emx" userLabel="Team Setup Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="145" y="0.0" width="75" height="34.5"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="person.2.fill" catalog="system" title="" imagePadding="10"/>
                                         <connections>
@@ -139,7 +139,7 @@
                                             <constraint firstAttribute="height" constant="34.5" id="CfA-Fg-cat"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="VYU-BF-umM"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="photo.on.rectangle" catalog="system" title="" imagePadding="10"/>
                                         <connections>
@@ -152,7 +152,7 @@
                                             <constraint firstAttribute="height" constant="34.5" id="X11-vc-0ls"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="fsb-2g-M1G"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="eye.slash.circle.fill" catalog="system" title="" imagePadding="10"/>
                                         <connections>
@@ -210,7 +210,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxL-tw-dHW" userLabel="10 Points" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="205" y="0.0" width="92.5" height="34.5"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="10"/>
                                         <connections>
@@ -219,7 +219,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBk-my-W7k" userLabel="100 Point" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
                                         <rect key="frame" x="307.5" y="0.0" width="92.5" height="34.5"/>
-                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="100"/>
                                         <connections>
@@ -237,7 +237,7 @@
                                     <constraint firstAttribute="height" constant="34.5" id="DRt-6t-hor"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="WfQ-Me-uMD"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="systemGrayColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Done"/>
                                 <connections>

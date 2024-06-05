@@ -40,7 +40,7 @@ class ScoreBoardViewController: UIViewController {
     var numberOfTeams: Int = 0
     
     // New Scoreboard State
-    var scoreboardState = ScoreboardState(theme: Constants().defaultTheme, pointIncrement: 1, uiIsHidden: false)
+    var scoreboardState = Constants().defaultScoreboardState
 
     
     //MARK: - Declare Delegates
@@ -104,6 +104,24 @@ class ScoreBoardViewController: UIViewController {
     }
     
     //MARK: - Themes
+    
+    func newUpdateTheme(theme: Theme, backgroundView: UIImageView, shouldTransmit: Bool) {
+        
+        backgroundView.image = theme.backgroundImage
+        
+        if theme.darkMode {
+            self.overrideUserInterfaceStyle = .dark
+        } else {
+            self.overrideUserInterfaceStyle = .light
+        }
+        
+        if shouldTransmit {
+            if userEmail != nil {
+                remoteControlTransmitter.transmitTheme(sender: userEmail!, themeName: theme.name)
+            }
+        }
+        
+    }
     
     func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, shouldTransmit: Bool) {
         scoreboardState.theme = theme
