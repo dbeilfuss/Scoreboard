@@ -105,7 +105,7 @@ class ScoreBoardViewController: UIViewController {
     
     //MARK: - Themes
     
-    func newUpdateTheme(theme: Theme, backgroundView: UIImageView, shouldTransmit: Bool) {
+    func updateTheme(theme: Theme, backgroundView: UIImageView, shouldTransmit: Bool) {
         
         backgroundView.image = theme.backgroundImage
         

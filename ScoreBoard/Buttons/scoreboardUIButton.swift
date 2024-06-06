@@ -15,16 +15,6 @@ class scoreboardUIButton: UIButton {
         super.awakeFromNib()
     }
     
-    override func tintColorDidChange() {
-        super.tintColorDidChange()
-        
-        print("tintColorDidChange: \(String(describing: self.tintColor))")
-        
-        if !scoreBoardState.theme.colorIsInTheme(color: self.tintColor) {
-            setupButton(state: scoreBoardState)
-        }
-    }
-    
     func setupButton(state: ScoreboardState) {
         scoreBoardState = state
         

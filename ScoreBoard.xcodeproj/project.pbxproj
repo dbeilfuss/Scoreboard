@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77149321297A255F0040ABD3 /* FractalLandscape.swift */; };
 		77239FDF29525B2C00569AB9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FDE29525B2C00569AB9 /* IQKeyboardManagerSwift */; };
-		77239FE1295264B800569AB9 /* RemoteSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE0295264B800569AB9 /* RemoteSetupViewController.swift */; };
 		77239FE32952828900569AB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE22952828900569AB9 /* SignInViewController.swift */; };
 		77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE62952872700569AB9 /* RemoteViewController.swift */; };
 		77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE92953AF6000569AB9 /* SignInButton.swift */; };
@@ -45,11 +44,9 @@
 		7790E82D295C06A600DC5D6B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82C295C06A600DC5D6B /* Theme.swift */; };
 		7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */; };
 		7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */; };
-		77952A0329933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */; };
 		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
 		7797E96F2C0510F0007D7EEF /* ScoreboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797E96E2C0510F0007D7EEF /* ScoreboardState.swift */; };
 		77A11797293ACD1A00ED74C2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* Team.swift */; };
-		77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */; };
 		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
 		77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B024692956336E0017C542 /* RemoteTeamViewCell.swift */; };
 		77B0246C2956336E0017C542 /* RemoteTeamViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */; };
@@ -97,7 +94,6 @@
 
 /* Begin PBXFileReference section */
 		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
-		77239FE0295264B800569AB9 /* RemoteSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSetupViewController.swift; sourceTree = "<group>"; };
 		77239FE22952828900569AB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		77239FE62952872700569AB9 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
 		77239FE92953AF6000569AB9 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
@@ -130,11 +126,9 @@
 		7790E82C295C06A600DC5D6B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTheme.swift; sourceTree = "<group>"; };
 		7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasTheme.swift; sourceTree = "<group>"; };
-		77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScoreboardDisplayDatabase.swift; sourceTree = "<group>"; };
 		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
 		7797E96E2C0510F0007D7EEF /* ScoreboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardState.swift; sourceTree = "<group>"; };
 		77A11796293ACD1A00ED74C2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSetupViewController.swift; sourceTree = "<group>"; };
 		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		77B024692956336E0017C542 /* RemoteTeamViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTeamViewCell.swift; sourceTree = "<group>"; };
 		77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoteTeamViewCell.xib; sourceTree = "<group>"; };
@@ -197,6 +191,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		770F39AB2C112F8C00B1C820 /* CustomDataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				7797E96E2C0510F0007D7EEF /* ScoreboardState.swift */,
+			);
+			path = CustomDataTypes;
+			sourceTree = "<group>";
+		};
+		770F39AC2C112FC800B1C820 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */,
+				7776DDE42BF64154008E9C65 /* TeamView.xib */,
+				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
+				77A11796293ACD1A00ED74C2 /* Team.swift */,
+				77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		770F39AD2C11329C00B1C820 /* RemoteControl */ = {
+			isa = PBXGroup;
+			children = (
+				77239FE62952872700569AB9 /* RemoteViewController.swift */,
+				77E238512981E6F80069A260 /* Remotev2ViewController.swift */,
+				778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */,
+				77B024692956336E0017C542 /* RemoteTeamViewCell.swift */,
+				77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */,
+			);
+			path = RemoteControl;
+			sourceTree = "<group>";
+		};
 		77149320297A252A0040ABD3 /* Fractal Landscape */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,15 +248,13 @@
 			path = "Fractal Landscape";
 			sourceTree = "<group>";
 		};
-		7754E9052986F78F006CE85A /* ScoreBoardControllers */ = {
+		7754E9052986F78F006CE85A /* ScoreBoard */ = {
 			isa = PBXGroup;
 			children = (
 				7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */,
 				77B11161293AB78E00553E37 /* MainDisplayViewController.swift */,
-				77239FE62952872700569AB9 /* RemoteViewController.swift */,
-				77E238512981E6F80069A260 /* Remotev2ViewController.swift */,
 			);
-			path = ScoreBoardControllers;
+			path = ScoreBoard;
 			sourceTree = "<group>";
 		};
 		7754E90629888CB6006CE85A /* Fonts */ = {
@@ -263,77 +287,39 @@
 		7790E832295CAEEA00DC5D6B /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				7754E90629888CB6006CE85A /* Fonts */,
+				77BF4D4C2C0D3FE40059AF35 /* ThemeCollections */,
+				77CEA704297DDFE700E853DC /* ThemeViewControllers */,
+				77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */,
+				77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */,
+				77952A062995599400BC0354 /* TeamTextSizeStruct.swift */,
 				7790E82C295C06A600DC5D6B /* Theme.swift */,
-				77BF4D4C2C0D3FE40059AF35 /* Theme Collections */,
-				77CEA704297DDFE700E853DC /* ThemeChooserViewControllers */,
 				77CEA6FD297CA9F800E853DC /* ThemesDatabase.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
 		};
-		7790E835295DD45300DC5D6B /* SignInControllers */ = {
+		7790E835295DD45300DC5D6B /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
 				77239FE22952828900569AB9 /* SignInViewController.swift */,
 				77239FF42954CCC400569AB9 /* SignOutViewController.swift */,
-			);
-			path = SignInControllers;
-			sourceTree = "<group>";
-		};
-		7790E836295DD47500DC5D6B /* SettingsControllers */ = {
-			isa = PBXGroup;
-			children = (
-				77A11798293BB15D00ED74C2 /* TeamSetupViewController.swift */,
-				77239FE0295264B800569AB9 /* RemoteSetupViewController.swift */,
-			);
-			path = SettingsControllers;
-			sourceTree = "<group>";
-		};
-		77B0D990293AC98600E2BEB0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				77BF4D492C0D371E0059AF35 /* Buttons */,
-				7797E96E2C0510F0007D7EEF /* ScoreboardState.swift */,
-				77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */,
-				77A11796293ACD1A00ED74C2 /* Team.swift */,
-				778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */,
-				77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */,
-				77952A0229933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift */,
-				77952A062995599400BC0354 /* TeamTextSizeStruct.swift */,
-				7790E832295CAEEA00DC5D6B /* Themes */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		77B0D991293AC99200E2BEB0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				77B11163293AB78E00553E37 /* Main.storyboard */,
-				77B11168293AB78F00553E37 /* LaunchScreen.storyboard */,
-				77B024692956336E0017C542 /* RemoteTeamViewCell.swift */,
-				77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */,
-				77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */,
-				77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */,
-				77D09078298991FD0034D200 /* WelcomeOptionsCell.swift */,
-				77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */,
 				77E6CFEA298F044A0006E8CE /* TextInputCell.swift */,
 				77E6CFEB298F044A0006E8CE /* TextInputCell.xib */,
-				7776DDE42BF64154008E9C65 /* TeamView.xib */,
-				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
 			);
-			path = View;
+			path = SignIn;
 			sourceTree = "<group>";
 		};
-		77B0D992293AC99800E2BEB0 /* Controller */ = {
+		77B0D991293AC99200E2BEB0 /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7790E835295DD45300DC5D6B /* SignIn */,
+				77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */,
 				7754E9032986F5EF006CE85A /* WelcomeViewController.swift */,
-				7790E836295DD47500DC5D6B /* SettingsControllers */,
-				7754E9052986F78F006CE85A /* ScoreBoardControllers */,
-				7790E835295DD45300DC5D6B /* SignInControllers */,
-				77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */,
+				77D09078298991FD0034D200 /* WelcomeOptionsCell.swift */,
+				77D09079298991FD0034D200 /* WelcomeOptionsCell.xib */,
 			);
-			path = Controller;
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		77B11151293AB78E00553E37 = {
@@ -355,13 +341,18 @@
 		77B1115C293AB78E00553E37 /* ScoreBoard */ = {
 			isa = PBXGroup;
 			children = (
+				77B11168293AB78F00553E37 /* LaunchScreen.storyboard */,
+				77B11163293AB78E00553E37 /* Main.storyboard */,
 				77B1115D293AB78E00553E37 /* AppDelegate.swift */,
 				77B1115F293AB78E00553E37 /* SceneDelegate.swift */,
 				77D090762988D5390034D200 /* Constants.swift */,
-				7754E90629888CB6006CE85A /* Fonts */,
-				77B0D990293AC98600E2BEB0 /* Model */,
-				77B0D991293AC99200E2BEB0 /* View */,
-				77B0D992293AC99800E2BEB0 /* Controller */,
+				7790E832295CAEEA00DC5D6B /* Themes */,
+				77BF4D492C0D371E0059AF35 /* Buttons */,
+				7754E9052986F78F006CE85A /* ScoreBoard */,
+				770F39AD2C11329C00B1C820 /* RemoteControl */,
+				770F39AC2C112FC800B1C820 /* Teams */,
+				770F39AB2C112F8C00B1C820 /* CustomDataTypes */,
+				77B0D991293AC99200E2BEB0 /* WelcomeScreen */,
 				77B11166293AB78F00553E37 /* Assets.xcassets */,
 				77B1116B293AB78F00553E37 /* Info.plist */,
 				77239FEB2954A9C900569AB9 /* GoogleService-Info.plist */,
@@ -379,7 +370,7 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		77BF4D4C2C0D3FE40059AF35 /* Theme Collections */ = {
+		77BF4D4C2C0D3FE40059AF35 /* ThemeCollections */ = {
 			isa = PBXGroup;
 			children = (
 				7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */,
@@ -387,7 +378,7 @@
 				77149320297A252A0040ABD3 /* Fractal Landscape */,
 				77CEA701297DB7E700E853DC /* Holidays */,
 			);
-			path = "Theme Collections";
+			path = ThemeCollections;
 			sourceTree = "<group>";
 		};
 		77CEA6F8297C446500E853DC /* Board Games */ = {
@@ -406,13 +397,13 @@
 			path = Holidays;
 			sourceTree = "<group>";
 		};
-		77CEA704297DDFE700E853DC /* ThemeChooserViewControllers */ = {
+		77CEA704297DDFE700E853DC /* ThemeViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */,
 				77CEA6FF297DB75500E853DC /* ThemeChooserViewController.swift */,
 			);
-			path = ThemeChooserViewControllers;
+			path = ThemeViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,7 +516,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77239FE1295264B800569AB9 /* RemoteSetupViewController.swift in Sources */,
 				77D98FDA297B097400927949 /* FractalLandscapeGreen3.swift in Sources */,
 				77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */,
 				77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */,
@@ -543,7 +533,6 @@
 				77B0D994293AC9DA00E2BEB0 /* TeamManager.swift in Sources */,
 				77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */,
 				77D98FE2297B09A800927949 /* FractalLandscapeOcean3.swift in Sources */,
-				77952A0329933A2D00BC0354 /* MainScoreboardDisplayDatabase.swift in Sources */,
 				77D0907D298995DB0034D200 /* WelcomeScreenDatabase.swift in Sources */,
 				77B11162293AB78E00553E37 /* MainDisplayViewController.swift in Sources */,
 				77CEA6FA297C449D00E853DC /* Railway.swift in Sources */,
@@ -552,7 +541,6 @@
 				77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */,
 				77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */,
 				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,
-				77A11799293BB15D00ED74C2 /* TeamSetupViewController.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
 				77CEA6FE297CA9F800E853DC /* ThemesDatabase.swift in Sources */,
 				7797E96F2C0510F0007D7EEF /* ScoreboardState.swift in Sources */,

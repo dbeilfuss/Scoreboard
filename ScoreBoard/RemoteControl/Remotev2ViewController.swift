@@ -9,6 +9,11 @@ import UIKit
 
 class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
     
+    public enum remoteViewMode {
+        case remoteControl
+        case nameChange
+    }
+    
     //MARK: - Setup Variables
     var mode: String?
     var returnToPortraitOnExit: Bool = false

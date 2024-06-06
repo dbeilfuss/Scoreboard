@@ -106,20 +106,4 @@ struct Theme {
             button.tintColor = buttonSelectedColor1
         }
     }
-    
-    func colorIsInTheme(color passedColor: UIColor) -> Bool {
-        let colorList = [
-            titleColor, subtitleColor, scoreColor, shadowColor, buttonColor, buttonSelectedColor1, buttonSelectedColor2, buttonHighlightedColor1, buttonHighlightedColor2
-        ]
-        
-        for color in colorList {
-            if passedColor == color {
-                print("color - \(passedColor) - IS in theme")
-                return true
-            }
-        }
-        
-        print("color = \(passedColor) - is NOT in theme")
-        return false
-    }
 }

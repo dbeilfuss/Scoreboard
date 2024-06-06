@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, ScoreBoardDelegate {
+class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
 
     
     //MARK: - IBOutlets
@@ -35,14 +35,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     @IBOutlet weak var troubleShootingButton: scoreboardUIButton!
     @IBOutlet weak var themesButton: scoreboardUIButton!
     @IBOutlet weak var doneButton: scoreboardUIButton!
-    var controlButtonsArray: [scoreboardUIButton] {
-        return [resetButton,
-                teamSetupButton,
-                troubleShootingButton,
-                themesButton,
-                doneButton
-        ]
-    }
     
     /// All Buttons Array
     var allButtonsArray: [scoreboardUIButton] {
@@ -58,18 +50,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
                 doneButton
         ]
     }
-
-    
-    /// Views To Hide In Display Mode
-    var viewsToHideInDisplayMode: [scoreboardUIButton] {[
-        onePointButton,
-        fivePointButton,
-        tenPointButton,
-        hundredPointButton,
-        resetButton,
-        teamSetupButton,
-        themesButton
-    ]}
     
     // Buttons With Permanent Visibility
     var buttonsToKeepVisible: [scoreboardUIButton] {[
@@ -84,31 +64,6 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     
     // Background
     @IBOutlet weak var backgroundView: UIImageView!
-    
-    
-    //MARK: - Variables
-        
-    /// Arrangement
-    var arrangementList: [Int : [Bool]] {
-        if UIDevice.current.localizedModel == "iPad" {
-            return MainScoreboardDisplayDatabase().iPadArrangement
-        } else {
-            return MainScoreboardDisplayDatabase().iPhoneArrangement
-        }
-    }
-    
-    /// Determine whether to hide the bottom row of scores
-    var hideBottomRow: Bool {
-        var i = 5
-        var hideTheView: Bool = true
-        while i < 9 {
-            if arrangementList[numberOfTeams]![i-1] {
-                hideTheView = false
-            }
-            i += 1
-        }
-        return hideTheView
-    }
     
     //MARK: - ViewDidLoad
     
@@ -209,7 +164,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
         scoreRow.insertArrangedSubview(view, at: 0)
     }
     
-    func teamViewsNeedReInitialized() -> Bool {
+    func shouldReInitializeTeamViews() -> Bool {
         
         // Gather Information
         var teamViewTeamNumbers = teamViews.map() {$0.teamInfo.number}
@@ -254,7 +209,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
     func refreshTeamViews() {
         
         // Reinitialize teamViews if needed
-        if teamViewsNeedReInitialized() {
+        if shouldReInitializeTeamViews() {
             reInitializeTeamViews()
         }
         
@@ -398,7 +353,7 @@ class MainDisplayViewController: ScoreBoardViewController, UpdateUIDelegate, Sco
 //MARK: - Theme Display Delegate
 extension MainDisplayViewController: ThemeDisplayDelegate {
     func implementTheme(theme: Theme) {
-        newUpdateTheme(theme: theme, backgroundView: backgroundView, shouldTransmit: true)
+        updateTheme(theme: theme, backgroundView: backgroundView, shouldTransmit: true)
         backgroundView.image = theme.backgroundImage
         scoreboardState.theme = theme
         refreshTeamViews()

@@ -1762,13 +1762,13 @@ You must be signed in to the same account on two devices to use this feature.
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Thh-Nd-ohM"/>
-        <segue reference="gM8-3E-N2R"/>
-        <segue reference="9Vs-2a-2Mr"/>
+        <segue reference="E4h-m6-9Ek"/>
+        <segue reference="Exm-A5-KlG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BackgroundDark" width="750" height="1334"/>
         <image name="BusyBackgroundDark" width="750" height="1334"/>
-        <image name="IconImage" width="514" height="524"/>
+        <image name="IconImage" width="108" height="113.5"/>
         <image name="TrainBridge" width="3472" height="1536"/>
         <image name="appletvremote.gen1" catalog="system" width="80" height="128"/>
         <image name="arrow.left" catalog="system" width="128" height="95"/>

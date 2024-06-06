@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol TeamCellDelegate {
-    func updateScore (newScore: Int, teamIndex: Int)
-    func updateIsActive (isActive: Bool, teamIndex: Int)
-    func updateName (newName: String, teamIndex: Int)
-}
-
 class RemoteTeamViewCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: - Setup Variables
@@ -91,5 +85,10 @@ class RemoteTeamViewCell: UITableViewCell, UITextFieldDelegate {
         return true
     }
     
-    
+}
+
+protocol TeamCellDelegate {
+    func updateScore (newScore: Int, teamIndex: Int)
+    func updateIsActive (isActive: Bool, teamIndex: Int)
+    func updateName (newName: String, teamIndex: Int)
 }
