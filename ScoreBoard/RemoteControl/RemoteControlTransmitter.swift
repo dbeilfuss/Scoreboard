@@ -44,7 +44,6 @@ class RemoteControlTransmitter {
     func transmitTheme(themeName: String) {
         print("transmitting Theme")
         
-//        let _ = Auth.auth().addStateDidChangeListener { auth, user in
             if let user: User = Auth.auth().currentUser {
                 
                 self.db.collection(user.email!).document("Theme").setData([
@@ -62,7 +61,6 @@ class RemoteControlTransmitter {
                     }
                 }
             }
-//        }
     }
 
     //MARK: - Sending Scores to FireStore
@@ -70,10 +68,8 @@ class RemoteControlTransmitter {
             print("transmitting team data")
             
             var i = 0
-            
-//            let _ = Auth.auth().addStateDidChangeListener { auth, user in
-                if let user: User = Auth.auth().currentUser {
-                    
+                
+            if let user: User = Auth.auth().currentUser {
                     for team in teamList {
                         self.db.collection(user.email!).document("Team \(i+1)").setData([
                             self.typeText: "team",
@@ -94,7 +90,6 @@ class RemoteControlTransmitter {
                         i += 1
                     }
                 }
-//            }
         }
     
     //MARK: - Receiving Data from FireStore
