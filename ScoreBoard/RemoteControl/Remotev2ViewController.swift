@@ -8,15 +8,15 @@
 import UIKit
 import FirebaseAuth
 
+enum RemoteViewMode {
+    case remoteControl
+    case nameChange
+}
+
 class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
     
-    enum remoteViewMode {
-        case remoteControl
-        case nameChange
-    }
-    
     //MARK: - Setup Variables
-    var mode: remoteViewMode = .remoteControl
+    var remoteViewMode: RemoteViewMode = .remoteControl
     var returnToPortraitOnExit: Bool = false
     
     //MARK: - IBOutlets
@@ -100,7 +100,7 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
         super.viewWillAppear(animated)
         
         /// Remote Mode UI Setup
-        switch mode {
+        switch remoteViewMode {
         case .nameChange:
             incrementButtonsStack.isHidden = true
             resetButton.isHidden = true
@@ -196,30 +196,12 @@ extension Remotev2ViewController: UITableViewDataSource {
         /// Create Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! RemoteTeamViewCell
         
-        /// Customize Cell UI for Mode
-        switch self.mode {
-        case .nameChange:
-            cell.setUIForNameChangeRemote()
-        case .remoteControl:
-            cell.setUIForStandardRemote()
-        }
+        /// Setup Cell
+        let cellDelegate: TeamCellDelegate = remoteViewMode == .remoteControl ? self : self
         
-        /// Pass Data into Cell Variables
-        cell.indexRow = indexPath.row
-        cell.delegate = self
+        cell.set(index: indexPath.row, signInState: signInState, remoteViewMode: remoteViewMode, delegate: self)
         
-        /// Set Cell Name Label
-        cell.teamNameTextField.text = fetchTeamNames()[indexPath.row]
-        
-        /// Set Cell Score
-        cell.scoreLabel.text = String(fetchScores()[indexPath.row])
-        
-        /// Set Cell IsActive Switch
-        cell.isActiveSwitch.isOn = fetchIsActive()[indexPath.row]
-        
-        /// Setup Cell Score Stepper
-        cell.scoreStepper.value = Double(fetchScores()[indexPath.row])
-        cell.scoreStepper.stepValue = Double(increment)
+        cell.set(teamSetup: teamManager.teamList, pointIncrement: increment)
         
         /// Return Cell
         return cell

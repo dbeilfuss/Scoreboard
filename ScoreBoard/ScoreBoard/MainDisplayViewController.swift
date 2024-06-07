@@ -329,7 +329,7 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
             }
             let destinationVC = segue.destination as! Remotev2ViewController
             destinationVC.teamManager = self.teamManager
-            destinationVC.mode = .nameChange
+            destinationVC.remoteViewMode = .nameChange
             destinationVC.returnToPortraitOnExit = true
         
         /// Theme Chooser

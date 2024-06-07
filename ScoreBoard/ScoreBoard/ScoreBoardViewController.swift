@@ -58,7 +58,7 @@ class ScoreBoardViewController: UIViewController {
         super.viewDidLoad()
         
         // SignIn
-        if let user: User = Auth.auth().currentUser {
+        if let _: User = Auth.auth().currentUser {
             self.signInState = .signedIn
         } else {
             self.signInState = .notSignedIn
@@ -233,8 +233,6 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
         if signInState == .signedIn {
             print("transmitting data")
             remoteControlTransmitter.transmitUpdatedScores(teamList: teamList)
-        } else {
-            print("not signed in, canceling transmition")
         }
     }
     

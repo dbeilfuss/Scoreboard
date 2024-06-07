@@ -12,6 +12,7 @@ class RemoteTeamViewCell: UITableViewCell, UITextFieldDelegate {
     //MARK: - Setup Variables
     var indexRow: Int?
     var delegate: TeamCellDelegate?
+    var signInState: SignInState = .notSignedIn
 
     //MARK: - IBOutlets
     /// Team Name Outlets
@@ -39,8 +40,31 @@ class RemoteTeamViewCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: - Setup
     
-    func set(loggedInState: SignInState) {
+    func set(index: Int, signInState: SignInState, remoteViewMode: RemoteViewMode, delegate: TeamCellDelegate) {
         
+        self.indexRow = index
+        self.signInState = signInState
+        self.delegate = delegate
+        if remoteViewMode == .remoteControl {
+            setUIForStandardRemote()
+        } else {
+            setUIForNameChangeRemote()
+        }
+        
+    }
+    
+    func set(teamSetup: [Team], pointIncrement: Double) {
+        if let index = indexRow {
+            let teamData: Team = teamSetup[index]
+
+            teamNameTextField.text = teamData.name
+            scoreLabel.text = String(teamData.score)
+            isActiveSwitch.isOn = teamData.isActive
+            
+            scoreStepper.value = Double(teamData.score)
+            scoreStepper.stepValue = pointIncrement
+
+        }
     }
     
     //MARK: - Remote Mode Setup
