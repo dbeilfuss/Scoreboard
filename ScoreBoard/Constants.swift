@@ -12,7 +12,7 @@ struct Constants {
     let appName: String = "Living Room ScoreBoard"
     
     /// Subtitle
-    let subtitleMessage: String = "Happy New Year!"
+    let subtitleMessage: String = ""
     
     /// Title Fonts
     let titleFontIPad: UIFont = UIFont(name: "Rubik-Medium", size: 50) ?? UIFont(name: "Helvetica Neue", size: 50)!

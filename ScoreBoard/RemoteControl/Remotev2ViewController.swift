@@ -6,16 +6,17 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
     
-    public enum remoteViewMode {
+    enum remoteViewMode {
         case remoteControl
         case nameChange
     }
     
     //MARK: - Setup Variables
-    var mode: String?
+    var mode: remoteViewMode = .remoteControl
     var returnToPortraitOnExit: Bool = false
     
     //MARK: - IBOutlets
@@ -53,13 +54,16 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
     
     //MARK: - Scoreboard Delegate Functions
     func refreshScreen(reTransmit: Bool) {
-        displayUserFeedback(feedback: "✔️ \(userEmail ?? "no email")")
-        tableView.reloadData()
-        updateUIForButtonTint(buttons: incrementButtonsArray)
-        updateUIForButtonTint(buttons: controlButtonsArray)
-        updateUIForButtonSelection(buttons: incrementButtonsArray)
-        if reTransmit {
-            transmitData()
+
+        if let userEmail = Auth.auth().currentUser?.email {
+            displayUserFeedback(feedback: "✔️ \(userEmail)")
+            tableView.reloadData()
+            updateUIForButtonTint(buttons: incrementButtonsArray)
+            updateUIForButtonTint(buttons: controlButtonsArray)
+            updateUIForButtonSelection(buttons: incrementButtonsArray)
+            if reTransmit {
+                transmitData()
+            }
         }
     }
     
@@ -74,9 +78,11 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
         /// Delegate
         declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
         
+        print("signInState: \(signInState)")
+        
         /// Remote
-        if userEmail != nil {
-            setupRemoteTransmitter(userEmail: userEmail!)
+        if signInState == .signedIn {
+            setupRemoteTransmitter()
         } else {
             let error: String = "You must be signed in to use remote features"
             print(error)
@@ -95,13 +101,13 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
         
         /// Remote Mode UI Setup
         switch mode {
-        case "Name Change Remote":
+        case .nameChange:
             incrementButtonsStack.isHidden = true
             resetButton.isHidden = true
             themeButton.isHidden = true
             headerLabel.text = "Customize Teams"
-        default:
-            print("Standard Remote Mode")
+        case .remoteControl:
+            print("Remote Mode")
         }
         
         /// iPhone Customizations
@@ -192,9 +198,9 @@ extension Remotev2ViewController: UITableViewDataSource {
         
         /// Customize Cell UI for Mode
         switch self.mode {
-        case "Name Change Remote":
+        case .nameChange:
             cell.setUIForNameChangeRemote()
-        default:
+        case .remoteControl:
             cell.setUIForStandardRemote()
         }
         
@@ -254,8 +260,8 @@ extension Remotev2ViewController: ThemeDisplayDelegate {
     func implementTheme(theme: Theme) {
         
         /// Transmit Theme to Cloud
-        if userEmail != nil {
-            remoteControlTransmitter.transmitTheme(sender: userEmail!, themeName: theme.name)
+        if signInState == .signedIn {
+            remoteControlTransmitter.transmitTheme(themeName: theme.name)
         }
         
     }

@@ -37,6 +37,12 @@ class RemoteTeamViewCell: UITableViewCell, UITextFieldDelegate {
 
     }
     
+    //MARK: - Setup
+    
+    func set(loggedInState: SignInState) {
+        
+    }
+    
     //MARK: - Remote Mode Setup
     
     /// Standard Remote

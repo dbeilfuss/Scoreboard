@@ -74,12 +74,10 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         /// ScoreboardDelegate
         declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
         
-        /// User Email
+        /// Remote Control Setup
         userFeedbackLabel.text = ""
-        if let email = userEmail {
-            setupRemoteTransmitter(userEmail: email)
-        } else {
-            print("not signed in")
+        if signInState == .signedIn {
+            setupRemoteTransmitter()
         }
 
         /// Orientation Lock
@@ -330,9 +328,8 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
                 AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone, andRotateTo: constants.screenOrientationToRotateTo)
             }
             let destinationVC = segue.destination as! Remotev2ViewController
-            destinationVC.userEmail = self.userEmail
             destinationVC.teamManager = self.teamManager
-            destinationVC.mode = "Name Change Remote"
+            destinationVC.mode = .nameChange
             destinationVC.returnToPortraitOnExit = true
         
         /// Theme Chooser

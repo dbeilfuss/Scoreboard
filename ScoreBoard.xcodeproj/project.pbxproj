@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77149321297A255F0040ABD3 /* FractalLandscape.swift */; };
+		771913D82C12429A00BA2D9F /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913D72C12429A00BA2D9F /* UserSession.swift */; };
 		77239FDF29525B2C00569AB9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FDE29525B2C00569AB9 /* IQKeyboardManagerSwift */; };
 		77239FE32952828900569AB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE22952828900569AB9 /* SignInViewController.swift */; };
 		77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE62952872700569AB9 /* RemoteViewController.swift */; };
@@ -94,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
+		771913D72C12429A00BA2D9F /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		77239FE22952828900569AB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		77239FE62952872700569AB9 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
 		77239FE92953AF6000569AB9 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				77239FF42954CCC400569AB9 /* SignOutViewController.swift */,
 				77E6CFEA298F044A0006E8CE /* TextInputCell.swift */,
 				77E6CFEB298F044A0006E8CE /* TextInputCell.xib */,
+				771913D72C12429A00BA2D9F /* UserSession.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -313,7 +316,6 @@
 		77B0D991293AC99200E2BEB0 /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				7790E835295DD45300DC5D6B /* SignIn */,
 				77D0907C298995DB0034D200 /* WelcomeScreenDatabase.swift */,
 				7754E9032986F5EF006CE85A /* WelcomeViewController.swift */,
 				77D09078298991FD0034D200 /* WelcomeOptionsCell.swift */,
@@ -346,12 +348,13 @@
 				77B1115D293AB78E00553E37 /* AppDelegate.swift */,
 				77B1115F293AB78E00553E37 /* SceneDelegate.swift */,
 				77D090762988D5390034D200 /* Constants.swift */,
-				7790E832295CAEEA00DC5D6B /* Themes */,
+				770F39AB2C112F8C00B1C820 /* CustomDataTypes */,
 				77BF4D492C0D371E0059AF35 /* Buttons */,
 				7754E9052986F78F006CE85A /* ScoreBoard */,
+				7790E832295CAEEA00DC5D6B /* Themes */,
 				770F39AD2C11329C00B1C820 /* RemoteControl */,
 				770F39AC2C112FC800B1C820 /* Teams */,
-				770F39AB2C112F8C00B1C820 /* CustomDataTypes */,
+				7790E835295DD45300DC5D6B /* SignIn */,
 				77B0D991293AC99200E2BEB0 /* WelcomeScreen */,
 				77B11166293AB78F00553E37 /* Assets.xcassets */,
 				77B1116B293AB78F00553E37 /* Info.plist */,
@@ -558,6 +561,7 @@
 				77D98FE0297B099E00927949 /* FractalLandscapeOcean2.swift in Sources */,
 				77D98FE6297B09C700927949 /* FractalLandscapePurple2.swift in Sources */,
 				7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */,
+				771913D82C12429A00BA2D9F /* UserSession.swift in Sources */,
 				7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */,
 				77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */,
 				77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */,

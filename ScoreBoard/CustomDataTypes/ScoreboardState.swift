@@ -12,3 +12,8 @@ struct ScoreboardState {
     var pointIncrement: Double
     var uiIsHidden: Bool
 }
+
+enum SignInState {
+    case signedIn
+    case notSignedIn
+}

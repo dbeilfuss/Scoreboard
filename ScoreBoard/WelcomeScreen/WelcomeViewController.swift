@@ -11,7 +11,7 @@ import Firebase
 class WelcomeViewController: UIViewController {
     
     //MARK: - Import Databases
-    let k = Constants()
+    let constants = Constants()
     let tableDatabase = WelcomeScreenDatabase()
     
     //MARK: - UIElements
@@ -51,10 +51,6 @@ class WelcomeViewController: UIViewController {
     /// User Feedback
     @IBOutlet weak var userFeedbackLabel: UILabel!
     
-    
-    //MARK: - Variables
-    var userEmail: String?
-    
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +66,8 @@ class WelcomeViewController: UIViewController {
         self.overrideUserInterfaceStyle = .dark
         
         /// Title & Subtitle Label Text
-        titleLabel.text = k.appName
-        subtitleLabel.text = k.subtitleMessage
+        titleLabel.text = constants.appName
+        subtitleLabel.text = constants.subtitleMessage
         
         /// Set Constraint Factor: The root number for all the constraint calculations
         var constraintFactor: CGFloat = 50
@@ -79,20 +75,20 @@ class WelcomeViewController: UIViewController {
         /// UI Changes for iPhone
         if UIDevice.current.localizedModel == "iPhone" {
 
-            AppDelegate.AppUtility.lockOrientation(k.screenOrientationStandardiPhone)///  Unlocks Screen Orientation for iPads.
+            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone)///  Unlocks Screen Orientation for iPads.
             
-            titleLabel.font = k.titleFontIPhone /// Title Label Font Size
-            subtitleLabel.font = k.subTitleFontIPhone /// Subtitle Label Font Size
+            titleLabel.font = constants.titleFontIPhone /// Title Label Font Size
+            subtitleLabel.font = constants.subTitleFontIPhone /// Subtitle Label Font Size
             
             /// UI Changes for iPad
         } else if UIDevice.current.localizedModel == "iPad" {
             
-            AppDelegate.AppUtility.lockOrientation(k.screenOrientationStandardiPad) ///  Unlocks Screen Orientation for iPads.
+            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPad) ///  Unlocks Screen Orientation for iPads.
             
             constraintFactor *= 1.5 /// Adjust Constraint Factor for iPad
             
-            titleLabel.font = k.titleFontIPad /// Title Label Font Size
-            subtitleLabel.font = k.subTitleFontIPad /// Subtitle Label Font Size
+            titleLabel.font = constants.titleFontIPad /// Title Label Font Size
+            subtitleLabel.font = constants.subTitleFontIPad /// Subtitle Label Font Size
         }
         
         /// App Icon
@@ -116,26 +112,20 @@ class WelcomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        /// Check if User is signed in
-        if Auth.auth().currentUser != nil {
-            print("user signed in")
-        }
-        
         /// Get Current User
         let _ = Auth.auth().addStateDidChangeListener { auth, user in
-            let user = Auth.auth().currentUser
-            if let thisUser = user {
-                self.userEmail = thisUser.email!
-                print(thisUser.email!)
+            if let user: User = Auth.auth().currentUser {
+                print("user signed in")
+                print(user.email!)
                 self.signInButton.setTitle("Sign Out", for: .normal)
-                self.userFeedbackLabel.text = self.userEmail!
+                self.userFeedbackLabel.text = user.email
             } else {
-                self.userEmail = nil
                 self.signInButton.setTitle("Sign In", for: .normal)
                 self.userFeedbackLabel.text = ""
             }
         }
     }
+
 
 //MARK: - Bottom Buttons
 @IBAction func signInOutButtonPressed(_ sender: Any) {
@@ -146,14 +136,13 @@ class WelcomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "welcomeToSignIn" {
             let DestinationVC = segue.destination as! SignInViewController
-            if userEmail != nil {
+            if Auth.auth().currentUser != nil {
                 DestinationVC.signOutMode = true
             }
         } else if segue.identifier == "welcomeToSignOut" {
             let DestinationVC = segue.destination as! SignOutViewController
         } else if (segue.identifier == "welcomeToScoreboard") || (segue.identifier == "welcomeToRemote") {
             let DestinationVC = segue.destination as! ScoreBoardViewController
-            DestinationVC.userEmail = self.userEmail
         }
     }
     
@@ -180,11 +169,11 @@ extension WelcomeViewController: UITableViewDataSource {
         
         /// Cell UI Changes for iPhone
         if UIDevice.current.localizedModel == "iPhone" {
-            cell.label.font = k.tableFontIPhone
+            cell.label.font = constants.tableFontIPhone
             
         /// Cell UIChanges for iPad
         } else {
-            cell.label.font = k.tableFontIPad
+            cell.label.font = constants.tableFontIPad
         }
         
         return cell
@@ -198,6 +187,7 @@ extension WelcomeViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             performSegue(withIdentifier: "welcomeToScoreboard", sender: self)
         } else if indexPath.row == 1 {
+            
             performSegue(withIdentifier: "welcomeToRemote", sender: self)
         }
     }

@@ -11,7 +11,7 @@ import Firebase
 class SignInViewController: UIViewController {
     
     /// Imports
-    let k = Constants()
+    let constants = Constants()
     
     /// App Icon
     @IBOutlet weak var appIcon: UIImageView!
@@ -85,10 +85,10 @@ class SignInViewController: UIViewController {
             appIcon.layer.cornerRadius = constraintFactor
             
             /// Fonts
-            titleLabel.text = k.appName
-            titleLabel.font = k.titleFontIPhone
-            subtitleLabel.font = k.subTitleFontIPhone
-            forgotPasswordButton.titleLabel?.font = k.bodyIPhone
+            titleLabel.text = constants.appName
+            titleLabel.font = constants.titleFontIPhone
+            subtitleLabel.font = constants.subTitleFontIPhone
+            forgotPasswordButton.titleLabel?.font = constants.bodyIPhone
             
         }
         
@@ -99,10 +99,10 @@ class SignInViewController: UIViewController {
             appIcon.isHidden = true
             
             /// Fonts
-            titleLabel.text = k.appName
-            titleLabel.font = k.titleFontIPad
-            subtitleLabel.font = k.subTitleFontIPad
-            forgotPasswordButton.titleLabel?.font = k.bodyIPadSmall
+            titleLabel.text = constants.appName
+            titleLabel.font = constants.titleFontIPad
+            subtitleLabel.font = constants.subTitleFontIPad
+            forgotPasswordButton.titleLabel?.font = constants.bodyIPadSmall
             
             /// Buttons
             backButton.isHidden = true
@@ -122,16 +122,24 @@ class SignInViewController: UIViewController {
         continueButton.titleLabel?.text = "Sign Out"
     }
     
+    //MARK: - SignInButton
+    
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         if signOutMode == false {
             if let email = userEnteredData["Username"]!, let password = userEnteredData["Password"]! {
                 feedbackLabel.text = "Signing You In"
+                
+                // Attempt to Create User
                 Auth.auth().createUser(withEmail: email, password: password) {
                     authResult, error in
+                    
                     if let _ = error {
-//                        self.feedbackLabel.text = e.localizedDescription
+                        
+                        // If User Already Exists, Sign In
                         self.signIn(email: email, password: password)
                     } else {
+                        
+                        // Else, user created, continue
                         self.dismiss(animated: true)
                     }
                 }
@@ -153,6 +161,8 @@ class SignInViewController: UIViewController {
         }
     }
         
+    //MARK: - ResetPasswordButton
+    
     @IBAction func resetPasswordButtonPressed(_ sender: UIButton) {
         if let email = userEnteredData["Username"]! {
             Auth.auth().sendPasswordReset(withEmail: email) { error in

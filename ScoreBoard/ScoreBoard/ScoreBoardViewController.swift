@@ -5,8 +5,8 @@
 //  Created by Daniel Beilfuss on 12/27/22.
 //
 
-import Foundation
 import UIKit
+import Firebase
 
 protocol ScoreBoardDelegate {
     func refreshScreen(reTransmit: Bool)
@@ -35,8 +35,7 @@ class ScoreBoardViewController: UIViewController {
     var remoteControlTransmitter = RemoteControlTransmitter()
     //    var remoteControlTransmitterDelegate: RemoteControlTransmitterDelegate?
     
-    var userEmail: String?
-    var remoteDisplay = false
+    var signInState: SignInState = .notSignedIn
     var numberOfTeams: Int = 0
     
     // New Scoreboard State
@@ -57,6 +56,13 @@ class ScoreBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // SignIn
+        if let user: User = Auth.auth().currentUser {
+            self.signInState = .signedIn
+        } else {
+            self.signInState = .notSignedIn
+        }
         
     }
     
@@ -116,8 +122,8 @@ class ScoreBoardViewController: UIViewController {
         }
         
         if shouldTransmit {
-            if userEmail != nil {
-                remoteControlTransmitter.transmitTheme(sender: userEmail!, themeName: theme.name)
+            if signInState == .signedIn {
+                remoteControlTransmitter.transmitTheme(themeName: theme.name)
             }
         }
         
@@ -160,9 +166,7 @@ class ScoreBoardViewController: UIViewController {
         }
         
         if shouldTransmit {
-            if userEmail != nil {
-                remoteControlTransmitter.transmitTheme(sender: userEmail!, themeName: theme.name)
-            }
+            remoteControlTransmitter.transmitTheme(themeName: theme.name)
         }
     }
     
@@ -226,20 +230,18 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
     func transmitData() {
         let teamList = teamManager.teamList
         
-        if let safeEmail = userEmail {
-            print("email detected: \(safeEmail), proceeding to transmit as instructed")
-            remoteControlTransmitter.transmitUpdatedScores(sender: safeEmail, teamList: teamList)
+        if signInState == .signedIn {
+            print("transmitting data")
+            remoteControlTransmitter.transmitUpdatedScores(teamList: teamList)
         } else {
-            print("no email detected, canceling transmition")
+            print("not signed in, canceling transmition")
         }
     }
     
-    func setupRemoteTransmitter(userEmail: String) {
+    func setupRemoteTransmitter() {
         print("setting up remote transmitter")
-        self.userEmail = userEmail
         remoteControlTransmitter.delegate = remoteDelegate
-        remoteControlTransmitter.listenForUpdatedScores(sender: userEmail)
-        self.remoteDisplay = true
+        remoteControlTransmitter.listenForUpdatedScores()
     }
     
 }
