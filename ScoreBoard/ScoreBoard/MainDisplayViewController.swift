@@ -96,7 +96,11 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         }
         
         /// Refresh Screen after Setup
-        implementTheme(theme: scoreboardState.theme)
+        var newScoreboardState =  DataStorageManager().loadScoreboardState()
+        if newScoreboardState == nil {
+            newScoreboardState = constants.defaultScoreboardState
+        }
+        implementTheme(theme: themesDatabase.fetchActiveTheme())
         refreshScreen(reTransmit: false)
         
     }
@@ -119,13 +123,13 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
     }
     
     func createTeamView(_ teamInfo: Team) -> TeamView {
-        let teamSetup = teamManager.teamList
+        let teamSetup = teamManager.fetchTeamList()
         
         // Setup TeamView
         let teamView = TeamView()
         teamView.translatesAutoresizingMaskIntoConstraints = false
         teamView.set(teamInfo: teamInfo)
-        teamView.set(scoreboardState: scoreboardState, teamSetup: teamSetup)
+        teamView.set(scoreboardState: dataStorageManager.loadScoreboardState(), teamSetup: teamSetup)
         teamView.set(delegate: self)
         
         return teamView
@@ -212,13 +216,13 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         }
         
         // Pass Data into the team views
-        let teamSetup = teamManager.teamList
+        let teamSetup = teamManager.fetchTeamList()
         for view in teamViews {
             let teamNumber = view.teamInfo.number
             if let newTeamInfo: Team = teamManager.fetchTeamInfo(teamNumber: teamNumber) {
                 view.set(teamInfo: newTeamInfo)
             }
-            view.set(scoreboardState: scoreboardState, teamSetup: teamSetup)
+            view.set(scoreboardState: dataStorageManager.loadScoreboardState(), teamSetup: teamSetup)
         }
     }
         
@@ -236,14 +240,14 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
     
     /// Toggle UI
     @IBAction func toggleUIPressed(_ sender: UIButton) {
-        scoreboardState.uiIsHidden = !scoreboardState.uiIsHidden
+        dataStorageManager.toggleUIIsHidden()
         refreshButtons()
         refreshTeamViews()
     }
     
     func refreshButtons() {
         for button in allButtonsArray {
-            button.setupButton(state: scoreboardState)
+            button.setupButton(state: dataStorageManager.loadScoreboardState())
         }
     }
     
@@ -270,7 +274,7 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         sender.isSelected = true /// set the sender point increment button to active
         updateUIForButtonSelection(buttons: pointIncrementButtonsArray)
         
-        scoreboardState.pointIncrement = currentPointValue
+        dataStorageManager.savePointIncrement(currentPointValue)
         refreshTeamViews()
         
     }
@@ -330,6 +334,7 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
             let destinationVC = segue.destination as! Remotev2ViewController
             destinationVC.teamManager = self.teamManager
             destinationVC.remoteViewMode = .nameChange
+            destinationVC.teamCellDelegate = self
             destinationVC.returnToPortraitOnExit = true
         
         /// Theme Chooser
@@ -351,8 +356,6 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
 extension MainDisplayViewController: ThemeDisplayDelegate {
     func implementTheme(theme: Theme) {
         updateTheme(theme: theme, backgroundView: backgroundView, shouldTransmit: true)
-        backgroundView.image = theme.backgroundImage
-        scoreboardState.theme = theme
         refreshTeamViews()
         refreshButtons()
     }
@@ -376,10 +379,12 @@ extension MainDisplayViewController: TeamCellDelegate {
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {
+        setIsActive(isActive: isActive, teamIndex: teamIndex)
         refreshTeamViews()
     }
     
     func updateName(newName: String, teamIndex: Int) {
+        setTeamName(newName: newName, teamIndex: teamIndex)
         refreshTeamViews()
     }
     

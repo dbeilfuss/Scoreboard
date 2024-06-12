@@ -77,15 +77,12 @@ class RemoteTeamViewCell: UITableViewCell, UITextFieldDelegate {
     
     /// Name Change Remote
     func setUIForNameChangeRemote() {
-        print("Name Change Remote")
         
         /// Hide UnNeeded Views
         scoreStackView.isHidden = true
         
         /// Re-Orient Team Name Stack View
         nameStackView.axis = .horizontal
-//        nameStackTrailing.isActive = true
-        
         nameStackWidth.isActive = true
     }
     

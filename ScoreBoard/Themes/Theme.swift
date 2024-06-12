@@ -18,7 +18,7 @@ struct FontSet {
     let font: UIFont
 }
 
-struct Theme {
+struct Theme: Equatable {
     
     /// Definition
     let name: String

@@ -7,8 +7,8 @@
 
 import UIKit
 
-struct ScoreboardState {
-    var theme: Theme
+struct ScoreboardState: Codable {
+    var themeName: String
     var pointIncrement: Double
     var uiIsHidden: Bool
 }

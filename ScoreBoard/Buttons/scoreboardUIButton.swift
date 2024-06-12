@@ -19,7 +19,8 @@ class scoreboardUIButton: UIButton {
         scoreBoardState = state
         
         // Theme
-        state.theme.format(button: self)
+        let theme = ThemesDatabase().fetchTheme(for: state.themeName)
+        theme.format(button: self)
         
         // HideUI
         if selfCanHide {

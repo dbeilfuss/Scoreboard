@@ -42,5 +42,10 @@ struct Constants {
     let screenOrientationStandardiPad: UIInterfaceOrientationMask = UIInterfaceOrientationMask.all
 
     // State
-    let defaultScoreboardState: ScoreboardState = ScoreboardState(theme: FractalLandscapeBlue1().theme, pointIncrement: 1, uiIsHidden: false)
+    let defaultTheme = FractalLandscapeBlue1().theme
+    let defaultScoreboardState: ScoreboardState = ScoreboardState(themeName: FractalLandscapeBlue1().theme.name, pointIncrement: 1, uiIsHidden: false)
+    
+    // DataStorage
+    let teamCollectionKey: String = "teams"
+    let scoreboardStateKey: String = "scoreboardState"
 }

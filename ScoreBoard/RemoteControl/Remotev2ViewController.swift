@@ -18,6 +18,7 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
     //MARK: - Setup Variables
     var remoteViewMode: RemoteViewMode = .remoteControl
     var returnToPortraitOnExit: Bool = false
+    var teamCellDelegate: TeamCellDelegate?
     
     //MARK: - IBOutlets
     /// UIView
@@ -181,13 +182,10 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
     }
 }
 
-
-
-
 //MARK: - Table Data Source
 extension Remotev2ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rowsCount: Int = teamManager.teamList.count
+        let rowsCount: Int = teamManager.fetchTeamList().count
         return rowsCount
     }
     
@@ -197,11 +195,11 @@ extension Remotev2ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! RemoteTeamViewCell
         
         /// Setup Cell
-        let cellDelegate: TeamCellDelegate = remoteViewMode == .remoteControl ? self : self
+    let cellDelegate: TeamCellDelegate = (teamCellDelegate != nil) ? teamCellDelegate! : self
         
-        cell.set(index: indexPath.row, signInState: signInState, remoteViewMode: remoteViewMode, delegate: self)
+        cell.set(index: indexPath.row, signInState: signInState, remoteViewMode: remoteViewMode, delegate: cellDelegate)
         
-        cell.set(teamSetup: teamManager.teamList, pointIncrement: increment)
+        cell.set(teamSetup: teamManager.fetchTeamList(), pointIncrement: increment)
         
         /// Return Cell
         return cell

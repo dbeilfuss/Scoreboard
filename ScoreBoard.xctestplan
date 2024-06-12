@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "D3B392C3-3BDA-49A8-9CE4-5C50758FB7C4",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ScoreBoard.xcodeproj",
+      "identifier" : "77B11159293AB78E00553E37",
+      "name" : "ScoreBoard"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

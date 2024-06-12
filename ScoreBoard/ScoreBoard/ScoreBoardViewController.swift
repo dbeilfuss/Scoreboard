@@ -31,16 +31,17 @@ class ScoreBoardViewController: UIViewController {
     
     //MARK: - Inititial Setup
     let constants = Constants()
+    var themesDatabase = ThemesDatabase()
+    let dataStorageManager = DataStorageManager()
     
     var remoteControlTransmitter = RemoteControlTransmitter()
-    //    var remoteControlTransmitterDelegate: RemoteControlTransmitterDelegate?
     
     var signInState: SignInState = .notSignedIn
     var numberOfTeams: Int = 0
     
-    // New Scoreboard State
-    var scoreboardState = Constants().defaultScoreboardState
-
+    // Scoreboard State
+//    var scoreboardState = Constants().defaultScoreboardState
+    
     
     //MARK: - Declare Delegates
     
@@ -84,11 +85,7 @@ class ScoreBoardViewController: UIViewController {
     }
     
     func fetchTeamNames() -> [String] {
-        return teamManager.fetchNames()
-    }
-    
-    func fetchIsActive() -> [Bool] {
-        return teamManager.fetchIsActiveList()
+        return teamManager.fetchTeamNames()
     }
     
     func resetScores() {
@@ -114,6 +111,7 @@ class ScoreBoardViewController: UIViewController {
     func updateTheme(theme: Theme, backgroundView: UIImageView, shouldTransmit: Bool) {
         
         backgroundView.image = theme.backgroundImage
+        dataStorageManager.saveTheme(theme)
         
         if theme.darkMode {
             self.overrideUserInterfaceStyle = .dark
@@ -130,8 +128,8 @@ class ScoreBoardViewController: UIViewController {
     }
     
     func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, shouldTransmit: Bool) {
-        scoreboardState.theme = theme
-        
+        dataStorageManager.saveTheme(theme)
+
         if backgroundImage != nil {
             backgroundImage!.image = theme.backgroundImage
         }
@@ -172,32 +170,28 @@ class ScoreBoardViewController: UIViewController {
     
     //MARK: - Update UI Buttons
     func updateUIForButtonSelection(buttons: [UIButton]) {
+        let theme = themesDatabase.fetchActiveTheme()
         for i in buttons {
             if i.isSelected == true {
-                i.tintColor = scoreboardState.theme.buttonSelectedColor1!
+                i.tintColor = theme.buttonSelectedColor1!
             } else {
-                i.tintColor = scoreboardState.theme.buttonColor!
+                i.tintColor = theme.buttonColor!
             }
         }
     }
     
     func updateUIForButtonTint(buttons: [UIButton]) {
+        let theme: Theme = themesDatabase.fetchActiveTheme()
         for i in buttons {
-            i.tintColor = scoreboardState.theme.buttonColor
+            i.tintColor = theme.buttonColor
         }
     }
     
-    //MARK: - Hide UI
-    
-    func hideUI (viewsToHide: [UIView], hidden: Bool) {
-        for view in viewsToHide {
-            view.isHidden = hidden
-        }
-    }
 }
 
 //MARK: - Transmitter Delegate
 extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
+        
     func updateTheme(newTheme: String) {
         let themeGroups: [[Theme]] = ThemesDatabase().themeGroups
         var themeSelected: Theme?
@@ -215,7 +209,6 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
         }
     }
     
-    
     func recordTeamInfo(teamInfo: Team, refreshScreen: Bool) {
         teamManager.recordTeamInfo(teamInfo: teamInfo)
         if refreshScreen {
@@ -228,7 +221,7 @@ extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
     }
     
     func transmitData() {
-        let teamList = teamManager.teamList
+        let teamList = teamManager.fetchTeamList()
         
         if signInState == .signedIn {
             print("transmitting data")

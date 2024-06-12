@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Team {
+struct Team: Codable {
     var number: Int
     var name: String
     var score: Int
