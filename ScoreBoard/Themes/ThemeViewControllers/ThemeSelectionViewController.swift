@@ -1,5 +1,5 @@
 //
-//  ThemeChooserViewController.swift
+//  ThemeSelectionViewController.swift
 //  ScoreBoard
 //
 //  Created by Daniel Beilfuss on 1/22/23.
@@ -7,17 +7,13 @@
 
 import UIKit
 
-protocol ThemeDisplayDelegate {
-    func implementTheme(theme: Theme)
-}
-
-class ThemeChooserViewController: UITableViewController {
+class ThemeSelectionViewController: UITableViewController {
     
     //MARK: - Variables
     var themeGroup: [Theme]?
     var themeList: [String] = []
     
-    var delegate: ThemeDisplayDelegate?
+    var delegate: ThemeManagerProtocol?
 
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -92,7 +88,8 @@ class ThemeChooserViewController: UITableViewController {
         }
         
         if themeSelected != nil {
-            delegate?.implementTheme(theme: themeSelected!)
+            print("ThemeSelected: \(themeSelected!.name), File: \(#fileID)")
+            delegate?.implementTheme(named: themeSelected!.name, dataSource: .local)
             if UIDevice.current.localizedModel == "iPhone" {
                 self.dismiss(animated: true)
             }
@@ -100,3 +97,10 @@ class ThemeChooserViewController: UITableViewController {
     }
     
 }
+
+//MARK: - Protocols
+
+//protocol ThemeSelectionDelegate {
+//    func implementTheme(named themeName: String)
+//    func implementTheme(_ theme: Theme)
+//}

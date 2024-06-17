@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77149321297A255F0040ABD3 /* FractalLandscape.swift */; };
 		771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913D92C1738C000BA2D9F /* DataStorageManager.swift */; };
+		771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913DC2C1A689C00BA2D9F /* MVCManager.swift */; };
 		77239FDF29525B2C00569AB9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FDE29525B2C00569AB9 /* IQKeyboardManagerSwift */; };
 		77239FE32952828900569AB9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE22952828900569AB9 /* SignInViewController.swift */; };
 		77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FE62952872700569AB9 /* RemoteViewController.swift */; };
@@ -46,7 +47,7 @@
 		7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */; };
 		7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */; };
 		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
-		7797E96F2C0510F0007D7EEF /* ScoreboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797E96E2C0510F0007D7EEF /* ScoreboardState.swift */; };
+		7797E96F2C0510F0007D7EEF /* CustomDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */; };
 		77A11797293ACD1A00ED74C2 /* TeamDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */; };
 		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
 		77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B024692956336E0017C542 /* RemoteTeamViewCell.swift */; };
@@ -61,8 +62,8 @@
 		77BF4D482C0D36FE0059AF35 /* scoreboardUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BF4D472C0D36FE0059AF35 /* scoreboardUIButton.swift */; };
 		77CEA6FA297C449D00E853DC /* Railway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6F9297C449D00E853DC /* Railway.swift */; };
 		77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */; };
-		77CEA6FE297CA9F800E853DC /* ThemesDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FD297CA9F800E853DC /* ThemesDatabase.swift */; };
-		77CEA700297DB75500E853DC /* ThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FF297DB75500E853DC /* ThemeChooserViewController.swift */; };
+		77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FD297CA9F800E853DC /* ThemeManager.swift */; };
+		77CEA700297DB75500E853DC /* ThemeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FF297DB75500E853DC /* ThemeSelectionViewController.swift */; };
 		77CEA70B297EF01C00E853DC /* ThemePreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */; };
 		77CEA70C297EF01C00E853DC /* ThemePreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */; };
 		77D090772988D5390034D200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D090762988D5390034D200 /* Constants.swift */; };
@@ -97,6 +98,7 @@
 		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
 		771913D92C1738C000BA2D9F /* DataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
 		771913DB2C19430100BA2D9F /* ScoreBoard.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScoreBoard.xctestplan; sourceTree = "<group>"; };
+		771913DC2C1A689C00BA2D9F /* MVCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCManager.swift; sourceTree = "<group>"; };
 		77239FE22952828900569AB9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		77239FE62952872700569AB9 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
 		77239FE92953AF6000569AB9 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 		7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTheme.swift; sourceTree = "<group>"; };
 		7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasTheme.swift; sourceTree = "<group>"; };
 		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
-		7797E96E2C0510F0007D7EEF /* ScoreboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardState.swift; sourceTree = "<group>"; };
+		7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataTypes.swift; sourceTree = "<group>"; };
 		77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDataTypes.swift; sourceTree = "<group>"; };
 		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		77B024692956336E0017C542 /* RemoteTeamViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTeamViewCell.swift; sourceTree = "<group>"; };
@@ -147,8 +149,8 @@
 		77BF4D472C0D36FE0059AF35 /* scoreboardUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scoreboardUIButton.swift; sourceTree = "<group>"; };
 		77CEA6F9297C449D00E853DC /* Railway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Railway.swift; sourceTree = "<group>"; };
 		77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeGroupChooserViewController.swift; sourceTree = "<group>"; };
-		77CEA6FD297CA9F800E853DC /* ThemesDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesDatabase.swift; sourceTree = "<group>"; };
-		77CEA6FF297DB75500E853DC /* ThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserViewController.swift; sourceTree = "<group>"; };
+		77CEA6FD297CA9F800E853DC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		77CEA6FF297DB75500E853DC /* ThemeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectionViewController.swift; sourceTree = "<group>"; };
 		77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePreviewCell.swift; sourceTree = "<group>"; };
 		77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemePreviewCell.xib; sourceTree = "<group>"; };
 		77D090762988D5390034D200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -197,7 +199,7 @@
 		770F39AB2C112F8C00B1C820 /* CustomDataTypes */ = {
 			isa = PBXGroup;
 			children = (
-				7797E96E2C0510F0007D7EEF /* ScoreboardState.swift */,
+				7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */,
 			);
 			path = CustomDataTypes;
 			sourceTree = "<group>";
@@ -221,7 +223,6 @@
 			children = (
 				77239FE62952872700569AB9 /* RemoteViewController.swift */,
 				77E238512981E6F80069A260 /* Remotev2ViewController.swift */,
-				778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */,
 			);
 			path = RemoteControl;
 			sourceTree = "<group>";
@@ -251,12 +252,20 @@
 			path = "Fractal Landscape";
 			sourceTree = "<group>";
 		};
+		771913DE2C1BC7CF00BA2D9F /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				771913D92C1738C000BA2D9F /* DataStorageManager.swift */,
+				778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
 		7754E9052986F78F006CE85A /* ScoreBoard */ = {
 			isa = PBXGroup;
 			children = (
 				7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */,
 				77B11161293AB78E00553E37 /* MainDisplayViewController.swift */,
-				771913D92C1738C000BA2D9F /* DataStorageManager.swift */,
 			);
 			path = ScoreBoard;
 			sourceTree = "<group>";
@@ -298,7 +307,7 @@
 				77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */,
 				77952A062995599400BC0354 /* TeamTextSizeStruct.swift */,
 				7790E82C295C06A600DC5D6B /* Theme.swift */,
-				77CEA6FD297CA9F800E853DC /* ThemesDatabase.swift */,
+				77CEA6FD297CA9F800E853DC /* ThemeManager.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -347,15 +356,17 @@
 			children = (
 				77B11168293AB78F00553E37 /* LaunchScreen.storyboard */,
 				77B11163293AB78E00553E37 /* Main.storyboard */,
+				771913DC2C1A689C00BA2D9F /* MVCManager.swift */,
 				77B1115D293AB78E00553E37 /* AppDelegate.swift */,
 				77B1115F293AB78E00553E37 /* SceneDelegate.swift */,
 				77D090762988D5390034D200 /* Constants.swift */,
+				771913DE2C1BC7CF00BA2D9F /* DataStorage */,
 				770F39AB2C112F8C00B1C820 /* CustomDataTypes */,
 				77BF4D492C0D371E0059AF35 /* Buttons */,
 				7754E9052986F78F006CE85A /* ScoreBoard */,
+				770F39AC2C112FC800B1C820 /* Teams */,
 				7790E832295CAEEA00DC5D6B /* Themes */,
 				770F39AD2C11329C00B1C820 /* RemoteControl */,
-				770F39AC2C112FC800B1C820 /* Teams */,
 				7790E835295DD45300DC5D6B /* SignIn */,
 				77B0D991293AC99200E2BEB0 /* WelcomeScreen */,
 				77B11166293AB78F00553E37 /* Assets.xcassets */,
@@ -406,7 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */,
-				77CEA6FF297DB75500E853DC /* ThemeChooserViewController.swift */,
+				77CEA6FF297DB75500E853DC /* ThemeSelectionViewController.swift */,
 			);
 			path = ThemeViewControllers;
 			sourceTree = "<group>";
@@ -528,7 +539,7 @@
 				77D98FD6297B08C000927949 /* FractalLandscapeGreen1.swift in Sources */,
 				77D98FCE297AFE4B00927949 /* FractalLandscapeBlue2.swift in Sources */,
 				77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */,
-				77CEA700297DB75500E853DC /* ThemeChooserViewController.swift in Sources */,
+				77CEA700297DB75500E853DC /* ThemeSelectionViewController.swift in Sources */,
 				77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */,
 				77D98FD4297B069300927949 /* FractalLandscapeFire1.swift in Sources */,
 				77D98FD0297B01B100927949 /* FractalLandscapeBlue3.swift in Sources */,
@@ -548,8 +559,8 @@
 				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,
 				771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
-				77CEA6FE297CA9F800E853DC /* ThemesDatabase.swift in Sources */,
-				7797E96F2C0510F0007D7EEF /* ScoreboardState.swift in Sources */,
+				77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */,
+				7797E96F2C0510F0007D7EEF /* CustomDataTypes.swift in Sources */,
 				7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */,
 				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
 				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
@@ -570,6 +581,7 @@
 				77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */,
 				778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */,
 				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
+				771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */,
 				77D98FCC297AF34300927949 /* FractalLandscapeBlue1.swift in Sources */,
 				77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */,
 			);

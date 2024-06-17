@@ -106,4 +106,8 @@ struct Theme: Equatable {
             button.tintColor = buttonSelectedColor1
         }
     }
+    
+    func format(background: UIImageView) {
+        background.image = backgroundImage
+    }
 }

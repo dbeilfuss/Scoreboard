@@ -62,9 +62,9 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
             updateUIForButtonTint(buttons: incrementButtonsArray)
             updateUIForButtonTint(buttons: controlButtonsArray)
             updateUIForButtonSelection(buttons: incrementButtonsArray)
-            if reTransmit {
-                transmitData()
-            }
+//            if reTransmit {
+//                transmitData()
+//            }
         }
     }
     
@@ -77,19 +77,19 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
         super.viewDidLoad()
         
         /// Delegate
-        declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
+//        declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
         
         print("signInState: \(signInState)")
         
         /// Remote
         if signInState == .signedIn {
-            setupRemoteTransmitter()
+//            setupRemoteTransmitter()
         } else {
             let error: String = "You must be signed in to use remote features"
             print(error)
             userFeedbackLabel.text = error
         }
-        remoteControlTransmitter.delegate = self
+//        remoteControlTransmitter?.teamsDelegate = self
         
         /// Table
         tableView.dataSource = self
@@ -121,7 +121,7 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
         }
         
         /// Theme
-        updateTheme(theme: RemoteControlTheme().theme, backgroundImage: nil, subtitleLabels: nil, scoreLabels: nil, buttons: nil, shouldTransmit: false)
+//        updateTheme(theme: RemoteControlTheme().theme, backgroundImage: nil, subtitleLabels: nil, scoreLabels: nil, buttons: nil, shouldTransmit: false)
         updateUIForButtonTint(buttons: incrementButtonsArray)
 
     }
@@ -177,7 +177,7 @@ class Remotev2ViewController: ScoreBoardViewController, ScoreBoardDelegate {
         } else if segue.identifier == "remoteThemeSegue" {
             let destinationNavigationController = segue.destination as! UINavigationController
             let destinationVC = destinationNavigationController.topViewController as! ThemeGroupChooserViewController
-            destinationVC.delegate = self
+            destinationVC.delegate = mvcArrangement.themeManager
         }
     }
 }
@@ -234,15 +234,15 @@ extension Remotev2ViewController: ResetDelegate {
         refreshScreen(reTransmit: true)
     }
 }
-
-//MARK: - Theme Display Delegate
-extension Remotev2ViewController: ThemeDisplayDelegate {
-    func implementTheme(theme: Theme) {
-        
-        /// Transmit Theme to Cloud
-        if signInState == .signedIn {
-            remoteControlTransmitter.transmitTheme(themeName: theme.name)
-        }
-        
-    }
-}
+//
+////MARK: - Theme Display Delegate
+//extension Remotev2ViewController: ThemeSelectionDelegate {
+//    func implementTheme(theme: Theme) {
+//        
+//        /// Transmit Theme to Cloud
+//        if signInState == .signedIn {
+//            remoteControlTransmitter.transmitTheme(themeName: theme.name)
+//        }
+//        
+//    }
+//}

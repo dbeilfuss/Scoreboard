@@ -51,7 +51,7 @@ class TeamView: UIView {
     func set(scoreboardState: ScoreboardState, teamSetup: [Team]) {
         
         // Deconstruct / Gather Information
-        let (theme, pointIncrement, uiIsHidden) = (ThemesDatabase().fetchTheme(for: scoreboardState.themeName), scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
+        let (theme, pointIncrement, uiIsHidden) = (ThemeManager().fetchTheme(named: scoreboardState.themeName), scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
         // Theme
         theme.format(label: nameLabel, labelType: .teamNameLabel, teamSetup: teamSetup)

@@ -48,4 +48,10 @@ struct Constants {
     // DataStorage
     let teamCollectionKey: String = "teams"
     let scoreboardStateKey: String = "scoreboardState"
+    
+    // Logging
+    let printTeamFlow = true
+    let printTeamFlowDetailed = false
+    let printThemeFlow = false
+    let printStateFlow = false
 }

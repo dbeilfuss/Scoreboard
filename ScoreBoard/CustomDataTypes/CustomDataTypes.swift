@@ -17,3 +17,8 @@ enum SignInState {
     case signedIn
     case notSignedIn
 }
+
+enum DataSource {
+    case local
+    case cloud
+}

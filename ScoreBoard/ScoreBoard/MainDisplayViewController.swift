@@ -8,7 +8,7 @@
 import UIKit
 
 class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
-
+    
     
     //MARK: - IBOutlets
     
@@ -69,17 +69,14 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+        print("viewDidLoad: \(#fileID)")
         
         /// ScoreboardDelegate
-        declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
+        //        declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
         
         /// Remote Control Setup
         userFeedbackLabel.text = ""
-        if signInState == .signedIn {
-            setupRemoteTransmitter()
-        }
-
+        
         /// Orientation Lock
         AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.landscape, andRotateTo: UIInterfaceOrientation.landscapeLeft)
         
@@ -96,11 +93,7 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         }
         
         /// Refresh Screen after Setup
-        var newScoreboardState =  DataStorageManager().loadScoreboardState()
-        if newScoreboardState == nil {
-            newScoreboardState = constants.defaultScoreboardState
-        }
-        implementTheme(theme: themesDatabase.fetchActiveTheme())
+        implementActiveTheme()
         refreshScreen(reTransmit: false)
         
     }
@@ -129,7 +122,7 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         let teamView = TeamView()
         teamView.translatesAutoresizingMaskIntoConstraints = false
         teamView.set(teamInfo: teamInfo)
-        teamView.set(scoreboardState: dataStorageManager.loadScoreboardState(), teamSetup: teamSetup)
+        teamView.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup)
         teamView.set(delegate: self)
         
         return teamView
@@ -205,9 +198,9 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         NSLayoutConstraint.activate([
             scoreboardStackView.leadingAnchor.constraint(equalTo: mainScoreBoardStack.leadingAnchor, constant: 0),
             scoreboardStackView.trailingAnchor.constraint(equalTo: mainScoreBoardStack.trailingAnchor, constant: 0)
-                                     ])
+        ])
     }
-
+    
     func refreshTeamViews() {
         
         // Reinitialize teamViews if needed
@@ -222,32 +215,56 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
             if let newTeamInfo: Team = teamManager.fetchTeamInfo(teamNumber: teamNumber) {
                 view.set(teamInfo: newTeamInfo)
             }
-            view.set(scoreboardState: dataStorageManager.loadScoreboardState(), teamSetup: teamSetup)
+            view.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup)
         }
     }
-        
+    
     //MARK: - Update UI
+    
+    override func refreshUIForTheme() {
+        super.refreshUIForTheme()
+        implementActiveTheme()
+    }
+    
+    override func refreshUIForTeams() {
+        super.refreshUIForTeams()
+        refreshTeamViews()
+    }
     
     /// Refresh Screen
     func refreshScreen(reTransmit: Bool) {
         refreshButtons()
         refreshTeamViews()
         userFeedbackLabel.text = ""
-        if reTransmit {
-            transmitData()
+    }
+    
+    func implementActiveTheme() {
+        if constants.printThemeFlow {
+            print("implementingActiveTheme, File: \(#fileID)")
         }
+        updateBackground()
+        refreshTeamViews()
+        refreshButtons()
+    }
+    
+    func updateBackground() {
+        let activeTheme = themeManager.fetchActiveTheme()
+        if constants.printThemeFlow {
+            print("updating Background for theme: \(activeTheme.name), File: \(#fileID)")
+        }
+        activeTheme.format(background: backgroundView)
     }
     
     /// Toggle UI
     @IBAction func toggleUIPressed(_ sender: UIButton) {
-        dataStorageManager.toggleUIIsHidden()
+        themeManager.toggleUIIsHidden()
         refreshButtons()
         refreshTeamViews()
     }
     
     func refreshButtons() {
         for button in allButtonsArray {
-            button.setupButton(state: dataStorageManager.loadScoreboardState())
+            button.setupButton(state: themeManager.fetchScoreboardState())
         }
     }
     
@@ -274,7 +291,7 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         sender.isSelected = true /// set the sender point increment button to active
         updateUIForButtonSelection(buttons: pointIncrementButtonsArray)
         
-        dataStorageManager.savePointIncrement(currentPointValue)
+        themeManager.savePointIncrement(currentPointValue)
         refreshTeamViews()
         
     }
@@ -341,7 +358,7 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         } else if segue.identifier == "navigationThemeSegue" {
             let destinationNavigationController = segue.destination as! UINavigationController
             let destinationVC = destinationNavigationController.topViewController as! ThemeGroupChooserViewController
-            destinationVC.delegate = self
+            destinationVC.delegate = mvcArrangement.themeManager
             
         /// Reset Confirmation
         } else if segue.identifier == "mainScoreboardToReset" {
@@ -350,15 +367,6 @@ class MainDisplayViewController: ScoreBoardViewController, ScoreBoardDelegate {
         }
     }
     
-}
-
-//MARK: - Theme Display Delegate
-extension MainDisplayViewController: ThemeDisplayDelegate {
-    func implementTheme(theme: Theme) {
-        updateTheme(theme: theme, backgroundView: backgroundView, shouldTransmit: true)
-        refreshTeamViews()
-        refreshButtons()
-    }
 }
 
 //MARK: - Reset Delegate
@@ -375,7 +383,6 @@ extension MainDisplayViewController: TeamCellDelegate {
     func updateScore(newScore: Int, teamIndex: Int) {
         replaceScore(teamNumber: teamIndex, newScore: newScore)
         refreshTeamViews()
-        transmitData()
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {

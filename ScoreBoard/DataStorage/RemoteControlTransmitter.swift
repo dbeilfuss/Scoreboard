@@ -9,12 +9,11 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-protocol RemoteControlTransmitterDelegate {
-    func userFeedback(feedback: String)
-    func transmitData()
-    func resetTeams()
-    func recordTeamInfo(teamInfo: Team, refreshScreen: Bool)
-    func updateTheme(newTheme: String)
+protocol CloudDataStorageManagerProtocol {
+//    func initialize(teamManager: TeamManagerProtocol,themeManager: ThemeManagerProtocol)
+    func saveTeams(_: [Team], dataSource: DataSource)
+    func saveTheme(named: String)
+    func listenForUpdates()
 }
 
 class RemoteControlTransmitter {
@@ -29,20 +28,33 @@ class RemoteControlTransmitter {
     let scoreText = "score"
     let isActiveText = "isActive"
     
+    let constants = Constants()
+    
     //MARK: - Error Message
     let errorSending: String = "Error Sending Data"
     let errorReceiving: String = "Error Receiving Data"
     
     //MARK: - Delegate
-    var delegate: RemoteControlTransmitterDelegate?
+    var teamManager: TeamManagerProtocol
+    var themeManager: ThemeManagerProtocol
+    var viewController: ScoreBoardViewControllerProtocol
     
     //MARK: - Setup Firestore
     
     let db = Firestore.firestore()
     
+    //MARK: - Init
+    init(thisTeam: Team? = nil, teamManager: TeamManagerProtocol, themeManager: ThemeManagerProtocol, viewController: ScoreBoardViewControllerProtocol) {
+        self.thisTeam = thisTeam
+        self.teamManager = teamManager
+        self.themeManager = themeManager
+        self.viewController = viewController
+        
+        listenForUpdates()
+    }
+    
     //MARK: - Sending Theme to FireStore
-    func transmitTheme(themeName: String) {
-        print("transmitting Theme")
+    private func transmitTheme(themeName: String) {
         
             if let user: User = Auth.auth().currentUser {
                 
@@ -53,11 +65,11 @@ class RemoteControlTransmitter {
                 {
                     err in
                     if let err = err {
-                        print("Error transmitting theme")
+                        print("Error transmitting theme - \(#fileID)")
                         print(self.errorSending)
-                        self.delegate?.userFeedback(feedback: err.localizedDescription)
+                        self.viewController.userFeedback(feedback: err.localizedDescription)
                     } else {
-                        print("Theme transmitted")
+                        print("transmitting Theme - \(#fileID)")
                     }
                 }
             }
@@ -65,7 +77,6 @@ class RemoteControlTransmitter {
 
     //MARK: - Sending Scores to FireStore
         func transmitUpdatedScores(teamList: [Team]) {
-            print("transmitting team data")
             
             var i = 0
                 
@@ -80,11 +91,11 @@ class RemoteControlTransmitter {
                         {
                             err in
                             if let err = err {
-                                print("Error adding team \(i + 1): \(err)")
+                                print("Error transmitting team \(i + 1): \(err) - \(#fileID)")
                                 print(self.errorSending)
-                                self.delegate?.userFeedback(feedback: err.localizedDescription)
+                                self.viewController.userFeedback(feedback: err.localizedDescription)
                             } else {
-                                print("Team data updated")
+                                print("Team data transmitted - \(#fileID)")
                             }
                         }
                         i += 1
@@ -94,47 +105,59 @@ class RemoteControlTransmitter {
     
     //MARK: - Receiving Data from FireStore
     
-    func listenForUpdatedScores () {
-        print("listening for updated scores")
+    func listenForUpdates () {
+        print("listening for updates - \(#fileID)")
         if let user: User = Auth.auth().currentUser {
             db.collection(user.email!)
                 .addSnapshotListener { querySnapshot,
                     error in
                     
                     if let e = error {
-                        print("issue in getting data from fireStore", e.localizedDescription)
-                        self.delegate?.userFeedback(feedback: e.localizedDescription)
+                        print("error getting data from fireStore - \(#fileID)", e.localizedDescription)
+                        self.viewController.userFeedback(feedback: e.localizedDescription)
                         
                     } else {
                         if let snapshotDocs = querySnapshot?.documents {
                             
                             // docsCount: used for determining when to signal refresh of screen
-                            var docsCount = snapshotDocs.count - 1
+                            let docsCount = snapshotDocs.count - 1
                             
                             for doc in snapshotDocs {
                                 if doc[self.typeText] != nil {
                                     if doc[self.typeText] as! String == "team" {
                                         let data = doc.data()
+                                        
+                                        // Deconstruct Team Data from Firebase
                                         if let thisTeamNumber = data[self.numberText] as? Int,
                                            let thisTeamName = data[self.nameText] as? String,
                                            let thisTeamScore = data[self.scoreText] as? Int,
                                            let thisTeamIsActive = data[self.isActiveText] as? Bool
                                         {
+                                            
+                                            // Construct Team Data for Local Database
                                             let thisTeam = Team(number: thisTeamNumber, name: thisTeamName, score: thisTeamScore, isActive: thisTeamIsActive)
+                                            
+                                            if self.constants.printTeamFlow {
+                                                print("downloadedTeamData: \(thisTeam), \(#fileID)")
+                                            }
                                             
                                             DispatchQueue.main.async {
                                                 self.thisTeam = thisTeam
                                                 if let safeThisTeam = self.thisTeam {
                                                     var refresh: Bool { docsCount == thisTeamNumber }
-                                                    self.delegate?.recordTeamInfo(teamInfo: safeThisTeam, refreshScreen: refresh)
+                                                    self.teamManager.saveTeam(safeThisTeam, datasource: .cloud)
                                                 }
                                             }
                                         }
+                                        
+                                        // Extract Theme Data
                                     } else if doc[self.typeText] as! String == "theme" {
-                                        self.delegate?.updateTheme(newTheme: doc[self.nameText] as! String)
+                                        let themeName = doc[self.nameText] as! String
+                                        print("Theme Received: \(themeName), File: \(#fileID)")
+                                        self.themeManager.implementTheme(named: themeName, dataSource: .cloud)
                                     }
                                 } else {
-                                    self.delegate?.transmitData()
+                                    self.saveTeams(self.teamManager.fetchTeamList(), dataSource: .local)
                                 }
                             }
                         }
@@ -142,4 +165,25 @@ class RemoteControlTransmitter {
                 }
         }
     }
+}
+
+extension RemoteControlTransmitter: CloudDataStorageManagerProtocol {
+//    func initialize(teamManager: TeamManagerProtocol, themeManager: ThemeManagerProtocol) {
+//        self.teamManager = teamManager
+//        self.themeManager = themeManager
+//        listenForUpdates()
+//    }
+    
+    func saveTeams(_ teamList: [Team], dataSource: DataSource) {
+        print("dataSource: \(dataSource)")
+        if dataSource == .local {
+            transmitUpdatedScores(teamList: teamList)
+        }
+    }
+    
+    func saveTheme(named themeName: String) {
+        transmitTheme(themeName: themeName)
+    }
+    
+    
 }

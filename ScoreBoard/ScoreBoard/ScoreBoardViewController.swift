@@ -31,32 +31,25 @@ class ScoreBoardViewController: UIViewController {
     
     //MARK: - Inititial Setup
     let constants = Constants()
-    var themesDatabase = ThemesDatabase()
-    let dataStorageManager = DataStorageManager()
-    
-    var remoteControlTransmitter = RemoteControlTransmitter()
+    var teamManager: TeamManagerProtocol = TeamManager()
+    var themeManager: ThemeManagerProtocol = ThemeManager()
     
     var signInState: SignInState = .notSignedIn
-    var numberOfTeams: Int = 0
     
-    // Scoreboard State
-//    var scoreboardState = Constants().defaultScoreboardState
+    lazy var mvcArrangement = MVCArrangement(
+        scoreboardViewController: self,
+        teamManager: TeamManager(),
+        themeManager: ThemeManager(),
+        databaseManager: DataStorageManager()
+    )
     
     
-    //MARK: - Declare Delegates
-    
-    var scoreBoardDelegate: ScoreBoardDelegate?
-    var remoteDelegate: RemoteControlTransmitterDelegate?
-    var themeDelegate: ThemeDisplayDelegate?
-    
-    func declareScoreboardDelegate(scoreBoardDelegate: ScoreBoardDelegate, remoteDelegate: RemoteControlTransmitterDelegate, themeDelegate: ThemeDisplayDelegate) {
-        self.scoreBoardDelegate = scoreBoardDelegate
-        self.remoteDelegate = remoteDelegate
-        self.themeDelegate = themeDelegate
-    }
+    //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let mvcManager = MVCManager(mvcArrangement: mvcArrangement)
+        mvcManager.initializeMVCArrangement()
         
         // SignIn
         if let _: User = Auth.auth().currentUser {
@@ -69,11 +62,14 @@ class ScoreBoardViewController: UIViewController {
     
     //MARK: - Team Manager Interactions
     
-    var teamManager = TeamManager()
+    
+    func refreshUIForTeams() {
+        // func refreshUIForTeams() must exist to conform to TeamManagerDelegate
+        // it is located within the main body so it can be overwritten by scoreboard subclasses
+    }
     
     func addToScore(teamNumber: Int, add: Int) {
         teamManager.addToScore(teamNumber: teamNumber, scoreToAdd: add)
-        transmitData()
     }
     
     func replaceScore(teamNumber: Int, newScore: Int) {
@@ -84,22 +80,16 @@ class ScoreBoardViewController: UIViewController {
         return teamManager.fetchScores()
     }
     
-    func fetchTeamNames() -> [String] {
-        return teamManager.fetchTeamNames()
-    }
-    
     func resetScores() {
         teamManager.resetScores(resetScoreValue: 0)
     }
     
     func resetTeams() {
         teamManager.resetTeams()
-        transmitData()
     }
     
     func setIsActive(isActive: Bool, teamIndex: Int) {
         teamManager.updateTeamIsActive(teamNumber: teamIndex + 1, isActive: isActive)
-        transmitData()
     }
     
     func setTeamName(newName: String, teamIndex: Int) {
@@ -108,69 +98,70 @@ class ScoreBoardViewController: UIViewController {
     
     //MARK: - Themes
     
-    func updateTheme(theme: Theme, backgroundView: UIImageView, shouldTransmit: Bool) {
-        
-        backgroundView.image = theme.backgroundImage
-        dataStorageManager.saveTheme(theme)
-        
-        if theme.darkMode {
-            self.overrideUserInterfaceStyle = .dark
-        } else {
-            self.overrideUserInterfaceStyle = .light
-        }
-        
-        if shouldTransmit {
-            if signInState == .signedIn {
-                remoteControlTransmitter.transmitTheme(themeName: theme.name)
-            }
-        }
-        
+    func refreshUIForTheme() {
+        // func refreshUIForTheme() must exist to conform to ThemesDatabaseDelegate
+        // it is located within the main body so it can be overwritten by scoreboard subclasses
     }
-    
-    func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, shouldTransmit: Bool) {
-        dataStorageManager.saveTheme(theme)
-
-        if backgroundImage != nil {
-            backgroundImage!.image = theme.backgroundImage
-        }
-        
-        if subtitleLabels != nil {
-            for label in subtitleLabels! {
-                label.font = UIFont(name:theme.subtitleFont!.fontName, size: label.font.pointSize)
-                label.textColor = theme.subtitleColor
-                label.shadowColor = theme.shadowColor
-                //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
-            }
-        }
-        
-        if scoreLabels != nil {
-            for label in scoreLabels! {
-                label.font = UIFont(name:theme.scoreFont!.fontName, size: label.font.pointSize)
-                label.textColor = theme.scoreColor
-                label.shadowColor = theme.shadowColor
-                //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
-            }
-        }
-        
-        if buttons != nil {
-            updateUIForButtonSelection(buttons: buttons!)
-        }
-        
-        if theme.darkMode {
-            self.overrideUserInterfaceStyle = .dark
-        } else {
-            self.overrideUserInterfaceStyle = .light
-            
-        }
-        
-        if shouldTransmit {
-            remoteControlTransmitter.transmitTheme(themeName: theme.name)
-        }
-    }
+//    
+//    func updateTheme(theme: Theme, backgroundView: UIImageView, shouldTransmit: Bool) {
+//        
+//        if theme.darkMode {
+//            self.overrideUserInterfaceStyle = .dark
+//        } else {
+//            self.overrideUserInterfaceStyle = .light
+//        }
+//        
+//        if shouldTransmit {
+//            if signInState == .signedIn {
+////                remoteControlTransmitter.transmitTheme(themeName: theme.name)
+//            }
+//        }
+//        
+//    }
+//    
+//    func updateTheme(theme: Theme, backgroundImage: UIImageView?, subtitleLabels: [UILabel]?, scoreLabels: [UILabel]?, buttons: [UIButton]?, shouldTransmit: Bool) {
+//
+//        if backgroundImage != nil {
+//            backgroundImage!.image = theme.backgroundImage
+//        }
+//        
+//        if subtitleLabels != nil {
+//            for label in subtitleLabels! {
+//                label.font = UIFont(name:theme.subtitleFont!.fontName, size: label.font.pointSize)
+//                label.textColor = theme.subtitleColor
+//                label.shadowColor = theme.shadowColor
+//                //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
+//            }
+//        }
+//        
+//        if scoreLabels != nil {
+//            for label in scoreLabels! {
+//                label.font = UIFont(name:theme.scoreFont!.fontName, size: label.font.pointSize)
+//                label.textColor = theme.scoreColor
+//                label.shadowColor = theme.shadowColor
+//                //                label.shadowOffset = CGSize(width: theme.shadowWidth!, height: theme.shadowHeight!)
+//            }
+//        }
+//        
+//        if buttons != nil {
+//            updateUIForButtonSelection(buttons: buttons!)
+//        }
+//        
+//        if theme.darkMode {
+//            self.overrideUserInterfaceStyle = .dark
+//        } else {
+//            self.overrideUserInterfaceStyle = .light
+//            
+//        }
+//        
+//        if shouldTransmit {
+////            remoteControlTransmitter.transmitTheme(themeName: theme.name)
+//        }
+//    }
     
     //MARK: - Update UI Buttons
     func updateUIForButtonSelection(buttons: [UIButton]) {
-        let theme = themesDatabase.fetchActiveTheme()
+        let theme = themeManager.fetchActiveTheme()
         for i in buttons {
             if i.isSelected == true {
                 i.tintColor = theme.buttonSelectedColor1!
@@ -181,7 +172,7 @@ class ScoreBoardViewController: UIViewController {
     }
     
     func updateUIForButtonTint(buttons: [UIButton]) {
-        let theme: Theme = themesDatabase.fetchActiveTheme()
+        let theme: Theme = themeManager.fetchActiveTheme()
         for i in buttons {
             i.tintColor = theme.buttonColor
         }
@@ -189,50 +180,20 @@ class ScoreBoardViewController: UIViewController {
     
 }
 
-//MARK: - Transmitter Delegate
-extension ScoreBoardViewController: RemoteControlTransmitterDelegate {
-        
-    func updateTheme(newTheme: String) {
-        let themeGroups: [[Theme]] = ThemesDatabase().themeGroups
-        var themeSelected: Theme?
-        
-        for group in themeGroups {
-            for theme in group {
-                if theme.name == newTheme {
-                    themeSelected = theme
-                }
-            }
-        }
-        
-        if themeSelected != nil {
-            themeDelegate?.implementTheme(theme: themeSelected!)
-        }
+//MARK: - MVCDelegate
+
+extension ScoreBoardViewController: MVCDelegate {
+    func initializeMVCs(_ mvcArrangement: MVCArrangement) {
+        themeManager = mvcArrangement.themeManager
+        teamManager = mvcArrangement.teamManager
     }
-    
-    func recordTeamInfo(teamInfo: Team, refreshScreen: Bool) {
-        teamManager.recordTeamInfo(teamInfo: teamInfo)
-        if refreshScreen {
-            scoreBoardDelegate?.refreshScreen(reTransmit: false)
-        }
-    }
-    
+}
+
+extension ScoreBoardViewController: ScoreBoardViewControllerProtocol {
     func userFeedback(feedback: String) {
-        scoreBoardDelegate?.displayUserFeedback(feedback: feedback)
+        print("userFeedback: \(feedback)")
     }
     
-    func transmitData() {
-        let teamList = teamManager.fetchTeamList()
-        
-        if signInState == .signedIn {
-            print("transmitting data")
-            remoteControlTransmitter.transmitUpdatedScores(teamList: teamList)
-        }
-    }
-    
-    func setupRemoteTransmitter() {
-        print("setting up remote transmitter")
-        remoteControlTransmitter.delegate = remoteDelegate
-        remoteControlTransmitter.listenForUpdatedScores()
-    }
-    
+    // func refreshUIForTeams() is located above so it can be overwritten by scoreboard subclasses
+    // func refreshUIForTheme() is located above so it can be overwritten by scoreboard subclasses
 }

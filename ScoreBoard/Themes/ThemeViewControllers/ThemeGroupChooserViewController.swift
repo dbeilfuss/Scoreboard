@@ -10,13 +10,13 @@ import UIKit
 class ThemeGroupChooserViewController: UITableViewController {
     
     //MARK: - Variables
-    let themeGroups = ThemesDatabase().themeGroupsByName
+    let themeGroups = ThemeManager().themeGroupsByName
     var groupKeys: [String] {
         Array(themeGroups.keys).sorted()
     }
     var groupChosen: String?
     
-    var delegate: ThemeDisplayDelegate? = MainDisplayViewController()
+    var delegate: ThemeManagerProtocol?
     
     
     //MARK: - ViewDidLoad
@@ -74,7 +74,7 @@ class ThemeGroupChooserViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ThemeChooser" {
-            let destinationVC = segue.destination as! ThemeChooserViewController
+            let destinationVC = segue.destination as! ThemeSelectionViewController
             destinationVC.delegate = self.delegate
             if groupChosen != nil {
                 destinationVC.themeGroup = themeGroups[groupChosen!]
