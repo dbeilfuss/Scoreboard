@@ -8,17 +8,24 @@
 import UIKit
 
 class scoreboardUIButton: UIButton {
+    let constants = Constants()
+        
     var selfCanHide: Bool = true
     var scoreBoardState: ScoreboardState = Constants().defaultScoreboardState
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .none
     }
     
     func setupButton(state: ScoreboardState) {
         scoreBoardState = state
+        if constants.printThemeFlow {
+            print("state: \(scoreBoardState), background: \(self.backgroundColor) tint: \(String(describing: self.tintColor)), file: \(#fileID)")
+        }
         
         // Theme
+        self.tintAdjustmentMode = .normal //to prevent the button reverting to the default tint color
         let theme = ThemeManager().fetchTheme(named: state.themeName)
         theme.format(button: self)
         

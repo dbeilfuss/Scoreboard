@@ -312,7 +312,7 @@
                                     <constraint firstAttribute="width" secondItem="BJj-c6-ERR" secondAttribute="height" multiplier="1:1" id="dcT-Zm-b7I"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Living Room ScoreBoard" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GH0-x1-MfN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Living Room Scoreboard" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GH0-x1-MfN">
                                 <rect key="frame" x="80" y="104" width="944" height="45.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="39"/>
                                 <nil key="textColor"/>
@@ -1163,16 +1163,16 @@ You must be signed in to the same account on two devices to use this feature.
             <objects>
                 <viewController id="OoR-Dh-MhG" customClass="Remotev2ViewController" customModule="ScoreBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gMS-2j-p6e">
-                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gvH-jI-poV">
-                                <rect key="frame" x="0.0" y="137" width="580" height="428"/>
+                                <rect key="frame" x="0.0" y="137" width="1180" height="608"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" systemColor="labelColor"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Z2f-Mi-gT2">
-                                <rect key="frame" x="216" y="20" width="148.5" height="47"/>
+                                <rect key="frame" x="516" y="20" width="148.5" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remote Control" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="col-Ai-SSD" userLabel="Remote Control Label">
                                         <rect key="frame" x="0.0" y="0.0" width="148.5" height="26.5"/>
@@ -1189,7 +1189,7 @@ You must be signed in to the same account on two devices to use this feature.
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vRU-PJ-2xL" userLabel="Points Increment Buttons">
-                                <rect key="frame" x="160" y="92.5" width="400" height="34.5"/>
+                                <rect key="frame" x="760" y="92.5" width="400" height="34.5"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvQ-3R-kle">
                                         <rect key="frame" x="0.0" y="0.0" width="92.5" height="34.5"/>
@@ -1237,7 +1237,7 @@ You must be signed in to the same account on two devices to use this feature.
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ebN-8p-zjv" userLabel="Bottom Buttons">
-                                <rect key="frame" x="140" y="585.5" width="300" height="34.5"/>
+                                <rect key="frame" x="440" y="765.5" width="300" height="34.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sl-V7-P2z" userLabel="Reset">
                                         <rect key="frame" x="0.0" y="0.0" width="86.5" height="34.5"/>
@@ -1761,9 +1761,9 @@ You must be signed in to the same account on two devices to use this feature.
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Thh-Nd-ohM"/>
-        <segue reference="E4h-m6-9Ek"/>
-        <segue reference="Exm-A5-KlG"/>
+        <segue reference="20Q-QW-Ta8"/>
+        <segue reference="gM8-3E-N2R"/>
+        <segue reference="9Vs-2a-2Mr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BackgroundDark" width="750" height="1334"/>

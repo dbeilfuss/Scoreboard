@@ -210,10 +210,6 @@
 				77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */,
 				77B0D993293AC9DA00E2BEB0 /* TeamManager.swift */,
 				77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */,
-				7776DDE42BF64154008E9C65 /* TeamView.xib */,
-				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
-				77B024692956336E0017C542 /* RemoteTeamViewCell.swift */,
-				77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -223,6 +219,8 @@
 			children = (
 				77239FE62952872700569AB9 /* RemoteViewController.swift */,
 				77E238512981E6F80069A260 /* Remotev2ViewController.swift */,
+				77B024692956336E0017C542 /* RemoteTeamViewCell.swift */,
+				77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */,
 			);
 			path = RemoteControl;
 			sourceTree = "<group>";
@@ -261,13 +259,14 @@
 			path = DataStorage;
 			sourceTree = "<group>";
 		};
-		7754E9052986F78F006CE85A /* ScoreBoard */ = {
+		7754E9052986F78F006CE85A /* ScoreBoards */ = {
 			isa = PBXGroup;
 			children = (
 				7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */,
-				77B11161293AB78E00553E37 /* MainDisplayViewController.swift */,
+				77BC5D622C225CE600395390 /* MainDisplay */,
+				770F39AD2C11329C00B1C820 /* RemoteControl */,
 			);
-			path = ScoreBoard;
+			path = ScoreBoards;
 			sourceTree = "<group>";
 		};
 		7754E90629888CB6006CE85A /* Fonts */ = {
@@ -363,10 +362,9 @@
 				771913DE2C1BC7CF00BA2D9F /* DataStorage */,
 				770F39AB2C112F8C00B1C820 /* CustomDataTypes */,
 				77BF4D492C0D371E0059AF35 /* Buttons */,
-				7754E9052986F78F006CE85A /* ScoreBoard */,
+				7754E9052986F78F006CE85A /* ScoreBoards */,
 				770F39AC2C112FC800B1C820 /* Teams */,
 				7790E832295CAEEA00DC5D6B /* Themes */,
-				770F39AD2C11329C00B1C820 /* RemoteControl */,
 				7790E835295DD45300DC5D6B /* SignIn */,
 				77B0D991293AC99200E2BEB0 /* WelcomeScreen */,
 				77B11166293AB78F00553E37 /* Assets.xcassets */,
@@ -374,6 +372,16 @@
 				77239FEB2954A9C900569AB9 /* GoogleService-Info.plist */,
 			);
 			path = ScoreBoard;
+			sourceTree = "<group>";
+		};
+		77BC5D622C225CE600395390 /* MainDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				77B11161293AB78E00553E37 /* MainDisplayViewController.swift */,
+				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
+				7776DDE42BF64154008E9C65 /* TeamView.xib */,
+			);
+			path = MainDisplay;
 			sourceTree = "<group>";
 		};
 		77BF4D492C0D371E0059AF35 /* Buttons */ = {
@@ -734,7 +742,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreBoard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Living Room Scoreboard";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -746,11 +754,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DanielB.Score;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -768,7 +776,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreBoard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Living Room Scoreboard";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -780,11 +788,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DanielB.Score;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

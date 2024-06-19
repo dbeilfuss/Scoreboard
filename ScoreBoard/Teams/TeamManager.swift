@@ -55,9 +55,9 @@ class TeamManager {
         saveTeamsToDataStorage(dataSource: .local)
     }
     
-    func resetScores(resetScoreValue: Int) {
+    func resetScores() {
         for i in 0...teamList.count - 1 {
-            teamList[i].score = resetScoreValue
+            teamList[i].score = 0
         }
         saveTeamsToDataStorage(dataSource: .local)
     }

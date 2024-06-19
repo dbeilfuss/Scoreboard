@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="iPad13_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +14,65 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1376" height="1032"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundDark" translatesAutoresizingMaskIntoConstraints="NO" id="FhA-RV-fmw">
+                                <rect key="frame" x="0.0" y="-35" width="1376" height="1102"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="OgT-d6-nS3">
+                                <rect key="frame" x="116.5" y="74" width="1143" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="1Ud-eC-Xh3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="44W-eT-Jgq" userLabel="Title Label">
+                                <rect key="frame" x="0.0" y="270" width="1376" height="91"/>
+                                <string key="text">Living Room
+Scoreboard</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="39"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kqi-al-jyc" userLabel="Loading Label">
+                                <rect key="frame" x="0.0" y="921" width="1376" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="5id-rk-v5Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="39"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="44W-eT-Jgq" firstAttribute="trailing" secondItem="kqi-al-jyc" secondAttribute="trailing" id="9rU-da-B17"/>
+                            <constraint firstItem="OgT-d6-nS3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="BFd-GD-dKV"/>
+                            <constraint firstItem="OgT-d6-nS3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="116.66666666666669" id="KIm-RA-yhs"/>
+                            <constraint firstItem="FhA-RV-fmw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="S8e-zN-V0i"/>
+                            <constraint firstItem="44W-eT-Jgq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VHQ-OA-CdP"/>
+                            <constraint firstItem="FhA-RV-fmw" firstAttribute="leading" secondItem="kqi-al-jyc" secondAttribute="leading" id="Wh4-1g-Hnr"/>
+                            <constraint firstItem="FhA-RV-fmw" firstAttribute="trailing" secondItem="kqi-al-jyc" secondAttribute="trailing" id="Y5J-aC-7ON"/>
+                            <constraint firstItem="OgT-d6-nS3" firstAttribute="centerX" secondItem="44W-eT-Jgq" secondAttribute="centerX" id="bJ1-7s-qCT"/>
+                            <constraint firstItem="FhA-RV-fmw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cyS-xl-0Tp"/>
+                            <constraint firstItem="44W-eT-Jgq" firstAttribute="top" secondItem="OgT-d6-nS3" secondAttribute="bottom" constant="36" id="ikF-Wk-IhH"/>
+                            <constraint firstItem="FhA-RV-fmw" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-59" id="kCL-Vc-jD6"/>
+                            <constraint firstItem="kqi-al-jyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mCr-wA-78k"/>
+                            <constraint firstItem="44W-eT-Jgq" firstAttribute="leading" secondItem="kqi-al-jyc" secondAttribute="leading" id="mZh-C1-k4n"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackgroundDark" width="750" height="1334"/>
+        <image name="IconRounded" width="1024" height="1024"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

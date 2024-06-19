@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum SpecializedTheme {
+    case remote
+}
+
 class ThemeManager {
     private let constants = Constants()
     private var databaseManager: DataStorageManagerProtocol?
@@ -84,16 +88,6 @@ class ThemeManager {
             return constants.defaultTheme
         }
     }
-    
-    func fetchActiveTheme() -> Theme {
-        if !themeDataIsRetrieved {
-            fetchThemeFromDataStorage()
-        }
-        if constants.printThemeFlow {
-            print("ActiveTheme: \(activeTheme.name), File: \(#fileID)")
-        }
-        return activeTheme
-    }
 
     func saveTheme(named themeName: String, dataSource: DataSource) {
         if constants.printThemeFlow {
@@ -103,7 +97,10 @@ class ThemeManager {
         
         let theme = fetchTheme(named: themeName)
         activeTheme = theme
-//        print("Setting ActiveTheme: \(theme.name), File: \(#fileID)")
+        
+        if constants.printThemeFlow {
+            print("Setting ActiveTheme: \(theme.name), File: \(#fileID)")
+        }
     }
     
     //MARK: - ScoreboardState
@@ -131,20 +128,46 @@ extension ThemeManager: MVCDelegate {
 }
 
 extension ThemeManager: ThemeManagerProtocol {
+    
+    //MARK: - Themes
+    func refreshData() {
+        if constants.printThemeFlow {
+            print("refreshing theme data, \(#fileID)")
+        }
+        
+        themeDataIsRetrieved = false
+        activeTheme = fetchActiveTheme()
+        viewController?.refreshUIForTheme()
+    }
+    
+    func fetchActiveTheme() -> Theme {
+        if !themeDataIsRetrieved {
+            fetchThemeFromDataStorage()
+        }
+        if constants.printThemeFlow {
+            print("ActiveTheme: \(activeTheme.name), File: \(#fileID)")
+        }
+        return activeTheme
+    }
+    
     func implementTheme(named themeName: String, dataSource: DataSource) {
         // For use when a new theme has been chosen
         saveTheme(named: themeName, dataSource: dataSource)
         viewController?.refreshUIForTheme()
     }
     
-    
-    func savePointIncrement(_ pointIncrement: Double) {
-        databaseManager?.savePointIncrement(pointIncrement)
+    func fetchSpecializedTheme(ofType themeType: SpecializedTheme) -> Theme {
+        var customTheme: Theme
+        
+        switch themeType {
+        case .remote:
+            customTheme = RemoteControlTheme().theme
+        }
+        
+        return customTheme
     }
-    
-    func toggleUIIsHidden() {
-        databaseManager?.toggleUIIsHidden()
-    }
+
+    //MARK: - Scoreboard State
     
     func fetchScoreboardState() -> ScoreboardState {
         if let scoreboardState = databaseManager?.loadScoreboardState() {
@@ -155,11 +178,12 @@ extension ThemeManager: ThemeManagerProtocol {
         }
     }
     
-    func refreshData() {
-//        print("refreshing theme data, \(#fileID)")
-        themeDataIsRetrieved = false
-        activeTheme = fetchActiveTheme()
-        viewController?.refreshUIForTheme()
+    func toggleUIIsHidden() {
+        databaseManager?.toggleUIIsHidden()
+    }
+    
+    func savePointIncrement(_ pointIncrement: Double) {
+        databaseManager?.savePointIncrement(pointIncrement)
     }
     
 }

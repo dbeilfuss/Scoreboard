@@ -16,6 +16,28 @@ class DataStorageManager {
     var teamManager: TeamManagerProtocol?
     var themeManager: ThemeManagerProtocol?
     
+}
+
+//MARK: - Extensions
+
+extension DataStorageManager: MVCDelegate {
+    func initializeMVCs(_ mvcArrangement: MVCArrangement) {
+        teamManager = mvcArrangement.teamManager
+        themeManager = mvcArrangement.themeManager
+        
+        if teamManager == nil || themeManager == nil {
+            print("failed to initializeMVCs: \(#fileID)")
+        } else {
+            print("initializeMVCs successful: \(#fileID)")
+        }
+        
+        // Cloud Storage
+        cloudDataStorageManager = RemoteControlTransmitter(teamManager: mvcArrangement.teamManager, themeManager: mvcArrangement.themeManager, viewController: mvcArrangement.scoreboardViewController)
+    }
+}
+
+extension DataStorageManager: DataStorageManagerProtocol {
+    
     //MARK: - Teams
     
     func saveTeams(_ teams: [Team], dataSource: DataSource) {
@@ -53,18 +75,47 @@ class DataStorageManager {
         return nil
     }
     
-//    func updateTeam(_ updatedTeam: Team) {
-//        var teams = loadTeams() ?? []
-//        if let index = teams.firstIndex(where: { $0.number == updatedTeam.number }) {
-//            teams[index] = updatedTeam
-//        } else {
-//            teams.append(updatedTeam)
-//        }
-//        saveTeams(teams)
-//    }
+    //MARK: - Themes
+    func implementTheme(named themeName: String, dataSource: DataSource) {
+        if constants.printThemeFlow {
+            print("Implementing Theme: \(themeName), File: \(#fileID)")
+        }
+        saveTheme(named: themeName)
+        themeManager?.refreshData()
+        
+        if dataSource == .local {
+            cloudDataStorageManager?.saveTheme(named: themeName)
+        }
+        
+        func saveTheme(named theme: String) {
+            if constants.printThemeFlow {
+                print("Saving Theme: \(theme), File: \(#fileID)")
+            }
+            var scoreboardState = loadScoreboardState()
+            scoreboardState.themeName = theme
+            saveScoreboardState(scoreboardState)
+        }
+        
+    }
+
     
-    //MARK: - UI
-    
+    //MARK: - State
+    func loadScoreboardState() -> ScoreboardState {
+        let defaults = UserDefaults.standard
+        let key = constants.scoreboardStateKey
+        
+        if let savedData = defaults.data(forKey: key) {
+            if let decodedTeams = try? JSONDecoder().decode(ScoreboardState.self, from: savedData) {
+                return decodedTeams
+            } else {
+                print("Failed to decode scoreboardState. File: \(#fileID), Func: \(#function)")
+            }
+        } else {
+            print("No data found for key: \(key)")
+        }
+        return constants.defaultScoreboardState
+    }
+        
     private func saveScoreboardState(_ state: ScoreboardState) {
         let defaults = UserDefaults.standard
         let key = constants.scoreboardStateKey
@@ -83,20 +134,11 @@ class DataStorageManager {
         }
     }
     
-    func loadScoreboardState() -> ScoreboardState {
-        let defaults = UserDefaults.standard
-        let key = constants.scoreboardStateKey
+    func savePointIncrement(_ pointIncrement: Double) {
+        var scoreboardState = loadScoreboardState()
         
-        if let savedData = defaults.data(forKey: key) {
-            if let decodedTeams = try? JSONDecoder().decode(ScoreboardState.self, from: savedData) {
-                return decodedTeams
-            } else {
-                print("Failed to decode scoreboardState. File: \(#fileID), Func: \(#function)")
-            }
-        } else {
-            print("No data found for key: \(key)")
-        }
-        return constants.defaultScoreboardState
+        scoreboardState.pointIncrement = pointIncrement
+        saveScoreboardState(scoreboardState)
     }
     
     func toggleUIIsHidden() {
@@ -105,58 +147,6 @@ class DataStorageManager {
         scoreboardState.uiIsHidden = !scoreboardState.uiIsHidden
         saveScoreboardState(scoreboardState)
     }
-    
-    func savePointIncrement(_ pointIncrement: Double) {
-        var scoreboardState = loadScoreboardState()
-        
-        scoreboardState.pointIncrement = pointIncrement
-        saveScoreboardState(scoreboardState)
-    }
-        
-}
 
-//MARK: - Extensions
-
-extension DataStorageManager: MVCDelegate {
-    func initializeMVCs(_ mvcArrangement: MVCArrangement) {
-        teamManager = mvcArrangement.teamManager
-        themeManager = mvcArrangement.themeManager
-        
-        if teamManager == nil || themeManager == nil {
-            print("failed to initializeMVCs: \(#fileID)")
-        } else {
-            print("initializeMVCs successful: \(#fileID)")
-        }
-        
-        // Cloud Storage
-        cloudDataStorageManager = RemoteControlTransmitter(teamManager: mvcArrangement.teamManager, themeManager: mvcArrangement.themeManager, viewController: mvcArrangement.scoreboardViewController)
-    }
-}
-
-extension DataStorageManager: DataStorageManagerProtocol {
-    func implementTheme(named themeName: String, dataSource: DataSource) {
-        if constants.printThemeFlow {
-            print("Implementing Theme: \(themeName), File: \(#fileID)")
-        }
-        saveTheme(named: themeName)
-        themeManager?.refreshData()
-        
-        if dataSource == .local {
-            cloudDataStorageManager?.saveTheme(named: themeName)
-        }
-    }
-    
-    func saveTheme(named theme: String) {
-        if constants.printThemeFlow {
-            print("Saving Theme: \(theme), File: \(#fileID)")
-        }
-        var scoreboardState = loadScoreboardState()
-        scoreboardState.themeName = theme
-        saveScoreboardState(scoreboardState)
-    }
-//    
-//    func recordTeamInfo(teamInfo: Team) {
-//        teamManager?.saveTeam(teamInfo, datasource: .cloud)
-//    }
     
 }

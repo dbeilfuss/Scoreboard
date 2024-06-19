@@ -20,7 +20,7 @@ class ResetViewController: UIViewController {
     @IBOutlet weak var stackViewTop: NSLayoutConstraint!
     
     //MARK: - Delegation
-    var delegate: ResetDelegate?
+    var teamManager: TeamManagerProtocol?
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -40,13 +40,13 @@ class ResetViewController: UIViewController {
     }
     
     @IBAction func resetScoresPressed(_ sender: Any) {
-        delegate?.resetScores()
+        teamManager?.resetScores()
         self.dismiss(animated: true)
     }
     
     
     @IBAction func resetNamesPressed(_ sender: UIButton) {
-        delegate?.resetTeamNames()
+        teamManager?.resetTeamNames()
         self.dismiss(animated: true)
     }
     

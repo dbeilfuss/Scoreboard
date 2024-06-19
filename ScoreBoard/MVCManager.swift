@@ -27,7 +27,7 @@ protocol TeamManagerProtocol {
     // Reset
     func resetTeams()
     func resetTeamNames()
-    func resetScores(resetScoreValue: Int)
+    func resetScores()
     
     // Fetch
     func fetchTeamList() -> [Team]
@@ -50,6 +50,7 @@ protocol ThemeManagerProtocol {
     func refreshData()
     func fetchActiveTheme() -> Theme
     func implementTheme(named themeName: String, dataSource: DataSource)
+    func fetchSpecializedTheme(ofType: SpecializedTheme) -> Theme
     
     // Scoreboard State
     func fetchScoreboardState() -> ScoreboardState
@@ -65,12 +66,12 @@ protocol DataStorageManagerProtocol {
     
     // Themes
     func implementTheme(named themeName: String, dataSource: DataSource)
-    func saveTheme(named theme: String)
+//    func saveTheme(named theme: String)
     
     // State
     func loadScoreboardState() -> ScoreboardState
-    func toggleUIIsHidden()
     func savePointIncrement(_ pointIncrement: Double)
+    func toggleUIIsHidden()
 
 }
 
