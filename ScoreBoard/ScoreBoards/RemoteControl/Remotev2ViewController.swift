@@ -126,12 +126,14 @@ class Remotev2ViewController: ScoreBoardViewController {
     override func refreshUIForTheme() {
         let theme = fetchTheme()
 
+        // Force DarkMode
         if theme.darkMode {
             self.overrideUserInterfaceStyle = .dark
         } else {
             self.overrideUserInterfaceStyle = .light
         }
         
+        // Format Buttons
         let allButtons: [UIButton] = controlButtonsArray + incrementButtonsArray
         for button in allButtons {
             theme.format(button: button)
@@ -181,8 +183,8 @@ class Remotev2ViewController: ScoreBoardViewController {
     }
     
     /// Reset Function: Triggered by ResetViewController
-    override func resetScores() {
-        super.resetScores()
+    func resetScores() { // Can Deprecate?
+        teamManager.resetScores()
         refreshScreen()
     }
     
@@ -234,18 +236,18 @@ extension Remotev2ViewController: UITableViewDataSource {
 //MARK: - Team Cell Delegate
 extension Remotev2ViewController: TeamCellDelegate {
     func updateName(newName: String, teamIndex: Int) {
-        setTeamName(newName: newName, teamIndex: teamIndex)
+        teamManager.updateTeamName(teamNumber: teamIndex + 1, name: newName)
         refreshUIForTeams()
     }
     
     func updateScore(newScore: Int, teamIndex: Int) {
-        replaceScore(teamNumber: teamIndex + 1, newScore: newScore)
+        teamManager.replaceScore(teamNumber: teamIndex + 1, newScore: newScore)
         refreshUIForTeams()
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {
         print("updating isActive status for team \(teamIndex + 1), \(isActive)")
-        setIsActive(isActive: isActive, teamIndex: teamIndex)
+        teamManager.updateTeamIsActive(teamNumber: teamIndex + 1, isActive: isActive)
         refreshUIForTeams()
     }
     

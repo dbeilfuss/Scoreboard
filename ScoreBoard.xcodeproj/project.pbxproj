@@ -299,14 +299,14 @@
 		7790E832295CAEEA00DC5D6B /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				7790E82C295C06A600DC5D6B /* Theme.swift */,
+				77CEA6FD297CA9F800E853DC /* ThemeManager.swift */,
 				7754E90629888CB6006CE85A /* Fonts */,
 				77BF4D4C2C0D3FE40059AF35 /* ThemeCollections */,
 				77CEA704297DDFE700E853DC /* ThemeViewControllers */,
 				77CEA709297EF01C00E853DC /* ThemePreviewCell.swift */,
 				77CEA70A297EF01C00E853DC /* ThemePreviewCell.xib */,
 				77952A062995599400BC0354 /* TeamTextSizeStruct.swift */,
-				7790E82C295C06A600DC5D6B /* Theme.swift */,
-				77CEA6FD297CA9F800E853DC /* ThemeManager.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";

@@ -53,5 +53,5 @@ struct Constants {
     let printTeamFlow = false
     let printTeamFlowDetailed = false
     let printThemeFlow = false
-    let printStateFlow = false
+    let printStateFlow = true
 }

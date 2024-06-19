@@ -319,8 +319,8 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     /// Reset Function: Triggered by ResetViewController
-    override func resetScores() {
-        super.resetScores()
+    func resetScores() {
+        teamManager.resetScores()
         refreshScreen(reTransmit: true)
     }
     
@@ -395,17 +395,17 @@ extension ScoreBoardViewController: MVCDelegate {
 extension MainDisplayViewController: TeamCellDelegate {
     
     func updateScore(newScore: Int, teamIndex: Int) {
-        replaceScore(teamNumber: teamIndex, newScore: newScore)
+        teamManager.replaceScore(teamNumber: teamIndex, newScore: newScore)
         refreshTeamViews()
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {
-        setIsActive(isActive: isActive, teamIndex: teamIndex)
+        teamManager.updateTeamIsActive(teamNumber: teamIndex + 1, isActive: isActive)
         refreshTeamViews()
     }
     
     func updateName(newName: String, teamIndex: Int) {
-        setTeamName(newName: newName, teamIndex: teamIndex)
+        teamManager.updateTeamName(teamNumber: teamIndex + 1, name: newName)
         refreshTeamViews()
     }
     
