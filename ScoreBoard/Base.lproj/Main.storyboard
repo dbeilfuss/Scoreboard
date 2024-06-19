@@ -305,7 +305,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundDark" translatesAutoresizingMaskIntoConstraints="NO" id="hv3-5Q-mKl">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="810"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconImage" translatesAutoresizingMaskIntoConstraints="NO" id="BJj-c6-ERR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconRounded" translatesAutoresizingMaskIntoConstraints="NO" id="BJj-c6-ERR">
                                 <rect key="frame" x="80" y="104" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="PoX-jm-6BT"/>
@@ -339,7 +339,7 @@
                                     <constraint firstAttribute="height" constant="1" id="ua7-EA-Pwu"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qO6-YV-GKC" userLabel="bottomViewNarrow">
+                            <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qO6-YV-GKC" userLabel="bottomViewNarrow - use with multiple buttons">
                                 <rect key="frame" x="589.5" y="755" width="1" height="40"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -353,12 +353,13 @@
                                 <subviews>
                                     <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiA-wJ-5UE">
                                         <rect key="frame" x="0.0" y="0.0" width="590" height="34.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="gear" catalog="system" title="Settings" imagePadding="10"/>
                                     </button>
                                     <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zce-ml-fjB">
-                                        <rect key="frame" x="590" y="0.0" width="590" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1180" height="34.5"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="person.circle" catalog="system" title="Sign In" imagePadding="10"/>
@@ -367,6 +368,11 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="AiA-wJ-5UE"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Feedback Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mb-ig-JQs" userLabel="User Feedback Label">
                                 <rect key="frame" x="509.5" y="718.5" width="161" height="20.5"/>
@@ -404,6 +410,11 @@
                             <constraint firstItem="2j1-Mj-tZP" firstAttribute="leading" secondItem="uh7-IT-UHO" secondAttribute="leading" constant="80" id="zcU-Cw-ZDQ"/>
                             <constraint firstItem="GH0-x1-MfN" firstAttribute="width" secondItem="uh7-IT-UHO" secondAttribute="width" multiplier="0.8" id="zdi-ze-f2X"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="qO6-YV-GKC"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ZJc-6U-vKB"/>
                     <connections>
@@ -1769,6 +1780,7 @@ You must be signed in to the same account on two devices to use this feature.
         <image name="BackgroundDark" width="750" height="1334"/>
         <image name="BusyBackgroundDark" width="750" height="1334"/>
         <image name="IconImage" width="108" height="113.5"/>
+        <image name="IconRounded" width="1024" height="1024"/>
         <image name="TrainBridge" width="3472" height="1536"/>
         <image name="appletvremote.gen1" catalog="system" width="80" height="128"/>
         <image name="arrow.left" catalog="system" width="128" height="95"/>

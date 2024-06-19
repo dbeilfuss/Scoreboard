@@ -60,19 +60,17 @@ protocol ThemeManagerProtocol {
 
 protocol DataStorageManagerProtocol {
     // Teams
-//    func recordTeamInfo(teamInfo: Team)
     func loadTeams() -> [Team]?
     func saveTeams(_ teams: [Team], dataSource: DataSource)
     
     // Themes
     func implementTheme(named themeName: String, dataSource: DataSource)
-//    func saveTheme(named theme: String)
     
     // State
     func loadScoreboardState() -> ScoreboardState
     func savePointIncrement(_ pointIncrement: Double)
     func toggleUIIsHidden()
-
+    
 }
 
 struct MVCArrangement {

@@ -98,7 +98,7 @@ class WelcomeViewController: UIViewController {
         appIconWidth.constant = constraintFactor * 2
         
         /// Make App Icon a Circle
-        appIcon.layer.cornerRadius = constraintFactor
+//        appIcon.layer.cornerRadius = constraintFactor  // Deprecated with new app icon
         
         /// Table Constraints
         tableViewTop.constant = constraintFactor / 2
