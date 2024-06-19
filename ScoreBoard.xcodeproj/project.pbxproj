@@ -41,7 +41,7 @@
 		7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91929888CCD006CE85A /* Rubik-Bold.ttf */; };
 		7776DDE52BF64154008E9C65 /* TeamView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7776DDE42BF64154008E9C65 /* TeamView.xib */; };
 		7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776DDE62BF642EA008E9C65 /* TeamView.swift */; };
-		778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */; };
+		778484FF2956116E004A3B32 /* RemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteDataManager.swift */; };
 		7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */; };
 		7790E82D295C06A600DC5D6B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82C295C06A600DC5D6B /* Theme.swift */; };
 		7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */; };
@@ -126,7 +126,7 @@
 		7754E91929888CCD006CE85A /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		7776DDE42BF64154008E9C65 /* TeamView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamView.xib; sourceTree = "<group>"; };
 		7776DDE62BF642EA008E9C65 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
-		778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTransmitter.swift; sourceTree = "<group>"; };
+		778484FE2956116E004A3B32 /* RemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataManager.swift; sourceTree = "<group>"; };
 		7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
 		7790E82C295C06A600DC5D6B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTheme.swift; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				771913D92C1738C000BA2D9F /* DataStorageManager.swift */,
-				778484FE2956116E004A3B32 /* RemoteControlTransmitter.swift */,
+				778484FE2956116E004A3B32 /* RemoteDataManager.swift */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -587,7 +587,7 @@
 				77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */,
 				77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */,
 				77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */,
-				778484FF2956116E004A3B32 /* RemoteControlTransmitter.swift in Sources */,
+				778484FF2956116E004A3B32 /* RemoteDataManager.swift in Sources */,
 				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
 				771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */,
 				77D98FCC297AF34300927949 /* FractalLandscapeBlue1.swift in Sources */,

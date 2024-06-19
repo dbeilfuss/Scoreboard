@@ -23,10 +23,10 @@ class ScoreBoardViewController: UIViewController {
     var signInState: SignInState = .notSignedIn
     
     lazy var mvcArrangement = MVCArrangement(
+        databaseManager: DataStorageManager(),
         scoreboardViewController: self,
         teamManager: TeamManager(),
-        themeManager: ThemeManager(),
-        databaseManager: DataStorageManager()
+        themeManager: ThemeManager()
     )
     
     //MARK: - ViewDidLoad

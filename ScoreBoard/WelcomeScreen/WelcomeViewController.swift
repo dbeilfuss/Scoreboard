@@ -140,9 +140,9 @@ class WelcomeViewController: UIViewController {
                 DestinationVC.signOutMode = true
             }
         } else if segue.identifier == "welcomeToSignOut" {
-            let DestinationVC = segue.destination as! SignOutViewController
+            _ = segue.destination as! SignOutViewController
         } else if (segue.identifier == "welcomeToScoreboard") || (segue.identifier == "welcomeToRemote") {
-            let DestinationVC = segue.destination as! ScoreBoardViewController
+            _ = segue.destination as! ScoreBoardViewController
         }
     }
     
@@ -187,7 +187,6 @@ extension WelcomeViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             performSegue(withIdentifier: "welcomeToScoreboard", sender: self)
         } else if indexPath.row == 1 {
-            
             performSegue(withIdentifier: "welcomeToRemote", sender: self)
         }
     }

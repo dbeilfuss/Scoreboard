@@ -11,7 +11,7 @@ import Firebase
 class DataStorageManager {
     
     let constants = Constants()
-    var cloudDataStorageManager: CloudDataStorageManagerProtocol?
+    var remoteDataManager: RemoteDataManagerProtocol?
     
     var teamManager: TeamManagerProtocol?
     var themeManager: ThemeManagerProtocol?
@@ -32,7 +32,7 @@ extension DataStorageManager: MVCDelegate {
         }
         
         // Cloud Storage
-        cloudDataStorageManager = RemoteControlTransmitter(teamManager: mvcArrangement.teamManager, themeManager: mvcArrangement.themeManager, viewController: mvcArrangement.scoreboardViewController)
+        remoteDataManager = RemoteDataManager(teamManager: mvcArrangement.teamManager, themeManager: mvcArrangement.themeManager, viewController: mvcArrangement.scoreboardViewController)
     }
 }
 
@@ -44,11 +44,17 @@ extension DataStorageManager: DataStorageManagerProtocol {
         let defaults = UserDefaults.standard
         let key = constants.teamCollectionKey
         
-        if let encoded = try? JSONEncoder().encode(teams) {
-            defaults.set(encoded, forKey: key)
+        if let encodedTeamData = try? JSONEncoder().encode(teams) {
+            if constants.printTeamFlow {
+                print("saving Teams to local storage, \(#fileID)")
+            }
+            defaults.set(encodedTeamData, forKey: key)
             
             if dataSource == .local {
-                cloudDataStorageManager?.saveTeams(teams, dataSource: dataSource)
+                if constants.printTeamFlow {
+                    print("saving Teams to remote storage, \(#fileID)")
+                }
+                remoteDataManager?.saveTeams(teams, dataSource: dataSource)
                 if constants.printTeamFlow {
                     print("Teams saved successfully, file: \(#fileID).")
                 }
@@ -67,35 +73,38 @@ extension DataStorageManager: DataStorageManagerProtocol {
             if let decodedTeams = try? JSONDecoder().decode([Team].self, from: savedData) {
                 return decodedTeams
             } else {
-                print("Failed to decode teams.")
+                print("⛔️ Failed to decode teams. File: \(#fileID)")
             }
         } else {
-            print("No data found for key: \(key)")
+            print("⛔️ No data found for key: \(key). File: \(#fileID)")
         }
         return nil
     }
     
     //MARK: - Themes
-    func implementTheme(named themeName: String, dataSource: DataSource) {
+//    func implementTheme(named themeName: String, dataSource: DataSource) {
+//        if constants.printThemeFlow {
+//            print("Implementing Theme: \(themeName), File: \(#fileID)")
+//        }
+//        saveTheme(named: themeName)
+////        themeManager?.refreshData()
+//        
+//        if dataSource == .local { // Can deprecate conditional? Used in remoteDataStorageManager already?
+//            remoteDataManager?.saveTheme(named: themeName, dataSource: dataSource)
+//        }
+//        
+//    }
+    
+    func saveTheme(named themeName: String, dataSource: DataSource) {
         if constants.printThemeFlow {
-            print("Implementing Theme: \(themeName), File: \(#fileID)")
-        }
-        saveTheme(named: themeName)
-        themeManager?.refreshData()
-        
-        if dataSource == .local {
-            cloudDataStorageManager?.saveTheme(named: themeName)
+            print("Saving Theme: \(themeName), File: \(#fileID)")
         }
         
-        func saveTheme(named theme: String) {
-            if constants.printThemeFlow {
-                print("Saving Theme: \(theme), File: \(#fileID)")
-            }
-            var scoreboardState = loadScoreboardState()
-            scoreboardState.themeName = theme
-            saveScoreboardState(scoreboardState)
-        }
+        var scoreboardState = loadScoreboardState()
+        scoreboardState.themeName = themeName
+        saveScoreboardState(scoreboardState)
         
+        remoteDataManager?.saveTheme(named: themeName, dataSource: dataSource)
     }
 
     
@@ -105,13 +114,13 @@ extension DataStorageManager: DataStorageManagerProtocol {
         let key = constants.scoreboardStateKey
         
         if let savedData = defaults.data(forKey: key) {
-            if let decodedTeams = try? JSONDecoder().decode(ScoreboardState.self, from: savedData) {
-                return decodedTeams
+            if let decodedState = try? JSONDecoder().decode(ScoreboardState.self, from: savedData) {
+                return decodedState
             } else {
-                print("Failed to decode scoreboardState. File: \(#fileID), Func: \(#function)")
+                print("⛔️ Failed to decode scoreboardState. File: \(#fileID)")
             }
         } else {
-            print("No data found for key: \(key)")
+            print("⛔️ No data found for key: \(key), File: \(#fileID)")
         }
         return constants.defaultScoreboardState
     }

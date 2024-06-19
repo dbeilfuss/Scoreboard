@@ -9,14 +9,13 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-protocol CloudDataStorageManagerProtocol {
-//    func initialize(teamManager: TeamManagerProtocol,themeManager: ThemeManagerProtocol)
+protocol RemoteDataManagerProtocol {
     func saveTeams(_: [Team], dataSource: DataSource)
-    func saveTheme(named: String)
+    func saveTheme(named: String, dataSource: DataSource)
     func listenForUpdates()
 }
 
-class RemoteControlTransmitter {
+class RemoteDataManager {
     
     //MARK: - Variables
     var thisTeam: Team?
@@ -56,6 +55,10 @@ class RemoteControlTransmitter {
     //MARK: - Sending Theme to FireStore
     private func transmitTheme(themeName: String) {
         
+        if constants.printThemeFlow {
+            print("transmitting Theme: \(themeName), \(#fileID)")
+        }
+        
             if let user: User = Auth.auth().currentUser {
                 
                 self.db.collection(user.email!).document("Theme").setData([
@@ -68,15 +71,13 @@ class RemoteControlTransmitter {
                         print("Error transmitting theme - \(#fileID)")
                         print(self.errorSending)
                         self.viewController.userFeedback(feedback: err.localizedDescription)
-                    } else {
-                        print("transmitting Theme - \(#fileID)")
                     }
                 }
             }
     }
 
     //MARK: - Sending Scores to FireStore
-        func transmitUpdatedScores(teamList: [Team]) {
+        func transmitTeamList(teamList: [Team]) {
             
             var i = 0
                 
@@ -119,6 +120,8 @@ class RemoteControlTransmitter {
                     } else {
                         if let snapshotDocs = querySnapshot?.documents {
                             
+                            print("firebase documents: \(snapshotDocs)")
+                            
                             // docsCount: used for determining when to signal refresh of screen
                             let docsCount = snapshotDocs.count - 1
                             
@@ -149,14 +152,22 @@ class RemoteControlTransmitter {
                                                 }
                                             }
                                         }
-                                        
-                                        // Extract Theme Data
-                                    } else if doc[self.typeText] as! String == "theme" {
+                                    } else
+                                    
+                                    // Extract Theme Data
+                                    if doc[self.typeText] as! String == "theme" {
                                         let themeName = doc[self.nameText] as! String
-                                        print("Theme Received: \(themeName), File: \(#fileID)")
-                                        self.themeManager.implementTheme(named: themeName, dataSource: .cloud)
+
+                                        if self.constants.printTeamFlow {
+                                            print("downloadedThemeData: \(themeName), File: \(#fileID)")
+                                        }
+                                        
+                                        self.themeManager.saveTheme(named: themeName, dataSource: .cloud)
                                     }
+                                    
                                 } else {
+                                    
+                                    // Save First Time Team Data if no Data is Found
                                     self.saveTeams(self.teamManager.fetchTeamList(), dataSource: .local)
                                 }
                             }
@@ -167,22 +178,18 @@ class RemoteControlTransmitter {
     }
 }
 
-extension RemoteControlTransmitter: CloudDataStorageManagerProtocol {
-//    func initialize(teamManager: TeamManagerProtocol, themeManager: ThemeManagerProtocol) {
-//        self.teamManager = teamManager
-//        self.themeManager = themeManager
-//        listenForUpdates()
-//    }
+extension RemoteDataManager: RemoteDataManagerProtocol {
     
     func saveTeams(_ teamList: [Team], dataSource: DataSource) {
-        print("dataSource: \(dataSource)")
         if dataSource == .local {
-            transmitUpdatedScores(teamList: teamList)
+            transmitTeamList(teamList: teamList)
         }
     }
     
-    func saveTheme(named themeName: String) {
-        transmitTheme(themeName: themeName)
+    func saveTheme(named themeName: String, dataSource: DataSource) {
+        if dataSource == .local {
+            transmitTheme(themeName: themeName)
+        }
     }
     
     

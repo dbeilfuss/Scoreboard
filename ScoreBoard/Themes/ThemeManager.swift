@@ -13,7 +13,7 @@ enum SpecializedTheme {
 
 class ThemeManager {
     private let constants = Constants()
-    private var databaseManager: DataStorageManagerProtocol?
+    private var dataStorageManager: DataStorageManagerProtocol?
     private var viewController: ScoreBoardViewControllerProtocol?
     
     private var themeDataIsRetrieved = false
@@ -66,12 +66,19 @@ class ThemeManager {
     ]
     
     private func fetchThemeFromDataStorage() {
-        if let themeName = databaseManager?.loadScoreboardState().themeName {
+        if constants.printThemeFlow {
+            print("fetching theme from dataStorage, \(#fileID)")
+        }
+        
+        if let themeName = dataStorageManager?.loadScoreboardState().themeName {
+            
             let theme = fetchTheme(named: themeName)
             
             themeDataIsRetrieved = true
             activeTheme = theme
         } else {
+            let themeName = constants.defaultScoreboardState.themeName
+            let theme = fetchTheme(named: themeName)
             print("databaseManager == nil, \(#fileID)")
         }
     }
@@ -89,23 +96,11 @@ class ThemeManager {
         }
     }
 
-    func saveTheme(named themeName: String, dataSource: DataSource) {
-        if constants.printThemeFlow {
-            print("Saving Theme: \(themeName), File: \(#fileID)")
-        }
-        databaseManager?.implementTheme(named: themeName, dataSource: .local)
-        
-        let theme = fetchTheme(named: themeName)
-        activeTheme = theme
-        
-        if constants.printThemeFlow {
-            print("Setting ActiveTheme: \(theme.name), File: \(#fileID)")
-        }
-    }
+
     
     //MARK: - ScoreboardState
     func loadScoreboardState() -> ScoreboardState? {
-        return databaseManager?.loadScoreboardState()
+        return dataStorageManager?.loadScoreboardState()
     }
     
 }
@@ -115,9 +110,9 @@ class ThemeManager {
 extension ThemeManager: MVCDelegate {
     func initializeMVCs(_ mvcArrangement: MVCArrangement) {
         viewController = mvcArrangement.scoreboardViewController
-        databaseManager = mvcArrangement.databaseManager
+        dataStorageManager = mvcArrangement.databaseManager
         
-        if viewController == nil || databaseManager == nil {
+        if viewController == nil || dataStorageManager == nil {
             print("failed to initializeMVCs: \(#fileID)")
         } else {
             if constants.printThemeFlow {
@@ -130,15 +125,15 @@ extension ThemeManager: MVCDelegate {
 extension ThemeManager: ThemeManagerProtocol {
     
     //MARK: - Themes
-    func refreshData() {
-        if constants.printThemeFlow {
-            print("refreshing theme data, \(#fileID)")
-        }
-        
-        themeDataIsRetrieved = false
-        activeTheme = fetchActiveTheme()
-        viewController?.refreshUIForTheme()
-    }
+//    func refreshData() {
+//        if constants.printThemeFlow {
+//            print("refreshing theme data, \(#fileID)")
+//        }
+//        
+//        themeDataIsRetrieved = false
+//        activeTheme = fetchActiveTheme()
+//        viewController?.refreshUIForTheme()
+//    }
     
     func fetchActiveTheme() -> Theme {
         if !themeDataIsRetrieved {
@@ -150,9 +145,20 @@ extension ThemeManager: ThemeManagerProtocol {
         return activeTheme
     }
     
-    func implementTheme(named themeName: String, dataSource: DataSource) {
-        // For use when a new theme has been chosen
-        saveTheme(named: themeName, dataSource: dataSource)
+    func saveTheme(named themeName: String, dataSource: DataSource) {
+        if constants.printThemeFlow {
+            print("Saving Theme: \(themeName), File: \(#fileID)")
+        }
+        
+        dataStorageManager?.saveTheme(named: themeName, dataSource: .local)
+        
+        let theme = fetchTheme(named: themeName)
+        activeTheme = theme
+        
+        if constants.printThemeFlow {
+            print("Setting ActiveTheme: \(theme.name), File: \(#fileID)")
+        }
+        
         viewController?.refreshUIForTheme()
     }
     
@@ -170,7 +176,7 @@ extension ThemeManager: ThemeManagerProtocol {
     //MARK: - Scoreboard State
     
     func fetchScoreboardState() -> ScoreboardState {
-        if let scoreboardState = databaseManager?.loadScoreboardState() {
+        if let scoreboardState = dataStorageManager?.loadScoreboardState() {
             return scoreboardState
         } else {
             print("databaseManager == nil, \(#fileID)")
@@ -179,11 +185,11 @@ extension ThemeManager: ThemeManagerProtocol {
     }
     
     func toggleUIIsHidden() {
-        databaseManager?.toggleUIIsHidden()
+        dataStorageManager?.toggleUIIsHidden()
     }
     
     func savePointIncrement(_ pointIncrement: Double) {
-        databaseManager?.savePointIncrement(pointIncrement)
+        dataStorageManager?.savePointIncrement(pointIncrement)
     }
     
 }

@@ -72,9 +72,6 @@ class MainDisplayViewController: ScoreBoardViewController {
         super.viewDidLoad()
         print("viewDidLoad: \(#fileID)")
         
-        /// ScoreboardDelegate
-        //        declareScoreboardDelegate(scoreBoardDelegate: self, remoteDelegate: self, themeDelegate: self)
-        
         /// Remote Control Setup
         userFeedbackLabel.text = ""
         
@@ -96,7 +93,9 @@ class MainDisplayViewController: ScoreBoardViewController {
         /// Refresh Screen after Setup
         implementActiveTheme()
         selectCorrectIncrementButton()
-        refreshScreen(reTransmit: false)
+        userFeedbackLabel.text = ""
+
+//        refreshScreen(reTransmit: false)
         
     }
     
@@ -233,11 +232,10 @@ class MainDisplayViewController: ScoreBoardViewController {
         refreshTeamViews()
     }
     
-    func refreshScreen(reTransmit: Bool) {
-        refreshButtons()
-        refreshTeamViews()
-        userFeedbackLabel.text = ""
-    }
+//    func refreshScreen(reTransmit: Bool) {
+//        refreshButtons()
+//        refreshTeamViews()
+//    }
     
     func implementActiveTheme() {
         if constants.printThemeFlow {
@@ -289,7 +287,8 @@ class MainDisplayViewController: ScoreBoardViewController {
     
     /// Trouble Shooting Button - assign custom functionality as needed
     @IBAction func troubleShootingButtonPressed(_ sender: UIButton) {
-        refreshScreen(reTransmit: false)
+        refreshUIForTeams()
+        refreshUIForTheme()
     }
     
     
@@ -319,10 +318,10 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     /// Reset Function: Triggered by ResetViewController
-    func resetScores() {
-        teamManager.resetScores()
-        refreshScreen(reTransmit: true)
-    }
+//    func resetScores() {
+//        teamManager.resetScores()
+//        refreshScreen(reTransmit: true)
+//    }
     
     /// Settings Button
     @IBAction func settingsButton(_ sender: UIButton) {

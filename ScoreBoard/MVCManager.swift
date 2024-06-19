@@ -47,9 +47,9 @@ protocol TeamManagerProtocol {
 
 protocol ThemeManagerProtocol {
     // Themes
-    func refreshData()
+//    func refreshData()
     func fetchActiveTheme() -> Theme
-    func implementTheme(named themeName: String, dataSource: DataSource)
+    func saveTheme(named themeName: String, dataSource: DataSource)
     func fetchSpecializedTheme(ofType: SpecializedTheme) -> Theme
     
     // Scoreboard State
@@ -64,7 +64,7 @@ protocol DataStorageManagerProtocol {
     func saveTeams(_ teams: [Team], dataSource: DataSource)
     
     // Themes
-    func implementTheme(named themeName: String, dataSource: DataSource)
+    func saveTheme(named themeName: String, dataSource: DataSource)
     
     // State
     func loadScoreboardState() -> ScoreboardState
@@ -74,10 +74,10 @@ protocol DataStorageManagerProtocol {
 }
 
 struct MVCArrangement {
+    let databaseManager: DataStorageManagerProtocol
     let scoreboardViewController: ScoreBoardViewControllerProtocol
     let teamManager: TeamManagerProtocol
     let themeManager: ThemeManagerProtocol
-    let databaseManager: DataStorageManagerProtocol
 }
  
 //MARK: - MVCManager
@@ -93,11 +93,11 @@ class MVCManager {
     func initializeMVCArrangement() {
         
         // Ensure the files conform to MVCDelegate Protocol
+        let databaseManager = mvcArrangement.databaseManager
         let scoreboardViewController = mvcArrangement.scoreboardViewController
         let teamManager = mvcArrangement.teamManager
         let themesDatabase = mvcArrangement.themeManager
-        let databaseManager = mvcArrangement.databaseManager
-        let possibleMVCs: [Any] = [scoreboardViewController, teamManager, themesDatabase, databaseManager]
+        let possibleMVCs: [Any] = [databaseManager, scoreboardViewController, teamManager, themesDatabase]
         var mvcArray: [MVCDelegate] = []
         var i = 0
         
