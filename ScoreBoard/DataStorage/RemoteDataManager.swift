@@ -10,8 +10,15 @@ import Firebase
 import FirebaseFirestore
 
 protocol RemoteDataManagerProtocol {
+    // Save Data
     func saveTeams(_: [Team], dataSource: DataSource)
     func saveTheme(named: String, dataSource: DataSource)
+    
+    // Fetch Data
+    func fetchTeams(closure: @escaping ([Team]?) -> Void)
+    func fetchTheme(closure: @escaping (Theme?) -> Void)
+
+    // Listen For Updates
     func listenForUpdates()
 }
 
@@ -52,31 +59,17 @@ class RemoteDataManager {
         listenForUpdates()
     }
     
-    //MARK: - Sending Theme to FireStore
-    private func transmitTheme(themeName: String) {
-        
-        if constants.printThemeFlow {
-            print("transmitting Theme: \(themeName), \(#fileID)")
+}
+
+extension RemoteDataManager: RemoteDataManagerProtocol {
+    
+    //MARK: - Save Data
+    
+    func saveTeams(_ teamList: [Team], dataSource: DataSource) {
+        if dataSource == .local {
+            transmitTeamList(teamList: teamList)
         }
         
-            if let user: User = Auth.auth().currentUser {
-                
-                self.db.collection(user.email!).document("Theme").setData([
-                    self.typeText: "theme",
-                    self.nameText: themeName
-                ])
-                {
-                    err in
-                    if let err = err {
-                        print("Error transmitting theme - \(#fileID)")
-                        print(self.errorSending)
-                        self.viewController.userFeedback(feedback: err.localizedDescription)
-                    }
-                }
-            }
-    }
-
-    //MARK: - Sending Scores to FireStore
         func transmitTeamList(teamList: [Team]) {
             
             var i = 0
@@ -103,8 +96,46 @@ class RemoteDataManager {
                     }
                 }
         }
+    }
     
-    //MARK: - Receiving Data from FireStore
+    func saveTheme(named themeName: String, dataSource: DataSource) {
+        if dataSource == .local {
+            transmitTheme(themeName: themeName)
+        }
+    }
+    
+    func fetchTeams(closure: @escaping ([Team]?) -> Void) {
+        
+    }
+    
+    func fetchTheme(closure: @escaping (Theme?) -> Void) {
+        
+    }
+    
+    private func transmitTheme(themeName: String) {
+        
+        if constants.printThemeFlow {
+            print("transmitting Theme: \(themeName), \(#fileID)")
+        }
+        
+            if let user: User = Auth.auth().currentUser {
+                
+                self.db.collection(user.email!).document("Theme").setData([
+                    self.typeText: "theme",
+                    self.nameText: themeName
+                ])
+                {
+                    err in
+                    if let err = err {
+                        print("Error transmitting theme - \(#fileID)")
+                        print(self.errorSending)
+                        self.viewController.userFeedback(feedback: err.localizedDescription)
+                    }
+                }
+            }
+    }
+    
+    //MARK: - Listen for Updates
     
     func listenForUpdates () {
         print("listening for updates - \(#fileID)")
@@ -120,7 +151,7 @@ class RemoteDataManager {
                     } else {
                         if let snapshotDocs = querySnapshot?.documents {
                             
-                            print("firebase documents: \(snapshotDocs)")
+                            print("firebase documents received, \(#fileID)")
                             
                             // docsCount: used for determining when to signal refresh of screen
                             let docsCount = snapshotDocs.count - 1
@@ -176,21 +207,4 @@ class RemoteDataManager {
                 }
         }
     }
-}
-
-extension RemoteDataManager: RemoteDataManagerProtocol {
-    
-    func saveTeams(_ teamList: [Team], dataSource: DataSource) {
-        if dataSource == .local {
-            transmitTeamList(teamList: teamList)
-        }
-    }
-    
-    func saveTheme(named themeName: String, dataSource: DataSource) {
-        if dataSource == .local {
-            transmitTheme(themeName: themeName)
-        }
-    }
-    
-    
 }
