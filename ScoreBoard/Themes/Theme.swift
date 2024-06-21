@@ -92,7 +92,7 @@ struct Theme: Equatable {
                 return TeamTextSizeStruct().iPhoneSizes
             }
         }
-        let adjustedFontSize: CGFloat = themeFontSize * sizeMultiplyers[numberOfTeams]!
+        let adjustedFontSize: CGFloat = (themeFontSize * sizeMultiplyers[numberOfTeams]!).rounded()
         
         /// Resize all point sizes to adjusted size
         label.font = UIFont(name: label.font.fontName, size: adjustedFontSize)

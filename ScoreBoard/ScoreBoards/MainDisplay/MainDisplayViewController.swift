@@ -96,7 +96,6 @@ class MainDisplayViewController: ScoreBoardViewController {
         userFeedbackLabel.text = ""
 
 //        refreshScreen(reTransmit: false)
-        
     }
     
     //MARK: - TeamViews
@@ -105,15 +104,29 @@ class MainDisplayViewController: ScoreBoardViewController {
         var teamList = teamManager.fetchActiveTeams()
         teamList = teamList.reversed()
         let teamCount = teamList.count
-        
+                
         for team in teamList {
             /// Create New TeamView
             let teamView = createTeamView(team)
             teamViews.append(teamView)
             displayTeamView(teamView, teamCount: teamCount)
-            NSLayoutConstraint.activate([            teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
+            NSLayoutConstraint.activate([teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
+            
+            DispatchQueue.main.async {
+//                self.adjustTeamViewHeight(teamView)
+            }
         }
         
+    }
+    
+    func adjustTeamViewHeight(_ teamView: TeamView) {
+        // Set the height of the TeamView
+        let height = mainScoreBoardStack.frame.size.height / CGFloat(mainScoreBoardStack.arrangedSubviews.count)
+        NSLayoutConstraint.activate([
+            teamView.heightAnchor.constraint(equalToConstant: height)
+        ])
+        
+        print("teamView.height: \(teamView.frame.size.height)")
     }
     
     func createTeamView(_ teamInfo: Team) -> TeamView {

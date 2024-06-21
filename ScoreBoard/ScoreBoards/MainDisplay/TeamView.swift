@@ -12,6 +12,7 @@ class TeamView: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var scoreStepper: UIStepper!
+    @IBOutlet weak var teamStackView: UIStackView!
     
     //MARK: - Variables
     var teamInfo: Team = Team(number: 1, name: "Default Team", score: 0, isActive: false)
@@ -60,11 +61,13 @@ class TeamView: UIView {
         // ScoreStepper
         scoreStepper.stepValue = Double(pointIncrement)
         scoreStepper.layer.opacity = uiIsHidden ? 0 : 100
+        
     }
     
     func set(delegate: TeamCellDelegate) {
         self.delegate = delegate
     }
+
     
     //MARK: - Actions
     

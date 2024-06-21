@@ -13,6 +13,7 @@
                 <outlet property="nameLabel" destination="R9r-je-e8S" id="zzs-Zz-SxC"/>
                 <outlet property="scoreLabel" destination="gc9-RN-rad" id="8nr-4D-3Wy"/>
                 <outlet property="scoreStepper" destination="Nzb-iM-Vr7" id="qD0-jP-GJq"/>
+                <outlet property="teamStackView" destination="AQ2-ao-TAf" id="aQv-0f-FZl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,19 +21,19 @@
             <rect key="frame" x="0.0" y="0.0" width="550" height="376"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" tag="1" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-ao-TAf" userLabel="Team Stack View">
-                    <rect key="frame" x="0.0" y="0.0" width="550" height="376"/>
+                <stackView opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-ao-TAf" userLabel="Team Stack View">
+                    <rect key="frame" x="0.0" y="57.333333333333343" width="550" height="286.66666666666663"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team 1" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9r-je-e8S" userLabel="Name Label">
-                            <rect key="frame" x="214" y="0.0" width="122" height="65"/>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Team 1" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9r-je-e8S" userLabel="Name Label">
+                            <rect key="frame" x="214" y="0.0" width="122" height="49.666666666666664"/>
                             <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="40"/>
                             <color key="textColor" red="0.8021596835" green="0.81718110669999999" blue="0.9649148005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <size key="shadowOffset" width="3" height="3"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="153" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-RN-rad" userLabel="Score Label">
-                            <rect key="frame" x="147.66666666666663" y="65" width="255" height="269"/>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="153" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-RN-rad" userLabel="Score Label">
+                            <rect key="frame" x="147.66666666666663" y="49.666666666666657" width="255" height="205"/>
                             <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="175"/>
                             <color key="textColor" red="0.62060010730000004" green="0.17798503900000001" blue="0.13142725329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -40,7 +41,7 @@
                             <size key="shadowOffset" width="3" height="1"/>
                         </label>
                         <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10000" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Nzb-iM-Vr7" userLabel="Score Stepper">
-                            <rect key="frame" x="228" y="334" width="94" height="42"/>
+                            <rect key="frame" x="228" y="254.66666666666663" width="94" height="32"/>
                             <connections>
                                 <action selector="scoreStepperPressed:" destination="-1" eventType="valueChanged" id="Fbl-Ey-sLo"/>
                             </connections>
@@ -53,12 +54,20 @@
             <constraints>
                 <constraint firstItem="AQ2-ao-TAf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0Zc-Ky-x2d"/>
                 <constraint firstAttribute="bottom" secondItem="AQ2-ao-TAf" secondAttribute="bottom" id="3SW-fS-VTJ"/>
+                <constraint firstItem="AQ2-ao-TAf" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="7vu-38-ihm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AQ2-ao-TAf" secondAttribute="trailing" id="ZHA-G2-HiJ"/>
                 <constraint firstItem="AQ2-ao-TAf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dAs-EQ-I9m"/>
+                <constraint firstAttribute="height" secondItem="AQ2-ao-TAf" secondAttribute="height" multiplier="1.31163" id="wH5-VF-2te"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="3SW-fS-VTJ"/>
+                    <exclude reference="dAs-EQ-I9m"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="187.78625954198472" y="-147.88732394366198"/>
         </view>
     </objects>
