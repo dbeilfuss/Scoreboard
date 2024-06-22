@@ -25,29 +25,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Firebase
         FirebaseApp.configure()
-        let db = Firestore.firestore()
+        let _ = Firestore.firestore()
         
         return true
     }
     
     //MARK: - Orientation Lock
     
-    var orientationLock = UIInterfaceOrientationMask.portrait
-        
+//    var window: UIWindow?
+    
+    var orientation: UIInterfaceOrientationMask = .all
+    
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return orientationLock
+        return orientation
     }
     
     struct AppUtility {
-        static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        static func lockOrientation(to orientation: UIInterfaceOrientationMask) {
             if let delegate = UIApplication.shared.delegate as? AppDelegate {
-                delegate.orientationLock = orientation
+                delegate.orientation = orientation
             }
-        }
-            
-        static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
-            self.lockOrientation(orientation)
-            UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
         }
     }
 

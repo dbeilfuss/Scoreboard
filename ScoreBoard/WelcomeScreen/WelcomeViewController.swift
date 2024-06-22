@@ -74,8 +74,8 @@ class WelcomeViewController: UIViewController {
         
         /// UI Changes for iPhone
         if UIDevice.current.localizedModel == "iPhone" {
-
-            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone)///  Unlocks Screen Orientation for iPads.
+            Utilities().updateOrientation(to: .portrait)
+//            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone)///  Unlocks Screen Orientation for iPads.
             
             titleLabel.font = constants.titleFontIPhone /// Title Label Font Size
             subtitleLabel.font = constants.subTitleFontIPhone /// Subtitle Label Font Size
@@ -83,7 +83,9 @@ class WelcomeViewController: UIViewController {
             /// UI Changes for iPad
         } else if UIDevice.current.localizedModel == "iPad" {
             
-            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPad) ///  Unlocks Screen Orientation for iPads.
+//            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPad) ///  Unlocks Screen Orientation for iPads.
+            
+            Utilities().updateOrientation(to: .all)
             
             constraintFactor *= 1.5 /// Adjust Constraint Factor for iPad
             

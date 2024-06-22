@@ -49,6 +49,7 @@
 		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
 		7797E96F2C0510F0007D7EEF /* CustomDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */; };
 		77A11797293ACD1A00ED74C2 /* TeamDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */; };
+		77A5079A2C27376000BB49D2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A507992C27376000BB49D2 /* Utilities.swift */; };
 		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
 		77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B024692956336E0017C542 /* RemoteTeamViewCell.swift */; };
 		77B0246C2956336E0017C542 /* RemoteTeamViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */; };
@@ -134,6 +135,7 @@
 		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
 		7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataTypes.swift; sourceTree = "<group>"; };
 		77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDataTypes.swift; sourceTree = "<group>"; };
+		77A507992C27376000BB49D2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		77B024692956336E0017C542 /* RemoteTeamViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTeamViewCell.swift; sourceTree = "<group>"; };
 		77B0246A2956336E0017C542 /* RemoteTeamViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoteTeamViewCell.xib; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				77B11166293AB78F00553E37 /* Assets.xcassets */,
 				77B1116B293AB78F00553E37 /* Info.plist */,
 				77239FEB2954A9C900569AB9 /* GoogleService-Info.plist */,
+				77A507992C27376000BB49D2 /* Utilities.swift */,
 			);
 			path = ScoreBoard;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				77BF4D482C0D36FE0059AF35 /* scoreboardUIButton.swift in Sources */,
 				77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */,
 				77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */,
+				77A5079A2C27376000BB49D2 /* Utilities.swift in Sources */,
 				77A11797293ACD1A00ED74C2 /* TeamDataTypes.swift in Sources */,
 				77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */,
 				77B11160293AB78E00553E37 /* SceneDelegate.swift in Sources */,

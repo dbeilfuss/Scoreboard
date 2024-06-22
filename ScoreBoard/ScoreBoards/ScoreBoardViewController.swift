@@ -45,18 +45,22 @@ class ScoreBoardViewController: UIViewController {
         
     }
     
-    //MARK: - Team Manager Interactions
+    func lockOrientation(to orientation: UIInterfaceOrientation) {
+        print("Attempting to lock orientation to: \(orientation.rawValue) - \(#fileID)")
+    }
+    
+    //MARK: - Teams
     
     func refreshUIForTeams() {
         // func refreshUIForTeams() conforms to the ScoreBoardViewControllerProtocol
-        // it is located within the main body so it can be overwritten by scoreboard subclasses
+        // it is located within the main body so it can be overwritten by subclasses
     }
     
     //MARK: - Themes
     
     func refreshUIForTheme() {
         // func refreshUIForTheme() conforms to the ScoreBoardViewControllerProtocol
-        // it is located within the main body so it can be overwritten by scoreboard subclasses
+        // it is located within the main body so it can be overwritten by subclasses
     }
     
 }

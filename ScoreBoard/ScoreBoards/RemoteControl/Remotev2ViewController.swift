@@ -103,8 +103,6 @@ class Remotev2ViewController: ScoreBoardViewController {
         }
         
         /// Theme
-//        updateTheme(theme: RemoteControlTheme().theme, backgroundImage: nil, subtitleLabels: nil, scoreLabels: nil, buttons: nil, shouldTransmit: false)
-//        updateUIForButtonTint(buttons: incrementButtonsArray)
         refreshScreen()
 
     }
@@ -172,7 +170,7 @@ class Remotev2ViewController: ScoreBoardViewController {
     /// Done Button
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         if returnToPortraitOnExit {
-            AppDelegate.AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeLeft)
+            Utilities().updateOrientation(to: .landscape)
         }
         self.dismiss(animated: true)
     }
@@ -253,24 +251,3 @@ extension Remotev2ViewController: TeamCellDelegate {
     
     
 }
-
-//MARK: - Reset Delegate
-//extension Remotev2ViewController: ResetDelegate {
-//    func resetTeamNames() {
-//        teamManager.resetTeamNames()
-//        refreshScreen(reTransmit: true)
-//    }
-//}
-
-//
-////MARK: - Theme Display Delegate
-//extension Remotev2ViewController: ThemeSelectionDelegate {
-//    func implementTheme(theme: Theme) {
-//        
-//        /// Transmit Theme to Cloud
-//        if signInState == .signedIn {
-//            remoteControlTransmitter.transmitTheme(themeName: theme.name)
-//        }
-//        
-//    }
-//}

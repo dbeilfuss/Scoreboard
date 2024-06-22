@@ -72,11 +72,10 @@ class MainDisplayViewController: ScoreBoardViewController {
         super.viewDidLoad()
         print("viewDidLoad: \(#fileID)")
         
-        /// Remote Control Setup
         userFeedbackLabel.text = ""
         
         /// Orientation Lock
-        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.landscape, andRotateTo: UIInterfaceOrientation.landscapeLeft)
+        Utilities().updateOrientation(to: .landscape)
         
         /// iPhone Specific Changes
         if UIDevice.current.localizedModel == "iPhone" {
@@ -95,12 +94,17 @@ class MainDisplayViewController: ScoreBoardViewController {
         selectCorrectIncrementButton()
         userFeedbackLabel.text = ""
 
-//        refreshScreen(reTransmit: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear - \(#fileID)")
+        lockOrientation(to: .landscapeLeft)
     }
     
     //MARK: - TeamViews
     
-    func createTeamViews() {
+    private func createTeamViews() {
         var teamList = teamManager.fetchActiveTeams()
         teamList = teamList.reversed()
         let teamCount = teamList.count
@@ -111,25 +115,11 @@ class MainDisplayViewController: ScoreBoardViewController {
             teamViews.append(teamView)
             displayTeamView(teamView, teamCount: teamCount)
             NSLayoutConstraint.activate([teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
-            
-            DispatchQueue.main.async {
-//                self.adjustTeamViewHeight(teamView)
-            }
         }
         
     }
     
-    func adjustTeamViewHeight(_ teamView: TeamView) {
-        // Set the height of the TeamView
-        let height = mainScoreBoardStack.frame.size.height / CGFloat(mainScoreBoardStack.arrangedSubviews.count)
-        NSLayoutConstraint.activate([
-            teamView.heightAnchor.constraint(equalToConstant: height)
-        ])
-        
-        print("teamView.height: \(teamView.frame.size.height)")
-    }
-    
-    func createTeamView(_ teamInfo: Team) -> TeamView {
+    private func createTeamView(_ teamInfo: Team) -> TeamView {
         let teamSetup = teamManager.fetchTeamList()
         
         // Setup TeamView
@@ -142,7 +132,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         return teamView
     }
     
-    func displayTeamView(_ view: TeamView, teamCount: Int) {
+    private func displayTeamView(_ view: TeamView, teamCount: Int) {
         
         // create top row if needed
         if mainScoreBoardStack.arrangedSubviews.count == 0 {
@@ -173,7 +163,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         scoreRow.insertArrangedSubview(view, at: 0)
     }
     
-    func shouldReInitializeTeamViews() -> Bool {
+    private func shouldReInitializeTeamViews() -> Bool {
         
         // Gather Information
         var teamViewTeamNumbers = teamViews.map() {$0.teamInfo.number}
@@ -189,7 +179,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         
     }
     
-    func reInitializeTeamViews() {
+    private func reInitializeTeamViews() {
         // Delete Current TeamViews
         teamViews = []
         for stackView in mainScoreBoardStack.arrangedSubviews {
@@ -200,7 +190,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         createTeamViews()
     }
     
-    func createScoreboardStackView() {
+    private func createScoreboardStackView() {
         let scoreboardStackView = UIStackView()
         mainScoreBoardStack.addArrangedSubview(scoreboardStackView)
         
@@ -244,11 +234,6 @@ class MainDisplayViewController: ScoreBoardViewController {
         super.refreshUIForTeams()
         refreshTeamViews()
     }
-    
-//    func refreshScreen(reTransmit: Bool) {
-//        refreshButtons()
-//        refreshTeamViews()
-//    }
     
     func implementActiveTheme() {
         if constants.printThemeFlow {
@@ -330,12 +315,6 @@ class MainDisplayViewController: ScoreBoardViewController {
         performSegue(withIdentifier: "mainScoreboardToReset", sender: self)
     }
     
-    /// Reset Function: Triggered by ResetViewController
-//    func resetScores() {
-//        teamManager.resetScores()
-//        refreshScreen(reTransmit: true)
-//    }
-    
     /// Settings Button
     @IBAction func settingsButton(_ sender: UIButton) {
         if UIDevice.current.localizedModel == "iPhone" {
@@ -355,9 +334,9 @@ class MainDisplayViewController: ScoreBoardViewController {
         
         /// Orientation Locks
         if UIDevice.current.localizedModel == "iPhone" {
-            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone, andRotateTo: constants.screenOrientationToRotateTo)
+            Utilities().updateOrientation(to: constants.screenOrientationStandardiPhone)
         } else if UIDevice.current.localizedModel == "iPad" {
-            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPad)
+            Utilities().updateOrientation(to: constants.screenOrientationStandardiPad)
         }
         
         /// Dismiss
@@ -371,8 +350,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         /// Update Name Segue
         if segue.identifier == "mainDisplayToRemote" || segue.identifier == "mainDisplayToRemoteModal" {
             if UIDevice.current.localizedModel == "iPhone" {
-                print("iPhone")
-                AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone, andRotateTo: constants.screenOrientationToRotateTo)
+                Utilities().updateOrientation(to: constants.screenOrientationStandardiPhone)
             }
             let destinationVC = segue.destination as! Remotev2ViewController
             destinationVC.teamManager = self.teamManager
