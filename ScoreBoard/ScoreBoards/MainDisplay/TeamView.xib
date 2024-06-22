@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="550" height="376"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-ao-TAf" userLabel="Team Stack View">
+                <stackView opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-ao-TAf" userLabel="Team Stack View">
                     <rect key="frame" x="0.0" y="57.333333333333343" width="550" height="286.66666666666663"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Team 1" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9r-je-e8S" userLabel="Name Label">
