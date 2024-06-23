@@ -42,11 +42,10 @@ class SignInViewController: UIViewController {
     "example@icloud.com",
     "Enter your password"
     ]
+  
+    var userEnteredData: (username: String?, password: String?)
     
-    var userEnteredData: [String: String?] = [
-        "Username": nil,
-        "Password": nil
-    ]
+    var keychainCredentials: (username: String?, password: String?)
     
     //MARK: - Variables
     var signOutMode = false
@@ -54,12 +53,21 @@ class SignInViewController: UIViewController {
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Table
         tableSetup()
+        
+        // UI Customization
         uiCustomizations()
         if signOutMode {
             reconfigureForSignout()
         }
         
+        // Keychain
+        keychainCredentials = loadCredentials()
+        userEnteredData.username = keychainCredentials.username
+        userEnteredData.password = keychainCredentials.password
+
     }
     
     /// Table Setup
@@ -126,7 +134,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         if signOutMode == false {
-            if let email = userEnteredData["Username"]!, let password = userEnteredData["Password"]! {
+            if let email = userEnteredData.username, let password = userEnteredData.password {
                 feedbackLabel.text = "Signing You In"
                 
                 // Attempt to Create User
@@ -156,15 +164,38 @@ class SignInViewController: UIViewController {
             if let e = error {
                 self.feedbackLabel.text = e.localizedDescription
             } else {
+                self.saveCredentials(username: email, password: password)
                 self.dismiss(animated: true)
             }
         }
+    }
+    
+    //MARK: - Keychain
+    func saveCredentials(username: String, password: String) {
+        let usernameData = Data(username.utf8)
+        let passwordData = Data(password.utf8)
+        
+        let _ = KeychainService.save("MyAppUsername", account: "userIdentifier", data: usernameData)
+        let _ = KeychainService.save("MyAppPassword", account: "userIdentifier", data: passwordData)
+
+    }
+    
+    func loadCredentials() -> (username: String?, password: String?) {
+        if let usernameData = KeychainService.load("MyAppUsername", account: "userIdentifier"),
+           let passwordData = KeychainService.load("MyAppPassword", account: "userIdentifier") {
+            
+            let username = String(data: usernameData, encoding: .utf8)
+            let password = String(data: passwordData, encoding: .utf8)
+            
+            return (username, password)
+        }
+        return (nil, nil)
     }
         
     //MARK: - ResetPasswordButton
     
     @IBAction func resetPasswordButtonPressed(_ sender: UIButton) {
-        if let email = userEnteredData["Username"]! {
+        if let email = userEnteredData.username {
             Auth.auth().sendPasswordReset(withEmail: email) { error in
                 if let e = error {
                     self.feedbackLabel.text = e.localizedDescription
@@ -222,9 +253,11 @@ extension SignInViewController: UITableViewDataSource {
         if cell.label.text == "Password" {
             cell.textField.textContentType = .password
             cell.textField.isSecureTextEntry = true
+            cell.textField.text = keychainCredentials.password
         } else if cell.label.text == "Username" {
             cell.textField.textContentType = .username
             cell.textField.keyboardType = .emailAddress
+            cell.textField.text = keychainCredentials.username
         }
         
         return cell
@@ -234,7 +267,11 @@ extension SignInViewController: UITableViewDataSource {
 //MARK: - Text Input Delegate
 extension SignInViewController: textInputDelegate {
     func storeUserData(textField: String, dataEntered: String) {
-        userEnteredData[textField] = dataEntered
+        if textField == "Password" {
+            userEnteredData.password = dataEntered
+        } else if textField == "Username" {
+            userEnteredData.username = dataEntered
+        }
     }
     
     func editing (currentlyEditing: Bool) {

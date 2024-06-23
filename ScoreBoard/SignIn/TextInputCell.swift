@@ -64,5 +64,4 @@ class TextInputCell: UITableViewCell, UITextFieldDelegate {
         delegate?.editing(currentlyEditing: false)
     }
     
-    
 }

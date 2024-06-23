@@ -89,6 +89,7 @@
 		77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */; };
 		77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */; };
 		77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */; };
+		77E024402C27D3DC00112591 /* KeychainServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0243F2C27D3DC00112591 /* KeychainServices.swift */; };
 		77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E238512981E6F80069A260 /* Remotev2ViewController.swift */; };
 		77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6CFEA298F044A0006E8CE /* TextInputCell.swift */; };
 		77E6CFED298F044A0006E8CE /* TextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6CFEB298F044A0006E8CE /* TextInputCell.xib */; };
@@ -177,6 +178,8 @@
 		77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple3.swift; sourceTree = "<group>"; };
 		77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite1.swift; sourceTree = "<group>"; };
 		77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite2.swift; sourceTree = "<group>"; };
+		77E0243E2C27D3A400112591 /* ScoreBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScoreBoard.entitlements; sourceTree = "<group>"; };
+		77E0243F2C27D3DC00112591 /* KeychainServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServices.swift; sourceTree = "<group>"; };
 		77E238512981E6F80069A260 /* Remotev2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remotev2ViewController.swift; sourceTree = "<group>"; };
 		77E6CFEA298F044A0006E8CE /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
 		77E6CFEB298F044A0006E8CE /* TextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputCell.xib; sourceTree = "<group>"; };
@@ -320,6 +323,7 @@
 				77239FF42954CCC400569AB9 /* SignOutViewController.swift */,
 				77E6CFEA298F044A0006E8CE /* TextInputCell.swift */,
 				77E6CFEB298F044A0006E8CE /* TextInputCell.xib */,
+				77E0243F2C27D3DC00112591 /* KeychainServices.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -355,6 +359,7 @@
 		77B1115C293AB78E00553E37 /* ScoreBoard */ = {
 			isa = PBXGroup;
 			children = (
+				77E0243E2C27D3A400112591 /* ScoreBoard.entitlements */,
 				77B11168293AB78F00553E37 /* LaunchScreen.storyboard */,
 				77B11163293AB78E00553E37 /* Main.storyboard */,
 				771913DC2C1A689C00BA2D9F /* MVCManager.swift */,
@@ -576,6 +581,7 @@
 				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
 				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
 				77BF4D482C0D36FE0059AF35 /* scoreboardUIButton.swift in Sources */,
+				77E024402C27D3DC00112591 /* KeychainServices.swift in Sources */,
 				77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */,
 				77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */,
 				77A5079A2C27376000BB49D2 /* Utilities.swift in Sources */,
@@ -744,6 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 52P6SF79ST;
@@ -778,6 +785,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 52P6SF79ST;
