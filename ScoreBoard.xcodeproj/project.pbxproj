@@ -39,6 +39,7 @@
 		7754E92A29888CCD006CE85A /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91729888CCD006CE85A /* Rubik-Black.ttf */; };
 		7754E92B29888CCD006CE85A /* Karla700italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91829888CCD006CE85A /* Karla700italic.ttf */; };
 		7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91929888CCD006CE85A /* Rubik-Bold.ttf */; };
+		7761086A2C29FFD0001288F0 /* SignInDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776108692C29FFD0001288F0 /* SignInDataTypes.swift */; };
 		7776DDE52BF64154008E9C65 /* TeamView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7776DDE42BF64154008E9C65 /* TeamView.xib */; };
 		7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776DDE62BF642EA008E9C65 /* TeamView.swift */; };
 		778484FF2956116E004A3B32 /* RemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteDataManager.swift */; };
@@ -89,7 +90,7 @@
 		77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */; };
 		77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */; };
 		77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */; };
-		77E024402C27D3DC00112591 /* KeychainServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0243F2C27D3DC00112591 /* KeychainServices.swift */; };
+		77E024402C27D3DC00112591 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0243F2C27D3DC00112591 /* KeychainManager.swift */; };
 		77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E238512981E6F80069A260 /* Remotev2ViewController.swift */; };
 		77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6CFEA298F044A0006E8CE /* TextInputCell.swift */; };
 		77E6CFED298F044A0006E8CE /* TextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77E6CFEB298F044A0006E8CE /* TextInputCell.xib */; };
@@ -126,6 +127,7 @@
 		7754E91729888CCD006CE85A /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		7754E91829888CCD006CE85A /* Karla700italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karla700italic.ttf; sourceTree = "<group>"; };
 		7754E91929888CCD006CE85A /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		776108692C29FFD0001288F0 /* SignInDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDataTypes.swift; sourceTree = "<group>"; };
 		7776DDE42BF64154008E9C65 /* TeamView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamView.xib; sourceTree = "<group>"; };
 		7776DDE62BF642EA008E9C65 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		778484FE2956116E004A3B32 /* RemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataManager.swift; sourceTree = "<group>"; };
@@ -179,7 +181,7 @@
 		77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite1.swift; sourceTree = "<group>"; };
 		77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite2.swift; sourceTree = "<group>"; };
 		77E0243E2C27D3A400112591 /* ScoreBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScoreBoard.entitlements; sourceTree = "<group>"; };
-		77E0243F2C27D3DC00112591 /* KeychainServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServices.swift; sourceTree = "<group>"; };
+		77E0243F2C27D3DC00112591 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		77E238512981E6F80069A260 /* Remotev2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remotev2ViewController.swift; sourceTree = "<group>"; };
 		77E6CFEA298F044A0006E8CE /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
 		77E6CFEB298F044A0006E8CE /* TextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputCell.xib; sourceTree = "<group>"; };
@@ -319,11 +321,12 @@
 		7790E835295DD45300DC5D6B /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				776108692C29FFD0001288F0 /* SignInDataTypes.swift */,
 				77239FE22952828900569AB9 /* SignInViewController.swift */,
 				77239FF42954CCC400569AB9 /* SignOutViewController.swift */,
 				77E6CFEA298F044A0006E8CE /* TextInputCell.swift */,
 				77E6CFEB298F044A0006E8CE /* TextInputCell.xib */,
-				77E0243F2C27D3DC00112591 /* KeychainServices.swift */,
+				77E0243F2C27D3DC00112591 /* KeychainManager.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -581,7 +584,7 @@
 				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
 				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
 				77BF4D482C0D36FE0059AF35 /* scoreboardUIButton.swift in Sources */,
-				77E024402C27D3DC00112591 /* KeychainServices.swift in Sources */,
+				77E024402C27D3DC00112591 /* KeychainManager.swift in Sources */,
 				77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */,
 				77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */,
 				77A5079A2C27376000BB49D2 /* Utilities.swift in Sources */,
@@ -597,6 +600,7 @@
 				77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */,
 				77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */,
 				77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */,
+				7761086A2C29FFD0001288F0 /* SignInDataTypes.swift in Sources */,
 				778484FF2956116E004A3B32 /* RemoteDataManager.swift in Sources */,
 				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
 				771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */,

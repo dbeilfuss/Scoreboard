@@ -70,14 +70,14 @@ class SignInViewController: UIViewController {
 
     }
     
-    /// Table Setup
+//MARK: - Table Setup
     func tableSetup() {
         signInTable.delegate = self
         signInTable.dataSource = self
         signInTable.register(UINib(nibName: "TextInputCell", bundle: nil), forCellReuseIdentifier: "textInputCell")
     }
     
-    /// UICustomizations
+    //MARK: - UICutomizations
     func uiCustomizations() {
         /// Set Dark Mode
         self.overrideUserInterfaceStyle = .dark
@@ -175,14 +175,17 @@ class SignInViewController: UIViewController {
         let usernameData = Data(username.utf8)
         let passwordData = Data(password.utf8)
         
-        let _ = KeychainService.save("MyAppUsername", account: "userIdentifier", data: usernameData)
-        let _ = KeychainService.save("MyAppPassword", account: "userIdentifier", data: passwordData)
+        let usernameStatus = KeychainManager.save(dataType: .username, data: usernameData)
+        let passwordStatus = KeychainManager.save(dataType: .password, data: passwordData)
+        
+        print("usernameStatus: \(usernameStatus) - \(#fileID)")
+        print("passwordStatus: \(passwordStatus) - \(#fileID)")
 
     }
     
     func loadCredentials() -> (username: String?, password: String?) {
-        if let usernameData = KeychainService.load("MyAppUsername", account: "userIdentifier"),
-           let passwordData = KeychainService.load("MyAppPassword", account: "userIdentifier") {
+        if let usernameData = KeychainManager.load(dataType: .username),
+           let passwordData = KeychainManager.load(dataType: .password) {
             
             let username = String(data: usernameData, encoding: .utf8)
             let password = String(data: passwordData, encoding: .utf8)
@@ -221,7 +224,6 @@ class SignInViewController: UIViewController {
     @IBAction func exitButtonPressed(_ sender: Any) {
         dismiss(animated: true)
     }
-    
     
 }
 
