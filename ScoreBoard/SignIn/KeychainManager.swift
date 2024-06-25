@@ -64,6 +64,7 @@ class KeychainManager {
             accountString = KeychainConstants.passwordAccount
         }
 
+        // Create Query
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: KeychainConstants.appID,
@@ -80,11 +81,23 @@ class KeychainManager {
         return nil
     }
 
-    class func delete(_ service: String, account: String) -> OSStatus {
+    class func delete(dataType: signInDataType) -> OSStatus {
+        
+        // Compile Data
+        var accountString: String
+        
+        switch dataType {
+        case .username:
+            accountString = KeychainConstants.usernameAccount
+        case .password:
+            accountString = KeychainConstants.passwordAccount
+        }
+        
+        // Create Query
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: service,
-            kSecAttrAccount as String: account,
+            kSecAttrService as String: KeychainConstants.appID,
+            kSecAttrAccount as String: accountString,
             kSecAttrSynchronizable as String: kCFBooleanTrue as Any
         ]
         return SecItemDelete(query as CFDictionary)
