@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "LivingRoom Scoreboard icon.jpg",
+      "filename" : "LivingRoom Scoreboard icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "LivingRoom Scoreboard icon@2x.jpg",
+      "filename" : "LivingRoom Scoreboard icon 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "LivingRoom Scoreboard icon@3x.jpg",
+      "filename" : "LivingRoom Scoreboard icon 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
