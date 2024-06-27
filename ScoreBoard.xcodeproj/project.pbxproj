@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7705C6642C2CEB67004CB7F6 /* ScoreStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */; };
 		77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77149321297A255F0040ABD3 /* FractalLandscape.swift */; };
 		771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913D92C1738C000BA2D9F /* DataStorageManager.swift */; };
 		771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913DC2C1A689C00BA2D9F /* MVCManager.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStepper.swift; sourceTree = "<group>"; };
 		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
 		771913D92C1738C000BA2D9F /* DataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
 		771913DB2C19430100BA2D9F /* ScoreBoard.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScoreBoard.xctestplan; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				77BF4D472C0D36FE0059AF35 /* scoreboardUIButton.swift */,
 				77239FE92953AF6000569AB9 /* SignInButton.swift */,
 				77F519152990C65000708BFE /* LargeTransparentButton.swift */,
+				7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				7761086A2C29FFD0001288F0 /* SignInDataTypes.swift in Sources */,
 				778484FF2956116E004A3B32 /* RemoteDataManager.swift in Sources */,
 				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
+				7705C6642C2CEB67004CB7F6 /* ScoreStepper.swift in Sources */,
 				771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */,
 				77D98FCC297AF34300927949 /* FractalLandscapeBlue1.swift in Sources */,
 				77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */,

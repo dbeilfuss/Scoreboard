@@ -40,7 +40,7 @@
                             <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <size key="shadowOffset" width="3" height="1"/>
                         </label>
-                        <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10000" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Nzb-iM-Vr7" userLabel="Score Stepper">
+                        <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10000" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Nzb-iM-Vr7" userLabel="Score Stepper" customClass="ScoreStepper" customModule="ScoreBoard" customModuleProvider="target">
                             <rect key="frame" x="228" y="254.66666666666663" width="94" height="32"/>
                             <connections>
                                 <action selector="scoreStepperPressed:" destination="-1" eventType="valueChanged" id="Fbl-Ey-sLo"/>
