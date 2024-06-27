@@ -47,7 +47,6 @@ protocol TeamManagerProtocol {
 
 protocol ThemeManagerProtocol {
     // Themes
-//    func refreshData()
     func fetchActiveTheme() -> Theme
     func saveTheme(named themeName: String, dataSource: DataSource)
     func fetchSpecializedTheme(ofType: SpecializedTheme) -> Theme
@@ -59,15 +58,23 @@ protocol ThemeManagerProtocol {
 }
 
 protocol DataStorageManagerProtocol {
+    // Setup
+    func setupRemoteDataManager(
+        teamManager: TeamManagerProtocol?,
+        themeManager: ThemeManagerProtocol?,
+        scoreboardViewController: ScoreBoardViewControllerProtocol?)
+    
     // Teams
-    func loadTeams() -> [Team]?
+    var storedTeams: [Team]? { get }
+    func populateInitialTeamData()
     func saveTeams(_ teams: [Team], dataSource: DataSource)
     
     // Themes
+    func populateInitialThemeData()
     func saveTheme(named themeName: String, dataSource: DataSource)
     
     // State
-    func loadScoreboardState() -> ScoreboardState
+    var storedState: ScoreboardState { get }
     func savePointIncrement(_ pointIncrement: Double)
     func toggleUIIsHidden()
     

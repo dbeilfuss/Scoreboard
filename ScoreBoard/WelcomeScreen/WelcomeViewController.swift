@@ -75,15 +75,12 @@ class WelcomeViewController: UIViewController {
         /// UI Changes for iPhone
         if UIDevice.current.localizedModel == "iPhone" {
             Utilities().updateOrientation(to: .portrait)
-//            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone)///  Unlocks Screen Orientation for iPads.
             
             titleLabel.font = constants.titleFontIPhone /// Title Label Font Size
             subtitleLabel.font = constants.subTitleFontIPhone /// Subtitle Label Font Size
             
             /// UI Changes for iPad
         } else if UIDevice.current.localizedModel == "iPad" {
-            
-//            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPad) ///  Unlocks Screen Orientation for iPads.
             
             Utilities().updateOrientation(to: .all)
             
@@ -117,15 +114,32 @@ class WelcomeViewController: UIViewController {
         /// Get Current User
         let _ = Auth.auth().addStateDidChangeListener { auth, user in
             if let user: User = Auth.auth().currentUser {
+                setupUI(user: user)
+//                loadCurrentRemoteData()
+            } else {
+                setupUI(user: nil)
+            }
+        }
+        
+        func setupUI(user: User?) {
+            if user != nil {
                 print("user signed in")
-                print(user.email!)
+                print(user!.email!)
                 self.signInButton.setTitle("Sign Out", for: .normal)
-                self.userFeedbackLabel.text = user.email
+                self.userFeedbackLabel.text = user!.email
             } else {
                 self.signInButton.setTitle("Sign In", for: .normal)
                 self.userFeedbackLabel.text = ""
             }
         }
+        
+        // Failed Attempt to pre-load data to fix issue with theme not loading remote version - Caused crash upon entering scoreboardViewController
+//        func loadCurrentRemoteData() {
+//            let dataStorageManager = DataStorageManager()
+//            dataStorageManager.setupRemoteDataManager(teamManager: nil, themeManager: nil, scoreboardViewController: nil)
+//            dataStorageManager.populateInitialTeamData()
+//            dataStorageManager.populateInitialThemeData()
+//        }
     }
 
 

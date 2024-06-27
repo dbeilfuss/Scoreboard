@@ -65,12 +65,12 @@ class ThemeManager {
         ChristmasTheme().theme
     ]
     
-    private func fetchThemeFromDataStorage() {
+    private func loadThemeFromDataStorage() {
         if constants.printThemeFlow {
             print("fetching theme from dataStorage, \(#fileID)")
         }
         
-        if let themeName = dataStorageManager?.loadScoreboardState().themeName {
+        if let themeName = dataStorageManager?.storedState.themeName {
             
             let theme = fetchTheme(named: themeName)
             
@@ -78,7 +78,9 @@ class ThemeManager {
             activeTheme = theme
         } else {
             let themeName = constants.defaultScoreboardState.themeName
-            let theme = fetchTheme(named: themeName)
+            activeTheme = fetchTheme(named: themeName)
+            themeDataIsRetrieved = true
+
             print("databaseManager == nil, \(#fileID)")
         }
     }
@@ -100,7 +102,7 @@ class ThemeManager {
     
     //MARK: - ScoreboardState
     func loadScoreboardState() -> ScoreboardState? {
-        return dataStorageManager?.loadScoreboardState()
+        return dataStorageManager?.storedState
     }
     
 }
@@ -125,19 +127,10 @@ extension ThemeManager: MVCDelegate {
 extension ThemeManager: ThemeManagerProtocol {
     
     //MARK: - Themes
-//    func refreshData() {
-//        if constants.printThemeFlow {
-//            print("refreshing theme data, \(#fileID)")
-//        }
-//        
-//        themeDataIsRetrieved = false
-//        activeTheme = fetchActiveTheme()
-//        viewController?.refreshUIForTheme()
-//    }
     
     func fetchActiveTheme() -> Theme {
         if !themeDataIsRetrieved {
-            fetchThemeFromDataStorage()
+            loadThemeFromDataStorage()
         }
         if constants.printThemeFlow {
             print("ActiveTheme: \(activeTheme.name), File: \(#fileID)")
@@ -176,7 +169,7 @@ extension ThemeManager: ThemeManagerProtocol {
     //MARK: - Scoreboard State
     
     func fetchScoreboardState() -> ScoreboardState {
-        if let scoreboardState = dataStorageManager?.loadScoreboardState() {
+        if let scoreboardState = dataStorageManager?.storedState {
             return scoreboardState
         } else {
             print("databaseManager == nil, \(#fileID)")

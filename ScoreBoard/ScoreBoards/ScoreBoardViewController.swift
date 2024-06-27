@@ -46,7 +46,7 @@ class ScoreBoardViewController: UIViewController {
     }
     
     func lockOrientation(to orientation: UIInterfaceOrientation) {
-        print("Attempting to lock orientation to: \(orientation.rawValue) - \(#fileID)")
+        print("Locking orientation to: \(orientation.rawValue) - \(#fileID)")
     }
     
     //MARK: - Teams

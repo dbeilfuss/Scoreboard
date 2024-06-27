@@ -16,7 +16,7 @@ protocol RemoteDataManagerProtocol {
     
     // Fetch Data
     func fetchTeams(closure: @escaping ([Team]?) -> Void)
-    func fetchTheme(closure: @escaping (Theme?) -> Void)
+    func fetchTheme(closure: @escaping (String?) -> Void)
 
     // Listen For Updates
     func listenForUpdates()
@@ -41,16 +41,16 @@ class RemoteDataManager {
     let errorReceiving: String = "Error Receiving Data"
     
     //MARK: - Delegate
-    var teamManager: TeamManagerProtocol
-    var themeManager: ThemeManagerProtocol
-    var viewController: ScoreBoardViewControllerProtocol
+    var teamManager: TeamManagerProtocol?
+    var themeManager: ThemeManagerProtocol?
+    var viewController: ScoreBoardViewControllerProtocol?
     
     //MARK: - Setup Firestore
     
     let db = Firestore.firestore()
     
     //MARK: - Init
-    init(thisTeam: Team? = nil, teamManager: TeamManagerProtocol, themeManager: ThemeManagerProtocol, viewController: ScoreBoardViewControllerProtocol) {
+    init(thisTeam: Team? = nil, teamManager: TeamManagerProtocol?, themeManager: ThemeManagerProtocol?, viewController: ScoreBoardViewControllerProtocol?) {
         self.thisTeam = thisTeam
         self.teamManager = teamManager
         self.themeManager = themeManager
@@ -87,7 +87,7 @@ extension RemoteDataManager: RemoteDataManagerProtocol {
                             if let err = err {
                                 print("Error transmitting team \(i + 1): \(err) - \(#fileID)")
                                 print(self.errorSending)
-                                self.viewController.userFeedback(feedback: err.localizedDescription)
+                                self.viewController?.userFeedback(feedback: err.localizedDescription)
                             } else {
                                 print("Team data transmitted - \(#fileID)")
                             }
@@ -104,12 +104,40 @@ extension RemoteDataManager: RemoteDataManagerProtocol {
         }
     }
     
+    //MARK: - Fetch
+    
     func fetchTeams(closure: @escaping ([Team]?) -> Void) {
-        
+        let teamsCollection = db.collection("teams")
+        teamsCollection.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("\(self.errorReceiving): \(error.localizedDescription)")
+                closure(nil)
+            } else {
+                var teams: [Team] = []
+                for document in querySnapshot!.documents {
+                    if let team = try? document.data(as: Team.self) {
+                        teams.append(team)
+                    }
+                }
+                closure(teams)
+            }
+        }
     }
     
-    func fetchTheme(closure: @escaping (Theme?) -> Void) {
-        
+    func fetchTheme(closure: @escaping (String?) -> Void) {
+        let themesCollection = db.collection("themes")
+        themesCollection.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("\(self.errorReceiving): \(error.localizedDescription)")
+                closure(nil)
+            } else {
+                if let document = querySnapshot?.documents.first, let themeName = document.data()["themeName"] as? String {
+                    closure(themeName)
+                } else {
+                    closure(nil)
+                }
+            }
+        }
     }
     
     private func transmitTheme(themeName: String) {
@@ -129,7 +157,7 @@ extension RemoteDataManager: RemoteDataManagerProtocol {
                     if let err = err {
                         print("Error transmitting theme - \(#fileID)")
                         print(self.errorSending)
-                        self.viewController.userFeedback(feedback: err.localizedDescription)
+                        self.viewController?.userFeedback(feedback: err.localizedDescription)
                     }
                 }
             }
@@ -146,7 +174,7 @@ extension RemoteDataManager: RemoteDataManagerProtocol {
                     
                     if let e = error {
                         print("error getting data from fireStore - \(#fileID)", e.localizedDescription)
-                        self.viewController.userFeedback(feedback: e.localizedDescription)
+                        self.viewController?.userFeedback(feedback: e.localizedDescription)
                         
                     } else {
                         if let snapshotDocs = querySnapshot?.documents {
@@ -179,7 +207,7 @@ extension RemoteDataManager: RemoteDataManagerProtocol {
                                                 self.thisTeam = thisTeam
                                                 if let safeThisTeam = self.thisTeam {
                                                     var refresh: Bool { docsCount == thisTeamNumber }
-                                                    self.teamManager.saveTeam(safeThisTeam, datasource: .cloud)
+                                                    self.teamManager?.saveTeam(safeThisTeam, datasource: .cloud)
                                                 }
                                             }
                                         }
@@ -193,13 +221,15 @@ extension RemoteDataManager: RemoteDataManagerProtocol {
                                             print("downloadedThemeData: \(themeName), File: \(#fileID)")
                                         }
                                         
-                                        self.themeManager.saveTheme(named: themeName, dataSource: .cloud)
+                                        self.themeManager?.saveTheme(named: themeName, dataSource: .cloud)
                                     }
                                     
                                 } else {
                                     
                                     // Save First Time Team Data if no Data is Found
-                                    self.saveTeams(self.teamManager.fetchTeamList(), dataSource: .local)
+                                    if self.teamManager != nil {
+                                        self.saveTeams(self.teamManager!.fetchTeamList(), dataSource: .local)
+                                    }
                                 }
                             }
                         }

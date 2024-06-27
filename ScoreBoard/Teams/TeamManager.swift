@@ -69,7 +69,7 @@ class TeamManager {
             if constants.printTeamFlow {
                 print("fetching teams from dataStorage, \(#fileID)")
             }
-            if let storedTeams = databaseManager?.loadTeams() {
+            if let storedTeams = databaseManager?.storedTeams {
                 teamList = storedTeams
             } else {
                 teamList = startingTeamList
