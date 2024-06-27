@@ -26,6 +26,7 @@ class ThemeGroupChooserViewController: UITableViewController {
         tableView.delegate = self
         
         tableView.register(UINib(nibName: "ThemePreviewCell", bundle: nil), forCellReuseIdentifier: "ReusableThemeCell")
+        
     }
     
     //MARK: - Bar Buttons

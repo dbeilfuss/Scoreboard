@@ -113,8 +113,10 @@ class Remotev2ViewController: ScoreBoardViewController {
         if let userEmail = Auth.auth().currentUser?.email {
             displayUserFeedback(feedback: "✔️ \(userEmail)")
             refreshUIForTeams()
-            refreshUIForTheme()
         }
+        
+        refreshUIForTheme()
+
     }
     
     override func refreshUIForTeams() {
@@ -126,8 +128,10 @@ class Remotev2ViewController: ScoreBoardViewController {
 
         // Force DarkMode
         if theme.darkMode {
+            print("setting dark theme")
             self.overrideUserInterfaceStyle = .dark
         } else {
+            print("setting light theme")
             self.overrideUserInterfaceStyle = .light
         }
         
