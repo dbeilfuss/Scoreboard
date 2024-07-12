@@ -62,8 +62,8 @@ struct Constants {
     let scoreboardStateKey: String = "scoreboardState"
     
     // Print(Logging)
-    let printTeamFlow = true
+    let printTeamFlow = false
     let printTeamFlowDetailed = false
-    let printThemeFlow = false
+    let printThemeFlow = true
     let printStateFlow = false
 }

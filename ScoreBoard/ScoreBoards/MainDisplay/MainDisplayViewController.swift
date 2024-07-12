@@ -266,9 +266,10 @@ class MainDisplayViewController: ScoreBoardViewController {
     
     func refreshButtons() {
         let state = themeManager.fetchScoreboardState()
+        let theme = themeManager.fetchActiveTheme()
         
         for button in allButtonsArray {
-            button.setupButton(state: state)
+            button.setupButton(state: state, theme: theme)
         }
     }
     

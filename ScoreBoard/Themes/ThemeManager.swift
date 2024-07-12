@@ -77,7 +77,7 @@ class ThemeManager {
             themeDataIsRetrieved = true
             activeTheme = theme
         } else {
-            let themeName = constants.defaultDataStorageBundle.themeName
+//            let themeName = constants.defaultDataStorageBundle.themeName
             print("databaseManager == nil, \(#fileID)")
         }
     }
@@ -202,10 +202,9 @@ extension ThemeManager: DataStorageDelegate {
         
         themeDataIsRetrieved = false
         let receivedThemeName = updatedData.themeName
-        if activeTheme.name != receivedThemeName {
-            activeTheme = fetchTheme(named: receivedThemeName)
-            viewController?.refreshUIForTheme()
-        }
+        activeTheme = fetchTheme(named: receivedThemeName)
+        print(viewController == nil)
+        viewController?.refreshUIForTheme()
     }
     
 }

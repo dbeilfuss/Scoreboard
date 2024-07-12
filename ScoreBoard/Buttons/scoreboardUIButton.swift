@@ -18,7 +18,7 @@ class scoreboardUIButton: UIButton {
         self.backgroundColor = .none
     }
     
-    func setupButton(state: ScoreboardState) {
+    func setupButton(state: ScoreboardState, theme: Theme) {
         scoreBoardState = state
         if constants.printThemeFlow {
             print("state: \(scoreBoardState), background: \(self.backgroundColor) tint: \(String(describing: self.tintColor)), file: \(#fileID)")
@@ -26,7 +26,6 @@ class scoreboardUIButton: UIButton {
         
         // Theme
         self.tintAdjustmentMode = .normal //to prevent the button reverting to the default tint color
-        let theme = ThemeManager().fetchActiveTheme()
         theme.format(button: self)
         
         // HideUI
