@@ -7,9 +7,10 @@
 
 import UIKit
 
-
 class MainDisplayViewController: ScoreBoardViewController {
     
+    //MARK: - Properties
+    var shouldNeverDisplayUI = false
     
     //MARK: - IBOutlets
     
@@ -102,6 +103,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         lockOrientation(to: .landscapeLeft)
     }
     
+    
     //MARK: - TeamViews
     
     private func createTeamViews() {
@@ -126,7 +128,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         let teamView = TeamView()
         teamView.translatesAutoresizingMaskIntoConstraints = false
         teamView.set(teamInfo: teamInfo)
-        teamView.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup)
+        teamView.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup, theme: themeManager.fetchActiveTheme())
         teamView.set(delegate: self)
         
         return teamView
@@ -206,6 +208,9 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     func refreshTeamViews() {
+        if constants.printTeamFlow {
+            print("refreshing teamViews - \(#fileID)")
+        }
         
         // Reinitialize teamViews if needed
         if shouldReInitializeTeamViews() {
@@ -219,7 +224,7 @@ class MainDisplayViewController: ScoreBoardViewController {
             if let newTeamInfo: Team = teamManager.fetchTeamInfo(teamNumber: teamNumber) {
                 view.set(teamInfo: newTeamInfo)
             }
-            view.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup)
+            view.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup, theme: themeManager.fetchActiveTheme())
         }
     }
     

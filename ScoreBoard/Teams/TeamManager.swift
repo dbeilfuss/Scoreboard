@@ -5,7 +5,7 @@
 //  Created by Daniel Beilfuss on 12/2/22.
 //
 
-import Foundation
+import FirebaseFirestore
 import UIKit
 
 
@@ -18,17 +18,6 @@ class TeamManager {
     var teamDataIsFetched = false
     
     //MARK: - Team List
-    
-    let startingTeamList = [
-        Team(number: 1, name: "Team 1", score: 0, isActive: true),
-        Team(number: 2, name: "Team 2", score: 0, isActive: true),
-        Team(number: 3, name: "Team 3", score: 0, isActive: false),
-        Team(number: 4, name: "Team 4", score: 0, isActive: false),
-        Team(number: 5, name: "Team 5", score: 0, isActive: false),
-        Team(number: 6, name: "Team 6", score: 0, isActive: false),
-        Team(number: 7, name: "Team 7", score: 0, isActive: false),
-        Team(number: 8, name: "Team 8", score: 0, isActive: false)
-    ]
     
     private var teamList = [
         Team(number: 1, name: "Team 1", score: 0, isActive: true),
@@ -44,22 +33,22 @@ class TeamManager {
     //MARK: - Reset
     
     func resetTeams() {
-        teamList = startingTeamList
-        saveTeamsToDataStorage(dataSource: .local)
+        teamList = constants.defaultTeams
+        saveTeamsToDataStorage()
     }
     
     func resetTeamNames() {
         for i in 0...(teamList.count - 1) {
-            teamList[i].name = startingTeamList[i].name
+            teamList[i].name = constants.defaultTeams[i].name
         }
-        saveTeamsToDataStorage(dataSource: .local)
+        saveTeamsToDataStorage()
     }
     
     func resetScores() {
         for i in 0...teamList.count - 1 {
             teamList[i].score = 0
         }
-        saveTeamsToDataStorage(dataSource: .local)
+        saveTeamsToDataStorage()
     }
     
     //MARK: - Fetch
@@ -69,11 +58,11 @@ class TeamManager {
             if constants.printTeamFlow {
                 print("fetching teams from dataStorage, \(#fileID)")
             }
-            if let storedTeams = databaseManager?.loadTeams() {
+            if let storedTeams = databaseManager?.requestData().teamScores {
                 teamList = storedTeams
             } else {
-                teamList = startingTeamList
-                saveTeamsToDataStorage(dataSource: .local)
+                teamList = constants.defaultTeams
+                saveTeamsToDataStorage()
             }
             teamDataIsFetched = true
         }
@@ -157,25 +146,12 @@ class TeamManager {
     
     //MARK: - Update
     
-    func refreshData() {
+    func saveTeamsToDataStorage() {
         if constants.printTeamFlow {
-            print("refreshing Data, \(#fileID)")
-        }
-        teamDataIsFetched = false
-        teamList = fetchTeamList()
-        viewController?.refreshUIForTeams()
-    }
-    
-    func saveTeamsToDataStorage(dataSource: DataSource) {
-        if databaseManager == nil {
-            print("databaseManager == nil ? \(databaseManager == nil)")
-        } else {
-            if constants.printTeamFlow {
-                print("savingTeamsToDataStorage, datasource: \(dataSource), \(#fileID)")
-            }
+            print("savingTeamsToDataStorage - \(#fileID)")
         }
         
-        databaseManager?.saveTeams(teamList, dataSource: dataSource)
+        databaseManager?.saveTeams(teamList)
     }
     
     func replaceScore(teamNumber: Int, newScore: Int) {
@@ -183,7 +159,7 @@ class TeamManager {
             print("replacing score, \(#fileID)")
         }
         teamList[teamNumber - 1].score = newScore
-        saveTeamsToDataStorage(dataSource: .local)
+        saveTeamsToDataStorage()
     }
     
     func addToScore(teamNumber: Int, scoreToAdd: Int) {
@@ -191,10 +167,10 @@ class TeamManager {
             print("adding to score, \(#fileID)")
         }
         teamList[teamNumber - 1].score += scoreToAdd
-        saveTeamsToDataStorage(dataSource: .local)
+        saveTeamsToDataStorage()
     }
     
-    func saveTeam(_ team: Team, datasource: DataSource) {
+    func saveTeam(_ team: Team) {
         
         if constants.printTeamFlow {
             print("saving team, \(#fileID)")
@@ -203,11 +179,7 @@ class TeamManager {
         let teamIndex = team.number - 1
         teamList[teamIndex] = team
         
-        saveTeamsToDataStorage(dataSource: datasource)
-        
-        if datasource == .cloud {
-            viewController?.refreshUIForTeams()
-        }
+        saveTeamsToDataStorage()
     }
     
     func updateTeamIsActive(teamNumber: Int, isActive: Bool){
@@ -215,7 +187,7 @@ class TeamManager {
             print("updating teamIsActive, \(#fileID)")
         }
         teamList[teamNumber - 1].isActive = isActive
-        saveTeamsToDataStorage(dataSource: .local)
+        saveTeamsToDataStorage()
     }
     
     func updateTeamName(teamNumber: Int, name: String){
@@ -223,7 +195,7 @@ class TeamManager {
             print("updating team, \(#fileID)")
         }
         teamList[teamNumber - 1].name = name
-        saveTeamsToDataStorage(dataSource: .local)
+        saveTeamsToDataStorage()
     }
 }
 
@@ -243,4 +215,18 @@ extension TeamManager: MVCDelegate {
 }
 
 extension TeamManager: TeamManagerProtocol {
+}
+
+extension TeamManager: DataStorageDelegate {
+    
+    func dataStorageUpdated(_ updatedData: DataStorageBundle) {
+        if constants.printTeamFlow {
+            print("refreshing Data, \(#fileID)")
+        }
+        
+        let receivedTeamList = updatedData.teamScores
+        teamList = receivedTeamList
+        viewController?.refreshUIForTeams()
+        
+    }
 }

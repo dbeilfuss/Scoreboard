@@ -9,6 +9,8 @@ import UIKit
 
 struct WelcomeScreenDatabase {
     
+    
+    
     /// Data
     let tableData: [String] = [
         "Scoreboard",
@@ -17,7 +19,7 @@ struct WelcomeScreenDatabase {
     
     /// Themes
     var themeAssignments: [String: Theme] {[
-        tableData[0]: ThemeManager().fetchTheme(named: Constants().defaultScoreboardState.themeName),
+        tableData[0]: ThemeManager().fetchTheme(named: Constants().defaultTheme.name),
         tableData[1]: RemoteControlTheme().theme
     ]}
     

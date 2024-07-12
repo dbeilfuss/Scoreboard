@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="iPad13_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Display View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="MainDisplayViewController" customModule="ScoreBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FrI-gT-hGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="1376" height="1032"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TrainBridge" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pT-Vs-tUZ" userLabel="Background Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="1376" height="1032"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jec-UG-Yil" userLabel="ScoreBoard Stack View">
+                                <rect key="frame" x="69" y="206.5" width="1238" height="619"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F3H-5T-iAa" userLabel="Settings Buttons">
+                                <rect key="frame" x="966" y="957.5" width="390" height="34.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCK-Ne-HNT" userLabel="Feedback">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="34.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OlL-di-kW0" userLabel="Reset Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="60" y="0.0" width="75" height="34.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34.5" id="cpe-mR-I30"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="mDZ-nb-i0R"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="exclamationmark.arrow.circlepath" catalog="system" title="" imagePadding="10"/>
+                                        <connections>
+                                            <action selector="resetButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hv9-N1-FR1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-Fn-wR7" userLabel="Team Setup Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="145" y="0.0" width="75" height="34.5"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="person.2.fill" catalog="system" title="" imagePadding="10"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhe-c9-QSx" userLabel="Theme Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="230" y="0.0" width="75" height="34.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34.5" id="8yq-UE-7X5"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="hXG-xP-6gM"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="photo.on.rectangle" catalog="system" title="" imagePadding="10"/>
+                                        <connections>
+                                            <action selector="themesButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ufx-Bz-gbD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsX-8y-iHU" userLabel="Toggle UI Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="315" y="0.0" width="75" height="34.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34.5" id="YAB-JO-qeb"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="zAe-op-K48"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="eye.slash.circle.fill" catalog="system" title="" imagePadding="10"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MK-l7-wfM" userLabel="Troubleshooting Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="390" y="0.0" width="75" height="34.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="fqD-qz-gAm"/>
+                                            <constraint firstAttribute="height" constant="34.5" id="iR2-HU-wWQ"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="exclamationmark.triangle" catalog="system" title="" imagePadding="10"/>
+                                        <connections>
+                                            <action selector="troubleShootingButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1WU-lD-0Tv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fbL-Fn-wR7" firstAttribute="width" secondItem="OlL-di-kW0" secondAttribute="width" id="GXY-5a-Wep"/>
+                                    <constraint firstItem="fbL-Fn-wR7" firstAttribute="height" secondItem="OlL-di-kW0" secondAttribute="height" id="ciB-Ui-MU3"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="1MK-l7-wfM"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="p1E-7L-ode" userLabel="Points Value Buttons">
+                                <rect key="frame" x="956" y="34" width="400" height="34.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sl1-Kl-8cX" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="34.5"/>
+                                        <color key="tintColor" red="0.82872829530000003" green="0.45544863330000002" blue="0.55704390429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="1"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="1"/>
+                                        <connections>
+                                            <action selector="pointIncrementButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YVi-hG-Cwg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCC-DF-OkD" userLabel="Five Point Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="102.5" y="0.0" width="92.5" height="34.5"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="5">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="filled" title="5"/>
+                                        <connections>
+                                            <action selector="pointIncrementButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2o3-2O-GGf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRr-AT-1ct" userLabel="10 Points" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="205" y="0.0" width="92.5" height="34.5"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="10"/>
+                                        <connections>
+                                            <action selector="pointIncrementButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="w0x-r7-tur"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vq-F9-jWI" userLabel="100 Point" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                        <rect key="frame" x="307.5" y="0.0" width="92.5" height="34.5"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="100"/>
+                                        <connections>
+                                            <action selector="pointIncrementButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hHl-mw-zMV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="PxL-VR-eML"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-nd-3t6" userLabel="Done Button" customClass="scoreboardUIButton" customModule="ScoreBoard" customModuleProvider="target">
+                                <rect key="frame" x="20" y="957.5" width="75" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="1lV-nj-Vp0"/>
+                                    <constraint firstAttribute="height" constant="34.5" id="4sJ-Ow-zQo"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YDs-E1-p1X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pVc-fw-wbX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7pT-Vs-tUZ" secondAttribute="trailing" id="0Ps-th-P6P"/>
+                            <constraint firstItem="jec-UG-Yil" firstAttribute="centerX" secondItem="FrI-gT-hGJ" secondAttribute="centerX" id="1mR-5P-QjK"/>
+                            <constraint firstItem="jec-UG-Yil" firstAttribute="width" secondItem="FrI-gT-hGJ" secondAttribute="width" multiplier="0.9" id="5Mw-kQ-7ib"/>
+                            <constraint firstItem="jec-UG-Yil" firstAttribute="centerY" secondItem="FrI-gT-hGJ" secondAttribute="centerY" id="Abk-LW-B89"/>
+                            <constraint firstItem="7pT-Vs-tUZ" firstAttribute="leading" secondItem="FrI-gT-hGJ" secondAttribute="leading" id="BTy-Jk-mlb"/>
+                            <constraint firstItem="pVc-fw-wbX" firstAttribute="bottom" secondItem="F3H-5T-iAa" secondAttribute="bottom" constant="20" id="E0c-wP-q2Q"/>
+                            <constraint firstItem="p1E-7L-ode" firstAttribute="top" secondItem="pVc-fw-wbX" secondAttribute="top" constant="10" id="VUp-rE-2kQ"/>
+                            <constraint firstItem="jec-UG-Yil" firstAttribute="height" secondItem="FrI-gT-hGJ" secondAttribute="height" multiplier="0.6" id="Y37-qK-vEA"/>
+                            <constraint firstItem="pVc-fw-wbX" firstAttribute="bottom" secondItem="Kaf-nd-3t6" secondAttribute="bottom" constant="20" id="ZUi-bB-hW6"/>
+                            <constraint firstItem="7pT-Vs-tUZ" firstAttribute="top" secondItem="FrI-gT-hGJ" secondAttribute="top" id="gjS-8c-jPl"/>
+                            <constraint firstItem="pVc-fw-wbX" firstAttribute="trailing" secondItem="F3H-5T-iAa" secondAttribute="trailing" constant="20" id="hbN-8P-XRZ"/>
+                            <constraint firstAttribute="bottom" secondItem="7pT-Vs-tUZ" secondAttribute="bottom" id="pBI-rX-lvr"/>
+                            <constraint firstItem="pVc-fw-wbX" firstAttribute="trailing" secondItem="p1E-7L-ode" secondAttribute="trailing" constant="20" id="qWT-Ff-1HG"/>
+                            <constraint firstItem="Kaf-nd-3t6" firstAttribute="leading" secondItem="pVc-fw-wbX" secondAttribute="leading" constant="20" id="uoq-vU-vWf"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="F3H-5T-iAa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="7pT-Vs-tUZ" id="gEw-mF-1lq"/>
+                        <outlet property="doneButton" destination="Kaf-nd-3t6" id="ySI-jP-IPz"/>
+                        <outlet property="fivePointButton" destination="LCC-DF-OkD" id="sNU-RF-QKu"/>
+                        <outlet property="hundredPointButton" destination="8vq-F9-jWI" id="6EB-Qx-G49"/>
+                        <outlet property="mainScoreBoardStack" destination="jec-UG-Yil" id="YEx-U6-3nt"/>
+                        <outlet property="onePointButton" destination="Sl1-Kl-8cX" id="cDV-bf-loN"/>
+                        <outlet property="resetButton" destination="OlL-di-kW0" id="yvp-lb-sCV"/>
+                        <outlet property="teamSetupButton" destination="fbL-Fn-wR7" id="Mqe-w6-v9P"/>
+                        <outlet property="tenPointButton" destination="xRr-AT-1ct" id="86J-PN-oMz"/>
+                        <outlet property="themesButton" destination="nhe-c9-QSx" id="QNq-tS-PJA"/>
+                        <outlet property="toggleUIButton" destination="XsX-8y-iHU" id="8aF-oJ-hdp"/>
+                        <outlet property="troubleShootingButton" destination="1MK-l7-wfM" id="eV4-ib-tTk"/>
+                        <outlet property="userFeedbackLabel" destination="uCK-Ne-HNT" id="wut-nv-WHI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="TrainBridge" width="3472" height="1536"/>
+        <image name="exclamationmark.arrow.circlepath" catalog="system" width="128" height="112"/>
+        <image name="exclamationmark.triangle" catalog="system" width="128" height="109"/>
+        <image name="eye.slash.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="person.2.fill" catalog="system" width="128" height="86"/>
+        <image name="photo.on.rectangle" catalog="system" width="128" height="98"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

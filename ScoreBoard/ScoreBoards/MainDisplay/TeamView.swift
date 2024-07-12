@@ -49,10 +49,10 @@ class TeamView: UIView {
         scoreStepper.value = Double(teamInfo.score)
     }
     
-    func set(scoreboardState: ScoreboardState, teamSetup: [Team]) {
+    func set(scoreboardState: ScoreboardState, teamSetup: [Team], theme: Theme) {
         
         // Deconstruct / Gather Information
-        let (theme, pointIncrement, uiIsHidden) = (ThemeManager().fetchTheme(named: scoreboardState.themeName), scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
+        let (pointIncrement, uiIsHidden) = (scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
         // Theme
         theme.format(label: nameLabel, labelType: .teamNameLabel, teamSetup: teamSetup)

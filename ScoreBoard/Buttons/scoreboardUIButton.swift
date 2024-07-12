@@ -26,7 +26,7 @@ class scoreboardUIButton: UIButton {
         
         // Theme
         self.tintAdjustmentMode = .normal //to prevent the button reverting to the default tint color
-        let theme = ThemeManager().fetchTheme(named: state.themeName)
+        let theme = ThemeManager().fetchActiveTheme()
         theme.format(button: self)
         
         // HideUI

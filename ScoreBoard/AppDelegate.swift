@@ -31,9 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: - Orientation Lock
-    
-//    var window: UIWindow?
-    
+        
     var orientation: UIInterfaceOrientationMask = .all
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
@@ -53,7 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        if connectingSceneSession.role == .windowApplication {
+            return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        } else if connectingSceneSession.role == .windowExternalDisplayNonInteractive {
+            return UISceneConfiguration(name: "External Display Configuration", sessionRole: connectingSceneSession.role)
+        } else {
+            // Return a default configuration in case of any other roles (if any)
+            return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        }
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {

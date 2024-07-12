@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 struct Constants {
     /// Title
@@ -41,16 +42,27 @@ struct Constants {
     let screenOrientationToRotateTo: UIInterfaceOrientation = UIInterfaceOrientation.portrait
     let screenOrientationStandardiPad: UIInterfaceOrientationMask = UIInterfaceOrientationMask.all
 
-    // State
+    // Defaults
+    let defaultTeams: [Team] = [
+        Team(number: 1, name: "Team 1", score: 0, isActive: true),
+        Team(number: 2, name: "Team 2", score: 0, isActive: true),
+        Team(number: 3, name: "Team 3", score: 0, isActive: false),
+        Team(number: 4, name: "Team 4", score: 0, isActive: false),
+        Team(number: 5, name: "Team 5", score: 0, isActive: false),
+        Team(number: 6, name: "Team 6", score: 0, isActive: false),
+        Team(number: 7, name: "Team 7", score: 0, isActive: false),
+        Team(number: 8, name: "Team 8", score: 0, isActive: false)
+    ]
     let defaultTheme = FractalLandscapeBlue1().theme
-    let defaultScoreboardState: ScoreboardState = ScoreboardState(themeName: FractalLandscapeBlue1().theme.name, pointIncrement: 1, uiIsHidden: false)
+    let defaultScoreboardState: ScoreboardState = ScoreboardState(pointIncrement: 1, uiIsHidden: false)
+    lazy var defaultDataStorageBundle: DataStorageBundle = DataStorageBundle.init(teamScores: defaultTeams, themeName: defaultTheme.name, timeStamp: Timestamp(date: Date(timeIntervalSince1970: 0)))
     
     // DataStorage
     let teamCollectionKey: String = "teams"
     let scoreboardStateKey: String = "scoreboardState"
     
-    // Logging
-    let printTeamFlow = false
+    // Print(Logging)
+    let printTeamFlow = true
     let printTeamFlowDetailed = false
     let printThemeFlow = false
     let printStateFlow = false

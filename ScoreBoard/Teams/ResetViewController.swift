@@ -44,7 +44,6 @@ class ResetViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    
     @IBAction func resetNamesPressed(_ sender: UIButton) {
         teamManager?.resetTeamNames()
         self.dismiss(animated: true)

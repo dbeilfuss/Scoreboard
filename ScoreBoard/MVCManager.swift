@@ -37,19 +37,19 @@ protocol TeamManagerProtocol {
     func fetchActiveTeamNumbers() -> [Int]
     
     // Update
-    func refreshData()
+//    func refreshData()
     func replaceScore(teamNumber: Int, newScore: Int)
     func addToScore(teamNumber: Int, scoreToAdd: Int)
     func updateTeamIsActive(teamNumber: Int, isActive: Bool)
     func updateTeamName(teamNumber: Int, name: String)
-    func saveTeam(_ team: Team, datasource: DataSource)
+    func saveTeam(_ team: Team)
 }
 
 protocol ThemeManagerProtocol {
     // Themes
 //    func refreshData()
     func fetchActiveTheme() -> Theme
-    func saveTheme(named themeName: String, dataSource: DataSource)
+    func saveTheme(named themeName: String)
     func fetchSpecializedTheme(ofType: SpecializedTheme) -> Theme
     
     // Scoreboard State
@@ -59,12 +59,17 @@ protocol ThemeManagerProtocol {
 }
 
 protocol DataStorageManagerProtocol {
+    // DataStorageBundle
+    func saveData(_: DataStorageBundle)
+    func requestData() -> DataStorageBundle
+    func requestData(completion: (DataStorageBundle) -> Void)
+    
     // Teams
-    func loadTeams() -> [Team]?
-    func saveTeams(_ teams: [Team], dataSource: DataSource)
+//    func loadTeams() -> [Team]?
+    func saveTeams(_ teams: [Team])
     
     // Themes
-    func saveTheme(named themeName: String, dataSource: DataSource)
+    func saveTheme(named themeName: String)
     
     // State
     func loadScoreboardState() -> ScoreboardState

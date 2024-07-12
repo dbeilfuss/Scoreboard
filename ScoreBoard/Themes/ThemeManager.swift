@@ -12,7 +12,7 @@ enum SpecializedTheme {
 }
 
 class ThemeManager {
-    private let constants = Constants()
+    private var constants = Constants()
     private var dataStorageManager: DataStorageManagerProtocol?
     private var viewController: ScoreBoardViewControllerProtocol?
     
@@ -70,15 +70,14 @@ class ThemeManager {
             print("fetching theme from dataStorage, \(#fileID)")
         }
         
-        if let themeName = dataStorageManager?.loadScoreboardState().themeName {
+        if let themeName = dataStorageManager?.requestData().themeName {
             
             let theme = fetchTheme(named: themeName)
             
             themeDataIsRetrieved = true
             activeTheme = theme
         } else {
-            let themeName = constants.defaultScoreboardState.themeName
-            let theme = fetchTheme(named: themeName)
+            let themeName = constants.defaultDataStorageBundle.themeName
             print("databaseManager == nil, \(#fileID)")
         }
     }
@@ -145,12 +144,12 @@ extension ThemeManager: ThemeManagerProtocol {
         return activeTheme
     }
     
-    func saveTheme(named themeName: String, dataSource: DataSource) {
+    func saveTheme(named themeName: String) {
         if constants.printThemeFlow {
             print("Saving Theme: \(themeName), File: \(#fileID)")
         }
         
-        dataStorageManager?.saveTheme(named: themeName, dataSource: .local)
+        dataStorageManager?.saveTheme(named: themeName)
         
         let theme = fetchTheme(named: themeName)
         activeTheme = theme
@@ -190,6 +189,23 @@ extension ThemeManager: ThemeManagerProtocol {
     
     func savePointIncrement(_ pointIncrement: Double) {
         dataStorageManager?.savePointIncrement(pointIncrement)
+    }
+    
+}
+
+extension ThemeManager: DataStorageDelegate {
+    
+    func dataStorageUpdated(_ updatedData: DataStorageBundle) {
+        if constants.printThemeFlow {
+            print("refreshing theme data, \(#fileID)")
+        }
+        
+        themeDataIsRetrieved = false
+        let receivedThemeName = updatedData.themeName
+        if activeTheme.name != receivedThemeName {
+            activeTheme = fetchTheme(named: receivedThemeName)
+            viewController?.refreshUIForTheme()
+        }
     }
     
 }
