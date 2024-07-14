@@ -209,7 +209,9 @@ class MainDisplayViewController: ScoreBoardViewController {
     
     /// Settings Button
     @IBAction func settingsButton(_ sender: UIButton) {
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+
+        if deviceType == .iPhone {
             self.performSegue(withIdentifier: "mainDisplayToRemoteModal", sender: self)
         } else {
             self.performSegue(withIdentifier: "mainDisplayToRemote", sender: self)
@@ -225,9 +227,11 @@ class MainDisplayViewController: ScoreBoardViewController {
     @IBAction func doneButtonPressed(_ sender: Any) {
         
         /// Orientation Locks
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+
+        if deviceType == .iPhone {
             Utilities().updateOrientation(to: constants.screenOrientationStandardiPhone)
-        } else if UIDevice.current.localizedModel == "iPad" {
+        } else if deviceType == .iPad {
             Utilities().updateOrientation(to: constants.screenOrientationStandardiPad)
         }
         
@@ -241,7 +245,8 @@ class MainDisplayViewController: ScoreBoardViewController {
         
         /// Update Name Segue
         if segue.identifier == "mainDisplayToRemote" || segue.identifier == "mainDisplayToRemoteModal" {
-            if UIDevice.current.localizedModel == "iPhone" {
+            let deviceType = Utilities.DeviceInfo().deviceType
+            if deviceType == .iPhone {
                 Utilities().updateOrientation(to: constants.screenOrientationStandardiPhone)
             }
             let destinationVC = segue.destination as! Remotev2ViewController

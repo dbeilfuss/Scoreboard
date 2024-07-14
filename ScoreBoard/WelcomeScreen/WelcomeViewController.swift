@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
     
@@ -73,22 +74,27 @@ class WelcomeViewController: UIViewController {
         var constraintFactor: CGFloat = 50
         
         /// UI Changes for iPhone
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+
+        switch deviceType {
+        case .iPhone:
+            iphoneUIChanges()
+        case .iPad:
+            iPadUIChanges()
+        case .unknown:
+            print("unknown device, no UI Changes")
+        }
+        
+        func iphoneUIChanges() {
             Utilities().updateOrientation(to: .portrait)
-//            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPhone)///  Unlocks Screen Orientation for iPads.
-            
             titleLabel.font = constants.titleFontIPhone /// Title Label Font Size
             subtitleLabel.font = constants.subTitleFontIPhone /// Subtitle Label Font Size
-            
+        }
+
             /// UI Changes for iPad
-        } else if UIDevice.current.localizedModel == "iPad" {
-            
-//            AppDelegate.AppUtility.lockOrientation(constants.screenOrientationStandardiPad) ///  Unlocks Screen Orientation for iPads.
-            
+        func iPadUIChanges() {
             Utilities().updateOrientation(to: .all)
-            
             constraintFactor *= 1.5 /// Adjust Constraint Factor for iPad
-            
             titleLabel.font = constants.titleFontIPad /// Title Label Font Size
             subtitleLabel.font = constants.subTitleFontIPad /// Subtitle Label Font Size
         }
@@ -98,10 +104,7 @@ class WelcomeViewController: UIViewController {
             constraint.constant = constraintFactor
         }
         appIconWidth.constant = constraintFactor * 2
-        
-        /// Make App Icon a Circle
-//        appIcon.layer.cornerRadius = constraintFactor  // Deprecated with new app icon
-        
+                
         /// Table Constraints
         tableViewTop.constant = constraintFactor / 2
         

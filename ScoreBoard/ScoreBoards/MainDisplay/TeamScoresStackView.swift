@@ -70,7 +70,8 @@ class TeamScoresStackView: UIStackView {
         var scoreRow: UIStackView = self.arrangedSubviews.first! as! UIStackView
         
         var idealTeamsPerRow = 3
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+        if deviceType == .iPhone {
             idealTeamsPerRow = 4
         }
         

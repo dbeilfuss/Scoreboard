@@ -51,6 +51,7 @@
 		7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */; };
 		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
 		7797E96F2C0510F0007D7EEF /* CustomDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */; };
+		7798A77A2C4358E2007E3E4F /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7798A7792C4358E2007E3E4F /* DeviceInfo.swift */; };
 		77A11797293ACD1A00ED74C2 /* TeamDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */; };
 		77A5079A2C27376000BB49D2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A507992C27376000BB49D2 /* Utilities.swift */; };
 		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
@@ -146,6 +147,7 @@
 		7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasTheme.swift; sourceTree = "<group>"; };
 		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
 		7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataTypes.swift; sourceTree = "<group>"; };
+		7798A7792C4358E2007E3E4F /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDataTypes.swift; sourceTree = "<group>"; };
 		77A507992C27376000BB49D2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */,
+				7798A7792C4358E2007E3E4F /* DeviceInfo.swift */,
 			);
 			path = CustomDataTypes;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				77CEA6FA297C449D00E853DC /* Railway.swift in Sources */,
 				77B1115E293AB78E00553E37 /* AppDelegate.swift in Sources */,
 				77D98FD8297B096B00927949 /* FractalLandscapeGreen2.swift in Sources */,
+				7798A77A2C4358E2007E3E4F /* DeviceInfo.swift in Sources */,
 				77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */,
 				77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */,
 				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,

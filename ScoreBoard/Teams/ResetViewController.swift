@@ -30,7 +30,8 @@ class ResetViewController: UIViewController {
         self.preferredContentSize = CGSize(width: 300, height: 200)
         
         /// Constraint Adjustments for iPhone
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+        if deviceType == .iPhone {
             if UIDevice.current.orientation == .portrait {
                 stackViewTop.constant = 150
             } else {

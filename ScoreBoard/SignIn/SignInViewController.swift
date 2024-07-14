@@ -86,7 +86,8 @@ class SignInViewController: UIViewController {
         let constraintFactor: CGFloat = 50
         
         /// UI Changes for iPhone
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+        if deviceType == .iPhone {
             
             /// App Icon
             appIcon.isHidden = false
@@ -101,7 +102,7 @@ class SignInViewController: UIViewController {
         }
         
         /// UI Changes for iPad
-        else if UIDevice.current.localizedModel == "iPad" {
+        else if deviceType == .iPad {
             
             /// App Icon
             appIcon.isHidden = true

@@ -30,10 +30,11 @@ class TextInputCell: UITableViewCell, UITextFieldDelegate {
         textField.delegate = self
         
         /// Fonts
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+        if deviceType == .iPhone {
             label.font = k.tableFontiPhoneSmall
             textField.font = k.textFieldIPhone
-        } else if UIDevice.current.localizedModel == "iPad" {
+        } else if deviceType == .iPad {
             label.font = k.tableFontiPadSmall
             textField.font = k.textFieldIPhone
         }

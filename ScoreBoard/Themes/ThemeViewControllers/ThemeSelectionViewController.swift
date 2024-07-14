@@ -90,7 +90,8 @@ class ThemeSelectionViewController: UITableViewController {
         if themeSelected != nil {
             print("ThemeSelected: \(themeSelected!.name), File: \(#fileID)")
             delegate?.saveTheme(named: themeSelected!.name)
-            if UIDevice.current.localizedModel == "iPhone" {
+            let deviceType = Utilities.DeviceInfo().deviceType
+            if deviceType == .iPhone {
                 self.dismiss(animated: true)
             }
         }
