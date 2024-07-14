@@ -15,14 +15,14 @@ class MainDisplayViewController: ScoreBoardViewController {
     //MARK: - IBOutlets
     
     /// Stacks
-    @IBOutlet weak var mainScoreBoardStack: UIStackView!
+    @IBOutlet weak var mainScoreBoardStack: TeamScoresStackView!
     
     /// Point Increment Buttons
-    @IBOutlet weak var onePointButton: scoreboardUIButton!
-    @IBOutlet weak var fivePointButton: scoreboardUIButton!
-    @IBOutlet weak var tenPointButton: scoreboardUIButton!
-    @IBOutlet weak var hundredPointButton: scoreboardUIButton!
-    var pointIncrementButtonsArray: [scoreboardUIButton] {
+    @IBOutlet weak var onePointButton: ScoreboardUIButton!
+    @IBOutlet weak var fivePointButton: ScoreboardUIButton!
+    @IBOutlet weak var tenPointButton: ScoreboardUIButton!
+    @IBOutlet weak var hundredPointButton: ScoreboardUIButton!
+    var pointIncrementButtonsArray: [ScoreboardUIButton] {
         return [onePointButton,
                 fivePointButton,
                 tenPointButton,
@@ -31,15 +31,15 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     /// Control Buttons
-    @IBOutlet weak var resetButton: scoreboardUIButton!
-    @IBOutlet weak var teamSetupButton: scoreboardUIButton!
-    @IBOutlet weak var toggleUIButton: scoreboardUIButton!
-    @IBOutlet weak var troubleShootingButton: scoreboardUIButton!
-    @IBOutlet weak var themesButton: scoreboardUIButton!
-    @IBOutlet weak var doneButton: scoreboardUIButton!
+    @IBOutlet weak var resetButton: ScoreboardUIButton!
+    @IBOutlet weak var teamSetupButton: ScoreboardUIButton!
+    @IBOutlet weak var toggleUIButton: ScoreboardUIButton!
+    @IBOutlet weak var troubleShootingButton: ScoreboardUIButton!
+    @IBOutlet weak var themesButton: ScoreboardUIButton!
+    @IBOutlet weak var doneButton: ScoreboardUIButton!
     
     /// All Buttons Array
-    var allButtonsArray: [scoreboardUIButton] {
+    var allButtonsArray: [ScoreboardUIButton] {
         return [resetButton,
                 teamSetupButton,
                 troubleShootingButton,
@@ -54,13 +54,11 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     // Buttons With Permanent Visibility
-    var buttonsToKeepVisible: [scoreboardUIButton] {[
+    var buttonsToKeepVisible: [ScoreboardUIButton] {[
         doneButton,
         toggleUIButton
     ]}
-    
-    var teamViews: [TeamView] = []
-    
+        
     // User Feedback
     @IBOutlet weak var userFeedbackLabel: UILabel!
     
@@ -83,6 +81,8 @@ class MainDisplayViewController: ScoreBoardViewController {
             mainScoreBoardStack.spacing = 0
         }
         
+        // Create Teams
+        mainScoreBoardStack.set(delegate: self)
         createTeamViews()
         
         /// Inform Buttons Which Must Remain Visible even when UI is switched off
@@ -106,126 +106,12 @@ class MainDisplayViewController: ScoreBoardViewController {
     
     //MARK: - TeamViews
     
-    private func createTeamViews() {
-        var teamList = teamManager.fetchActiveTeams()
-        teamList = teamList.reversed()
-        let teamCount = teamList.count
-                
-        for team in teamList {
-            /// Create New TeamView
-            let teamView = createTeamView(team)
-            teamViews.append(teamView)
-            displayTeamView(teamView, teamCount: teamCount)
-            NSLayoutConstraint.activate([teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
-        }
-        
-    }
-    
-    private func createTeamView(_ teamInfo: Team) -> TeamView {
-        let teamSetup = teamManager.fetchTeamList()
-        
-        // Setup TeamView
-        let teamView = TeamView()
-        teamView.translatesAutoresizingMaskIntoConstraints = false
-        teamView.set(teamInfo: teamInfo)
-        teamView.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup, theme: themeManager.fetchActiveTheme())
-        teamView.set(delegate: self)
-        
-        return teamView
-    }
-    
-    private func displayTeamView(_ view: TeamView, teamCount: Int) {
-        
-        // create top row if needed
-        if mainScoreBoardStack.arrangedSubviews.count == 0 {
-            createScoreboardStackView()
-        }
-        
-        // choose bottom or top row
-        var scoreRow: UIStackView = mainScoreBoardStack.arrangedSubviews.first! as! UIStackView
-        
-        var idealTeamsPerRow = 3
-        if UIDevice.current.localizedModel == "iPhone" {
-            idealTeamsPerRow = 4
-        }
-        
-        if teamCount > idealTeamsPerRow {
-            if teamViews.count < ((teamCount / 2) + 1) {
-                
-                // create bottom row if needed
-                if mainScoreBoardStack.arrangedSubviews.count < 2 {
-                    createScoreboardStackView()
-                }
-                
-                // use bottom row
-                scoreRow = mainScoreBoardStack.arrangedSubviews.last! as! UIStackView
-            }
-        }
-        
-        scoreRow.insertArrangedSubview(view, at: 0)
-    }
-    
-    private func shouldReInitializeTeamViews() -> Bool {
-        
-        // Gather Information
-        var teamViewTeamNumbers = teamViews.map() {$0.teamInfo.number}
-        teamViewTeamNumbers = teamViewTeamNumbers.reversed()
-        let teamManagerTeamNumbers = teamManager.fetchActiveTeamNumbers()
-        
-        // Return True or False
-        if teamViewTeamNumbers == teamManagerTeamNumbers {
-            return false
-        } else {
-            return true
-        }
-        
-    }
-    
-    private func reInitializeTeamViews() {
-        // Delete Current TeamViews
-        teamViews = []
-        for stackView in mainScoreBoardStack.arrangedSubviews {
-            stackView.removeFromSuperview()
-        }
-        
-        // Refill the ScoresRows
-        createTeamViews()
-    }
-    
-    private func createScoreboardStackView() {
-        let scoreboardStackView = UIStackView()
-        mainScoreBoardStack.addArrangedSubview(scoreboardStackView)
-        
-        // configure
-        scoreboardStackView.alignment = .center
-        scoreboardStackView.distribution = .fillEqually
-        
-        // constraints
-        NSLayoutConstraint.activate([
-            scoreboardStackView.leadingAnchor.constraint(equalTo: mainScoreBoardStack.leadingAnchor, constant: 0),
-            scoreboardStackView.trailingAnchor.constraint(equalTo: mainScoreBoardStack.trailingAnchor, constant: 0)
-        ])
+    func createTeamViews() {
+        mainScoreBoardStack.set(activeTeamList: teamManager.fetchActiveTeams(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
     }
     
     func refreshTeamViews() {
-        if constants.printTeamFlow {
-            print("refreshing teamViews - \(#fileID)")
-        }
-        
-        // Reinitialize teamViews if needed
-        if shouldReInitializeTeamViews() {
-            reInitializeTeamViews()
-        }
-        
-        // Pass Data into the team views
-        let teamSetup = teamManager.fetchTeamList()
-        for view in teamViews {
-            let teamNumber = view.teamInfo.number
-            if let newTeamInfo: Team = teamManager.fetchTeamInfo(teamNumber: teamNumber) {
-                view.set(teamInfo: newTeamInfo)
-            }
-            view.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup, theme: themeManager.fetchActiveTheme())
-        }
+        mainScoreBoardStack.refreshTeamViews(teamList: teamManager.fetchTeamList(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
     }
     
     //MARK: - Update UI

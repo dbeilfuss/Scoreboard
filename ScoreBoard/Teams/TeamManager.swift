@@ -61,6 +61,9 @@ class TeamManager {
             if let storedTeams = databaseManager?.requestData().teamScores {
                 teamList = storedTeams
             } else {
+                if constants.printTeamFlowDetailed {
+                    print("failed to fetch teams from dataStorage, using default teamList \(#fileID)")
+                }
                 teamList = constants.defaultTeams
                 saveTeamsToDataStorage()
             }
@@ -151,6 +154,9 @@ class TeamManager {
             print("savingTeamsToDataStorage - \(#fileID)")
         }
         
+        if constants.printTeamFlowDetailed {
+            print("‼️ databaseManager == nil: \(databaseManager == nil) - \(#fileID)")
+        }
         databaseManager?.saveTeams(teamList)
     }
     
@@ -221,7 +227,7 @@ extension TeamManager: DataStorageDelegate {
     
     func dataStorageUpdated(_ updatedData: DataStorageBundle) {
         if constants.printTeamFlow {
-            print("refreshing Data, \(#fileID)")
+            print("refreshing Data - \(#fileID)")
         }
         
         let receivedTeamList = updatedData.teamScores

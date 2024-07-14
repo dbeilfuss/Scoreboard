@@ -132,11 +132,20 @@ extension DataStorageManager: DataStorageManagerProtocol {
     //MARK: - Teams
     
     func saveTeams(_ teams: [Team]) {
+        if constants.printTeamFlow {
+            print("saving teams to dataStorage - \(#fileID)")
+        }
+        if constants.printTeamFlowDetailed {
+            print(teams)
+        }
         var dataStorageBundle = requestData()
         dataStorageBundle.teamScores = teams
         dataStorageBundle.timeStamp = Timestamp(date: Date())
         
         saveData(dataStorageBundle)
+        if constants.printTeamFlowDetailed {
+            print("‼️ teamManager == nil:  \(teamManager == nil) - \(#fileID)")
+        }
         teamManager?.dataStorageUpdated(dataStorageBundle)
     }
         
