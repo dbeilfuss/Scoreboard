@@ -58,28 +58,29 @@ struct Theme: Equatable {
     let buttonHighlightedColor2: UIColor?
     let darkMode: Bool
     
-    func format(label: UILabel, labelType: LabelType, activeTeamCount: Int) {
+    func format(label: UILabel, labelType: LabelType, activeTeamCount: Int, parentWidth: CGFloat) {
         // Create FontSet
         var fontSet: FontSet
         switch labelType {
         case .scoreLabel:
-            fontSet = FontSet(fontName: scoreFontName!, fontSize: scoreFontSize!, font: scoreFont!)
+            fontSet = FontSet(fontName: scoreFontName!, fontSize: parentWidth / 10, font: scoreFont!)
         case .teamNameLabel:
-            fontSet = FontSet(fontName: subtitleFontName!, fontSize: subtitleFontSize!, font: subtitleFont!)
+            fontSet = FontSet(fontName: subtitleFontName!, fontSize: parentWidth / 20, font: subtitleFont!)
         }
         
         // Font
         label.font = UIFont(name:fontSet.fontName, size: label.font.pointSize)
         
         // Size
-        resizeFonts(label: label, themeFont: fontSet.font, activeTeamCount: activeTeamCount)
+//        resizeFonts(label: label, themeFont: fontSet.font, activeTeamCount: activeTeamCount, parentWidth: parentWidth)
         
         // Color
         label.textColor = subtitleColor
         label.shadowColor = shadowColor
     }
     
-    func resizeFonts(label: UILabel, themeFont: UIFont, activeTeamCount: Int) {
+    func resizeFonts(label: UILabel, themeFont: UIFont, activeTeamCount: Int, parentWidth: CGFloat) {
+                
         /// Determine the appropriate font point size
         let themeFontSize: CGFloat = themeFont.pointSize
         let device: String = UIDevice.current.localizedModel

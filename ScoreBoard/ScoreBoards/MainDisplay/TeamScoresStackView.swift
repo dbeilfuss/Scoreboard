@@ -18,13 +18,20 @@ class TeamScoresStackView: UIStackView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setWidth()
     }
 
     required init(coder: NSCoder) {
         super.init(coder: coder)
+        setWidth()
     }
     
     //MARK: - Setter
+    
+    private func setWidth() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+    }
     
     func set(delegate: TeamCellDelegate) {
         self.delegate = delegate
@@ -34,32 +41,70 @@ class TeamScoresStackView: UIStackView {
         var teams = activeTeamList
         teams = teams.reversed()
         let teamCount = teams.count
-                
+        
         for team in teams {
             /// Create New TeamView
             let teamView = createTeamView(team: team, theme: theme, state: state)
             teamViews.append(teamView)
             displayTeamView(teamView, teamCount: teamCount)
-            NSLayoutConstraint.activate([teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
         }
         
+        adjustSizing()
     }
     
-    private func createTeamView(team: Team, theme: Theme, state: ScoreboardState) -> TeamView {
+    func adjustSizing() {
+        // Properties
+        var widthMultiplyer: CGFloat = 0.9 // Proportionate width of the teamScoreStackView to the window
+//        var windowWidth: CGFloat? {
+//                var currentView: UIView? = self
+//                while let view = currentView {
+//                    if let window = view as? UIWindow {
+//                        return window.frame.width
+//                    }
+//                    currentView = view.superview
+//                }
+//                return nil
+//            }
         
-        // Setup TeamView
-        let teamView = TeamView()
-        teamView.translatesAutoresizingMaskIntoConstraints = false
-        teamView.set(teamInfo: team)
-        teamView.set(scoreboardState: state, activeTeamCount: activeTeamList.count, theme: theme)
-        if delegate != nil {
-            teamView.set(delegate: delegate!)
+        var safeAreaWidth: CGFloat? {
+            var currentView: UIView? = self
+            while let view = currentView {
+                if let superview = view.superview, superview.safeAreaInsets != .zero {
+                    let safeAreaWidth = superview.frame.width - superview.safeAreaInsets.left - superview.safeAreaInsets.right
+                    return safeAreaWidth
+                }
+                currentView = view.superview
+            }
+            return nil
         }
         
-        return teamView
+        /// Resize Self
+        if let safeWindowWidth = safeAreaWidth {
+            NSLayoutConstraint.activate([self.widthAnchor.constraint(equalToConstant: safeWindowWidth * widthMultiplyer)])
+        }
+            
+        /// Resize Team Views
+        let columnCount = (self.arrangedSubviews.first as? UIStackView)?.arrangedSubviews.count ?? 1
+        let teamViewWidth = self.frame.width / CGFloat(columnCount)
+        
+        for teamView in teamViews {
+            NSLayoutConstraint.activate([
+                teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0),
+                teamView.widthAnchor.constraint(equalToConstant: teamViewWidth)
+            ])
+        }
+        
+        /// Spacing Between Team Views
+        for subview in self.subviews {
+            if let stackView = subview as? UIStackView {
+                let totalChildrenWidth = teamViewWidth * CGFloat(stackView.subviews.count)
+                let targetSpacing = (self.frame.width - totalChildrenWidth) / CGFloat(stackView.subviews.count)
+                stackView.spacing = targetSpacing
+            }
+        }
     }
     
-    private func displayTeamView(_ view: TeamView, teamCount: Int) {
+    private func displayTeamView(_ teamView: TeamView, teamCount: Int) {
         
         // create top row if needed
         if self.arrangedSubviews.count == 0 {
@@ -70,10 +115,6 @@ class TeamScoresStackView: UIStackView {
         var scoreRow: UIStackView = self.arrangedSubviews.first! as! UIStackView
         
         var idealTeamsPerRow = 3
-        let deviceType = Utilities.DeviceInfo().deviceType
-        if deviceType == .iPhone {
-            idealTeamsPerRow = 4
-        }
         
         if teamCount > idealTeamsPerRow {
             if teamViews.count < ((teamCount / 2) + 1) {
@@ -88,7 +129,40 @@ class TeamScoresStackView: UIStackView {
             }
         }
         
-        scoreRow.insertArrangedSubview(view, at: 0)
+        scoreRow.insertArrangedSubview(teamView, at: 0)
+    }
+
+    
+    //MARK: - Create
+    private func createTeamView(team: Team, theme: Theme, state: ScoreboardState) -> TeamView {
+        
+        // Setup TeamView
+        let teamView = TeamView()
+        teamView.translatesAutoresizingMaskIntoConstraints = false
+        teamView.set(teamInfo: team)
+        teamView.set(scoreboardState: state, activeTeamCount: activeTeamList.count, theme: theme)
+        if delegate != nil {
+            teamView.set(delegate: delegate!)
+        }
+        
+        return teamView
+    }
+    
+    private func createScoreboardStackView() {
+        let scoreboardStackView = UIStackView()
+        self.addArrangedSubview(scoreboardStackView)
+        
+        // configure
+        scoreboardStackView.alignment = .center
+        scoreboardStackView.distribution = .equalCentering
+        
+        // constraints
+        NSLayoutConstraint.activate([
+//            scoreboardStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+//            scoreboardStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            scoreboardStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            
+        ])
     }
     
     private func shouldReInitializeTeamViews(activeTeamList: [Team]) -> Bool {
@@ -118,21 +192,7 @@ class TeamScoresStackView: UIStackView {
         set(activeTeamList: activeTeamList, theme: theme, state: state)
     }
     
-    private func createScoreboardStackView() {
-        let scoreboardStackView = UIStackView()
-        self.addArrangedSubview(scoreboardStackView)
-        
-        // configure
-        scoreboardStackView.alignment = .center
-        scoreboardStackView.distribution = .fillEqually
-        
-        // constraints
-        NSLayoutConstraint.activate([
-            scoreboardStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            scoreboardStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
-        ])
-    }
-    
+    //MARK: - Refresh
     func refreshTeamViews(teamList: [Team], theme: Theme, state: ScoreboardState) {
         if Constants().printTeamFlow {
             print("refreshing teamViews - \(#fileID)")
@@ -155,34 +215,4 @@ class TeamScoresStackView: UIStackView {
         }
     }
     
-    
-//    private func createScoreView(teamName: String, score: Int) -> UIView {
-//        let containerView = UIView()
-//        
-//        let teamLabel = UILabel()
-//        teamLabel.text = teamName
-//        teamLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-//        
-//        let scoreLabel = UILabel()
-//        scoreLabel.text = "\(score)"
-//        scoreLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-//        
-//        let stackView = UIStackView(arrangedSubviews: [teamLabel, scoreLabel])
-//        stackView.axis = .horizontal
-//        stackView.distribution = .fillEqually
-//        stackView.alignment = .center
-//        
-//        containerView.addSubview(stackView)
-//        
-//        // Layout the inner stack view within the container view
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-//            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-//            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
-//            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-//        ])
-//        
-//        return containerView
-//    }
 }

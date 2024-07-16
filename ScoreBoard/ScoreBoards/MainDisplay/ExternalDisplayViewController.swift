@@ -51,6 +51,7 @@ class ExternalDisplayViewController: ScoreBoardViewController {
         modifiedScoreboardState.uiIsHidden = true
         mainScoreBoardStack.refreshTeamViews(teamList: teamManager.fetchTeamList(), theme: themeManager.fetchActiveTheme(), state: modifiedScoreboardState)
     }
+
     
     //MARK: - Update UI
     

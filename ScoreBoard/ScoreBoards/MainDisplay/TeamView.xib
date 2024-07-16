@@ -21,43 +21,50 @@
             <rect key="frame" x="0.0" y="0.0" width="550" height="376"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-ao-TAf" userLabel="Team Stack View">
-                    <rect key="frame" x="0.0" y="57.333333333333343" width="550" height="286.66666666666663"/>
+                <stackView opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AQ2-ao-TAf" userLabel="Team Stack View">
+                    <rect key="frame" x="0.0" y="33.333333333333343" width="550" height="309.33333333333326"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Team 1" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9r-je-e8S" userLabel="Name Label">
-                            <rect key="frame" x="214" y="0.0" width="122" height="49.666666666666664"/>
-                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Team 1" textAlignment="center" lineBreakMode="clip" numberOfLines="0" minimumFontSize="50" translatesAutoresizingMaskIntoConstraints="NO" id="R9r-je-e8S" userLabel="Name Label">
+                            <rect key="frame" x="0.0" y="0.0" width="550" height="62"/>
+                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="5000"/>
                             <color key="textColor" red="0.8021596835" green="0.81718110669999999" blue="0.9649148005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <size key="shadowOffset" width="3" height="3"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="153" textAlignment="center" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-RN-rad" userLabel="Score Label">
-                            <rect key="frame" x="147.66666666666663" y="49.666666666666657" width="255" height="205"/>
-                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="175"/>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="543" textAlignment="center" lineBreakMode="clip" minimumFontSize="35" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-RN-rad" userLabel="Score Label">
+                            <rect key="frame" x="0.0" y="61.999999999999986" width="550" height="217.33333333333331"/>
+                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20000"/>
                             <color key="textColor" red="0.62060010730000004" green="0.17798503900000001" blue="0.13142725329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <size key="shadowOffset" width="3" height="1"/>
                         </label>
-                        <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10000" maximumValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Nzb-iM-Vr7" userLabel="Score Stepper">
-                            <rect key="frame" x="228" y="254.66666666666663" width="94" height="32"/>
+                        <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-1000000" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="Nzb-iM-Vr7" userLabel="Score Stepper">
+                            <rect key="frame" x="228" y="279.33333333333337" width="94" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="VWl-PL-MiV"/>
+                            </constraints>
                             <connections>
                                 <action selector="scoreStepperPressed:" destination="-1" eventType="valueChanged" id="Fbl-Ey-sLo"/>
                             </connections>
                         </stepper>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="AQ2-ao-TAf" secondAttribute="height" multiplier="16:9" id="1dR-qX-zJI"/>
+                        <constraint firstItem="gc9-RN-rad" firstAttribute="width" secondItem="AQ2-ao-TAf" secondAttribute="width" id="8f5-nM-wTk"/>
+                        <constraint firstItem="R9r-je-e8S" firstAttribute="height" secondItem="AQ2-ao-TAf" secondAttribute="height" multiplier="0.2" id="RhS-Xk-1w8"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="AQ2-ao-TAf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0Zc-Ky-x2d"/>
                 <constraint firstAttribute="bottom" secondItem="AQ2-ao-TAf" secondAttribute="bottom" id="3SW-fS-VTJ"/>
-                <constraint firstItem="AQ2-ao-TAf" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="7vu-38-ihm"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AQ2-ao-TAf" secondAttribute="trailing" id="ZHA-G2-HiJ"/>
+                <constraint firstItem="AQ2-ao-TAf" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" id="5be-Ep-rGZ"/>
+                <constraint firstItem="AQ2-ao-TAf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JJW-71-eRz"/>
+                <constraint firstItem="AQ2-ao-TAf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Jx0-DC-4kZ"/>
                 <constraint firstItem="AQ2-ao-TAf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dAs-EQ-I9m"/>
-                <constraint firstAttribute="height" secondItem="AQ2-ao-TAf" secondAttribute="height" multiplier="1.31163" id="wH5-VF-2te"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

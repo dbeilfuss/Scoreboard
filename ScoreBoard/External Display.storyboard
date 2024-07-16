@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1376" height="1032"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jec-UG-Yil" userLabel="ScoreBoard Stack View" customClass="TeamScoresStackView" customModule="ScoreBoard" customModuleProvider="target">
-                                <rect key="frame" x="69" y="206.5" width="1238" height="619"/>
+                                <rect key="frame" x="69" y="51.5" width="1238" height="929"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pVc-fw-wbX"/>
@@ -29,10 +29,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7pT-Vs-tUZ" secondAttribute="trailing" id="0Ps-th-P6P"/>
                             <constraint firstItem="jec-UG-Yil" firstAttribute="centerX" secondItem="FrI-gT-hGJ" secondAttribute="centerX" id="1mR-5P-QjK"/>
-                            <constraint firstItem="jec-UG-Yil" firstAttribute="width" secondItem="FrI-gT-hGJ" secondAttribute="width" multiplier="0.9" id="5Mw-kQ-7ib"/>
+                            <constraint firstItem="jec-UG-Yil" firstAttribute="width" secondItem="FrI-gT-hGJ" secondAttribute="width" multiplier="0.9" placeholder="YES" id="5Mw-kQ-7ib"/>
                             <constraint firstItem="jec-UG-Yil" firstAttribute="centerY" secondItem="FrI-gT-hGJ" secondAttribute="centerY" id="Abk-LW-B89"/>
                             <constraint firstItem="7pT-Vs-tUZ" firstAttribute="leading" secondItem="FrI-gT-hGJ" secondAttribute="leading" id="BTy-Jk-mlb"/>
-                            <constraint firstItem="jec-UG-Yil" firstAttribute="height" secondItem="FrI-gT-hGJ" secondAttribute="height" multiplier="0.6" id="Y37-qK-vEA"/>
+                            <constraint firstItem="jec-UG-Yil" firstAttribute="height" secondItem="FrI-gT-hGJ" secondAttribute="height" multiplier="0.9" id="Y37-qK-vEA"/>
                             <constraint firstItem="7pT-Vs-tUZ" firstAttribute="top" secondItem="FrI-gT-hGJ" secondAttribute="top" id="gjS-8c-jPl"/>
                             <constraint firstAttribute="bottom" secondItem="7pT-Vs-tUZ" secondAttribute="bottom" id="pBI-rX-lvr"/>
                         </constraints>

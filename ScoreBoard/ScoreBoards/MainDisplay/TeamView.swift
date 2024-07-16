@@ -55,8 +55,8 @@ class TeamView: UIView {
         let (pointIncrement, uiIsHidden) = (scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
         // Theme
-        theme.format(label: nameLabel, labelType: .teamNameLabel, activeTeamCount: activeTeamCount)
-        theme.format(label: scoreLabel, labelType: .scoreLabel, activeTeamCount: activeTeamCount)
+        theme.format(label: nameLabel, labelType: .teamNameLabel, activeTeamCount: activeTeamCount, parentWidth: teamStackView.frame.width)
+        theme.format(label: scoreLabel, labelType: .scoreLabel, activeTeamCount: activeTeamCount, parentWidth: teamStackView.frame.width)
 
         // ScoreStepper
         scoreStepper.stepValue = Double(pointIncrement)
