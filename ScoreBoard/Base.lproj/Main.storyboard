@@ -99,7 +99,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TrainBridge" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H97-7A-2oM" userLabel="Background Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="19w-Os-7mq" userLabel="ScoreBoard Stack View" customClass="TeamScoresStackView" customModule="ScoreBoard" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="19w-Os-7mq" userLabel="ScoreBoard Stack View" customClass="TeamScoresStackView" customModule="ScoreBoard" customModuleProvider="target">
                                 <rect key="frame" x="59" y="164" width="1062" height="492"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o0T-rH-jIc" userLabel="Settings Buttons">
@@ -254,7 +254,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="o0T-rH-jIc" secondAttribute="bottom" constant="20" id="Df7-jK-LkP"/>
                             <constraint firstItem="H97-7A-2oM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JIs-z8-aMW"/>
                             <constraint firstItem="19w-Os-7mq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KFk-ju-y74"/>
-                            <constraint firstItem="19w-Os-7mq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" placeholder="YES" id="KuY-Ud-xa5"/>
+                            <constraint firstItem="19w-Os-7mq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="KuY-Ud-xa5"/>
                             <constraint firstAttribute="bottom" secondItem="H97-7A-2oM" secondAttribute="bottom" id="Sbk-lI-WWb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o0T-rH-jIc" secondAttribute="trailing" constant="20" id="hJj-wD-1Vk"/>
                             <constraint firstItem="zdO-9E-FHO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="lb6-os-iyP"/>
@@ -270,9 +270,9 @@
                         <outlet property="doneButton" destination="eav-mv-js7" id="cum-xf-hv0"/>
                         <outlet property="fivePointButton" destination="KzB-4V-sz0" id="KTN-vG-GFh"/>
                         <outlet property="hundredPointButton" destination="wBk-my-W7k" id="fS4-Ru-0XR"/>
-                        <outlet property="mainScoreBoardStack" destination="19w-Os-7mq" id="wdf-ra-M2K"/>
                         <outlet property="onePointButton" destination="Jeu-ZF-t97" id="ncf-a6-xN6"/>
                         <outlet property="resetButton" destination="8iN-tB-rfg" id="fZX-CC-gZ2"/>
+                        <outlet property="teamScoresStackView" destination="19w-Os-7mq" id="wdf-ra-M2K"/>
                         <outlet property="teamSetupButton" destination="5Wn-7z-emx" id="Lbe-jQ-V7f"/>
                         <outlet property="tenPointButton" destination="uxL-tw-dHW" id="1o8-Cc-waN"/>
                         <outlet property="themesButton" destination="akW-Z7-1ui" id="Kvc-Lm-JrJ"/>

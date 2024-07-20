@@ -15,70 +15,60 @@ class ExternalDisplayViewController: ScoreBoardViewController {
     //MARK: - IBOutlets
     
     /// Stacks
-    @IBOutlet weak var mainScoreBoardStack: TeamScoresStackView!
+    @IBOutlet weak var teamScoresStackView: TeamScoresStackView!
     
     // Background
     @IBOutlet weak var backgroundView: UIImageView!
     
-    //MARK: - ViewDidLoad
+    //MARK: - ViewLoading
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad: \(#fileID)")
-        
-        // Create Teams
-        createTeamViews()
         
         /// Refresh Screen after Setup
-        implementActiveTheme()
+        refreshUIForTheme()
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear - \(#fileID)")
-        lockOrientation(to: .landscapeLeft)
+    //MARK: - ViewAppearing
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // Create Teams
+        refreshUIForTeams()
+        
     }
-    
-    
-    //MARK: - TeamViews
-    
-    func createTeamViews() {
-        mainScoreBoardStack.set(activeTeamList: teamManager.fetchActiveTeams(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
-    }
-    
-    func refreshTeamViews() {
-        var modifiedScoreboardState = themeManager.fetchScoreboardState()
-        modifiedScoreboardState.uiIsHidden = true
-        mainScoreBoardStack.refreshTeamViews(teamList: teamManager.fetchTeamList(), theme: themeManager.fetchActiveTheme(), state: modifiedScoreboardState)
-    }
-
     
     //MARK: - Update UI
     
     override func refreshUIForTheme() {
         super.refreshUIForTheme()
-        implementActiveTheme()
+        
+        if constants.printThemeFlow {
+            print("implementingActiveTheme, File: \(#fileID)")
+        }
+        
+        let activeTheme = themeManager.fetchActiveTheme()
+        
+        // Update Self
+        activeTheme.format(background: backgroundView)
+
+        // Update teamScoresStackView
+        var state = themeManager.fetchScoreboardState()
+        state.uiIsHidden = true
+        teamScoresStackView.set(theme: activeTheme, state: state)
+        
     }
     
     override func refreshUIForTeams() {
         super.refreshUIForTeams()
-        refreshTeamViews()
-    }
-    
-    func implementActiveTheme() {
-        if constants.printThemeFlow {
-            print("implementingActiveTheme, File: \(#fileID)")
+        
+        if constants.printTeamFlowDetailed {
+            print("implementingTeams, File: \(#fileID)")
         }
-        updateBackground()
-        refreshTeamViews()
-    }
-    
-    func updateBackground() {
-        let activeTheme = themeManager.fetchActiveTheme()
-        if constants.printThemeFlow {
-            print("updating Background for theme: \(activeTheme.name), File: \(#fileID)")
-        }
-        activeTheme.format(background: backgroundView)
-    }
+        
+        var state = themeManager.fetchScoreboardState()
+        state.uiIsHidden = true
+        teamScoresStackView.refreshTeamViews(teamList: teamManager.fetchTeamList(), theme: themeManager.fetchActiveTheme(), state: state)    }
     
 }

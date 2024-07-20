@@ -386,7 +386,6 @@
 				77E0243E2C27D3A400112591 /* ScoreBoard.entitlements */,
 				77B11168293AB78F00553E37 /* LaunchScreen.storyboard */,
 				77B11163293AB78E00553E37 /* Main.storyboard */,
-				77DC6B212C39F09400327D59 /* External Display.storyboard */,
 				771913DC2C1A689C00BA2D9F /* MVCManager.swift */,
 				77B1115D293AB78E00553E37 /* AppDelegate.swift */,
 				77B1115F293AB78E00553E37 /* SceneDelegate.swift */,
@@ -411,8 +410,9 @@
 			isa = PBXGroup;
 			children = (
 				77B11161293AB78E00553E37 /* MainDisplayViewController.swift */,
-				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
 				7776DDE42BF64154008E9C65 /* TeamView.xib */,
+				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
+				77DC6B212C39F09400327D59 /* External Display.storyboard */,
 				77DC6B252C39F81400327D59 /* ExternalDisplayViewController.swift */,
 				776CACD82C42A573008C25AC /* TeamScoresStackView.swift */,
 			);

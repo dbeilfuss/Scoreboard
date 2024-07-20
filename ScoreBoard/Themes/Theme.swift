@@ -58,18 +58,19 @@ struct Theme: Equatable {
     let buttonHighlightedColor2: UIColor?
     let darkMode: Bool
     
-    func format(label: UILabel, labelType: LabelType, activeTeamCount: Int, parentWidth: CGFloat) {
+    func format(label: UILabel, labelType: LabelType, parentWidth: CGFloat) {
+        
         // Create FontSet
         var fontSet: FontSet
         switch labelType {
         case .scoreLabel:
-            fontSet = FontSet(fontName: scoreFontName!, fontSize: parentWidth / 10, font: scoreFont!)
+            fontSet = FontSet(fontName: scoreFontName!, fontSize: parentWidth / 4, font: scoreFont!)
         case .teamNameLabel:
-            fontSet = FontSet(fontName: subtitleFontName!, fontSize: parentWidth / 20, font: subtitleFont!)
+            fontSet = FontSet(fontName: subtitleFontName!, fontSize: parentWidth / 10, font: subtitleFont!)
         }
         
         // Font
-        label.font = UIFont(name:fontSet.fontName, size: label.font.pointSize)
+        label.font = UIFont(name:fontSet.fontName, size: fontSet.fontSize)
         
         // Size
 //        resizeFonts(label: label, themeFont: fontSet.font, activeTeamCount: activeTeamCount, parentWidth: parentWidth)
@@ -78,27 +79,27 @@ struct Theme: Equatable {
         label.textColor = subtitleColor
         label.shadowColor = shadowColor
     }
-    
-    func resizeFonts(label: UILabel, themeFont: UIFont, activeTeamCount: Int, parentWidth: CGFloat) {
-                
-        /// Determine the appropriate font point size
-        let themeFontSize: CGFloat = themeFont.pointSize
-        let device: String = UIDevice.current.localizedModel
-        
-        var sizeMultiplyers: [Int: CGFloat] {
-            if device == "iPad" {
-                return TeamTextSizeStruct().iPadSizes
-            } else {
-                return TeamTextSizeStruct().iPhoneSizes
-            }
-        }
-        let adjustedFontSize: CGFloat = (themeFontSize * sizeMultiplyers[activeTeamCount]!).rounded() // rounded to prevent uiLabel issues (collapsing)
-        
-        /// Resize all point sizes to adjusted size
-        label.font = UIFont(name: label.font.fontName, size: adjustedFontSize)
-        label.shadowOffset.height = label.shadowOffset.height * sizeMultiplyers[activeTeamCount]! + 0.5
-        label.shadowOffset.width = label.shadowOffset.width * sizeMultiplyers[activeTeamCount]! + 0.5
-    }
+//    
+//    func resizeFonts(label: UILabel, themeFont: UIFont, activeTeamCount: Int, parentWidth: CGFloat) {
+//                
+//        /// Determine the appropriate font point size
+//        let themeFontSize: CGFloat = themeFont.pointSize
+//        let device: String = UIDevice.current.localizedModel
+//        
+//        var sizeMultiplyers: [Int: CGFloat] {
+//            if device == "iPad" {
+//                return TeamTextSizeStruct().iPadSizes
+//            } else {
+//                return TeamTextSizeStruct().iPhoneSizes
+//            }
+//        }
+//        let adjustedFontSize: CGFloat = (themeFontSize * sizeMultiplyers[activeTeamCount]!).rounded() // rounded to prevent uiLabel issues (collapsing)
+//        
+//        /// Resize all point sizes to adjusted size
+//        label.font = UIFont(name: label.font.fontName, size: adjustedFontSize)
+//        label.shadowOffset.height = label.shadowOffset.height * sizeMultiplyers[activeTeamCount]! + 0.5
+//        label.shadowOffset.width = label.shadowOffset.width * sizeMultiplyers[activeTeamCount]! + 0.5
+//    }
     
     func format(button: UIButton) {
         button.tintColor = buttonColor

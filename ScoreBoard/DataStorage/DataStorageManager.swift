@@ -95,7 +95,7 @@ extension DataStorageManager: DataStorageManagerProtocol {
             // Fetch remote data asynchronously
             remoteStorageManager.fetchData { remoteData in
                 guard let remoteData = remoteData else {
-                    print("Error fetching remote data")
+                    print("Error fetching remote data - \(#fileID)")
                     return
                 }
 

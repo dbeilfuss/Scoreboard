@@ -14,6 +14,10 @@ class TeamView: UIView {
     @IBOutlet weak var scoreStepper: UIStepper!
     @IBOutlet weak var teamStackView: UIStackView!
     
+    ///Contraints
+    @IBOutlet weak var aspectContraint: NSLayoutConstraint!
+    
+    
     //MARK: - Variables
     var teamInfo: Team = Team(number: 1, name: "Default Team", score: 0, isActive: false)
     var delegate: TeamCellDelegate?
@@ -49,14 +53,14 @@ class TeamView: UIView {
         scoreStepper.value = Double(teamInfo.score)
     }
     
-    func set(scoreboardState: ScoreboardState, activeTeamCount: Int, theme: Theme) {
+    func set(scoreboardState: ScoreboardState, theme: Theme) {
         
         // Deconstruct / Gather Information
         let (pointIncrement, uiIsHidden) = (scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
         // Theme
-        theme.format(label: nameLabel, labelType: .teamNameLabel, activeTeamCount: activeTeamCount, parentWidth: teamStackView.frame.width)
-        theme.format(label: scoreLabel, labelType: .scoreLabel, activeTeamCount: activeTeamCount, parentWidth: teamStackView.frame.width)
+        theme.format(label: nameLabel, labelType: .teamNameLabel, parentWidth: teamStackView.frame.width)
+        theme.format(label: scoreLabel, labelType: .scoreLabel, parentWidth: teamStackView.frame.width)
 
         // ScoreStepper
         scoreStepper.stepValue = Double(pointIncrement)
@@ -64,7 +68,7 @@ class TeamView: UIView {
         
     }
     
-    func set(delegate: TeamCellDelegate) {
+    func set(delegate: TeamCellDelegate?) {
         self.delegate = delegate
     }
 

@@ -15,7 +15,7 @@ class MainDisplayViewController: ScoreBoardViewController {
     //MARK: - IBOutlets
     
     /// Stacks
-    @IBOutlet weak var mainScoreBoardStack: TeamScoresStackView!
+    @IBOutlet weak var teamScoresStackView: TeamScoresStackView!
     
     /// Point Increment Buttons
     @IBOutlet weak var onePointButton: ScoreboardUIButton!
@@ -65,7 +65,7 @@ class MainDisplayViewController: ScoreBoardViewController {
     // Background
     @IBOutlet weak var backgroundView: UIImageView!
     
-    //MARK: - ViewDidLoad
+    //MARK: - ViewLoading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,78 +76,66 @@ class MainDisplayViewController: ScoreBoardViewController {
         /// Orientation Lock
         Utilities().updateOrientation(to: .landscape)
         
-        /// iPhone Specific Changes
-        if UIDevice.current.localizedModel == "iPhone" {
-            mainScoreBoardStack.spacing = 0
-        }
-        
-        // Create Teams
-        mainScoreBoardStack.set(delegate: self)
-        createTeamViews()
-        
-        /// Inform Buttons Which Must Remain Visible even when UI is switched off
+        /// Setup Buttons
         for button in buttonsToKeepVisible {
             button.selfCanHide = false
         }
         
         /// Refresh Screen after Setup
-        implementActiveTheme()
         selectCorrectIncrementButton()
         userFeedbackLabel.text = ""
+        refreshUIForTheme()
 
     }
     
+    //MARK: - ViewAppearing
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear - \(#fileID)")
         lockOrientation(to: .landscapeLeft)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        teamScoresStackView.set(delegate: self)
+        refreshUIForTeams()
+    }
     
     //MARK: - TeamViews
     
     func createTeamViews() {
-        mainScoreBoardStack.set(activeTeamList: teamManager.fetchActiveTeams(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
-    }
-    
-    func refreshTeamViews() {
-        mainScoreBoardStack.refreshTeamViews(teamList: teamManager.fetchTeamList(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
+        teamScoresStackView.set(activeTeamList: teamManager.fetchActiveTeams(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
     }
     
     //MARK: - Update UI
     
     override func refreshUIForTheme() {
         super.refreshUIForTheme()
-        implementActiveTheme()
+        
+        if constants.printThemeFlow {
+            print("implementingActiveTheme, File: \(#fileID)")
+        }
+        
+        /// Properties
+        let activeTheme = themeManager.fetchActiveTheme()
+        let state = themeManager.fetchScoreboardState()
+        
+        /// Implementation
+        activeTheme.format(background: backgroundView)
+        refreshButtons()
+        teamScoresStackView.set(theme: activeTheme, state: state)
+
     }
     
     override func refreshUIForTeams() {
         super.refreshUIForTeams()
-        refreshTeamViews()
+        
+        teamScoresStackView.refreshTeamViews(teamList: teamManager.fetchTeamList(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
     }
     
-    func implementActiveTheme() {
-        if constants.printThemeFlow {
-            print("implementingActiveTheme, File: \(#fileID)")
-        }
-        updateBackground()
-        refreshTeamViews()
-        refreshButtons()
-    }
-    
-    func updateBackground() {
-        let activeTheme = themeManager.fetchActiveTheme()
-        if constants.printThemeFlow {
-            print("updating Background for theme: \(activeTheme.name), File: \(#fileID)")
-        }
-        activeTheme.format(background: backgroundView)
-    }
-    
-    /// Toggle UI
     @IBAction func toggleUIPressed(_ sender: UIButton) {
         themeManager.toggleUIIsHidden()
         refreshButtons()
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
     func refreshButtons() {
@@ -194,7 +182,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         sender.isSelected = true /// set the sender point increment button to active
         
         themeManager.savePointIncrement(currentPointValue)
-        refreshTeamViews()
+        refreshUIForTeams()
         refreshButtons()
         
     }
@@ -283,17 +271,17 @@ extension MainDisplayViewController: TeamCellDelegate {
     
     func updateScore(newScore: Int, teamIndex: Int) {
         teamManager.replaceScore(teamNumber: teamIndex, newScore: newScore)
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {
         teamManager.updateTeamIsActive(teamNumber: teamIndex + 1, isActive: isActive)
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
     func updateName(newName: String, teamIndex: Int) {
         teamManager.updateTeamName(teamNumber: teamIndex + 1, name: newName)
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
 }
