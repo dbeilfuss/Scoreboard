@@ -17,29 +17,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let _ = (scene as? UIWindowScene) else { return }
         
-        if windowScene.session.role == .windowApplication {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let initialViewController = storyboard.instantiateInitialViewController() {
-                let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = initialViewController
-                self.window = window
-                window.makeKeyAndVisible()
-            }
-        } else if windowScene.session.role == .windowExternalDisplayNonInteractive {
-            print("Configuring external display")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let externalViewController = storyboard.instantiateInitialViewController() as? MainDisplayViewController {
-                let externalWindow = UIWindow(windowScene: windowScene)
-                externalWindow.rootViewController = externalViewController
-                self.externalWindow = externalWindow
-                externalWindow.isHidden = false
-                externalWindow.makeKeyAndVisible()
-                print("External display window configured and made key, \(externalWindow.isKeyWindow)")
-                print("External display window configured and made key with rootViewController: \(String(describing: externalWindow.rootViewController))")
-            }
-        }
+//        if windowScene.session.role == .windowApplication {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            if let initialViewController = storyboard.instantiateInitialViewController() {
+//                let window = UIWindow(windowScene: windowScene)
+//                window.rootViewController = initialViewController
+//                self.window = window
+//                window.makeKeyAndVisible()
+//            }
+            
+//        } else if windowScene.session.role == .windowExternalDisplayNonInteractive {
+//            print("Configuring external display")
+//            let storyboard = UIStoryboard(name: "External Display", bundle: nil)
+//            if let externalViewController = storyboard.instantiateInitialViewController() as? MainDisplayViewController {
+//                let externalWindow = UIWindow(windowScene: windowScene)
+//                externalWindow.rootViewController = externalViewController
+//                self.externalWindow = externalWindow
+//                externalWindow.isHidden = false
+//                externalWindow.makeKeyAndVisible()
+//                print("External display window configured and made key, \(externalWindow.isKeyWindow)")
+//                print("External display window configured and made key with rootViewController: \(String(describing: externalWindow.rootViewController))")
+//            }
+//        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

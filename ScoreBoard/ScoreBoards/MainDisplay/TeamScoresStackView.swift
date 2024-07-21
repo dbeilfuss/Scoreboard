@@ -10,9 +10,14 @@ import UIKit
 class TeamScoresStackView: UIStackView {
     
     //MARK: - Properties
+    
+    // Settings
+    let idealTeamsPerRow = 3
+    
+    // Data Storage
     private var teamViews: [TeamView] = []
-    private var activeTeamList: [Team] = []
     private var delegate: TeamCellDelegate?
+
     
     //MARK: - Initializers
 
@@ -25,7 +30,7 @@ class TeamScoresStackView: UIStackView {
     }
     
     func setVisualElements() {
-        self.distribution = .fillEqually
+        self.distribution = .equalCentering
     }
     
     //MARK: - Setter
@@ -41,49 +46,85 @@ class TeamScoresStackView: UIStackView {
     }
     
     func set(activeTeamList: [Team], theme: Theme, state: ScoreboardState) {
-        var teams = activeTeamList
-        teams = teams.reversed()
-        let teamCount = teams.count
-        
-        for team in teams {
-            /// Create New TeamView
-            let teamView = createTeamView(team: team, theme: theme, state: state)
-            teamViews.append(teamView)
-            displayTeamView(teamView, teamCount: teamCount)
-        }
-        
-        adjustTeamViewConstraints()
+
     }
     
     //MARK: - Create
+    
+    private func eraseBoard() {
+        teamViews = []
+        for stackView in self.arrangedSubviews {
+            stackView.removeFromSuperview()
+        }
+    }
+    
     private func createTeamView(team: Team, theme: Theme, state: ScoreboardState) -> TeamView {
         
         // Setup TeamView
         let teamView = TeamView()
-        teamView.translatesAutoresizingMaskIntoConstraints = false
+//        teamView.translatesAutoresizingMaskIntoConstraints = false
         teamView.set(scoreboardState: state, theme: theme)
-        teamView.set(teamInfo: team)
         teamView.set(delegate: delegate)
         
         return teamView
     }
     
+    private func createScoreboardStackViews(activeTeamsCount: Int) {
+        // Calculate Rows Needed
+        var rowsNeeded = activeTeamsCount > idealTeamsPerRow ? 2 : 1
+        
+        // Create StackViews
+        var i = rowsNeeded
+        while i > 0 {
+            createScoreboardStackView()
+            i -= 1
+        }
+    }
+    
+    func addTeamViewsToRows() {
+        var scoreRow: UIStackView = self.arrangedSubviews.first! as! UIStackView
+                
+        var i = teamViews.count
+        if self.arrangedSubviews.count > 1 {
+            for view in teamViews {
+                if i > (teamViews.count - i + 1) { // Use Bottom Row
+                    scoreRow = self.arrangedSubviews.last! as! UIStackView
+                } else { // Use Top Row
+                    scoreRow = self.arrangedSubviews.first! as! UIStackView
+                }
+                scoreRow.insertArrangedSubview(view, at: 0)
+                i -= 1
+            }
+        } else {
+            for view in teamViews {
+                scoreRow.insertArrangedSubview(view, at: 0)
+                i += 1
+            }
+        }
+        
+        if Constants().printTeamFlow {
+            for scoreboardStack in self.arrangedSubviews as! [UIStackView] {
+                print("scoreboardStack.arrangedSubviews.count: \(scoreboardStack.arrangedSubviews.count) - \(#fileID)")
+            }
+        }
+    }
+
     private func createScoreboardStackView() {
         let scoreboardStackView = UIStackView()
         self.addArrangedSubview(scoreboardStackView)
         
         // configure
         scoreboardStackView.alignment = .center
-        scoreboardStackView.distribution = .equalCentering
+        scoreboardStackView.distribution = .fillEqually
         
         // constraints
         NSLayoutConstraint.activate([
-            scoreboardStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-            
+            scoreboardStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            scoreboardStackView.widthAnchor.constraint(equalTo: self.widthAnchor),
         ])
     }
     
-    private func shouldReInitializeTeamViews(activeTeamList: [Team]) -> Bool {
+    private func shouldResetBoard(activeTeamList: [Team]) -> Bool {
         
         // Gather Information
         let teamManagerTeamNumbers = activeTeamList.map({$0.number})
@@ -94,185 +135,99 @@ class TeamScoresStackView: UIStackView {
         if teamViewTeamNumbers == teamManagerTeamNumbers {
             return false
         } else {
+            print("should reset board") // if this is called every time, try not reversing the teamViewTeamNumber a few lines up
             return true
         }
         
     }
-    
-    private func reInitializeTeamViews(activeTeamList: [Team], theme: Theme, state: ScoreboardState) {
-        // Delete Current TeamViews
-        teamViews = []
-        for stackView in self.arrangedSubviews {
-            stackView.removeFromSuperview()
-        }
-        
-        // Refill the ScoresRows
-        set(activeTeamList: activeTeamList, theme: theme, state: state)
-    }
+
     
     //MARK: - Refresh
     func refreshTeamViews(teamList: [Team], theme: Theme, state: ScoreboardState) {
+        // Print
         if Constants().printTeamFlow {
             print("refreshing teamViews - \(#fileID)")
         }
         
-        let activeTeamList = teamList.filter({$0.isActive == true})
-        self.activeTeamList = activeTeamList
+        // Properties
+        var activeTeamList = teamList.filter({$0.isActive == true})
+        activeTeamList = activeTeamList.reversed()
+        let teamCount = activeTeamList.count
         
-        // Reinitialize teamViews if needed
-        if shouldReInitializeTeamViews(activeTeamList: activeTeamList) {
-            reInitializeTeamViews(activeTeamList: activeTeamList, theme: theme, state: state)
+        // Reset If Needed
+        if shouldResetBoard(activeTeamList: activeTeamList) {
+            eraseBoard()
+            createScoreboardStackViews(activeTeamsCount: activeTeamList.count)
+            createTeamViews(activeTeamList: activeTeamList, theme: theme, state: state)
+            addTeamViewsToRows()
+            adjustTeamViewConstraints()
+            setTeamViewsProperties()
         }
         
-        // Pass Data into the team views
-        for view in teamViews {
-            let teamNumber = view.teamInfo.number
-            let newTeamInfo: Team = teamList[teamNumber - 1]
-            view.set(teamInfo: newTeamInfo)
-            view.set(scoreboardState: state, theme: theme)
+        // Set teamView Data
+        setTeamViewData(activeTeamList: activeTeamList, state: state, theme: theme)
+        
+    }
+    
+    func setTeamViewData(activeTeamList: [Team], state: ScoreboardState, theme: Theme) {
+        var i = 0
+        for team in activeTeamList {
+            teamViews[i].set(teamInfo: team)
+            teamViews[i].set(scoreboardState: state, theme: theme)
+            i += 1
         }
+    }
+    
+    func createTeamViews(activeTeamList: [Team], theme: Theme, state: ScoreboardState) {
+        // Create the Views
+        for team in activeTeamList {
+            let teamView = createTeamView(team: team, theme: theme, state: state)
+            teamViews.append(teamView)
+        }
+                
     }
     
     //MARK: - Display & Adjust Constraints
-    private func displayTeamView(_ teamView: TeamView, teamCount: Int) {
-        
-        // create top row if needed
-        if self.arrangedSubviews.count == 0 {
-            createScoreboardStackView()
-        }
-        
-        // choose bottom or top row
-        var scoreRow: UIStackView = self.arrangedSubviews.first! as! UIStackView
-        
-        let idealTeamsPerRow = 3
-        
-        if teamCount > idealTeamsPerRow {
-            if teamViews.count < ((teamCount / 2) + 1) {
-                
-                // create bottom row if needed
-                if self.arrangedSubviews.count < 2 {
-                    createScoreboardStackView()
-                }
-                
-                // use bottom row
-                scoreRow = self.arrangedSubviews.last! as! UIStackView
+    
+    func setTeamViewsProperties() {
+        // Font Size
+        var fontSize: [String: CGFloat]?
+        for teamView in teamViews {
+            if fontSize != nil {
+                teamView.fontSizes = fontSize!
+            } else {
+                fontSize = teamView.fontSizes
             }
         }
-        
-        scoreRow.insertArrangedSubview(teamView, at: 0)
     }
     
     func adjustTeamViewConstraints() {
+        
+        // Properties
+        var teamViews = self.teamViews
+        
+        if teamViews.count > 0 {
+            // Separate out Initial View
+            let initialTeamView = teamViews.removeLast()
+            NSLayoutConstraint.activate([initialTeamView.heightAnchor.constraint(equalTo: initialTeamView.heightAnchor)])
 
-//        var safeAreaWidth: CGFloat? {
-//            var currentView: UIView? = self
-//            while let view = currentView {
-//                if let superview = view.superview, superview.safeAreaInsets != .zero {
-//                    let safeAreaWidth = superview.frame.width - superview.safeAreaInsets.left - superview.safeAreaInsets.right
-//                    return safeAreaWidth
-//                }
-//                currentView = view.superview
-//            }
-//            return nil
-//        }
-    
-        /// Helper Functionality
-        
-        enum Dimension {
-            case height
-            case width
-        }
-        
-        func constrainForWidth(width: CGFloat) {
+            // Apply Constraints
             for teamView in teamViews {
-                print("constraining for width")
-                print("teamViews.count: \(teamViews.count)")
-                teamView.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
-//                    teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0),
-                    teamView.widthAnchor.constraint(equalToConstant: width)
+                    teamView.heightAnchor.constraint(equalTo: initialTeamView.heightAnchor),
+                    teamView.widthAnchor.constraint(equalTo: initialTeamView.widthAnchor)
                 ])
             }
         }
-        
-        func constrainForHeight(height: CGFloat) {
-            print("constraining for height")
-            print("teamViews.count: \(teamViews.count)")
-            for teamView in teamViews {
-                teamView.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-//                    teamView.heightAnchor.constraint(equalTo: teamView.superview!.heightAnchor),
-                    teamView.heightAnchor.constraint(equalToConstant: height)
-                ])
-            }
-        }
-        
-        func printConstraints(for views: [UIView]) {
-            for view in views {
-                print(view.constraints.count)
-                print(view.constraints.first)
-            }
-        }
-        
-        /// Properties
-        let teamViewAspectConstraint: NSLayoutConstraint = teamViews[0].aspectContraint
-        let teamViewWidthRatio = teamViewAspectConstraint.multiplier
-        print("teamViewWidthRatio: \(teamViewWidthRatio)")
-        let columnCount = (self.arrangedSubviews.first as? UIStackView)?.arrangedSubviews.count ?? 1
-        print("columnCount: \(columnCount)")
-        let targetTeamViewWidth = self.frame.width / CGFloat(columnCount)
-        print("teamViewWidth: \(targetTeamViewWidth)")
-        let scoreRow: UIStackView = self.arrangedSubviews.first! as! UIStackView
-        let targetScoreRowHeight: CGFloat = self.frame.height / CGFloat(self.arrangedSubviews.count)
-        print("targetScoreRowHeight: \(targetScoreRowHeight)")
-        let scoreRowWidth: CGFloat = scoreRow.frame.width
-        
-        /// Determine Which Dimension to Constrain
-        var dimensionToConstrain: Dimension {
-            let resultingWidthRatio = targetTeamViewWidth / targetScoreRowHeight
-            if resultingWidthRatio  > teamViewWidthRatio {
-                print("resultingWidthRatio: \(resultingWidthRatio)")
-                return .height
-            } else {
-                print("resultingWidthRatio: \(resultingWidthRatio)")
-                return .width
-            }
-        }
-        
-        print("should constrain teamViews for \(dimensionToConstrain)")
-        
-        /// Constrain Appropriate Dimension
-        switch dimensionToConstrain {
-        case .height:
-            constrainForHeight(height: targetScoreRowHeight)
-            constrainForWidth(width: targetScoreRowHeight * teamViewWidthRatio)
-            printConstraints(for: teamViews)
-        case .width:
-            constrainForWidth(width: targetTeamViewWidth)
-            printConstraints(for: teamViews)
-        }
-        
-        /// Adjust Spacing Between Team Views
-//        for subview in self.subviews {
-//            if let stackView = subview as? UIStackView {
-//                switch dimensionToConstrain {
-//                case .height:
-//                    stackView.spacing = 0
-//                case .width:
-//                    
-//                }
-//                let totalChildrenWidth = targetTeamViewWidth * CGFloat(stackView.subviews.count)
-//                let targetSpacing = (scoreRowWidth - totalChildrenWidth) / CGFloat(stackView.subviews.count)
-//                print("stackView.subviews.count: \(stackView.subviews.count)")
-//                print("targetSpacing: \(targetSpacing)")
-//                stackView.spacing = targetSpacing
-//            }
-//            
-//            
-//        }
-        
     }
-
-   
+    
+    func printConstraints(for views: [UIView]) {
+        for view in views {
+            print(view.constraints.count)
+            print(view.constraints.first as Any)
+            print("intrinsicSize: \(view.intrinsicContentSize)")
+        }
+    }
+    
     
 }

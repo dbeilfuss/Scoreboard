@@ -102,9 +102,9 @@ class MainDisplayViewController: ScoreBoardViewController {
     
     //MARK: - TeamViews
     
-    func createTeamViews() {
-        teamScoresStackView.set(activeTeamList: teamManager.fetchActiveTeams(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
-    }
+//    func createTeamViews() {
+//        teamScoresStackView.set(activeTeamList: teamManager.fetchActiveTeams(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
+//    }
     
     //MARK: - Update UI
     
