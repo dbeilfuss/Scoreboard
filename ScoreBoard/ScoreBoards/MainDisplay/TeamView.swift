@@ -13,26 +13,37 @@ class TeamView: UIView {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var scoreStepper: UIStepper!
     @IBOutlet weak var teamStackView: UIStackView!
+    @IBOutlet weak var nameLabelHeightConstraint: NSLayoutConstraint!
     
-    ///Contraints
     
     //MARK: - Variables
-    var teamInfo: Team = Team(number: 1, name: "Default Team", score: 0, isActive: false)
+    var k = Constants()
+    var teamInfo: Team = Constants().defaultTeams.first!
+    var state: ScoreboardState = Constants().defaultScoreboardState
+    var theme: Theme = Constants().defaultTheme
     var delegate: TeamCellDelegate?
+    var teamStackViewHeightConstraint: NSLayoutConstraint?
+    var superViewWidth: CGFloat = 0.0
     
     //MARK: - Init
     
     override init(frame: CGRect) {
+        print(#function)
+
         super.init(frame: frame)
         viewInit()
     }
     
     required init?(coder: NSCoder) {
+        print(#function)
+
         super.init(coder: coder)
         viewInit()
     }
     
     func viewInit() {
+        print(#function)
+
         let xibView = Bundle.main.loadNibNamed("TeamView", owner: self, options: nil)![0] as! UIView
         xibView.frame = self.bounds
         xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -44,6 +55,8 @@ class TeamView: UIView {
     //MARK: - Set
         
     func set(teamInfo: Team){
+        print(#function)
+
         // Save TeamInfo
         self.teamInfo = teamInfo
         
@@ -54,107 +67,124 @@ class TeamView: UIView {
 
     }
     
-    func set(scoreboardState: ScoreboardState, theme: Theme) {
+    func set(scoreboardState: ScoreboardState) {
+        print(#function)
         
         // Deconstruct / Gather Information
         let (pointIncrement, uiIsHidden) = (scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
-        // Theme
-        theme.format(label: nameLabel, labelType: .teamNameLabel, parentWidth: teamStackView.frame.width)
-        theme.format(label: scoreLabel, labelType: .scoreLabel, parentWidth: teamStackView.frame.width)
-
         // ScoreStepper
         scoreStepper.stepValue = Double(pointIncrement)
         scoreStepper.layer.opacity = uiIsHidden ? 0 : 100
+    }
+    
+    func set(theme: Theme) {
+        print(#function)
         
-        // Label Experimentation
-//        adjustFontSizeToFitHeight(label: nameLabel)
-//        adjustFontSizeToFitHeight(label: scoreLabel)
+        if theme.name != self.theme.name {
+            theme.format(label: nameLabel, labelType: .teamNameLabel)
+            theme.format(label: scoreLabel, labelType: .scoreLabel)
+        }
     }
     
     func set(delegate: TeamCellDelegate?) {
+        print(#function)
+
         self.delegate = delegate
     }
     
     var fontSizes: [String: CGFloat] {
+
         get {
+            print(#function)
 
-            
             // Resize Fonts
-            let nameLabelSize: CGFloat = adjustFontSizeToFitHeight(label: nameLabel)
-            let scoreLabelSize: CGFloat = adjustFontSizeToFitHeight(label: scoreLabel)
-
+            let nameLabelSize: CGFloat = adjustNameLabelFontToFitHeight()
+            let scoreLabelSize: CGFloat = adjustScoreLabelFontToFitHeight()
             
             // Return Data
             return ["nameLabelSize": nameLabelSize, "scoreLabelSize": scoreLabelSize]
         }
         set {
+            print(#function)
+
             if let nameLabelSize = newValue["nameLabelSize"] {
                 nameLabel.font = nameLabel.font.withSize(nameLabelSize)
+                print("nameLabel.font.pointSize: \(nameLabel.font.pointSize)")
             }
             
             if let scoreLabelSize = newValue["scoreLabelSize"] {
                 scoreLabel.font = scoreLabel.font.withSize(scoreLabelSize)
+                print("scoreLabel.font.pointSize: \(scoreLabel.font.pointSize)")
             }
         }
     }
     
+    func setStackViewHeight(height: CGFloat, width: CGFloat) {
+        print(#function)
+
+        print("height: \(height)")
+        let stackViewHeightConstraint = teamStackView.heightAnchor.constraint(equalToConstant: height)
+        NSLayoutConstraint.activate([stackViewHeightConstraint])
+        self.teamStackViewHeightConstraint = stackViewHeightConstraint
+        
+        print("width: \(width) - \(#function)")
+        self.superViewWidth = width
+    }
 
     
     //MARK: - Visual Adjustments
-    private func adjustFontSizeToFitHeight(label: UILabel) -> CGFloat {
-        let testString: String = "GgYyPp123$"
+    private func adjustNameLabelFontToFitHeight() -> CGFloat {
+        print(#function)
         
-        print("getting font sizes")
-        // Original Text
-        let originalNameText = nameLabel.text
-        let originalScoreText = scoreLabel.text
-        
-        // Set label.text to Test String
-        nameLabel.text = testString
-        scoreLabel.text = testString
-        
-        // Find Max Font Size
-        guard let text = label.text else { return label.font.pointSize }
-        
-        let maxHeight = label.frame.height
-        let maxWidth = label.frame.width
-        
-        var fontSize = maxHeight // Start with the label's height as the initial font size
-        print("beginning font sizefor \(label): \(fontSize)")
-        
-        let constraintSize = CGSize(width: maxWidth, height: .greatestFiniteMagnitude)
-        
-        while fontSize > 0 {
-            // Set the font size
-            label.font = label.font.withSize(fontSize)
+        if teamStackViewHeightConstraint != nil {
+            let ratio = nameLabelHeightConstraint.multiplier
+            print("ratio: \( ratio)")
+            let targetHeight = (teamStackViewHeightConstraint!.constant) * ratio * 0.75
+            print("targetHeight: \(targetHeight)")
+            nameLabel.font = nameLabel.font.withSize(targetHeight)
             
-            // Calculate the bounding box of the text with the current font size
-            let boundingBox = text.boundingRect(with: constraintSize, options: .usesLineFragmentOrigin, attributes: [.font: label.font as Any], context: nil)
-            
-            // Check if the text fits within the label's bounds
-            if boundingBox.height <= maxHeight {
-                break
-            }
-            
-            // Decrease the font size and try again
-            fontSize -= 1
+            return targetHeight
         }
         
-        // Reset label.text to Original Text
-        nameLabel.text = originalNameText
-        scoreLabel.text = originalScoreText
+        print("⛔️ teamStackViewHeightConstraint == nil")
+        return 1
+    }
+    
+    private func adjustScoreLabelFontToFitHeight() -> CGFloat {
+        print(#function)
         
-        print("ending font size: \(fontSize)")
-
-        return label.font.pointSize
+        if teamStackViewHeightConstraint != nil {
+            var height = teamStackViewHeightConstraint!.constant * 0.5
+            let width = superViewWidth
+            let minRatio = 0.3
+            let actualRatio = height / width
+//            print("‼️ Adjusting scoreLabel Height")
+//            print("superViewWidth: \(superViewWidth)")
+//            print("label height: \(height)")
+//            print("actual ratio: \(actualRatio)")
+//            print("superViewWidth * minRatio: \(superViewWidth * minRatio)")
+//            print("height / 2 = \(height / 2)")
+            if actualRatio > minRatio { height = height / 2 }
+            
+            nameLabel.font = nameLabel.font.withSize(height)
+            
+            return height
+        }
+        
+        print("⛔️ teamStackViewHeightConstraint == nil")
+        return 1
     }
     
     //MARK: - Actions
     
     @IBAction func scoreStepperPressed(_ sender: UIStepper) {
+        print(#function)
+
         let newScore = Int(sender.value)
         let teamNumber = teamInfo.number
+        
+        print("delegate: \(delegate)")
         delegate?.updateScore(newScore: newScore, teamIndex: teamNumber)
     }
 

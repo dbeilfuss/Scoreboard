@@ -56,7 +56,8 @@ class ExternalDisplayViewController: ScoreBoardViewController {
         // Update teamScoresStackView
         var state = themeManager.fetchScoreboardState()
         state.uiIsHidden = true
-        teamScoresStackView.set(theme: activeTheme, state: state)
+        teamScoresStackView.set(state: state)
+        teamScoresStackView.set(theme: activeTheme)
         
     }
     

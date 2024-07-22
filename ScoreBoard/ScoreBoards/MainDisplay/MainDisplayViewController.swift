@@ -81,6 +81,8 @@ class MainDisplayViewController: ScoreBoardViewController {
             button.selfCanHide = false
         }
         
+        teamScoresStackView.set(delegate: self)
+        
         /// Refresh Screen after Setup
         selectCorrectIncrementButton()
         userFeedbackLabel.text = ""
@@ -96,7 +98,6 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        teamScoresStackView.set(delegate: self)
         refreshUIForTeams()
     }
     
@@ -122,7 +123,8 @@ class MainDisplayViewController: ScoreBoardViewController {
         /// Implementation
         activeTheme.format(background: backgroundView)
         refreshButtons()
-        teamScoresStackView.set(theme: activeTheme, state: state)
+        teamScoresStackView.set(state: state)
+        teamScoresStackView.set(theme: activeTheme)
 
     }
     
@@ -270,6 +272,7 @@ extension ScoreBoardViewController: MVCDelegate {
 extension MainDisplayViewController: TeamCellDelegate {
     
     func updateScore(newScore: Int, teamIndex: Int) {
+        print("updateScore Called: \(#fileID)")
         teamManager.replaceScore(teamNumber: teamIndex, newScore: newScore)
         refreshUIForTeams()
     }

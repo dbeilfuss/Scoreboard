@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeamView" customModule="ScoreBoard" customModuleProvider="target">
             <connections>
                 <outlet property="nameLabel" destination="R9r-je-e8S" id="zzs-Zz-SxC"/>
+                <outlet property="nameLabelHeightConstraint" destination="RhS-Xk-1w8" id="UoO-6M-9Pb"/>
                 <outlet property="scoreLabel" destination="gc9-RN-rad" id="8nr-4D-3Wy"/>
                 <outlet property="scoreStepper" destination="CyM-02-XVm" id="yXE-ue-TDJ"/>
                 <outlet property="teamStackView" destination="AQ2-ao-TAf" id="aQv-0f-FZl"/>
@@ -40,7 +41,7 @@
                             <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <size key="shadowOffset" width="3" height="1"/>
                         </label>
-                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10000000" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-02-XVm" userLabel="Score Stepper">
+                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10000000" maximumValue="10000000" translatesAutoresizingMaskIntoConstraints="NO" id="CyM-02-XVm" userLabel="Score Stepper">
                             <rect key="frame" x="167" y="184.66666666666669" width="94" height="62.333333333333343"/>
                             <connections>
                                 <action selector="scoreStepperPressed:" destination="-1" eventType="valueChanged" id="6dl-pt-1tn"/>

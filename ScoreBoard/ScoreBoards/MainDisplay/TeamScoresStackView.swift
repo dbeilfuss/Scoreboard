@@ -39,9 +39,15 @@ class TeamScoresStackView: UIStackView {
         self.delegate = delegate
     }
     
-    func set(theme: Theme, state: ScoreboardState) {
+    func set(state: ScoreboardState) {
         for view in teamViews {
-            view.set(scoreboardState: state, theme: theme)
+            view.set(scoreboardState: state)
+        }
+    }
+    
+    func set(theme: Theme) {
+        for view in teamViews {
+            view.set(theme: theme)
         }
     }
     
@@ -63,7 +69,9 @@ class TeamScoresStackView: UIStackView {
         // Setup TeamView
         let teamView = TeamView()
 //        teamView.translatesAutoresizingMaskIntoConstraints = false
-        teamView.set(scoreboardState: state, theme: theme)
+        teamView.set(scoreboardState: state)
+        teamView.set(theme: theme)
+        print("delegate: \(delegate) - \(#fileID)")
         teamView.set(delegate: delegate)
         
         return teamView
@@ -71,7 +79,7 @@ class TeamScoresStackView: UIStackView {
     
     private func createScoreboardStackViews(activeTeamsCount: Int) {
         // Calculate Rows Needed
-        var rowsNeeded = activeTeamsCount > idealTeamsPerRow ? 2 : 1
+        let rowsNeeded = activeTeamsCount > idealTeamsPerRow ? 2 : 1
         
         // Create StackViews
         var i = rowsNeeded
@@ -128,11 +136,11 @@ class TeamScoresStackView: UIStackView {
         
         // Gather Information
         let teamManagerTeamNumbers = activeTeamList.map({$0.number})
-        var teamViewTeamNumbers = teamViews.map({$0.teamInfo.number})
-        teamViewTeamNumbers = teamViewTeamNumbers.reversed()
+        let teamViewTeamNumbers = teamViews.map({$0.teamInfo.number})
         
         // Return True or False
         if teamViewTeamNumbers == teamManagerTeamNumbers {
+            print("should not reset board")
             return false
         } else {
             print("should reset board") // if this is called every time, try not reversing the teamViewTeamNumber a few lines up
@@ -152,7 +160,6 @@ class TeamScoresStackView: UIStackView {
         // Properties
         var activeTeamList = teamList.filter({$0.isActive == true})
         activeTeamList = activeTeamList.reversed()
-        let teamCount = activeTeamList.count
         
         // Reset If Needed
         if shouldResetBoard(activeTeamList: activeTeamList) {
@@ -169,11 +176,12 @@ class TeamScoresStackView: UIStackView {
         
     }
     
-    func setTeamViewData(activeTeamList: [Team], state: ScoreboardState, theme: Theme) {
+    private func setTeamViewData(activeTeamList: [Team], state: ScoreboardState, theme: Theme) {
         var i = 0
         for team in activeTeamList {
             teamViews[i].set(teamInfo: team)
-            teamViews[i].set(scoreboardState: state, theme: theme)
+            teamViews[i].set(scoreboardState: state)
+            teamViews[i].set(theme: theme)
             i += 1
         }
     }
@@ -189,18 +197,6 @@ class TeamScoresStackView: UIStackView {
     
     //MARK: - Display & Adjust Constraints
     
-    func setTeamViewsProperties() {
-        // Font Size
-        var fontSize: [String: CGFloat]?
-        for teamView in teamViews {
-            if fontSize != nil {
-                teamView.fontSizes = fontSize!
-            } else {
-                fontSize = teamView.fontSizes
-            }
-        }
-    }
-    
     func adjustTeamViewConstraints() {
         
         // Properties
@@ -215,19 +211,34 @@ class TeamScoresStackView: UIStackView {
             for teamView in teamViews {
                 NSLayoutConstraint.activate([
                     teamView.heightAnchor.constraint(equalTo: initialTeamView.heightAnchor),
-                    teamView.widthAnchor.constraint(equalTo: initialTeamView.widthAnchor)
                 ])
+            }
+            
+            teamViews.append(initialTeamView)
+        }
+    }
+    
+    func setTeamViewsProperties() {
+        // StackView Height
+        if self.arrangedSubviews.count > 0 {
+            let height = self.frame.height / 2
+            let width = self.frame.width / CGFloat((self.arrangedSubviews as! [UIStackView]).first!.arrangedSubviews.count)
+            for view in teamViews {
+                view.setStackViewHeight(height: height, width: width)
+            }
+        }
+        
+        // Font Size
+        var fontSizes: [String: CGFloat]?
+        for teamView in teamViews {
+            if fontSizes != nil {
+                teamView.fontSizes = fontSizes!
+            } else {
+                fontSizes = teamView.fontSizes
+                teamView.fontSizes = fontSizes!
+                print("fontSize: \(String(describing: fontSizes))")
             }
         }
     }
-    
-    func printConstraints(for views: [UIView]) {
-        for view in views {
-            print(view.constraints.count)
-            print(view.constraints.first as Any)
-            print("intrinsicSize: \(view.intrinsicContentSize)")
-        }
-    }
-    
     
 }
