@@ -125,7 +125,7 @@ class SignInViewController: UIViewController {
     }
     
     func reconfigureForSignout() {
-        feedbackLabel.text = "You will not be able to use Remote Features if you Sign Out."
+        feedbackLabel.text = "You will not be able to use Remote Features if you Sign Out.  You will still be able to use aiplay mirroring."
         signInTable.isHidden = true
         forgotPasswordButton.isHidden = true
         continueButton.titleLabel?.text = "Sign Out"
