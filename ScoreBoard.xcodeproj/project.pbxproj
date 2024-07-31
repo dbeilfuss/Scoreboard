@@ -41,15 +41,18 @@
 		7754E92B29888CCD006CE85A /* Karla700italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91829888CCD006CE85A /* Karla700italic.ttf */; };
 		7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91929888CCD006CE85A /* Rubik-Bold.ttf */; };
 		7761086A2C29FFD0001288F0 /* SignInDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776108692C29FFD0001288F0 /* SignInDataTypes.swift */; };
+		776CACD92C42A573008C25AC /* TeamScoresStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776CACD82C42A573008C25AC /* TeamScoresStackView.swift */; };
+		776D92BA2C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D92B92C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift */; };
 		7776DDE52BF64154008E9C65 /* TeamView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7776DDE42BF64154008E9C65 /* TeamView.xib */; };
 		7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776DDE62BF642EA008E9C65 /* TeamView.swift */; };
-		778484FF2956116E004A3B32 /* RemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteDataManager.swift */; };
+		778484FF2956116E004A3B32 /* RemoteStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteStorageManager.swift */; };
 		7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */; };
 		7790E82D295C06A600DC5D6B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82C295C06A600DC5D6B /* Theme.swift */; };
 		7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */; };
 		7790E831295CAC9500DC5D6B /* ChristmasTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */; };
 		77952A072995599400BC0354 /* TeamTextSizeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77952A062995599400BC0354 /* TeamTextSizeStruct.swift */; };
 		7797E96F2C0510F0007D7EEF /* CustomDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */; };
+		7798A77A2C4358E2007E3E4F /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7798A7792C4358E2007E3E4F /* DeviceInfo.swift */; };
 		77A11797293ACD1A00ED74C2 /* TeamDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */; };
 		77A5079A2C27376000BB49D2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A507992C27376000BB49D2 /* Utilities.swift */; };
 		77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */; };
@@ -62,7 +65,7 @@
 		77B11165293AB78E00553E37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77B11163293AB78E00553E37 /* Main.storyboard */; };
 		77B11167293AB78F00553E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77B11166293AB78F00553E37 /* Assets.xcassets */; };
 		77B1116A293AB78F00553E37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77B11168293AB78F00553E37 /* LaunchScreen.storyboard */; };
-		77BF4D482C0D36FE0059AF35 /* scoreboardUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BF4D472C0D36FE0059AF35 /* scoreboardUIButton.swift */; };
+		77BF4D482C0D36FE0059AF35 /* ScoreboardUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BF4D472C0D36FE0059AF35 /* ScoreboardUIButton.swift */; };
 		77CEA6FA297C449D00E853DC /* Railway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6F9297C449D00E853DC /* Railway.swift */; };
 		77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */; };
 		77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FD297CA9F800E853DC /* ThemeManager.swift */; };
@@ -91,6 +94,11 @@
 		77D98FE8297B09D300927949 /* FractalLandscapePurple3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */; };
 		77D98FEA297B09E000927949 /* FractalLandscapeWhite1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */; };
 		77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */; };
+		77DC6B222C39F09400327D59 /* External Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77DC6B212C39F09400327D59 /* External Display.storyboard */; };
+		77DC6B262C39F81400327D59 /* ExternalDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B252C39F81400327D59 /* ExternalDisplayViewController.swift */; };
+		77DC6B292C3B1EB700327D59 /* RemoteConnectionV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */; };
+		77DC6B2B2C3B26B600327D59 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */; };
+		77DC6B2D2C3CA3C300327D59 /* DataStorageBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B2C2C3CA3C300327D59 /* DataStorageBundle.swift */; };
 		77E024402C27D3DC00112591 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0243F2C27D3DC00112591 /* KeychainManager.swift */; };
 		77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E238512981E6F80069A260 /* Remotev2ViewController.swift */; };
 		77E6CFEC298F044A0006E8CE /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6CFEA298F044A0006E8CE /* TextInputCell.swift */; };
@@ -130,15 +138,18 @@
 		7754E91829888CCD006CE85A /* Karla700italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karla700italic.ttf; sourceTree = "<group>"; };
 		7754E91929888CCD006CE85A /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		776108692C29FFD0001288F0 /* SignInDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDataTypes.swift; sourceTree = "<group>"; };
+		776CACD82C42A573008C25AC /* TeamScoresStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresStackView.swift; sourceTree = "<group>"; };
+		776D92B92C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayScoreboard.swift; sourceTree = "<group>"; };
 		7776DDE42BF64154008E9C65 /* TeamView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamView.xib; sourceTree = "<group>"; };
 		7776DDE62BF642EA008E9C65 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
-		778484FE2956116E004A3B32 /* RemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataManager.swift; sourceTree = "<group>"; };
+		778484FE2956116E004A3B32 /* RemoteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageManager.swift; sourceTree = "<group>"; };
 		7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
 		7790E82C295C06A600DC5D6B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTheme.swift; sourceTree = "<group>"; };
 		7790E830295CAC9500DC5D6B /* ChristmasTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChristmasTheme.swift; sourceTree = "<group>"; };
 		77952A062995599400BC0354 /* TeamTextSizeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTextSizeStruct.swift; sourceTree = "<group>"; };
 		7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataTypes.swift; sourceTree = "<group>"; };
+		7798A7792C4358E2007E3E4F /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		77A11796293ACD1A00ED74C2 /* TeamDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDataTypes.swift; sourceTree = "<group>"; };
 		77A507992C27376000BB49D2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		77A77CDD2984E9AE009E42C1 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +164,7 @@
 		77B11166293AB78F00553E37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77B11169293AB78F00553E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77B1116B293AB78F00553E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77BF4D472C0D36FE0059AF35 /* scoreboardUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scoreboardUIButton.swift; sourceTree = "<group>"; };
+		77BF4D472C0D36FE0059AF35 /* ScoreboardUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardUIButton.swift; sourceTree = "<group>"; };
 		77CEA6F9297C449D00E853DC /* Railway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Railway.swift; sourceTree = "<group>"; };
 		77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeGroupChooserViewController.swift; sourceTree = "<group>"; };
 		77CEA6FD297CA9F800E853DC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -182,6 +193,11 @@
 		77D98FE7297B09D300927949 /* FractalLandscapePurple3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapePurple3.swift; sourceTree = "<group>"; };
 		77D98FE9297B09E000927949 /* FractalLandscapeWhite1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite1.swift; sourceTree = "<group>"; };
 		77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite2.swift; sourceTree = "<group>"; };
+		77DC6B212C39F09400327D59 /* External Display.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "External Display.storyboard"; sourceTree = "<group>"; };
+		77DC6B252C39F81400327D59 /* ExternalDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayViewController.swift; sourceTree = "<group>"; };
+		77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConnectionV1.swift; sourceTree = "<group>"; };
+		77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		77DC6B2C2C3CA3C300327D59 /* DataStorageBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageBundle.swift; sourceTree = "<group>"; };
 		77E0243E2C27D3A400112591 /* ScoreBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScoreBoard.entitlements; sourceTree = "<group>"; };
 		77E0243F2C27D3DC00112591 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		77E238512981E6F80069A260 /* Remotev2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remotev2ViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				7797E96E2C0510F0007D7EEF /* CustomDataTypes.swift */,
+				7798A7792C4358E2007E3E4F /* DeviceInfo.swift */,
 			);
 			path = CustomDataTypes;
 			sourceTree = "<group>";
@@ -262,8 +279,11 @@
 		771913DE2C1BC7CF00BA2D9F /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				77DC6B2C2C3CA3C300327D59 /* DataStorageBundle.swift */,
 				771913D92C1738C000BA2D9F /* DataStorageManager.swift */,
-				778484FE2956116E004A3B32 /* RemoteDataManager.swift */,
+				778484FE2956116E004A3B32 /* RemoteStorageManager.swift */,
+				77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */,
+				77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -274,6 +294,7 @@
 				7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */,
 				77BC5D622C225CE600395390 /* MainDisplay */,
 				770F39AD2C11329C00B1C820 /* RemoteControl */,
+				776D92B92C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift */,
 			);
 			path = ScoreBoards;
 			sourceTree = "<group>";
@@ -391,8 +412,11 @@
 			isa = PBXGroup;
 			children = (
 				77B11161293AB78E00553E37 /* MainDisplayViewController.swift */,
-				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
 				7776DDE42BF64154008E9C65 /* TeamView.xib */,
+				7776DDE62BF642EA008E9C65 /* TeamView.swift */,
+				77DC6B212C39F09400327D59 /* External Display.storyboard */,
+				77DC6B252C39F81400327D59 /* ExternalDisplayViewController.swift */,
+				776CACD82C42A573008C25AC /* TeamScoresStackView.swift */,
 			);
 			path = MainDisplay;
 			sourceTree = "<group>";
@@ -400,7 +424,7 @@
 		77BF4D492C0D371E0059AF35 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				77BF4D472C0D36FE0059AF35 /* scoreboardUIButton.swift */,
+				77BF4D472C0D36FE0059AF35 /* ScoreboardUIButton.swift */,
 				77239FE92953AF6000569AB9 /* SignInButton.swift */,
 				77F519152990C65000708BFE /* LargeTransparentButton.swift */,
 				7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */,
@@ -532,6 +556,7 @@
 				77B11167293AB78F00553E37 /* Assets.xcassets in Resources */,
 				7754E92329888CCD006CE85A /* Karlaregular.ttf in Resources */,
 				7754E92229888CCD006CE85A /* Rubik-Medium.ttf in Resources */,
+				77DC6B222C39F09400327D59 /* External Display.storyboard in Resources */,
 				7754E91A29888CCD006CE85A /* Rubik-MediumItalic.ttf in Resources */,
 				7754E92929888CCD006CE85A /* Poppinsregular.ttf in Resources */,
 				7754E91B29888CCD006CE85A /* Rubik-Light.ttf in Resources */,
@@ -563,7 +588,10 @@
 				77239FE72952872700569AB9 /* RemoteViewController.swift in Sources */,
 				77CEA700297DB75500E853DC /* ThemeSelectionViewController.swift in Sources */,
 				77A77CDE2984E9AE009E42C1 /* ResetViewController.swift in Sources */,
+				776D92BA2C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift in Sources */,
 				77D98FD4297B069300927949 /* FractalLandscapeFire1.swift in Sources */,
+				77DC6B2D2C3CA3C300327D59 /* DataStorageBundle.swift in Sources */,
+				77DC6B262C39F81400327D59 /* ExternalDisplayViewController.swift in Sources */,
 				77D98FD0297B01B100927949 /* FractalLandscapeBlue3.swift in Sources */,
 				77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */,
 				77D98FE4297B09BF00927949 /* FractalLandscapePurple1.swift in Sources */,
@@ -576,17 +604,20 @@
 				77CEA6FA297C449D00E853DC /* Railway.swift in Sources */,
 				77B1115E293AB78E00553E37 /* AppDelegate.swift in Sources */,
 				77D98FD8297B096B00927949 /* FractalLandscapeGreen2.swift in Sources */,
+				7798A77A2C4358E2007E3E4F /* DeviceInfo.swift in Sources */,
 				77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */,
 				77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */,
 				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,
 				771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
 				77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */,
+				77DC6B292C3B1EB700327D59 /* RemoteConnectionV1.swift in Sources */,
 				7797E96F2C0510F0007D7EEF /* CustomDataTypes.swift in Sources */,
 				7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */,
+				77DC6B2B2C3B26B600327D59 /* LocalStorageManager.swift in Sources */,
 				7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */,
 				7790E82D295C06A600DC5D6B /* Theme.swift in Sources */,
-				77BF4D482C0D36FE0059AF35 /* scoreboardUIButton.swift in Sources */,
+				77BF4D482C0D36FE0059AF35 /* ScoreboardUIButton.swift in Sources */,
 				77E024402C27D3DC00112591 /* KeychainManager.swift in Sources */,
 				77B0246B2956336E0017C542 /* RemoteTeamViewCell.swift in Sources */,
 				77D98FDE297B099600927949 /* FractalLandscapeOcean1.swift in Sources */,
@@ -602,9 +633,10 @@
 				7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */,
 				77D98FDC297B097F00927949 /* FractalLandscapeGreen4.swift in Sources */,
 				77D98FD2297B03D100927949 /* FractalLandscapeBlue4.swift in Sources */,
+				776CACD92C42A573008C25AC /* TeamScoresStackView.swift in Sources */,
 				77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */,
 				7761086A2C29FFD0001288F0 /* SignInDataTypes.swift in Sources */,
-				778484FF2956116E004A3B32 /* RemoteDataManager.swift in Sources */,
+				778484FF2956116E004A3B32 /* RemoteStorageManager.swift in Sources */,
 				77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */,
 				7705C6642C2CEB67004CB7F6 /* ScoreStepper.swift in Sources */,
 				771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */,

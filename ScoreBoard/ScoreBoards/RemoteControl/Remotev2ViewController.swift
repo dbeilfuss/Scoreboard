@@ -94,7 +94,8 @@ class Remotev2ViewController: ScoreBoardViewController {
         }
         
         /// iPhone Customizations
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+        if deviceType == .iPhone {
             
             /// Changes the size of the Point Increment Buttons to fit an iPhone Screen
             let viewWidth = uiView.frame.size.width

@@ -9,6 +9,8 @@ import UIKit
 
 struct WelcomeScreenDatabase {
     
+    
+    
     /// Data
     let tableData: [String] = [
         "Scoreboard",
@@ -17,7 +19,7 @@ struct WelcomeScreenDatabase {
     
     /// Themes
     var themeAssignments: [String: Theme] {[
-        tableData[0]: ThemeManager().fetchTheme(named: Constants().defaultScoreboardState.themeName),
+        tableData[0]: ThemeManager().fetchTheme(named: Constants().defaultTheme.name),
         tableData[1]: RemoteControlTheme().theme
     ]}
     
@@ -28,9 +30,10 @@ struct WelcomeScreenDatabase {
     ]}
     
     var scoreboardIcon: UIImage {
-        if UIDevice.current.localizedModel == "iPad" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+        if deviceType == .iPad {
             return UIImage(systemName: "ipad.gen2.landscape")!
-        } else if UIDevice.current.localizedModel == "iPhone" {
+        } else if deviceType == .iPhone {
             return UIImage(systemName: "iphone.gen2.landscape")!
         } else {
             return UIImage(systemName: "tv")!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class scoreboardUIButton: UIButton {
+class ScoreboardUIButton: UIButton {
     let constants = Constants()
         
     var selfCanHide: Bool = true
@@ -18,15 +18,14 @@ class scoreboardUIButton: UIButton {
         self.backgroundColor = .none
     }
     
-    func setupButton(state: ScoreboardState) {
+    func setupButton(state: ScoreboardState, theme: Theme) {
         scoreBoardState = state
         if constants.printThemeFlow {
-            print("state: \(scoreBoardState), background: \(self.backgroundColor) tint: \(String(describing: self.tintColor)), file: \(#fileID)")
+            print("state: \(scoreBoardState), background: \(String(describing: self.backgroundColor)) tint: \(String(describing: self.tintColor)), file: \(#fileID)")
         }
         
         // Theme
         self.tintAdjustmentMode = .normal //to prevent the button reverting to the default tint color
-        let theme = ThemeManager().fetchTheme(named: state.themeName)
         theme.format(button: self)
         
         // HideUI

@@ -12,7 +12,7 @@ enum SpecializedTheme {
 }
 
 class ThemeManager {
-    private let constants = Constants()
+    private var constants = Constants()
     private var dataStorageManager: DataStorageManagerProtocol?
     private var viewController: ScoreBoardViewControllerProtocol?
     
@@ -65,22 +65,19 @@ class ThemeManager {
         ChristmasTheme().theme
     ]
     
-    private func loadThemeFromDataStorage() {
+    private func fetchThemeFromDataStorage() {
         if constants.printThemeFlow {
             print("fetching theme from dataStorage, \(#fileID)")
         }
         
-        if let themeName = dataStorageManager?.storedState.themeName {
+        if let themeName = dataStorageManager?.requestData().themeName {
             
             let theme = fetchTheme(named: themeName)
             
             themeDataIsRetrieved = true
             activeTheme = theme
         } else {
-            let themeName = constants.defaultScoreboardState.themeName
-            activeTheme = fetchTheme(named: themeName)
-            themeDataIsRetrieved = true
-
+//            let themeName = constants.defaultDataStorageBundle.themeName
             print("databaseManager == nil, \(#fileID)")
         }
     }
@@ -102,7 +99,7 @@ class ThemeManager {
     
     //MARK: - ScoreboardState
     func loadScoreboardState() -> ScoreboardState? {
-        return dataStorageManager?.storedState
+        return dataStorageManager?.loadScoreboardState()
     }
     
 }
@@ -127,10 +124,19 @@ extension ThemeManager: MVCDelegate {
 extension ThemeManager: ThemeManagerProtocol {
     
     //MARK: - Themes
+//    func refreshData() {
+//        if constants.printThemeFlow {
+//            print("refreshing theme data, \(#fileID)")
+//        }
+//        
+//        themeDataIsRetrieved = false
+//        activeTheme = fetchActiveTheme()
+//        viewController?.refreshUIForTheme()
+//    }
     
     func fetchActiveTheme() -> Theme {
         if !themeDataIsRetrieved {
-            loadThemeFromDataStorage()
+            fetchThemeFromDataStorage()
         }
         if constants.printThemeFlow {
             print("ActiveTheme: \(activeTheme.name), File: \(#fileID)")
@@ -138,12 +144,12 @@ extension ThemeManager: ThemeManagerProtocol {
         return activeTheme
     }
     
-    func saveTheme(named themeName: String, dataSource: DataSource) {
+    func saveTheme(named themeName: String) {
         if constants.printThemeFlow {
             print("Saving Theme: \(themeName), File: \(#fileID)")
         }
         
-        dataStorageManager?.saveTheme(named: themeName, dataSource: .local)
+        dataStorageManager?.saveTheme(named: themeName)
         
         let theme = fetchTheme(named: themeName)
         activeTheme = theme
@@ -169,7 +175,7 @@ extension ThemeManager: ThemeManagerProtocol {
     //MARK: - Scoreboard State
     
     func fetchScoreboardState() -> ScoreboardState {
-        if let scoreboardState = dataStorageManager?.storedState {
+        if let scoreboardState = dataStorageManager?.loadScoreboardState() {
             return scoreboardState
         } else {
             print("databaseManager == nil, \(#fileID)")
@@ -183,6 +189,22 @@ extension ThemeManager: ThemeManagerProtocol {
     
     func savePointIncrement(_ pointIncrement: Double) {
         dataStorageManager?.savePointIncrement(pointIncrement)
+    }
+    
+}
+
+extension ThemeManager: DataStorageDelegate {
+    
+    func dataStorageUpdated(_ updatedData: DataStorageBundle) {
+        if constants.printThemeFlow {
+            print("refreshing theme data, \(#fileID)")
+        }
+        
+        themeDataIsRetrieved = false
+        let receivedThemeName = updatedData.themeName
+        activeTheme = fetchTheme(named: receivedThemeName)
+        print(viewController == nil)
+        viewController?.refreshUIForTheme()
     }
     
 }

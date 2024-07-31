@@ -20,6 +20,8 @@ class ScoreBoardViewController: UIViewController {
     var teamManager: TeamManagerProtocol = TeamManager()
     var themeManager: ThemeManagerProtocol = ThemeManager()
     
+//    var externalWindow: UIWindow?
+    
     var signInState: SignInState = .notSignedIn
     
     lazy var mvcArrangement = MVCArrangement(
@@ -42,6 +44,9 @@ class ScoreBoardViewController: UIViewController {
         } else {
             self.signInState = .notSignedIn
         }
+        
+//        setupExternalScreenObserver()
+//        checkForExistingExternalScreens()
         
     }
     

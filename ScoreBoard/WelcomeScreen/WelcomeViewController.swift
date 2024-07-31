@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
     
@@ -73,19 +74,27 @@ class WelcomeViewController: UIViewController {
         var constraintFactor: CGFloat = 50
         
         /// UI Changes for iPhone
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+
+        switch deviceType {
+        case .iPhone:
+            iphoneUIChanges()
+        case .iPad:
+            iPadUIChanges()
+        case .unknown:
+            print("unknown device, no UI Changes")
+        }
+        
+        func iphoneUIChanges() {
             Utilities().updateOrientation(to: .portrait)
-            
             titleLabel.font = constants.titleFontIPhone /// Title Label Font Size
             subtitleLabel.font = constants.subTitleFontIPhone /// Subtitle Label Font Size
-            
+        }
+
             /// UI Changes for iPad
-        } else if UIDevice.current.localizedModel == "iPad" {
-            
+        func iPadUIChanges() {
             Utilities().updateOrientation(to: .all)
-            
             constraintFactor *= 1.5 /// Adjust Constraint Factor for iPad
-            
             titleLabel.font = constants.titleFontIPad /// Title Label Font Size
             subtitleLabel.font = constants.subTitleFontIPad /// Subtitle Label Font Size
         }
@@ -95,10 +104,7 @@ class WelcomeViewController: UIViewController {
             constraint.constant = constraintFactor
         }
         appIconWidth.constant = constraintFactor * 2
-        
-        /// Make App Icon a Circle
-//        appIcon.layer.cornerRadius = constraintFactor  // Deprecated with new app icon
-        
+                
         /// Table Constraints
         tableViewTop.constant = constraintFactor / 2
         
@@ -114,32 +120,15 @@ class WelcomeViewController: UIViewController {
         /// Get Current User
         let _ = Auth.auth().addStateDidChangeListener { auth, user in
             if let user: User = Auth.auth().currentUser {
-                setupUI(user: user)
-//                loadCurrentRemoteData()
-            } else {
-                setupUI(user: nil)
-            }
-        }
-        
-        func setupUI(user: User?) {
-            if user != nil {
                 print("user signed in")
-                print(user!.email!)
+                print(user.email!)
                 self.signInButton.setTitle("Sign Out", for: .normal)
-                self.userFeedbackLabel.text = user!.email
+                self.userFeedbackLabel.text = user.email
             } else {
                 self.signInButton.setTitle("Sign In", for: .normal)
                 self.userFeedbackLabel.text = ""
             }
         }
-        
-        // Failed Attempt to pre-load data to fix issue with theme not loading remote version - Caused crash upon entering scoreboardViewController
-//        func loadCurrentRemoteData() {
-//            let dataStorageManager = DataStorageManager()
-//            dataStorageManager.setupRemoteDataManager(teamManager: nil, themeManager: nil, scoreboardViewController: nil)
-//            dataStorageManager.populateInitialTeamData()
-//            dataStorageManager.populateInitialThemeData()
-//        }
     }
 
 

@@ -6,15 +6,22 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 
 class DataStorageManager {
     
-    let constants = Constants()
-    var remoteDataManager: RemoteDataManagerProtocol?
+    var constants = Constants()
+    var remoteStorageManager: DataStorageProtocol = RemoteStorageManager()
+    var localStorageManager: DataStorageProtocol = LocalStorageManager()
+    var dataStorageDelegate: DataStorageDelegate?
     
-    var teamManager: TeamManagerProtocol?
-    var themeManager: ThemeManagerProtocol?
+    var teamManager: DataStorageDelegate?
+    var themeManager: DataStorageDelegate?
+    
+    init() {
+        localStorageManager.listenForUpdates(completion: self.localDataUpdated(_:))
+        remoteStorageManager.listenForUpdates(completion: self.remoteDataUpdated(_:))
+    }
     
 }
 
@@ -22,116 +29,193 @@ class DataStorageManager {
 
 extension DataStorageManager: MVCDelegate {
     func initializeMVCs(_ mvcArrangement: MVCArrangement) {
-        teamManager = mvcArrangement.teamManager
-        themeManager = mvcArrangement.themeManager
+        
+        // Team & Theme Managers
+        teamManager = mvcArrangement.teamManager as? DataStorageDelegate
+        themeManager = mvcArrangement.themeManager  as? DataStorageDelegate
         
         if teamManager == nil || themeManager == nil {
             print("failed to initializeMVCs: \(#fileID)")
         } else {
             print("initializeMVCs successful: \(#fileID)")
         }
-        
-        // Cloud Storage
-        setupRemoteDataManager(
-            teamManager: mvcArrangement.teamManager,
-            themeManager: mvcArrangement.themeManager,
-            scoreboardViewController: mvcArrangement.scoreboardViewController)
+                
     }
 }
 
 extension DataStorageManager: DataStorageManagerProtocol {
-    //MARK: - Setup
     
-    func setupRemoteDataManager(
-        teamManager: TeamManagerProtocol?,
-        themeManager: ThemeManagerProtocol?,
-        scoreboardViewController: ScoreBoardViewControllerProtocol?) {
-        remoteDataManager = RemoteDataManager(
-            teamManager: teamManager,
-            themeManager: themeManager,
-            viewController: scoreboardViewController)
+    func saveData(_ data: DataStorageBundle) {
+        print("saving data - \(#fileID)")
+        localStorageManager.saveData(data)
+        remoteStorageManager.saveData(data)
     }
+    
+    func requestData() -> DataStorageBundle {
+        if let dataStorageBundle = localStorageManager.fetchData() {
+            return dataStorageBundle
+        }
+        
+        return constants.defaultDataStorageBundle
+    }
+    
+    func requestData(completion: (DataStorageBundle) -> Void) {
+        let localData = requestData()
+        var mostRecentData: DataStorageBundle = localData
+        
+        if let remoteData = remoteStorageManager.fetchData() {
+            mostRecentData = compareData(dataBundle1: localData, dataBundle2: remoteData)
+        }
+        
+        completion(mostRecentData)
+        
+    }
+    
+    func remoteDataUpdated(_ dataStorageBundle: DataStorageBundle) {
+        let remoteData = dataStorageBundle
+        var mostRecentData = remoteData
+        if let localData = localStorageManager.fetchData() {
+            mostRecentData = compareData(dataBundle1: remoteData, dataBundle2: localData)
+        }
+        
+        let mostRecentDataSource: DataSource = mostRecentData.timeStamp == remoteData.timeStamp ? .cloud : .local
+        
+        if mostRecentDataSource == .cloud {
+            localStorageManager.saveData(mostRecentData)
+        } else {
+            remoteStorageManager.saveData(mostRecentData)
+        }
+        
+    }
+    
+    func localDataUpdated(_ localDataStorageBundle: DataStorageBundle) {
+            let localData = localDataStorageBundle
+            updateDelegates(localDataStorageBundle) // Update the UI immediately with local data
+
+            // Fetch remote data asynchronously
+            remoteStorageManager.fetchData { remoteData in
+                guard let remoteData = remoteData else {
+                    print("Error fetching remote data - \(#fileID)")
+                    return
+                }
+
+                // Compare local and remote data
+                let mostRecentData = self.compareData(dataBundle1: localData, dataBundle2: remoteData)
+                let mostRecentDataSource: DataSource = mostRecentData.timeStamp == remoteData.timeStamp ? .cloud : .local
+
+                if mostRecentDataSource == .cloud {
+                    self.localStorageManager.saveData(mostRecentData)
+                } else {
+                    self.remoteStorageManager.saveData(mostRecentData)
+                }
+            }
+        }
+    
+    func compareData(dataBundle1: DataStorageBundle, dataBundle2: DataStorageBundle) -> DataStorageBundle {
+        var mostRecentData: DataStorageBundle = dataBundle1
+
+        if dataBundle1.timeStamp != dataBundle2.timeStamp {
+            if dataBundle1.timeStamp.dateValue() < dataBundle2.timeStamp.dateValue() {
+                mostRecentData = dataBundle2
+            }
+        }
+        
+        return mostRecentData
+    }
+    
+    func updateDelegates(_ dataStorageBundle: DataStorageBundle) {
+        teamManager?.dataStorageUpdated(dataStorageBundle)
+        themeManager?.dataStorageUpdated(dataStorageBundle)
+    }
+    
     
     //MARK: - Teams
-
-    var storedTeams: [Team]? {
-        let defaults = UserDefaults.standard
-        let key = constants.teamCollectionKey
-        
-        if let savedData = defaults.data(forKey: key) {
-            if let decodedTeams = try? JSONDecoder().decode([Team].self, from: savedData) {
-                return decodedTeams
-            } else {
-                print("⛔️ Failed to decode teams. File: \(#fileID)")
-            }
-        } else {
-            print("⛔️ No data found for key: \(key). File: \(#fileID)")
-        }
-        return nil
-    }
     
-    func populateInitialTeamData() {
-        remoteDataManager?.fetchTeams(closure: saveRemoteTeamData(_:))
-        
-        func saveRemoteTeamData (_ teamData:[Team]?) {
-            if teamData != nil {
-                saveTeams(teamData!, dataSource: .cloud)
-            }
+    func saveTeams(_ teams: [Team]) {
+        if constants.printTeamFlow {
+            print("saving teams to dataStorage - \(#fileID)")
         }
+        if constants.printTeamFlowDetailed {
+            print(teams)
+        }
+        var dataStorageBundle = requestData()
+        dataStorageBundle.teamScores = teams
+        dataStorageBundle.timeStamp = Timestamp(date: Date())
+        
+        saveData(dataStorageBundle)
+        if constants.printTeamFlowDetailed {
+            print("‼️ teamManager == nil:  \(teamManager == nil) - \(#fileID)")
+        }
+        teamManager?.dataStorageUpdated(dataStorageBundle)
     }
+        
+//        let defaults = UserDefaults.standard
+//        let key = constants.teamCollectionKey
+//        
+//        if let encodedTeamData = try? JSONEncoder().encode(teams) {
+//            if constants.printTeamFlow {
+//                print("saving Teams to local storage, \(#fileID)")
+//            }
+//            defaults.set(encodedTeamData, forKey: key)
+//            
+//            if dataSource == .local {
+//                if constants.printTeamFlow {
+//                    print("saving Teams to remote storage, \(#fileID)")
+//                }
+////                remoteConnection?.saveTeams(teams, dataSource: dataSource)
+//                if constants.printTeamFlow {
+//                    print("Teams saved successfully, file: \(#fileID).")
+//                }
+//            }
+//        } else {
+//            print("Failed to encode teams.")
+//        }
+        
+//    }
     
-    func saveTeams(_ teams: [Team], dataSource: DataSource) {
-        let defaults = UserDefaults.standard
-        let key = constants.teamCollectionKey
+//    func loadTeams() -> [Team]? {
         
-        if let encodedTeamData = try? JSONEncoder().encode(teams) {
-            if constants.printTeamFlow {
-                print("saving Teams to local storage, \(#fileID)")
-            }
-            defaults.set(encodedTeamData, forKey: key)
-            
-            if dataSource == .local {
-                if constants.printTeamFlow {
-                    print("saving Teams to remote storage, \(#fileID)")
-                }
-                remoteDataManager?.saveTeams(teams, dataSource: dataSource)
-                if constants.printTeamFlow {
-                    print("Teams saved successfully, file: \(#fileID).")
-                }
-            }
-        } else {
-            print("Failed to encode teams.")
-        }
+//
+//        let defaults = UserDefaults.standard
+//        let key = constants.teamCollectionKey
+//        
+//        if let savedData = defaults.data(forKey: key) {
+//            if let decodedTeams = try? JSONDecoder().decode([Team].self, from: savedData) {
+//                return decodedTeams
+//            } else {
+//                print("⛔️ Failed to decode teams. File: \(#fileID)")
+//            }
+//        } else {
+//            print("⛔️ No data found for key: \(key). File: \(#fileID)")
+//        }
+//        return nil
+//    }
+    
+    //MARK: - Themes
+    
+    func saveTheme(named themeName: String) {
+        var dataStorageBundle = requestData()
+        dataStorageBundle.themeName = themeName
+        dataStorageBundle.timeStamp = Timestamp(date: Date())
         
+        saveData(dataStorageBundle)
+        themeManager?.dataStorageUpdated(dataStorageBundle)
+        
+//
+//        if constants.printThemeFlow {
+//            print("Saving Theme: \(themeName), File: \(#fileID)")
+//        }
+//        
+//        var scoreboardState = loadScoreboardState()
+//        scoreboardState.themeName = themeName
+//        saveScoreboardState(scoreboardState)
+        
+//        remoteConnection?.saveTheme(named: themeName, dataSource: dataSource)
     }
 
     
     //MARK: - State
-    
-    
-    func populateInitialThemeData() {
-        remoteDataManager?.fetchTheme(closure: saveRemoteThemeData(_:))
-        
-        func saveRemoteThemeData (_ themeName:String?) {
-            if themeName != nil {
-                saveTheme(named: themeName!, dataSource: .cloud)
-            }
-        }
-    }
-    
-    func saveTheme(named themeName: String, dataSource: DataSource) {
-        if constants.printThemeFlow {
-            print("Saving Theme: \(themeName), File: \(#fileID)")
-        }
-        
-        var scoreboardState = storedState
-        scoreboardState.themeName = themeName
-        saveScoreboardState(scoreboardState)
-        
-        remoteDataManager?.saveTheme(named: themeName, dataSource: dataSource)
-    }
-    
-    var storedState: ScoreboardState {
+    func loadScoreboardState() -> ScoreboardState {
         let defaults = UserDefaults.standard
         let key = constants.scoreboardStateKey
         
@@ -144,7 +228,8 @@ extension DataStorageManager: DataStorageManagerProtocol {
         } else {
             print("⛔️ No data found for key: \(key), File: \(#fileID)")
         }
-        return constants.defaultScoreboardState    }
+        return constants.defaultScoreboardState
+    }
         
     private func saveScoreboardState(_ state: ScoreboardState) {
         let defaults = UserDefaults.standard
@@ -160,23 +245,38 @@ extension DataStorageManager: DataStorageManagerProtocol {
         }
         
         if constants.printStateFlow {
-            print("Updated ScoreboardState: \(String(describing: storedState)), File: \(#fileID), Func: \(#function)")
+            print("Updated ScoreboardState: \(String(describing: loadScoreboardState())), File: \(#fileID), Func: \(#function)")
         }
     }
     
     func savePointIncrement(_ pointIncrement: Double) {
-        var scoreboardState = storedState
+        var scoreboardState = loadScoreboardState()
         
         scoreboardState.pointIncrement = pointIncrement
         saveScoreboardState(scoreboardState)
     }
     
     func toggleUIIsHidden() {
-        var scoreboardState = storedState
+        var scoreboardState = loadScoreboardState()
         
         scoreboardState.uiIsHidden = !scoreboardState.uiIsHidden
         saveScoreboardState(scoreboardState)
     }
 
+}
+
+protocol DataStorageProtocol {
+    // Save Data
+    func saveData(_: DataStorageBundle)
     
+    // Fetch Data
+    func fetchData(completion: @escaping (DataStorageBundle?) -> Void)
+    func fetchData() -> DataStorageBundle?
+
+    // Listen For Updates
+    mutating func listenForUpdates(completion: @escaping (DataStorageBundle) -> Void)
+}
+
+protocol DataStorageDelegate {
+    func dataStorageUpdated(_ updatedData: DataStorageBundle)
 }

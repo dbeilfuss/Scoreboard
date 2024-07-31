@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
-struct Team: Codable {
+struct Team: Codable, Equatable {
     var number: Int
     var name: String
     var score: Int

@@ -37,18 +37,19 @@ protocol TeamManagerProtocol {
     func fetchActiveTeamNumbers() -> [Int]
     
     // Update
-    func refreshData()
+//    func refreshData()
     func replaceScore(teamNumber: Int, newScore: Int)
     func addToScore(teamNumber: Int, scoreToAdd: Int)
     func updateTeamIsActive(teamNumber: Int, isActive: Bool)
     func updateTeamName(teamNumber: Int, name: String)
-    func saveTeam(_ team: Team, datasource: DataSource)
+    func saveTeam(_ team: Team)
 }
 
 protocol ThemeManagerProtocol {
     // Themes
+//    func refreshData()
     func fetchActiveTheme() -> Theme
-    func saveTheme(named themeName: String, dataSource: DataSource)
+    func saveTheme(named themeName: String)
     func fetchSpecializedTheme(ofType: SpecializedTheme) -> Theme
     
     // Scoreboard State
@@ -58,23 +59,20 @@ protocol ThemeManagerProtocol {
 }
 
 protocol DataStorageManagerProtocol {
-    // Setup
-    func setupRemoteDataManager(
-        teamManager: TeamManagerProtocol?,
-        themeManager: ThemeManagerProtocol?,
-        scoreboardViewController: ScoreBoardViewControllerProtocol?)
+    // DataStorageBundle
+    func saveData(_: DataStorageBundle)
+    func requestData() -> DataStorageBundle
+    func requestData(completion: (DataStorageBundle) -> Void)
     
     // Teams
-    var storedTeams: [Team]? { get }
-    func populateInitialTeamData()
-    func saveTeams(_ teams: [Team], dataSource: DataSource)
+//    func loadTeams() -> [Team]?
+    func saveTeams(_ teams: [Team])
     
     // Themes
-    func populateInitialThemeData()
-    func saveTheme(named themeName: String, dataSource: DataSource)
+    func saveTheme(named themeName: String)
     
     // State
-    var storedState: ScoreboardState { get }
+    func loadScoreboardState() -> ScoreboardState
     func savePointIncrement(_ pointIncrement: Double)
     func toggleUIIsHidden()
     

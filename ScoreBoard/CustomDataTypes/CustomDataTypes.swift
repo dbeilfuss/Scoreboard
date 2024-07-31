@@ -8,7 +8,6 @@
 import UIKit
 
 struct ScoreboardState: Codable {
-    var themeName: String
     var pointIncrement: Double
     var uiIsHidden: Bool
 }
@@ -22,3 +21,5 @@ enum DataSource {
     case local
     case cloud
 }
+
+

@@ -7,21 +7,22 @@
 
 import UIKit
 
-
 class MainDisplayViewController: ScoreBoardViewController {
     
+    //MARK: - Properties
+    var shouldNeverDisplayUI = false
     
     //MARK: - IBOutlets
     
     /// Stacks
-    @IBOutlet weak var mainScoreBoardStack: UIStackView!
+    @IBOutlet weak var teamScoresStackView: TeamScoresStackView!
     
     /// Point Increment Buttons
-    @IBOutlet weak var onePointButton: scoreboardUIButton!
-    @IBOutlet weak var fivePointButton: scoreboardUIButton!
-    @IBOutlet weak var tenPointButton: scoreboardUIButton!
-    @IBOutlet weak var hundredPointButton: scoreboardUIButton!
-    var pointIncrementButtonsArray: [scoreboardUIButton] {
+    @IBOutlet weak var onePointButton: ScoreboardUIButton!
+    @IBOutlet weak var fivePointButton: ScoreboardUIButton!
+    @IBOutlet weak var tenPointButton: ScoreboardUIButton!
+    @IBOutlet weak var hundredPointButton: ScoreboardUIButton!
+    var pointIncrementButtonsArray: [ScoreboardUIButton] {
         return [onePointButton,
                 fivePointButton,
                 tenPointButton,
@@ -30,15 +31,15 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     /// Control Buttons
-    @IBOutlet weak var resetButton: scoreboardUIButton!
-    @IBOutlet weak var teamSetupButton: scoreboardUIButton!
-    @IBOutlet weak var toggleUIButton: scoreboardUIButton!
-    @IBOutlet weak var troubleShootingButton: scoreboardUIButton!
-    @IBOutlet weak var themesButton: scoreboardUIButton!
-    @IBOutlet weak var doneButton: scoreboardUIButton!
+    @IBOutlet weak var resetButton: ScoreboardUIButton!
+    @IBOutlet weak var teamSetupButton: ScoreboardUIButton!
+    @IBOutlet weak var toggleUIButton: ScoreboardUIButton!
+    @IBOutlet weak var troubleShootingButton: ScoreboardUIButton!
+    @IBOutlet weak var themesButton: ScoreboardUIButton!
+    @IBOutlet weak var doneButton: ScoreboardUIButton!
     
     /// All Buttons Array
-    var allButtonsArray: [scoreboardUIButton] {
+    var allButtonsArray: [ScoreboardUIButton] {
         return [resetButton,
                 teamSetupButton,
                 troubleShootingButton,
@@ -53,20 +54,18 @@ class MainDisplayViewController: ScoreBoardViewController {
     }
     
     // Buttons With Permanent Visibility
-    var buttonsToKeepVisible: [scoreboardUIButton] {[
+    var buttonsToKeepVisible: [ScoreboardUIButton] {[
         doneButton,
         toggleUIButton
     ]}
-    
-    var teamViews: [TeamView] = []
-    
+        
     // User Feedback
     @IBOutlet weak var userFeedbackLabel: UILabel!
     
     // Background
     @IBOutlet weak var backgroundView: UIImageView!
     
-    //MARK: - ViewDidLoad
+    //MARK: - ViewLoading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,193 +76,76 @@ class MainDisplayViewController: ScoreBoardViewController {
         /// Orientation Lock
         Utilities().updateOrientation(to: .landscape)
         
-        /// iPhone Specific Changes
-        if UIDevice.current.localizedModel == "iPhone" {
-            mainScoreBoardStack.spacing = 0
-        }
-        
-        createTeamViews()
-        
-        /// Inform Buttons Which Must Remain Visible even when UI is switched off
+        /// Setup Buttons
         for button in buttonsToKeepVisible {
             button.selfCanHide = false
         }
         
+        teamScoresStackView.set(delegate: self)
+        
         /// Refresh Screen after Setup
-        implementActiveTheme()
         selectCorrectIncrementButton()
         userFeedbackLabel.text = ""
+        refreshUIForTheme()
 
     }
     
+    //MARK: - ViewAppearing
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear - \(#fileID)")
         lockOrientation(to: .landscapeLeft)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        refreshUIForTeams()
+    }
+    
     //MARK: - TeamViews
     
-    private func createTeamViews() {
-        var teamList = teamManager.fetchActiveTeams()
-        teamList = teamList.reversed()
-        let teamCount = teamList.count
-                
-        for team in teamList {
-            /// Create New TeamView
-            let teamView = createTeamView(team)
-            teamViews.append(teamView)
-            displayTeamView(teamView, teamCount: teamCount)
-            NSLayoutConstraint.activate([teamView.centerYAnchor.constraint(equalTo: teamView.superview!.centerYAnchor, constant: 0)])
-        }
-        
-    }
-    
-    private func createTeamView(_ teamInfo: Team) -> TeamView {
-        let teamSetup = teamManager.fetchTeamList()
-        
-        // Setup TeamView
-        let teamView = TeamView()
-        teamView.translatesAutoresizingMaskIntoConstraints = false
-        teamView.set(teamInfo: teamInfo)
-        teamView.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup)
-        teamView.set(delegate: self)
-        
-        return teamView
-    }
-    
-    private func displayTeamView(_ view: TeamView, teamCount: Int) {
-        
-        // create top row if needed
-        if mainScoreBoardStack.arrangedSubviews.count == 0 {
-            createScoreboardStackView()
-        }
-        
-        // choose bottom or top row
-        var scoreRow: UIStackView = mainScoreBoardStack.arrangedSubviews.first! as! UIStackView
-        
-        var idealTeamsPerRow = 3
-        if UIDevice.current.localizedModel == "iPhone" {
-            idealTeamsPerRow = 4
-        }
-        
-        if teamCount > idealTeamsPerRow {
-            if teamViews.count < ((teamCount / 2) + 1) {
-                
-                // create bottom row if needed
-                if mainScoreBoardStack.arrangedSubviews.count < 2 {
-                    createScoreboardStackView()
-                }
-                
-                // use bottom row
-                scoreRow = mainScoreBoardStack.arrangedSubviews.last! as! UIStackView
-            }
-        }
-        
-        scoreRow.insertArrangedSubview(view, at: 0)
-    }
-    
-    private func shouldReInitializeTeamViews() -> Bool {
-        
-        // Gather Information
-        var teamViewTeamNumbers = teamViews.map() {$0.teamInfo.number}
-        teamViewTeamNumbers = teamViewTeamNumbers.reversed()
-        let teamManagerTeamNumbers = teamManager.fetchActiveTeamNumbers()
-        
-        // Return True or False
-        if teamViewTeamNumbers == teamManagerTeamNumbers {
-            return false
-        } else {
-            return true
-        }
-        
-    }
-    
-    private func reInitializeTeamViews() {
-        // Delete Current TeamViews
-        teamViews = []
-        for stackView in mainScoreBoardStack.arrangedSubviews {
-            stackView.removeFromSuperview()
-        }
-        
-        // Refill the ScoresRows
-        createTeamViews()
-    }
-    
-    private func createScoreboardStackView() {
-        let scoreboardStackView = UIStackView()
-        mainScoreBoardStack.addArrangedSubview(scoreboardStackView)
-        
-        // configure
-        scoreboardStackView.alignment = .center
-        scoreboardStackView.distribution = .fillEqually
-        
-        // constraints
-        NSLayoutConstraint.activate([
-            scoreboardStackView.leadingAnchor.constraint(equalTo: mainScoreBoardStack.leadingAnchor, constant: 0),
-            scoreboardStackView.trailingAnchor.constraint(equalTo: mainScoreBoardStack.trailingAnchor, constant: 0)
-        ])
-    }
-    
-    func refreshTeamViews() {
-        
-        // Reinitialize teamViews if needed
-        if shouldReInitializeTeamViews() {
-            reInitializeTeamViews()
-        }
-        
-        // Pass Data into the team views
-        let teamSetup = teamManager.fetchTeamList()
-        for view in teamViews {
-            let teamNumber = view.teamInfo.number
-            if let newTeamInfo: Team = teamManager.fetchTeamInfo(teamNumber: teamNumber) {
-                view.set(teamInfo: newTeamInfo)
-            }
-            view.set(scoreboardState: themeManager.fetchScoreboardState(), teamSetup: teamSetup)
-        }
-    }
+//    func createTeamViews() {
+//        teamScoresStackView.set(activeTeamList: teamManager.fetchActiveTeams(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
+//    }
     
     //MARK: - Update UI
     
     override func refreshUIForTheme() {
         super.refreshUIForTheme()
-        implementActiveTheme()
+        
+        if constants.printThemeFlow {
+            print("implementingActiveTheme, File: \(#fileID)")
+        }
+        
+        /// Properties
+        let activeTheme = themeManager.fetchActiveTheme()
+        let state = themeManager.fetchScoreboardState()
+        
+        /// Implementation
+        activeTheme.format(background: backgroundView)
+        refreshButtons()
+        teamScoresStackView.set(state: state)
+        teamScoresStackView.set(theme: activeTheme)
+
     }
     
     override func refreshUIForTeams() {
         super.refreshUIForTeams()
-        refreshTeamViews()
+        
+        teamScoresStackView.refreshTeamViews(teamList: teamManager.fetchTeamList(), theme: themeManager.fetchActiveTheme(), state: themeManager.fetchScoreboardState())
     }
     
-    func implementActiveTheme() {
-        if constants.printThemeFlow {
-            print("implementingActiveTheme, File: \(#fileID)")
-        }
-        updateBackground()
-        refreshTeamViews()
-        refreshButtons()
-    }
-    
-    func updateBackground() {
-        let activeTheme = themeManager.fetchActiveTheme()
-        if constants.printThemeFlow {
-            print("updating Background for theme: \(activeTheme.name), File: \(#fileID)")
-        }
-        activeTheme.format(background: backgroundView)
-    }
-    
-    /// Toggle UI
     @IBAction func toggleUIPressed(_ sender: UIButton) {
         themeManager.toggleUIIsHidden()
         refreshButtons()
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
     func refreshButtons() {
         let state = themeManager.fetchScoreboardState()
+        let theme = themeManager.fetchActiveTheme()
         
         for button in allButtonsArray {
-            button.setupButton(state: state)
+            button.setupButton(state: state, theme: theme)
         }
     }
     
@@ -302,7 +184,7 @@ class MainDisplayViewController: ScoreBoardViewController {
         sender.isSelected = true /// set the sender point increment button to active
         
         themeManager.savePointIncrement(currentPointValue)
-        refreshTeamViews()
+        refreshUIForTeams()
         refreshButtons()
         
     }
@@ -317,7 +199,9 @@ class MainDisplayViewController: ScoreBoardViewController {
     
     /// Settings Button
     @IBAction func settingsButton(_ sender: UIButton) {
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+
+        if deviceType == .iPhone {
             self.performSegue(withIdentifier: "mainDisplayToRemoteModal", sender: self)
         } else {
             self.performSegue(withIdentifier: "mainDisplayToRemote", sender: self)
@@ -333,9 +217,11 @@ class MainDisplayViewController: ScoreBoardViewController {
     @IBAction func doneButtonPressed(_ sender: Any) {
         
         /// Orientation Locks
-        if UIDevice.current.localizedModel == "iPhone" {
+        let deviceType = Utilities.DeviceInfo().deviceType
+
+        if deviceType == .iPhone {
             Utilities().updateOrientation(to: constants.screenOrientationStandardiPhone)
-        } else if UIDevice.current.localizedModel == "iPad" {
+        } else if deviceType == .iPad {
             Utilities().updateOrientation(to: constants.screenOrientationStandardiPad)
         }
         
@@ -349,7 +235,8 @@ class MainDisplayViewController: ScoreBoardViewController {
         
         /// Update Name Segue
         if segue.identifier == "mainDisplayToRemote" || segue.identifier == "mainDisplayToRemoteModal" {
-            if UIDevice.current.localizedModel == "iPhone" {
+            let deviceType = Utilities.DeviceInfo().deviceType
+            if deviceType == .iPhone {
                 Utilities().updateOrientation(to: constants.screenOrientationStandardiPhone)
             }
             let destinationVC = segue.destination as! Remotev2ViewController
@@ -385,18 +272,19 @@ extension ScoreBoardViewController: MVCDelegate {
 extension MainDisplayViewController: TeamCellDelegate {
     
     func updateScore(newScore: Int, teamIndex: Int) {
+        print("updateScore Called: \(#fileID)")
         teamManager.replaceScore(teamNumber: teamIndex, newScore: newScore)
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {
         teamManager.updateTeamIsActive(teamNumber: teamIndex + 1, isActive: isActive)
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
     func updateName(newName: String, teamIndex: Int) {
         teamManager.updateTeamName(teamNumber: teamIndex + 1, name: newName)
-        refreshTeamViews()
+        refreshUIForTeams()
     }
     
 }
