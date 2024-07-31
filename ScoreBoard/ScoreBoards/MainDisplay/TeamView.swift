@@ -75,7 +75,7 @@ class TeamView: UIView {
         
         // ScoreStepper
         scoreStepper.stepValue = Double(pointIncrement)
-        scoreStepper.layer.opacity = uiIsHidden ? 0 : 100
+        scoreStepper.layer.isHidden = uiIsHidden ? true : false
     }
     
     func set(theme: Theme) {
@@ -155,7 +155,7 @@ class TeamView: UIView {
         print(#function)
         
         if teamStackViewHeightConstraint != nil {
-            var height = teamStackViewHeightConstraint!.constant * 0.5
+            var height = teamStackViewHeightConstraint!.constant * 0.4
             let width = superViewWidth
             let minRatio = 0.3
             let actualRatio = height / width
@@ -165,7 +165,7 @@ class TeamView: UIView {
 //            print("actual ratio: \(actualRatio)")
 //            print("superViewWidth * minRatio: \(superViewWidth * minRatio)")
 //            print("height / 2 = \(height / 2)")
-            if actualRatio > minRatio { height = height / 2 }
+            if actualRatio > minRatio { height = height / 1.25 }
             
             nameLabel.font = nameLabel.font.withSize(height)
             
