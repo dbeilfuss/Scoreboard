@@ -14,6 +14,7 @@ class DataStorageManager {
     var remoteStorageManager: DataStorageProtocol = RemoteStorageManager()
     var localStorageManager: DataStorageProtocol = LocalStorageManager()
     var dataStorageDelegate: DataStorageDelegate?
+    let watchDataManager = WatchDataManager()
     
     var teamManager: DataStorageDelegate?
     var themeManager: DataStorageDelegate?
@@ -49,6 +50,7 @@ extension DataStorageManager: DataStorageManagerProtocol {
         print("saving data - \(#fileID)")
         localStorageManager.saveData(data)
         remoteStorageManager.saveData(data)
+        watchDataManager.sendTeamDataToWatch(data.teamScores)
     }
     
     func requestData() -> DataStorageBundle {
@@ -148,48 +150,6 @@ extension DataStorageManager: DataStorageManagerProtocol {
         }
         teamManager?.dataStorageUpdated(dataStorageBundle)
     }
-        
-//        let defaults = UserDefaults.standard
-//        let key = constants.teamCollectionKey
-//        
-//        if let encodedTeamData = try? JSONEncoder().encode(teams) {
-//            if constants.printTeamFlow {
-//                print("saving Teams to local storage, \(#fileID)")
-//            }
-//            defaults.set(encodedTeamData, forKey: key)
-//            
-//            if dataSource == .local {
-//                if constants.printTeamFlow {
-//                    print("saving Teams to remote storage, \(#fileID)")
-//                }
-////                remoteConnection?.saveTeams(teams, dataSource: dataSource)
-//                if constants.printTeamFlow {
-//                    print("Teams saved successfully, file: \(#fileID).")
-//                }
-//            }
-//        } else {
-//            print("Failed to encode teams.")
-//        }
-        
-//    }
-    
-//    func loadTeams() -> [Team]? {
-        
-//
-//        let defaults = UserDefaults.standard
-//        let key = constants.teamCollectionKey
-//        
-//        if let savedData = defaults.data(forKey: key) {
-//            if let decodedTeams = try? JSONDecoder().decode([Team].self, from: savedData) {
-//                return decodedTeams
-//            } else {
-//                print("⛔️ Failed to decode teams. File: \(#fileID)")
-//            }
-//        } else {
-//            print("⛔️ No data found for key: \(key). File: \(#fileID)")
-//        }
-//        return nil
-//    }
     
     //MARK: - Themes
     
@@ -201,16 +161,6 @@ extension DataStorageManager: DataStorageManagerProtocol {
         saveData(dataStorageBundle)
         themeManager?.dataStorageUpdated(dataStorageBundle)
         
-//
-//        if constants.printThemeFlow {
-//            print("Saving Theme: \(themeName), File: \(#fileID)")
-//        }
-//        
-//        var scoreboardState = loadScoreboardState()
-//        scoreboardState.themeName = themeName
-//        saveScoreboardState(scoreboardState)
-        
-//        remoteConnection?.saveTheme(named: themeName, dataSource: dataSource)
     }
 
     

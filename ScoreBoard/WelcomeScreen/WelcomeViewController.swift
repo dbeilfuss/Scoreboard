@@ -6,8 +6,10 @@
 //
 
 import UIKit
+#if !os(watchOS)
 import Firebase
 import FirebaseAuth
+#endif
 
 class WelcomeViewController: UIViewController {
     

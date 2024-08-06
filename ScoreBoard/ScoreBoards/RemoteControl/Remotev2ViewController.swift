@@ -6,7 +6,9 @@
 //
 
 import UIKit
+#if !os(watchOS)
 import FirebaseAuth
+#endif
 
 enum RemoteViewMode {
     case remoteControl

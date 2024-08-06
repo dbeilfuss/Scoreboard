@@ -6,7 +6,9 @@
 //
 
 import UIKit
+#if !os(watchOS)
 import Firebase
+#endif
 
 //protocol ScoreBoardDelegate {
 //    func refreshScreen(reTransmit: Bool)

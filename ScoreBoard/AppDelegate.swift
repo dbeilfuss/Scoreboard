@@ -6,14 +6,17 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
-import FirebaseCore
-import FirebaseAuth
-import FirebaseFirestore
+import WatchConnectivity
+#if !os(watchOS)
+    import IQKeyboardManagerSwift
+    import FirebaseCore
+    import FirebaseAuth
+    import FirebaseFirestore
+#endif
 
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,9 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         let _ = Firestore.firestore()
         
+        // Apple Watch Session
+        if WCSession.isSupported() {
+            WCSession.default.delegate = self
+            WCSession.default.activate()
+        }
+        
         return true
     }
     
+    //MARK: - Apple Watch Session Delegate Methods
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
+    }
+    func sessionDidBecomeInactive(_ session: WCSession) {
+    }
+    func sessionDidDeactivate(_ session: WCSession) {
+    }
+
     //MARK: - Orientation Lock
         
     var orientation: UIInterfaceOrientationMask = .all

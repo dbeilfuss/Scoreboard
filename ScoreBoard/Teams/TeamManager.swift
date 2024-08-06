@@ -5,9 +5,10 @@
 //  Created by Daniel Beilfuss on 12/2/22.
 //
 
-import FirebaseFirestore
 import UIKit
-
+#if !os(watchOS)
+import FirebaseFirestore
+#endif
 
 class TeamManager {
     

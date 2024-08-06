@@ -6,7 +6,9 @@
 //
 
 import UIKit
+#if !os(watchOS)
 import FirebaseFirestore
+#endif
 
 struct Constants {
     /// Title

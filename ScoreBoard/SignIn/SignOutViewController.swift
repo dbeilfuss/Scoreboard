@@ -6,7 +6,9 @@
 //
 
 import UIKit
+#if !os(watchOS)
 import Firebase
+#endif
 
 class SignOutViewController: UIViewController {
     

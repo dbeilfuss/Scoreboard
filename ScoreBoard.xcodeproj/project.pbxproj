@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770105712C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770105702C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift */; };
+		770105752C5C56AF0016AF20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770105742C5C56AF0016AF20 /* Assets.xcassets */; };
+		770105782C5C56AF0016AF20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770105772C5C56AF0016AF20 /* Preview Assets.xcassets */; };
+		7701057B2C5C56AF0016AF20 /* ScoreBoard_AppleWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7701056E2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7705C6642C2CEB67004CB7F6 /* ScoreStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */; };
 		77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77149321297A255F0040ABD3 /* FractalLandscape.swift */; };
 		771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913D92C1738C000BA2D9F /* DataStorageManager.swift */; };
@@ -40,6 +44,16 @@
 		7754E92A29888CCD006CE85A /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91729888CCD006CE85A /* Rubik-Black.ttf */; };
 		7754E92B29888CCD006CE85A /* Karla700italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91829888CCD006CE85A /* Karla700italic.ttf */; };
 		7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91929888CCD006CE85A /* Rubik-Bold.ttf */; };
+		7759DAF32C5ECB060018A074 /* TeamInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAEF2C5ECB050018A074 /* TeamInfoView.swift */; };
+		7759DAF42C5ECB060018A074 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF02C5ECB060018A074 /* ContentView.swift */; };
+		7759DAF52C5ECB060018A074 /* RemoteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF12C5ECB060018A074 /* RemoteControlView.swift */; };
+		7759DAF62C5ECB060018A074 /* IncrementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF22C5ECB060018A074 /* IncrementView.swift */; };
+		7759DAFA2C5ECBBD0018A074 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF92C5ECBBD0018A074 /* Team.swift */; };
+		7759DAFC2C5ECBCD0018A074 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAFB2C5ECBCD0018A074 /* Constants.swift */; };
+		7759DAFF2C5ECD1D0018A074 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7759DAFE2C5ECD1D0018A074 /* WatchConnectivity.framework */; };
+		7759DB012C5ECD2D0018A074 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7759DB002C5ECD2D0018A074 /* WatchConnectivity.framework */; };
+		7759DB052C6259890018A074 /* WatchDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DB022C5ECEEA0018A074 /* WatchDataManager.swift */; };
+		7759DB072C6259B80018A074 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DB062C6259B80018A074 /* ExtensionDelegate.swift */; };
 		7761086A2C29FFD0001288F0 /* SignInDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776108692C29FFD0001288F0 /* SignInDataTypes.swift */; };
 		776CACD92C42A573008C25AC /* TeamScoresStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776CACD82C42A573008C25AC /* TeamScoresStackView.swift */; };
 		776D92BA2C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D92B92C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift */; };
@@ -106,7 +120,35 @@
 		77F519162990C65000708BFE /* LargeTransparentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F519152990C65000708BFE /* LargeTransparentButton.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		770105792C5C56AF0016AF20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77B11152293AB78E00553E37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7701056D2C5C56AE0016AF20;
+			remoteInfo = "ScoreBoard_AppleWatch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7701057C2C5C56AF0016AF20 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				7701057B2C5C56AF0016AF20 /* ScoreBoard_AppleWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7701056E2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScoreBoard_AppleWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		770105702C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoard_AppleWatchApp.swift; sourceTree = "<group>"; };
+		770105742C5C56AF0016AF20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		770105772C5C56AF0016AF20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStepper.swift; sourceTree = "<group>"; };
 		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
 		771913D92C1738C000BA2D9F /* DataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
@@ -137,6 +179,16 @@
 		7754E91729888CCD006CE85A /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		7754E91829888CCD006CE85A /* Karla700italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karla700italic.ttf; sourceTree = "<group>"; };
 		7754E91929888CCD006CE85A /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		7759DAEF2C5ECB050018A074 /* TeamInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamInfoView.swift; sourceTree = "<group>"; };
+		7759DAF02C5ECB060018A074 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../../scoreboardWatchPreview/scoreboardWatchPreview Watch App/ContentView.swift"; sourceTree = "<group>"; };
+		7759DAF12C5ECB060018A074 /* RemoteControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlView.swift; sourceTree = "<group>"; };
+		7759DAF22C5ECB060018A074 /* IncrementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementView.swift; sourceTree = "<group>"; };
+		7759DAF92C5ECBBD0018A074 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		7759DAFB2C5ECBCD0018A074 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7759DAFE2C5ECD1D0018A074 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS10.5.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
+		7759DB002C5ECD2D0018A074 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		7759DB022C5ECEEA0018A074 /* WatchDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataManager.swift; sourceTree = "<group>"; };
+		7759DB062C6259B80018A074 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		776108692C29FFD0001288F0 /* SignInDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDataTypes.swift; sourceTree = "<group>"; };
 		776CACD82C42A573008C25AC /* TeamScoresStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresStackView.swift; sourceTree = "<group>"; };
 		776D92B92C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayScoreboard.swift; sourceTree = "<group>"; };
@@ -207,6 +259,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7701056B2C5C56AE0016AF20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7759DAFF2C5ECD1D0018A074 /* WatchConnectivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B11157293AB78E00553E37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -215,12 +275,36 @@
 				77239FF32954AB3600569AB9 /* FirebaseFirestore in Frameworks */,
 				77239FF12954AB3600569AB9 /* FirebaseAuth in Frameworks */,
 				77239FDF29525B2C00569AB9 /* IQKeyboardManagerSwift in Frameworks */,
+				7759DB012C5ECD2D0018A074 /* WatchConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7701056F2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				770105702C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift */,
+				7759DAF02C5ECB060018A074 /* ContentView.swift */,
+				7759DAFB2C5ECBCD0018A074 /* Constants.swift */,
+				7759DAF92C5ECBBD0018A074 /* Team.swift */,
+				7759DB082C625A0B0018A074 /* DataManagement */,
+				7759DAF72C5ECB9F0018A074 /* Views */,
+				770105742C5C56AF0016AF20 /* Assets.xcassets */,
+				770105762C5C56AF0016AF20 /* Preview Content */,
+			);
+			path = "ScoreBoard_AppleWatch Watch App";
+			sourceTree = "<group>";
+		};
+		770105762C5C56AF0016AF20 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				770105772C5C56AF0016AF20 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		770F39AB2C112F8C00B1C820 /* CustomDataTypes */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +368,7 @@
 				778484FE2956116E004A3B32 /* RemoteStorageManager.swift */,
 				77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */,
 				77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */,
+				7759DB022C5ECEEA0018A074 /* WatchDataManager.swift */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -324,6 +409,33 @@
 				77D0907E298998CC0034D200 /* Myriad Pro Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7759DAF72C5ECB9F0018A074 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7759DAF22C5ECB060018A074 /* IncrementView.swift */,
+				7759DAF12C5ECB060018A074 /* RemoteControlView.swift */,
+				7759DAEF2C5ECB050018A074 /* TeamInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7759DAFD2C5ECD1D0018A074 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7759DB002C5ECD2D0018A074 /* WatchConnectivity.framework */,
+				7759DAFE2C5ECD1D0018A074 /* WatchConnectivity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7759DB082C625A0B0018A074 /* DataManagement */ = {
+			isa = PBXGroup;
+			children = (
+				7759DB062C6259B80018A074 /* ExtensionDelegate.swift */,
+			);
+			path = DataManagement;
 			sourceTree = "<group>";
 		};
 		7790E832295CAEEA00DC5D6B /* Themes */ = {
@@ -370,7 +482,9 @@
 			children = (
 				771913DB2C19430100BA2D9F /* ScoreBoard.xctestplan */,
 				77B1115C293AB78E00553E37 /* ScoreBoard */,
+				7701056F2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App */,
 				77B1115B293AB78E00553E37 /* Products */,
+				7759DAFD2C5ECD1D0018A074 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -378,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				77B1115A293AB78E00553E37 /* ScoreBoard.app */,
+				7701056E2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -471,6 +586,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7701056D2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7701057F2C5C56AF0016AF20 /* Build configuration list for PBXNativeTarget "ScoreBoard_AppleWatch Watch App" */;
+			buildPhases = (
+				7701056A2C5C56AE0016AF20 /* Sources */,
+				7701056B2C5C56AE0016AF20 /* Frameworks */,
+				7701056C2C5C56AE0016AF20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ScoreBoard_AppleWatch Watch App";
+			productName = "ScoreBoard_AppleWatch Watch App";
+			productReference = 7701056E2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		77B11159293AB78E00553E37 /* ScoreBoard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77B1116E293AB78F00553E37 /* Build configuration list for PBXNativeTarget "ScoreBoard" */;
@@ -478,10 +610,12 @@
 				77B11156293AB78E00553E37 /* Sources */,
 				77B11157293AB78E00553E37 /* Frameworks */,
 				77B11158293AB78E00553E37 /* Resources */,
+				7701057C2C5C56AF0016AF20 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7701057A2C5C56AF0016AF20 /* PBXTargetDependency */,
 			);
 			name = ScoreBoard;
 			packageProductDependencies = (
@@ -504,9 +638,12 @@
 				KnownAssetTags = (
 					1,
 				);
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					7701056D2C5C56AE0016AF20 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					77B11159293AB78E00553E37 = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -530,11 +667,21 @@
 			projectRoot = "";
 			targets = (
 				77B11159293AB78E00553E37 /* ScoreBoard */,
+				7701056D2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7701056C2C5C56AE0016AF20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				770105782C5C56AF0016AF20 /* Preview Assets.xcassets in Resources */,
+				770105752C5C56AF0016AF20 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B11158293AB78E00553E37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,6 +722,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7701056A2C5C56AE0016AF20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7759DAFA2C5ECBBD0018A074 /* Team.swift in Sources */,
+				7759DAF32C5ECB060018A074 /* TeamInfoView.swift in Sources */,
+				7759DB072C6259B80018A074 /* ExtensionDelegate.swift in Sources */,
+				7759DAF62C5ECB060018A074 /* IncrementView.swift in Sources */,
+				7759DAF52C5ECB060018A074 /* RemoteControlView.swift in Sources */,
+				7759DAFC2C5ECBCD0018A074 /* Constants.swift in Sources */,
+				7759DAF42C5ECB060018A074 /* ContentView.swift in Sources */,
+				770105712C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B11156293AB78E00553E37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -608,6 +770,7 @@
 				77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */,
 				77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */,
 				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,
+				7759DB052C6259890018A074 /* WatchDataManager.swift in Sources */,
 				771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
 				77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */,
@@ -647,6 +810,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7701057A2C5C56AF0016AF20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7701056D2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App */;
+			targetProxy = 770105792C5C56AF0016AF20 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		77B11163293AB78E00553E37 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -667,6 +838,71 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7701057D2C5C56AF0016AF20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 52P6SF79ST;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ScoreBoard_AppleWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.BeaconTech.Scoreboard;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		7701057E2C5C56AF0016AF20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 52P6SF79ST;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ScoreBoard_AppleWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.BeaconTech.Scoreboard;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
 		77B1116C293AB78F00553E37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -788,6 +1024,7 @@
 		77B1116F293AB78F00553E37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
@@ -823,6 +1060,7 @@
 		77B11170293AB78F00553E37 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
@@ -858,6 +1096,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7701057F2C5C56AF0016AF20 /* Build configuration list for PBXNativeTarget "ScoreBoard_AppleWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7701057D2C5C56AF0016AF20 /* Debug */,
+				7701057E2C5C56AF0016AF20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		77B11155293AB78E00553E37 /* Build configuration list for PBXProject "ScoreBoard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
