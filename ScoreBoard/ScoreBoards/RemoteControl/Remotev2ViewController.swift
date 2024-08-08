@@ -18,6 +18,7 @@ class Remotev2ViewController: ScoreBoardViewController {
     //MARK: - Setup Variables
     var remoteViewMode: RemoteViewMode = .remoteControl
     var returnToPortraitOnExit: Bool = false
+    var primaryUserFeedback = "Control the big screen by using Airplay Mirroring"
 //    var teamCellDelegate: TeamCellDelegate?
     
     //MARK: - IBOutlets
@@ -55,7 +56,8 @@ class Remotev2ViewController: ScoreBoardViewController {
     
     //MARK: - Scoreboard Delegate Functions
     
-    func displayUserFeedback(feedback: String) {
+    func displayUserFeedback(feedback newFeedback: String) {
+        let feedback = "\(primaryUserFeedback)\n\(newFeedback)"
         userFeedbackLabel.text = feedback
     }
     
@@ -68,9 +70,8 @@ class Remotev2ViewController: ScoreBoardViewController {
         /// Remote
         if signInState == .signedIn {
         } else {
-            let error: String = "You must be signed in to use remote features"
-            print(error)
-            userFeedbackLabel.text = error
+            let error: String = "Sign in to control Multiple Screens"
+            displayUserFeedback(feedback: error)
         }
         
         /// Table
