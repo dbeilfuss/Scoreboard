@@ -35,7 +35,7 @@ Scoreboard</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kqi-al-jyc" userLabel="Loading Label">
-                                <rect key="frame" x="579" y="921" width="173.5" height="91"/>
+                                <rect key="frame" x="601.5" y="921" width="173.5" height="91"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="91" id="5id-rk-v5Q"/>
                                 </constraints>
@@ -51,11 +51,11 @@ Scoreboard</string>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FhA-RV-fmw" secondAttribute="trailing" id="HQZ-nn-Wo2"/>
                             <constraint firstItem="OgT-d6-nS3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vhb-me-vcu"/>
                             <constraint firstItem="OgT-d6-nS3" firstAttribute="centerX" secondItem="44W-eT-Jgq" secondAttribute="centerX" id="bJ1-7s-qCT"/>
+                            <constraint firstItem="kqi-al-jyc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bm4-a1-aIr"/>
                             <constraint firstItem="44W-eT-Jgq" firstAttribute="top" secondItem="OgT-d6-nS3" secondAttribute="bottom" constant="36" id="ikF-Wk-IhH"/>
                             <constraint firstItem="FhA-RV-fmw" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-59" id="kCL-Vc-jD6"/>
                             <constraint firstItem="FhA-RV-fmw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lqe-ac-mMb"/>
                             <constraint firstItem="kqi-al-jyc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mCr-wA-78k"/>
-                            <constraint firstItem="44W-eT-Jgq" firstAttribute="leading" secondItem="kqi-al-jyc" secondAttribute="leading" id="mZh-C1-k4n"/>
                         </constraints>
                     </view>
                 </viewController>
