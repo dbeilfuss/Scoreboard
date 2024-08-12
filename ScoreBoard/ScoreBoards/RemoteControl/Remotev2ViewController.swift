@@ -20,7 +20,7 @@ class Remotev2ViewController: ScoreBoardViewController {
     //MARK: - Setup Variables
     var remoteViewMode: RemoteViewMode = .remoteControl
     var returnToPortraitOnExit: Bool = false
-    var primaryUserFeedback = "Control the big screen by using Airplay Mirroring"
+    var primaryUserFeedback = "Use Airplay Mirroring to Control Your TV"
 //    var teamCellDelegate: TeamCellDelegate?
     
     //MARK: - IBOutlets
