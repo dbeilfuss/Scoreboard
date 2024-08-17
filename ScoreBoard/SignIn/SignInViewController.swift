@@ -127,13 +127,15 @@ class SignInViewController: UIViewController {
     }
     
     func reconfigureForSignout() {
-        feedbackLabel.text = "You will not be able to use Remote Features if you Sign Out.  You will still be able to use aiplay mirroring."
+        feedbackLabel.text = "You will not be able to synchronize your scoreboard with other devices if you sign out.  \n\n You will still be able to use aiplay mirroring."
         signInTable.isHidden = true
-        forgotPasswordButton.isHidden = true
-        continueButton.titleLabel?.text = "Sign Out"
+        forgotPasswordButton.setTitle("Delete Account", for: .normal)
+//        forgotPasswordButton.titleLabel?.text = "Delete Account"
+        continueButton.setTitle("Sign Out", for: .normal)
+//        continueButton.titleLabel?.text = "Sign Out"
     }
     
-    //MARK: - SignInButton
+    //MARK: - SignIn/Out Button
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         if signOutMode == false {
@@ -156,7 +158,7 @@ class SignInViewController: UIViewController {
                 }
             }
         } else {
-            signOut()
+            signOut(dismissView: true)
             self.dismiss(animated: true)
         }
     }
@@ -170,6 +172,16 @@ class SignInViewController: UIViewController {
                 self.saveCredentials(username: email, password: password)
                 self.dismiss(animated: true)
             }
+        }
+    }
+    
+    func signOut(dismissView: Bool) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            if dismissView { dismiss(animated: true) }
+        } catch let signOutError as NSError {
+            feedbackLabel.text = "Error signing out: %@ \(signOutError)"
         }
     }
     
@@ -198,31 +210,117 @@ class SignInViewController: UIViewController {
         return (nil, nil)
     }
         
-    //MARK: - ResetPasswordButton
+    //MARK: - Reset Password/Detete Account Button
     
     @IBAction func resetPasswordButtonPressed(_ sender: UIButton) {
-        if let email = userEnteredData.username {
-            Auth.auth().sendPasswordReset(withEmail: email) { error in
-                if let e = error {
-                    self.feedbackLabel.text = e.localizedDescription
-                } else {
-                    self.feedbackLabel.text = "A password reset email has been sent - please check your email."
+        if signOutMode == false { // Forgot Password Button
+            if let email = userEnteredData.username {
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    if let e = error {
+                        self.feedbackLabel.text = e.localizedDescription
+                    } else {
+                        self.feedbackLabel.text = "A password reset email has been sent - please check your email."
+                    }
+                }
+            } else {
+                feedbackLabel.text = "Please enter your email address."
+            }
+        } else { // Delete Account Button
+            
+            // Show a confirmation alert
+            let confirmationAlert = UIAlertController(title: "Confirm Deletion", message: "Are you sure you want to delete your account? This action cannot be undone.", preferredStyle: .alert)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                performAccountDeletion()
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            confirmationAlert.addAction(deleteAction)
+            confirmationAlert.addAction(cancelAction)
+            
+            self.present(confirmationAlert, animated: true, completion: nil)
+            
+            func performAccountDeletion() {
+                // Get the current user
+                guard let user = Auth.auth().currentUser else {
+                    // Handle case where user is not logged in (unlikely if this button is shown)
+                    showAlert(title: "Error", message: "No user is currently signed in.")
+                    return
+                }
+                
+                // Delete the user's account
+                user.delete { error in
+                    if let error = error as NSError? {
+                        // Handle errors here, possibly needing re-authentication
+                        if error.code == AuthErrorCode.requiresRecentLogin.rawValue {
+                            self.reauthenticateAndDelete(user: user)
+                        } else {
+                            self.showAlert(title: "Error", message: error.localizedDescription)
+                        }
+                    } else {
+                        deleteUserCredentialsFromKeychain()
+                        let feedbackText = "Your account has been successfully deleted."
+                        // Successfully deleted the account
+                        self.showAlert(title: "Account Deleted", message: feedbackText)
+                        // Complete Sign Out
+                        self.signOut(dismissView: false)
+                        // Update View
+                        self.feedbackLabel.text = feedbackText
+                        self.forgotPasswordButton.isHidden = true
+                        self.continueButton.isHidden = true
+                    }
                 }
             }
-        } else {
-            feedbackLabel.text = "Please enter your email address."
+            
+            func deleteUserCredentialsFromKeychain() {
+                let _ = KeychainManager.delete(dataType: .username)
+                let _ = KeychainManager.delete(dataType: .password)
+            }
         }
     }
     
-    func signOut() {
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-            dismiss(animated: true)
-        } catch let signOutError as NSError {
-            feedbackLabel.text = "Error signing out: %@ \(signOutError)"
+    //MARK: - Delete Account
+    func reauthenticateAndDelete(user: User) {
+        // Re-authenticate the user before deleting the account
+        let alert = UIAlertController(title: "Re-authentication Required", message: "Please re-enter your password to delete your account.", preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.placeholder = "Password"
+            textField.isSecureTextEntry = true
         }
+        
+        let confirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            let password = alert.textFields?.first?.text ?? ""
+            
+            let credential = EmailAuthProvider.credential(withEmail: user.email ?? "", password: password)
+            
+            user.reauthenticate(with: credential) { result, error in
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                } else {
+                    // After re-authentication, attempt to delete again
+                    self.resetPasswordButtonPressed(self.forgotPasswordButton)
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+
     }
+
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Exit Button
     
     @IBAction func exitButtonPressed(_ sender: Any) {
         dismiss(animated: true)

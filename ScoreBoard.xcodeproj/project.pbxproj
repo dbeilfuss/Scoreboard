@@ -1029,8 +1029,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52P6SF79ST;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreBoard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Living Room Scoreboard";
@@ -1045,8 +1045,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard;
+				MARKETING_VERSION = 1.01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.LRScoreboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1065,8 +1065,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52P6SF79ST;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreBoard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Living Room Scoreboard";
@@ -1081,8 +1081,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard;
+				MARKETING_VERSION = 1.01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.LRScoreboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

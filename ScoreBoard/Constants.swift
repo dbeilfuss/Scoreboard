@@ -55,7 +55,7 @@ struct Constants {
         Team(number: 7, name: "Team 7", score: 0, isActive: false),
         Team(number: 8, name: "Team 8", score: 0, isActive: false)
     ]
-    let defaultTheme = FractalLandscapeBlue1().theme
+    let defaultTheme = FractalLandscapeBlue2().theme
     let defaultScoreboardState: ScoreboardState = ScoreboardState(pointIncrement: 1, uiIsHidden: false)
     lazy var defaultDataStorageBundle: DataStorageBundle = DataStorageBundle.init(teamScores: defaultTeams, themeName: defaultTheme.name, timeStamp: Timestamp(date: Date(timeIntervalSince1970: 0)))
     
@@ -64,8 +64,8 @@ struct Constants {
     let scoreboardStateKey: String = "scoreboardState"
     
     // Print(Logging)
-    let printTeamFlow = true
+    let printTeamFlow = false
     let printTeamFlowDetailed = false
-    let printThemeFlow = false
+    let printThemeFlow = true
     let printStateFlow = false
 }
