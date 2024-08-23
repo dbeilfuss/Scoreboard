@@ -14,7 +14,7 @@ class DataStorageManager {
     var remoteStorageManager: DataStorageProtocol = RemoteStorageManager()
     var localStorageManager: DataStorageProtocol = LocalStorageManager()
     var dataStorageDelegate: DataStorageDelegate?
-    let watchDataManager = WatchDataManager()
+    let watchDataManager = WatchConnection()
     
     var teamManager: DataStorageDelegate?
     var themeManager: DataStorageDelegate?
@@ -33,6 +33,7 @@ extension DataStorageManager: MVCDelegate {
         
         // Team & Theme Managers
         teamManager = mvcArrangement.teamManager as? DataStorageDelegate
+        watchDataManager.teamManager = self.teamManager as? any TeamManagerProtocol
         themeManager = mvcArrangement.themeManager  as? DataStorageDelegate
         
         if teamManager == nil || themeManager == nil {
@@ -50,6 +51,7 @@ extension DataStorageManager: DataStorageManagerProtocol {
         print("saving data - \(#fileID)")
         localStorageManager.saveData(data)
         remoteStorageManager.saveData(data)
+        print("sending to Watch")
         watchDataManager.sendTeamDataToWatch(data.teamScores)
     }
     

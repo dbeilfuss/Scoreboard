@@ -66,6 +66,6 @@ struct Constants {
     // Print(Logging)
     let printTeamFlow = false
     let printTeamFlowDetailed = false
-    let printThemeFlow = true
+    let printThemeFlow = false
     let printStateFlow = false
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamInfoView: View {
     @Binding var teamInfo: Team
     @Binding var incrementValue: Int
+    var iPhoneConnection: IPhoneConnection
     
     var body: some View {
         VStack(alignment: .center) {
@@ -25,6 +26,8 @@ struct TeamInfoView: View {
             HStack(spacing: 20) {
                 Button(action: {
                     teamInfo.score -= incrementValue
+                    print(teamInfo.score)
+                    iPhoneConnection.sendTeamsToiOS()
                 }) {
                     Image(systemName: "minus.circle")
                         .resizable()
@@ -34,6 +37,8 @@ struct TeamInfoView: View {
                 
                 Button(action: {
                     teamInfo.score += incrementValue
+                    print(teamInfo.score)
+                    iPhoneConnection.sendTeamsToiOS()
                 }) {
                     Image(systemName: "plus.circle")
                         .resizable()
@@ -50,5 +55,5 @@ struct TeamInfoView: View {
 #Preview {
     @State var teamInfo = Constants().defaultTeams
     @State var incrementValue = 1
-    return TeamInfoView(teamInfo: $teamInfo[0], incrementValue: $incrementValue)
+    return TeamInfoView(teamInfo: $teamInfo[0], incrementValue: $incrementValue, iPhoneConnection: IPhoneConnection())
 }

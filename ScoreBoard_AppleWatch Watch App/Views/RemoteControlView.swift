@@ -10,10 +10,11 @@ import SwiftUI
 struct RemoteControlView: View {
     @Binding var teamInfo: Team
     @Binding var incrementValue: Int
+    var iPhoneConnection: IPhoneConnection
     
     var body: some View {
         TabView {
-            TeamInfoView(teamInfo: $teamInfo, incrementValue: $incrementValue)
+            TeamInfoView(teamInfo: $teamInfo, incrementValue: $incrementValue, iPhoneConnection: iPhoneConnection)
             IncrementView(incrementValue: $incrementValue)
         }
     }
@@ -23,5 +24,5 @@ struct RemoteControlView: View {
     @State var teamInfo = Constants().defaultTeams
     @State var incrementValue: Int = 1
     
-    return RemoteControlView(teamInfo: $teamInfo[0], incrementValue: $incrementValue)
+    return RemoteControlView(teamInfo: $teamInfo[0], incrementValue: $incrementValue, iPhoneConnection: IPhoneConnection())
 }

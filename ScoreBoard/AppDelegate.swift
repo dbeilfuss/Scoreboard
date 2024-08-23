@@ -34,10 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         let _ = Firestore.firestore()
         
         // Apple Watch Session
-        if WCSession.isSupported() {
-            WCSession.default.delegate = self
-            WCSession.default.activate()
-        }
+//        if WCSession.isSupported() {
+//            WCSession.default.delegate = self
+//            WCSession.default.activate()
+//        }
         
         return true
     }
@@ -45,8 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     //MARK: - Apple Watch Session Delegate Methods
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
     }
+    
     func sessionDidBecomeInactive(_ session: WCSession) {
     }
+    
     func sessionDidDeactivate(_ session: WCSession) {
     }
 

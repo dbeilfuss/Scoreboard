@@ -45,20 +45,20 @@
 		7754E92B29888CCD006CE85A /* Karla700italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91829888CCD006CE85A /* Karla700italic.ttf */; };
 		7754E92C29888CCD006CE85A /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E91929888CCD006CE85A /* Rubik-Bold.ttf */; };
 		7759DAF32C5ECB060018A074 /* TeamInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAEF2C5ECB050018A074 /* TeamInfoView.swift */; };
-		7759DAF42C5ECB060018A074 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF02C5ECB060018A074 /* ContentView.swift */; };
 		7759DAF52C5ECB060018A074 /* RemoteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF12C5ECB060018A074 /* RemoteControlView.swift */; };
 		7759DAF62C5ECB060018A074 /* IncrementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF22C5ECB060018A074 /* IncrementView.swift */; };
 		7759DAFA2C5ECBBD0018A074 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAF92C5ECBBD0018A074 /* Team.swift */; };
 		7759DAFC2C5ECBCD0018A074 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DAFB2C5ECBCD0018A074 /* Constants.swift */; };
 		7759DAFF2C5ECD1D0018A074 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7759DAFE2C5ECD1D0018A074 /* WatchConnectivity.framework */; };
 		7759DB012C5ECD2D0018A074 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7759DB002C5ECD2D0018A074 /* WatchConnectivity.framework */; };
-		7759DB052C6259890018A074 /* WatchDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DB022C5ECEEA0018A074 /* WatchDataManager.swift */; };
-		7759DB072C6259B80018A074 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DB062C6259B80018A074 /* ExtensionDelegate.swift */; };
+		7759DB052C6259890018A074 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DB022C5ECEEA0018A074 /* WatchConnection.swift */; };
+		7759DB072C6259B80018A074 /* IPhoneConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7759DB062C6259B80018A074 /* IPhoneConnection.swift */; };
 		7761086A2C29FFD0001288F0 /* SignInDataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776108692C29FFD0001288F0 /* SignInDataTypes.swift */; };
 		776CACD92C42A573008C25AC /* TeamScoresStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776CACD82C42A573008C25AC /* TeamScoresStackView.swift */; };
 		776D92BA2C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D92B92C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift */; };
 		7776DDE52BF64154008E9C65 /* TeamView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7776DDE42BF64154008E9C65 /* TeamView.xib */; };
 		7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776DDE62BF642EA008E9C65 /* TeamView.swift */; };
+		77790F772C76C00B001F8F2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77790F762C76C00B001F8F2B /* ContentView.swift */; };
 		778484FF2956116E004A3B32 /* RemoteStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteStorageManager.swift */; };
 		7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */; };
 		7790E82D295C06A600DC5D6B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82C295C06A600DC5D6B /* Theme.swift */; };
@@ -180,20 +180,20 @@
 		7754E91829888CCD006CE85A /* Karla700italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Karla700italic.ttf; sourceTree = "<group>"; };
 		7754E91929888CCD006CE85A /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		7759DAEF2C5ECB050018A074 /* TeamInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamInfoView.swift; sourceTree = "<group>"; };
-		7759DAF02C5ECB060018A074 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../../scoreboardWatchPreview/scoreboardWatchPreview Watch App/ContentView.swift"; sourceTree = "<group>"; };
 		7759DAF12C5ECB060018A074 /* RemoteControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlView.swift; sourceTree = "<group>"; };
 		7759DAF22C5ECB060018A074 /* IncrementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementView.swift; sourceTree = "<group>"; };
 		7759DAF92C5ECBBD0018A074 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		7759DAFB2C5ECBCD0018A074 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7759DAFE2C5ECD1D0018A074 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS10.5.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		7759DB002C5ECD2D0018A074 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
-		7759DB022C5ECEEA0018A074 /* WatchDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataManager.swift; sourceTree = "<group>"; };
-		7759DB062C6259B80018A074 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		7759DB022C5ECEEA0018A074 /* WatchConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnection.swift; sourceTree = "<group>"; };
+		7759DB062C6259B80018A074 /* IPhoneConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhoneConnection.swift; sourceTree = "<group>"; };
 		776108692C29FFD0001288F0 /* SignInDataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDataTypes.swift; sourceTree = "<group>"; };
 		776CACD82C42A573008C25AC /* TeamScoresStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresStackView.swift; sourceTree = "<group>"; };
 		776D92B92C2D9DF00080D6CD /* ExternalDisplayScoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayScoreboard.swift; sourceTree = "<group>"; };
 		7776DDE42BF64154008E9C65 /* TeamView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamView.xib; sourceTree = "<group>"; };
 		7776DDE62BF642EA008E9C65 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		77790F762C76C00B001F8F2B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		778484FE2956116E004A3B32 /* RemoteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageManager.swift; sourceTree = "<group>"; };
 		7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
 		7790E82C295C06A600DC5D6B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -285,8 +285,8 @@
 		7701056F2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				77790F762C76C00B001F8F2B /* ContentView.swift */,
 				770105702C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift */,
-				7759DAF02C5ECB060018A074 /* ContentView.swift */,
 				7759DAFB2C5ECBCD0018A074 /* Constants.swift */,
 				7759DAF92C5ECBBD0018A074 /* Team.swift */,
 				7759DB082C625A0B0018A074 /* DataManagement */,
@@ -368,7 +368,7 @@
 				778484FE2956116E004A3B32 /* RemoteStorageManager.swift */,
 				77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */,
 				77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */,
-				7759DB022C5ECEEA0018A074 /* WatchDataManager.swift */,
+				7759DB022C5ECEEA0018A074 /* WatchConnection.swift */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 		7759DB082C625A0B0018A074 /* DataManagement */ = {
 			isa = PBXGroup;
 			children = (
-				7759DB062C6259B80018A074 /* ExtensionDelegate.swift */,
+				7759DB062C6259B80018A074 /* IPhoneConnection.swift */,
 			);
 			path = DataManagement;
 			sourceTree = "<group>";
@@ -728,11 +728,11 @@
 			files = (
 				7759DAFA2C5ECBBD0018A074 /* Team.swift in Sources */,
 				7759DAF32C5ECB060018A074 /* TeamInfoView.swift in Sources */,
-				7759DB072C6259B80018A074 /* ExtensionDelegate.swift in Sources */,
+				77790F772C76C00B001F8F2B /* ContentView.swift in Sources */,
+				7759DB072C6259B80018A074 /* IPhoneConnection.swift in Sources */,
 				7759DAF62C5ECB060018A074 /* IncrementView.swift in Sources */,
 				7759DAF52C5ECB060018A074 /* RemoteControlView.swift in Sources */,
 				7759DAFC2C5ECBCD0018A074 /* Constants.swift in Sources */,
-				7759DAF42C5ECB060018A074 /* ContentView.swift in Sources */,
 				770105712C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,7 +770,7 @@
 				77239FEA2953AF6000569AB9 /* SignInButton.swift in Sources */,
 				77E238522981E6F80069A260 /* Remotev2ViewController.swift in Sources */,
 				77239FE32952828900569AB9 /* SignInViewController.swift in Sources */,
-				7759DB052C6259890018A074 /* WatchDataManager.swift in Sources */,
+				7759DB052C6259890018A074 /* WatchConnection.swift in Sources */,
 				771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
 				77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */,
@@ -846,20 +846,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 52P6SF79ST;
+				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ScoreBoard_AppleWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.BeaconTech.Scoreboard;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.BeaconTech.LRScoreboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.LRScoreboard.Watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -879,20 +879,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 52P6SF79ST;
+				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ScoreBoard_AppleWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.BeaconTech.Scoreboard;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.BeaconTech.LRScoreboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.Scoreboard.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeaconTech.LRScoreboard.Watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1025,7 +1025,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconBeta;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
