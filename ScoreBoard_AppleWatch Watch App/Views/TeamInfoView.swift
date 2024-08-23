@@ -27,7 +27,7 @@ struct TeamInfoView: View {
                 Button(action: {
                     teamInfo.score -= incrementValue
                     print(teamInfo.score)
-                    iPhoneConnection.sendTeamsToiOS()
+                    iPhoneConnection.sendTeamsToiOS(teams: [teamInfo])
                 }) {
                     Image(systemName: "minus.circle")
                         .resizable()
@@ -38,7 +38,7 @@ struct TeamInfoView: View {
                 Button(action: {
                     teamInfo.score += incrementValue
                     print(teamInfo.score)
-                    iPhoneConnection.sendTeamsToiOS()
+                    iPhoneConnection.sendTeamsToiOS(teams: [teamInfo])
                 }) {
                     Image(systemName: "plus.circle")
                         .resizable()
