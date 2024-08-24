@@ -80,6 +80,7 @@
 		77B11167293AB78F00553E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77B11166293AB78F00553E37 /* Assets.xcassets */; };
 		77B1116A293AB78F00553E37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77B11168293AB78F00553E37 /* LaunchScreen.storyboard */; };
 		77BF4D482C0D36FE0059AF35 /* ScoreboardUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BF4D472C0D36FE0059AF35 /* ScoreboardUIButton.swift */; };
+		77C90DA02C7A4B3000EA1853 /* DataStorageBundleForWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C90D9F2C7A4B3000EA1853 /* DataStorageBundleForWatch.swift */; };
 		77CEA6FA297C449D00E853DC /* Railway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6F9297C449D00E853DC /* Railway.swift */; };
 		77CEA6FC297CA9E000E853DC /* ThemeGroupChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */; };
 		77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEA6FD297CA9F800E853DC /* ThemeManager.swift */; };
@@ -217,6 +218,7 @@
 		77B11169293AB78F00553E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77B1116B293AB78F00553E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77BF4D472C0D36FE0059AF35 /* ScoreboardUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardUIButton.swift; sourceTree = "<group>"; };
+		77C90D9F2C7A4B3000EA1853 /* DataStorageBundleForWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageBundleForWatch.swift; sourceTree = "<group>"; };
 		77CEA6F9297C449D00E853DC /* Railway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Railway.swift; sourceTree = "<group>"; };
 		77CEA6FB297CA9E000E853DC /* ThemeGroupChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeGroupChooserViewController.swift; sourceTree = "<group>"; };
 		77CEA6FD297CA9F800E853DC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				770105702C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift */,
 				7759DAFB2C5ECBCD0018A074 /* Constants.swift */,
 				7759DAF92C5ECBBD0018A074 /* Team.swift */,
+				77C90D9F2C7A4B3000EA1853 /* DataStorageBundleForWatch.swift */,
 				7759DB082C625A0B0018A074 /* DataManagement */,
 				7759DAF72C5ECB9F0018A074 /* Views */,
 				770105742C5C56AF0016AF20 /* Assets.xcassets */,
@@ -731,6 +734,7 @@
 				77790F772C76C00B001F8F2B /* ContentView.swift in Sources */,
 				7759DB072C6259B80018A074 /* IPhoneConnection.swift in Sources */,
 				7759DAF62C5ECB060018A074 /* IncrementView.swift in Sources */,
+				77C90DA02C7A4B3000EA1853 /* DataStorageBundleForWatch.swift in Sources */,
 				7759DAF52C5ECB060018A074 /* RemoteControlView.swift in Sources */,
 				7759DAFC2C5ECBCD0018A074 /* Constants.swift in Sources */,
 				770105712C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift in Sources */,

@@ -6,9 +6,7 @@
 //
 
 import Foundation
-#if !os(watchOS)
 import FirebaseFirestore
-#endif
 
 struct Team: Codable, Equatable {
     var number: Int

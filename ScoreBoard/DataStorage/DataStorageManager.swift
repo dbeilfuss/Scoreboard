@@ -52,7 +52,6 @@ extension DataStorageManager: DataStorageManagerProtocol {
         localStorageManager.saveData(data)
         remoteStorageManager.saveData(data)
         print("sending to Watch")
-        watchDataManager.sendTeamDataToWatch(data.teamScores)
     }
     
     func requestData() -> DataStorageBundle {
@@ -130,6 +129,7 @@ extension DataStorageManager: DataStorageManagerProtocol {
     func updateDelegates(_ dataStorageBundle: DataStorageBundle) {
         teamManager?.dataStorageUpdated(dataStorageBundle)
         themeManager?.dataStorageUpdated(dataStorageBundle)
+        watchDataManager.sendTeamDataToWatch(DataStorageBundleForWatch(dataStorageBundle))
     }
     
     

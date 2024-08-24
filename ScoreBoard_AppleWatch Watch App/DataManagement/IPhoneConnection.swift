@@ -14,7 +14,8 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     
     //MARK: - Observable Properties
     @Published var teamList: [Team] = Constants().defaultTeams.filter(){$0.isActive}
-    
+    @Published var didReveiveUpdatedTeamData = false
+    var timeStamp: Date?
     
     
     //MARK: - Init
@@ -27,7 +28,12 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
-        
+        print("activation did complete with state: \(activationState)")
+        if activationState == .activated {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Delay of 1 second
+                self.requestTeamDataFromPhone()
+            }
+        }
     }
     
     func sendTeamsToiOS(teams: [Team]) {
@@ -47,17 +53,50 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
         }
     }
     
+    func requestTeamDataFromPhone() {
+        print("requesting teams from iOS")
+        if session.isReachable {
+            let message = ["requestingTeamList": true]
+            print(message)
+            session.sendMessage(message, replyHandler: nil)
+        } else {
+            print("session is not reachable \(#fileID)")
+        }
+    }
+    
     //MARK: - Did Receive Message
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if let data = message["teams"] as? Data {
+        if let data = message["dataStorageBundle"] as? Data {
             do {
-                let teamsFromIPhone = try JSONDecoder().decode([Team].self, from: data)
+                let decodedData = try JSONDecoder().decode(DataStorageBundleForWatch.self, from: data)
                 DispatchQueue.main.async {
-                    self.teamList = teamsFromIPhone.filter(){$0.isActive}
-                }
+                    updateTeamData(decodedData)                }
+                self.didReveiveUpdatedTeamData = true
             } catch {
                 print("Failed to decode team data: \(error.localizedDescription)")
             }
+        }
+        
+        func updateTeamData(_ dataStorageBundle: DataStorageBundleForWatch) {
+            let oldTimeStamp: Date? = timeStamp
+            let newTimeStamp: Date = dataStorageBundle.timeStamp
+            
+            if let safeOldTimeStamp = oldTimeStamp {
+                print(oldTimeStamp)
+                print(newTimeStamp)
+                if newTimeStamp > safeOldTimeStamp {
+                    updateWithNewTeamData()
+                } else {
+                    sendTeamsToiOS(teams: teamList)
+                }
+            } else {
+                updateWithNewTeamData()
+            }
+            
+            func updateWithNewTeamData() {
+                self.teamList = dataStorageBundle.teamScores.filter(){$0.isActive}
+            }
+            
         }
     }
     

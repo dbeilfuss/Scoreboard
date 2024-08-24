@@ -61,9 +61,11 @@ class TeamView: UIView {
         self.teamInfo = teamInfo
         
         // Update Labels
-        nameLabel.text = teamInfo.name
-        scoreLabel.text = String(teamInfo.score)
-        scoreStepper.value = Double(teamInfo.score)
+//        DispatchQueue.main.async {
+            self.nameLabel.text = teamInfo.name
+            self.scoreLabel.text = String(teamInfo.score)
+            self.scoreStepper.value = Double(teamInfo.score)
+//        }
 
     }
     
@@ -74,8 +76,10 @@ class TeamView: UIView {
         let (pointIncrement, uiIsHidden) = (scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
         // ScoreStepper
-        scoreStepper.stepValue = Double(pointIncrement)
-        scoreStepper.layer.isHidden = uiIsHidden ? true : false
+//        DispatchQueue.main.async {
+            self.scoreStepper.stepValue = Double(pointIncrement)
+            self.scoreStepper.layer.isHidden = uiIsHidden ? true : false
+//        }
     }
     
     func set(theme: Theme) {
