@@ -21,26 +21,42 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack {
-                    ForEach(iPhoneConnection.teamList.indices, id: \.self) { index in
-                        NavigationLink(destination:
-                                        RemoteControlView(teamInfo: $iPhoneConnection.teamList[index], incrementValue: $incrementValue, iPhoneConnection: iPhoneConnection)
-                        ) {
-                            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-                                Text(iPhoneConnection.teamList[index].name)
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                                Spacer()
-                                Text(String(iPhoneConnection.teamList[index].score))
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                ZStack {
+                    VStack {
+                        ForEach(iPhoneConnection.teamList.indices, id: \.self) { index in
+                            NavigationLink(destination:
+                                            RemoteControlView(teamInfo: $iPhoneConnection.teamList[index], incrementValue: $incrementValue, iPhoneConnection: iPhoneConnection)
+                            ) {
+                                HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+                                    Text(iPhoneConnection.teamList[index].name)
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                                    Spacer()
+                                    Text(String(iPhoneConnection.teamList[index].score))
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                }
+                                
                             }
-                            
+                            .padding(4)
                         }
-                        .padding(4)
+                    }
+                    
+                    // ** Loading Screen
+                    if !iPhoneConnection.didReveiveUpdatedTeamData {
+                        ZStack() {
+                            Color.black
+                            
+                            VStack(alignment: .center, spacing: 0.0) {
+                                Text("Connecting to iPhone")
+                                ProgressView()
+
+                            }
+                        }
+                        .ignoresSafeArea()
                     }
                 }
             }

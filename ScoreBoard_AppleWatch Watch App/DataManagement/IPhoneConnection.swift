@@ -82,7 +82,7 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
             let newTimeStamp: Date = dataStorageBundle.timeStamp
             
             if let safeOldTimeStamp = oldTimeStamp {
-                print(oldTimeStamp)
+                print(oldTimeStamp as Any)
                 print(newTimeStamp)
                 if newTimeStamp > safeOldTimeStamp {
                     updateWithNewTeamData()
