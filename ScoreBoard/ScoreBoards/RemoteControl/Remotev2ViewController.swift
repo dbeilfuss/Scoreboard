@@ -21,7 +21,6 @@ class Remotev2ViewController: ScoreBoardViewController {
     var remoteViewMode: RemoteViewMode = .remoteControl
     var returnToPortraitOnExit: Bool = false
     var primaryUserFeedback = "Use Airplay Mirroring to Control Your TV"
-//    var teamCellDelegate: TeamCellDelegate?
     
     //MARK: - IBOutlets
     /// UIView

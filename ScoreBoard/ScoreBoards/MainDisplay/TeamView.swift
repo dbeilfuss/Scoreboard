@@ -28,22 +28,16 @@ class TeamView: UIView {
     //MARK: - Init
     
     override init(frame: CGRect) {
-        print(#function)
-
         super.init(frame: frame)
         viewInit()
     }
     
     required init?(coder: NSCoder) {
-        print(#function)
-
         super.init(coder: coder)
         viewInit()
     }
     
     func viewInit() {
-        print(#function)
-
         let xibView = Bundle.main.loadNibNamed("TeamView", owner: self, options: nil)![0] as! UIView
         xibView.frame = self.bounds
         xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -53,38 +47,30 @@ class TeamView: UIView {
 
     
     //MARK: - Set
-        
+    
     func set(teamInfo: Team){
-        print(#function)
-
+        
         // Save TeamInfo
         self.teamInfo = teamInfo
         
         // Update Labels
-//        DispatchQueue.main.async {
-            self.nameLabel.text = teamInfo.name
-            self.scoreLabel.text = String(teamInfo.score)
-            self.scoreStepper.value = Double(teamInfo.score)
-//        }
-
+        self.nameLabel.text = teamInfo.name
+        self.scoreLabel.text = String(teamInfo.score)
+        self.scoreStepper.value = Double(teamInfo.score)
+        
     }
     
     func set(scoreboardState: ScoreboardState) {
-        print(#function)
         
         // Deconstruct / Gather Information
         let (pointIncrement, uiIsHidden) = (scoreboardState.pointIncrement, scoreboardState.uiIsHidden)
         
         // ScoreStepper
-//        DispatchQueue.main.async {
-            self.scoreStepper.stepValue = Double(pointIncrement)
-            self.scoreStepper.layer.isHidden = uiIsHidden ? true : false
-//        }
+        self.scoreStepper.stepValue = Double(pointIncrement)
+        self.scoreStepper.layer.isHidden = uiIsHidden ? true : false
     }
     
     func set(theme: Theme) {
-        print(#function)
-        
         if theme.name != self.theme.name {
             theme.format(label: nameLabel, labelType: .teamNameLabel)
             theme.format(label: scoreLabel, labelType: .scoreLabel)
@@ -92,16 +78,11 @@ class TeamView: UIView {
     }
     
     func set(delegate: TeamCellDelegate?) {
-        print(#function)
-
         self.delegate = delegate
     }
     
     var fontSizes: [String: CGFloat] {
-
         get {
-            print(#function)
-
             // Resize Fonts
             let nameLabelSize: CGFloat = adjustNameLabelFontToFitHeight()
             let scoreLabelSize: CGFloat = adjustScoreLabelFontToFitHeight()
@@ -110,29 +91,23 @@ class TeamView: UIView {
             return ["nameLabelSize": nameLabelSize, "scoreLabelSize": scoreLabelSize]
         }
         set {
-            print(#function)
-
             if let nameLabelSize = newValue["nameLabelSize"] {
                 nameLabel.font = nameLabel.font.withSize(nameLabelSize)
-                print("nameLabel.font.pointSize: \(nameLabel.font.pointSize)")
             }
             
             if let scoreLabelSize = newValue["scoreLabelSize"] {
                 scoreLabel.font = scoreLabel.font.withSize(scoreLabelSize)
-                print("scoreLabel.font.pointSize: \(scoreLabel.font.pointSize)")
             }
         }
     }
     
     func setStackViewHeight(height: CGFloat, width: CGFloat) {
-        print(#function)
-
-        print("height: \(height)")
+//        print("height: \(height)")
         let stackViewHeightConstraint = teamStackView.heightAnchor.constraint(equalToConstant: height)
         NSLayoutConstraint.activate([stackViewHeightConstraint])
         self.teamStackViewHeightConstraint = stackViewHeightConstraint
         
-        print("width: \(width) - \(#function)")
+//        print("width: \(width) - \(#function)")
         self.superViewWidth = width
     }
 
@@ -143,9 +118,9 @@ class TeamView: UIView {
         
         if teamStackViewHeightConstraint != nil {
             let ratio = nameLabelHeightConstraint.multiplier
-            print("ratio: \( ratio)")
+//            print("ratio: \( ratio)")
             let targetHeight = (teamStackViewHeightConstraint!.constant) * ratio * 0.75
-            print("targetHeight: \(targetHeight)")
+//            print("targetHeight: \(targetHeight)")
             nameLabel.font = nameLabel.font.withSize(targetHeight)
             
             return targetHeight
@@ -163,12 +138,6 @@ class TeamView: UIView {
             let width = superViewWidth
             let minRatio = 0.3
             let actualRatio = height / width
-//            print("‼️ Adjusting scoreLabel Height")
-//            print("superViewWidth: \(superViewWidth)")
-//            print("label height: \(height)")
-//            print("actual ratio: \(actualRatio)")
-//            print("superViewWidth * minRatio: \(superViewWidth * minRatio)")
-//            print("height / 2 = \(height / 2)")
             if actualRatio > minRatio { height = height / 1.25 }
             
             nameLabel.font = nameLabel.font.withSize(height)
@@ -188,7 +157,6 @@ class TeamView: UIView {
         let newScore = Int(sender.value)
         let teamNumber = teamInfo.number
         
-        print("delegate: \(delegate)")
         delegate?.updateScore(newScore: newScore, teamIndex: teamNumber)
     }
 

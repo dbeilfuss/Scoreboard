@@ -68,10 +68,8 @@ class TeamScoresStackView: UIStackView {
         
         // Setup TeamView
         let teamView = TeamView()
-//        teamView.translatesAutoresizingMaskIntoConstraints = false
         teamView.set(scoreboardState: state)
         teamView.set(theme: theme)
-        print("delegate: \(delegate) - \(#fileID)")
         teamView.set(delegate: delegate)
         
         return teamView
@@ -140,7 +138,6 @@ class TeamScoresStackView: UIStackView {
         
         // Return True or False
         if teamViewTeamNumbers == teamManagerTeamNumbers {
-            print("should not reset board")
             return false
         } else {
             print("should reset board") // if this is called every time, try not reversing the teamViewTeamNumber a few lines up

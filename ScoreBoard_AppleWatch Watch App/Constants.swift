@@ -19,5 +19,7 @@ struct Constants {
         Team(number: 7, name: "Team 7", score: 0, isActive: false),
         Team(number: 8, name: "Team 8", score: 0, isActive: false)
     ]
+    
+    let defaultTheme = "Blue Steel"
         
 }

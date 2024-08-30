@@ -15,6 +15,7 @@ class WatchConnection: NSObject, WCSessionDelegate {
     var session: WCSession
     var teamManager: TeamManagerProtocol?
     
+    //MARK: - Init
     init(session: WCSession = .default) {
         self.session = session
         super.init()
@@ -29,6 +30,7 @@ class WatchConnection: NSObject, WCSessionDelegate {
             let data = createDataStorageBundleForWatch(nil)
             sendTeamDataToWatch(data)
         }
+        
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -39,31 +41,99 @@ class WatchConnection: NSObject, WCSessionDelegate {
         print(printFunctions ? "watch session did deactivate":"")
     }
     
-    // DidReceiveMessage
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if let data = message["teamList"] as? Data {
-            do {
-                let teamData = try JSONDecoder().decode([Team].self, from: data)
-                print(teamData)
-                print("teamManager == nil ? \(teamManager == nil)")
-                for team in teamData {
-                    teamManager?.saveTeam(team)
-                }
-                print("session function without replyHandler")
-            } catch {
-                print("data received from watch, could not decode")
-                print(error.localizedDescription)
+    //MARK: - Messages Enum
+    
+    enum watchMessage {
+        case dataStorageBundle(Data)
+        case requestTeamList
+        case receivedMessage
+        case error
+        
+        var rawValue: String {
+            switch self {
+            case .dataStorageBundle: return "dataStorageBundle"
+            case .requestTeamList: return "requestTeamList"
+            case .receivedMessage: return "receivedMessage"
+            case .error: return "error"
             }
-        } else if let _ = message["requestingTeamList"] {
-            print("watch is requesting team info")
-            let data = createDataStorageBundleForWatch(nil)
-            sendTeamDataToWatch(data)
-        } else {
-            print(message)
+        }
+        
+        var dictionaryValue: [String: Any] {
+            switch self {
+            case .dataStorageBundle(let data): return [self.rawValue: data]
+            case .requestTeamList: return [self.rawValue: true]
+            case .receivedMessage: return [self.rawValue: true]
+            case .error: return [self.rawValue: true]
+            }
         }
     }
     
+    //MARK: - Did Receive Message
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        
+        if let data = message[watchMessage.dataStorageBundle(Data()).rawValue] as? Data {
+            let decodedData = decodeDataStorageBundle(data)
+            if decodedData != nil {
+                print("received data from watch")
+                updateLocalData(decodedData!)
+
+            }
+        } else if let data = message[watchMessage.requestTeamList.rawValue] as? Bool {
+            let data = self.createDataStorageBundleForWatch(nil)
+            print("received team data request from watch")
+            sendTeamDataToWatch(data)
+        }
+        
+        /// Reply
+        replyHandler(craftResponse(.receivedMessage))
+        
+    }
+    
     // Send Team Data to Watch
+    func sendTeamDataToWatch(_ dataBundle: DataStorageBundleForWatch) {
+        print("sendingTeamDataToWatch")
+        if WCSession.default.isReachable {
+            do {
+                let data = try JSONEncoder().encode(dataBundle)
+                let message = ["dataStorageBundle": data]
+                WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                    print("Error sending message: \(error.localizedDescription)")
+                })
+            } catch {
+                print("Failed to encode team data: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    //MARK: - Helper Functions
+    
+    /// Craft Response
+    func craftResponse(_ messageType: watchMessage) -> [String: Any] {
+        var message: [String: Any]
+        switch messageType {
+        case .receivedMessage:
+            message = messageType.dictionaryValue
+        default:
+            let error: watchMessage = .error
+            message = error.dictionaryValue
+        }
+        return message
+    }
+    
+    /// Decode Data Data Storage Bundle
+    func decodeDataStorageBundle(_ data: Data) -> DataStorageBundleForWatch? {
+        do {
+            let dataStorageBundle = try JSONDecoder().decode(DataStorageBundleForWatch.self, from: data)
+            print(dataStorageBundle)
+            return dataStorageBundle
+        } catch {
+            print("Failed to decode team data: \(error.localizedDescription)")
+            print(data)
+        }
+        return nil
+    }
+    
+    /// Create Data Storage Bundle
     func createDataStorageBundleForWatch(_ dataBundle: DataStorageBundle?) -> DataStorageBundleForWatch {
         var dataForWatch: DataStorageBundleForWatch
         
@@ -81,18 +151,16 @@ class WatchConnection: NSObject, WCSessionDelegate {
         return dataForWatch
     }
     
-    func sendTeamDataToWatch(_ dataBundle: DataStorageBundleForWatch) {
-        print("sendingTeamDataToWatch")
-        if WCSession.default.isReachable {
-            do {
-                let data = try JSONEncoder().encode(dataBundle)
-                let message = ["dataStorageBundle": data]
-                WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-                    print("Error sending message: \(error.localizedDescription)")
-                })
-            } catch {
-                print("Failed to encode team data: \(error.localizedDescription)")
+    /// Update Local Data
+    func updateLocalData(_ dataStorageBundle: DataStorageBundleForWatch) {
+        print("Updating Team Info")
+        let teamList = dataStorageBundle.teamScores.filter(){$0.isActive}
+        DispatchQueue.main.async {
+            for team in teamList {
+                self.teamManager?.saveTeam(team)
             }
         }
+
     }
+
 }

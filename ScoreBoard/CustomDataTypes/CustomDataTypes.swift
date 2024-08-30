@@ -17,9 +17,10 @@ enum SignInState {
     case notSignedIn
 }
 
-enum DataSource {
+enum DataSource: String, Codable {
     case local
     case cloud
+    case watch
 }
 
 

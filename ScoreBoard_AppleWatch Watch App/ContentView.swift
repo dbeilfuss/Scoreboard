@@ -46,22 +46,40 @@ struct ContentView: View {
                     }
                     
                     // ** Loading Screen
-                    if !iPhoneConnection.didReveiveUpdatedTeamData {
+                    if connectionMessage != "" {
                         ZStack() {
                             Color.black
-                            
-                            VStack(alignment: .center, spacing: 0.0) {
-                                Text("Connecting to iPhone")
+                                .ignoresSafeArea()
+                            VStack {
+                                Spacer()
+                                Text(connectionMessage)
                                 ProgressView()
-
+                                Spacer()
                             }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
-                        .ignoresSafeArea()
                     }
                 }
             }
         }
     }
+    
+    // User Feedback Message Based on Connection State
+    private var connectionMessage: String {
+        switch iPhoneConnection.connectionState {
+        case .initializingConnection:
+            return "Connecting to iPhone"
+        case .active:
+            return ""
+        case .pendingReponse:
+            return ""
+        case .noResponse:
+            return "iPhone Failed to Respond"
+        case .critical:
+            return "iPhone Connection Lost"
+        }
+    }
+    
 }
 
 
