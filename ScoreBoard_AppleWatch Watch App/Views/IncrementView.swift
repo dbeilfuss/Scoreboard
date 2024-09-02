@@ -20,68 +20,72 @@ struct IncrementView: View {
     
     //MARK: - Body
     var body: some View {
-        ScrollView {
-            ZStack {
-                VStack(alignment: .center, spacing: 10) {
-                    Text("Points")
-                        .font(.headline)
-                    
-                    /// Increment Selection Options
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach([1, 5, 10, 100], id: \.self) { value in
-                            Button(action: {
-                                incrementValue = value
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                                    withAnimation {
-                                        selectedTab = 0
-                                    }
+        GeometryReader { geometry in
+            ScrollView {
+                ZStack {
+                    VStack(alignment: .center, spacing: 10) {
+                        Text("Points")
+                            .font(.headline)
+                        
+                        /// "Custom" Increment Button
+                        Button(action: {
+                            self.incrementValue = 0
+                            
+                            // Return to Previous Tab
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                withAnimation {
+                                    selectedTab = 0
                                 }
-                                
-                            }) {
-                                Text("\(value)")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .foregroundColor(incrementValue == value ? .white : .white)
                             }
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 30)
-                                    .stroke(incrementValue == value ? Color.yellow : Color.clear, lineWidth: 4)
-                                    .animation(.easeInOut, value: incrementValue)
-                            )
+                            
+                        }) {
+                            Text("Custom")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                         }
-                    }
-                    
-                    /// "Custom" Increment Button
-                    Button(action: {
-                        self.incrementValue = 0
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(incrementValue == 0 ? Color.yellow : Color.clear, lineWidth: 4)
+                                .animation(.easeInOut, value: incrementValue)
+                        )
                         
-                        // Return to Previous Tab
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                            withAnimation {
-                                selectedTab = 0
+                        /// Increment Selection Options
+                        LazyVGrid(columns: columns, spacing: 10) {
+                            ForEach([1, 5, 10, 100], id: \.self) { value in
+                                Button(action: {
+                                    incrementValue = value
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                        withAnimation {
+                                            selectedTab = 0
+                                        }
+                                    }
+                                    
+                                }) {
+                                    Text("\(value)")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .foregroundColor(incrementValue == value ? .white : .white)
+                                }
+                                .padding(0)
+                                .controlSize(.small)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(incrementValue == value ? Color.yellow : Color.clear, lineWidth: 4)
+                                        .animation(.easeInOut, value: incrementValue)
+                                )
                             }
                         }
+                        .padding(3)
                         
-                    }) {
-                        Text("Custom")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
                     }
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 30)
-                            .stroke(incrementValue == 0 ? Color.yellow : Color.clear, lineWidth: 4)
-                            .animation(.easeInOut, value: incrementValue)
-                    )
                 }
-                
             }
         }
-        
     }
 }
 

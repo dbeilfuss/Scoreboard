@@ -12,6 +12,7 @@ struct TeamInfoView: View {
     @Binding var teamInfo: Team
     @Binding var incrementValue: Int
     @State private var showCalculator = false
+    @State private var calculationType: calculationType = .addition
     
     var iPhoneConnection: IPhoneConnection
     @ObservedObject var customIncrementTutorial = Constants.shared.tutorialManager.customIncrement
@@ -31,14 +32,15 @@ struct TeamInfoView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.bottom, 5)
-                    .animation(.easeInOut(duration: 0.5), value: teamInfo.score)
+//                    .animation(.easeInOut(duration: 0.5), value: teamInfo.score)
                 
                 /// Buttons
                 HStack(spacing: 20) {
                     
                     // Subtract Points Button
                     Button(action: {
-                        calculateNewScore(calculationType: .subtraction)
+                        self.calculationType = .subtraction
+                        calculateNewScore(calculationType: self.calculationType)
                     }) {
                         Image(systemName: "minus.circle")
                             .resizable()
@@ -48,8 +50,8 @@ struct TeamInfoView: View {
                     
                     // Add Points Button
                     Button(action: {
-                        calculateNewScore(calculationType: .addition)
-                    }) {
+                        self.calculationType = .addition
+                        calculateNewScore(calculationType: self.calculationType)                    }) {
                         Image(systemName: "plus.circle")
                             .resizable()
                             .frame(width: 30, height: 30)
@@ -89,9 +91,10 @@ struct TeamInfoView: View {
             }
         }
         .sheet(isPresented: $showCalculator) {
-            CalculatorView { value in
+            CalculatorView(showCalculator: $showCalculator) { value in
                 self.incrementValue = value
-                calculateNewScore(calculationType: .addition)
+                calculateNewScore(calculationType: self.calculationType)
+                self.incrementValue = 0
             }
         }
         .padding()

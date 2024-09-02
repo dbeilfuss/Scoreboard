@@ -37,7 +37,7 @@ struct RemoteControlView: View {
 
 #Preview {
     @State var teamInfo = Constants().defaultTeams
-    @State var incrementValue: Int = 1
+    @State var incrementValue: Int = 0
     @State var showCustomIncrementTutorial: Bool = false
 
     return RemoteControlView(teamInfo: $teamInfo[0], incrementValue: $incrementValue, iPhoneConnection: IPhoneConnection())
