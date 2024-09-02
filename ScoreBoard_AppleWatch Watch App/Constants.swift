@@ -9,6 +9,8 @@ import Foundation
 
 struct Constants {
     
+    static let shared = Constants()
+    
     let defaultTeams: [Team] = [
         Team(number: 1, name: "Dan", score: 100, isActive: true),
         Team(number: 2, name: "Noah", score: 23, isActive: true),
@@ -22,4 +24,6 @@ struct Constants {
     
     let defaultTheme = "Blue Steel"
         
+    let tutorialManager = TutorialManager()
+    
 }

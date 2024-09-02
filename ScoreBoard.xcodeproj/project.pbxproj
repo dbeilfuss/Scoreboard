@@ -24,6 +24,7 @@
 		77239FF12954AB3600569AB9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FF02954AB3600569AB9 /* FirebaseAuth */; };
 		77239FF32954AB3600569AB9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 77239FF22954AB3600569AB9 /* FirebaseFirestore */; };
 		77239FF52954CCC400569AB9 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77239FF42954CCC400569AB9 /* SignOutViewController.swift */; };
+		7751E5E12C86493700A0DE02 /* TutorialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7751E5E02C86493700A0DE02 /* TutorialManager.swift */; };
 		7754E9042986F5EF006CE85A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7754E9032986F5EF006CE85A /* WelcomeViewController.swift */; };
 		7754E91A29888CCD006CE85A /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90729888CCB006CE85A /* Rubik-MediumItalic.ttf */; };
 		7754E91B29888CCD006CE85A /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7754E90829888CCB006CE85A /* Rubik-Light.ttf */; };
@@ -60,6 +61,7 @@
 		7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776DDE62BF642EA008E9C65 /* TeamView.swift */; };
 		77790F772C76C00B001F8F2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77790F762C76C00B001F8F2B /* ContentView.swift */; };
 		778484FF2956116E004A3B32 /* RemoteStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778484FE2956116E004A3B32 /* RemoteStorageManager.swift */; };
+		778D0E032C83891000AA12D1 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778D0E022C83891000AA12D1 /* CalculatorView.swift */; };
 		7790E82B295B668600DC5D6B /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */; };
 		7790E82D295C06A600DC5D6B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82C295C06A600DC5D6B /* Theme.swift */; };
 		7790E82F295C08B100DC5D6B /* RemoteControlTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */; };
@@ -160,6 +162,7 @@
 		77239FE92953AF6000569AB9 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		77239FEB2954A9C900569AB9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		77239FF42954CCC400569AB9 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
+		7751E5E02C86493700A0DE02 /* TutorialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManager.swift; sourceTree = "<group>"; };
 		7754E9032986F5EF006CE85A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		7754E90729888CCB006CE85A /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		7754E90829888CCB006CE85A /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -196,6 +199,7 @@
 		7776DDE62BF642EA008E9C65 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		77790F762C76C00B001F8F2B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		778484FE2956116E004A3B32 /* RemoteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageManager.swift; sourceTree = "<group>"; };
+		778D0E022C83891000AA12D1 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		7790E82A295B668600DC5D6B /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
 		7790E82C295C06A600DC5D6B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7790E82E295C08B100DC5D6B /* RemoteControlTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTheme.swift; sourceTree = "<group>"; };
@@ -292,7 +296,7 @@
 				7759DAFB2C5ECBCD0018A074 /* Constants.swift */,
 				7759DAF92C5ECBBD0018A074 /* Team.swift */,
 				77C90D9F2C7A4B3000EA1853 /* DataStorageBundleForWatch.swift */,
-				7759DB082C625A0B0018A074 /* DataManagement */,
+				7759DB082C625A0B0018A074 /* Managers */,
 				7759DAF72C5ECB9F0018A074 /* Views */,
 				770105742C5C56AF0016AF20 /* Assets.xcassets */,
 				770105762C5C56AF0016AF20 /* Preview Content */,
@@ -420,6 +424,7 @@
 				7759DAF22C5ECB060018A074 /* IncrementView.swift */,
 				7759DAF12C5ECB060018A074 /* RemoteControlView.swift */,
 				7759DAEF2C5ECB050018A074 /* TeamInfoView.swift */,
+				778D0E022C83891000AA12D1 /* CalculatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,12 +438,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7759DB082C625A0B0018A074 /* DataManagement */ = {
+		7759DB082C625A0B0018A074 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				7759DB062C6259B80018A074 /* IPhoneConnection.swift */,
+				7751E5E02C86493700A0DE02 /* TutorialManager.swift */,
 			);
-			path = DataManagement;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		7790E832295CAEEA00DC5D6B /* Themes */ = {
@@ -730,11 +736,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7759DAFA2C5ECBBD0018A074 /* Team.swift in Sources */,
+				7751E5E12C86493700A0DE02 /* TutorialManager.swift in Sources */,
 				7759DAF32C5ECB060018A074 /* TeamInfoView.swift in Sources */,
 				77790F772C76C00B001F8F2B /* ContentView.swift in Sources */,
 				7759DB072C6259B80018A074 /* IPhoneConnection.swift in Sources */,
 				7759DAF62C5ECB060018A074 /* IncrementView.swift in Sources */,
 				77C90DA02C7A4B3000EA1853 /* DataStorageBundleForWatch.swift in Sources */,
+				778D0E032C83891000AA12D1 /* CalculatorView.swift in Sources */,
 				7759DAF52C5ECB060018A074 /* RemoteControlView.swift in Sources */,
 				7759DAFC2C5ECBCD0018A074 /* Constants.swift in Sources */,
 				770105712C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift in Sources */,

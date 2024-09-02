@@ -9,7 +9,7 @@ import Foundation
 import WatchConnectivity
 import Firebase
 
-class WatchConnection: NSObject, WCSessionDelegate {
+class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
     var printFunctions = true
 
     var session: WCSession
@@ -161,6 +161,13 @@ class WatchConnection: NSObject, WCSessionDelegate {
             }
         }
 
+    }
+    
+    //MARK: - Data Storage Delegate
+    
+    func dataStorageUpdated(_ updatedData: DataStorageBundle) {
+        let data = createDataStorageBundleForWatch(updatedData)
+        sendTeamDataToWatch(data)
     }
 
 }

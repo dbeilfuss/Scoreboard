@@ -14,7 +14,7 @@ class DataStorageManager {
     var remoteStorageManager: DataStorageProtocol = RemoteStorageManager()
     var localStorageManager: DataStorageProtocol = LocalStorageManager()
     var dataStorageDelegate: DataStorageDelegate?
-    let watchDataManager = WatchConnection()
+    let watchDataManager: DataStorageDelegate = WatchConnection()
     
     var teamManager: DataStorageDelegate?
     var themeManager: DataStorageDelegate?
@@ -33,7 +33,9 @@ extension DataStorageManager: MVCDelegate {
         
         // Team & Theme Managers
         teamManager = mvcArrangement.teamManager as? DataStorageDelegate
-        watchDataManager.teamManager = self.teamManager as? any TeamManagerProtocol
+        if let watchManager = watchDataManager as? WatchConnection {
+            watchManager.teamManager = self.teamManager as? any TeamManagerProtocol
+        }
         themeManager = mvcArrangement.themeManager  as? DataStorageDelegate
         
         if teamManager == nil || themeManager == nil {
@@ -93,7 +95,7 @@ extension DataStorageManager: DataStorageManagerProtocol {
     
     func localDataUpdated(_ localDataStorageBundle: DataStorageBundle) {
             let localData = localDataStorageBundle
-            updateDelegates(localDataStorageBundle) // Update the UI immediately with local data
+        updateDelegates(localDataStorageBundle, dataSource: .local) // Update the UI immediately with local data
 
             // Fetch remote data asynchronously
             remoteStorageManager.fetchData { remoteData in
@@ -126,10 +128,15 @@ extension DataStorageManager: DataStorageManagerProtocol {
         return mostRecentData
     }
     
-    func updateDelegates(_ dataStorageBundle: DataStorageBundle) {
-        teamManager?.dataStorageUpdated(dataStorageBundle)
-        themeManager?.dataStorageUpdated(dataStorageBundle)
-        watchDataManager.sendTeamDataToWatch(DataStorageBundleForWatch(dataStorageBundle))
+    func updateDelegates(_ dataStorageBundle: DataStorageBundle, dataSource: DataSource) {
+        // Parameters
+        var delegates = [teamManager, themeManager, watchDataManager]
+        if dataSource == .watch { delegates.removeAll(where: { $0 is WatchConnection })}
+        
+        // Update
+        for delegate in delegates {
+            delegate?.dataStorageUpdated(dataStorageBundle)
+        }
     }
     
     

@@ -45,7 +45,7 @@ struct ContentView: View {
                         }
                     }
                     
-                    // ** Loading Screen
+                    // Loading Screen
                     if connectionMessage != "" {
                         ZStack() {
                             Color.black
@@ -53,12 +53,14 @@ struct ContentView: View {
                             VStack {
                                 Spacer()
                                 Text(connectionMessage)
+                                    .multilineTextAlignment(.center)
                                 ProgressView()
                                 Spacer()
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
                     }
+                    
                 }
             }
         }
@@ -66,17 +68,30 @@ struct ContentView: View {
     
     // User Feedback Message Based on Connection State
     private var connectionMessage: String {
+        let reconnectInstructions = "Bring iPhone within range"
+        let appInstructions = "Open Scoreboard or Remote"
         switch iPhoneConnection.connectionState {
         case .initializingConnection:
-            return "Connecting to iPhone"
+            return """
+                    Connecting to iPhone...
+                    \(appInstructions)
+                    """
         case .active:
             return ""
         case .pendingReponse:
             return ""
         case .noResponse:
-            return "iPhone Failed to Respond"
+            return """
+                    iPhone Failed to Respond
+                    \(reconnectInstructions)
+                    \(appInstructions)
+                    """
         case .critical:
-            return "iPhone Connection Lost"
+            return """
+                    iPhone Connection Lost
+                    \(reconnectInstructions)
+                    \(appInstructions)
+                    """
         }
     }
     
