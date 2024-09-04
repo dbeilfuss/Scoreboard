@@ -20,7 +20,7 @@ struct RemoteControlView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                TeamInfoView(teamInfo: $teamInfo, incrementValue: $incrementValue, iPhoneConnection: iPhoneConnection)
+                TeamInfoView(teamInfo: $teamInfo, incrementValue: $incrementValue, selectedTab: $selectedTab, iPhoneConnection: iPhoneConnection)
                     .tabItem {
                         Label("Team Info", systemImage: "info.circle")
                     }

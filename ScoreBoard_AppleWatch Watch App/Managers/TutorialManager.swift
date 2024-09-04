@@ -11,9 +11,25 @@ import SwiftUI
 class TutorialManager: ObservableObject {
     @Published var increments = TutorialType()
     @Published var customIncrement = TutorialType()
+    @Published var tabViewTutorial = TutorialType()
     
     class TutorialType: ObservableObject {
         @Published var hasBeenDisplayed = false
         @Published var displayTutorial = false
+        
+        func checkAndDisplayTutorial() -> Bool {
+            if !hasBeenDisplayed {
+                displayTutorial = true
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        func dismissTutorial() {
+            hasBeenDisplayed = true
+            displayTutorial = false
+        }
     }
+    
 }

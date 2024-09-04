@@ -13,9 +13,11 @@ struct TeamInfoView: View {
     @Binding var incrementValue: Int
     @State private var showCalculator = false
     @State private var calculationType: calculationType = .addition
+    @Binding var selectedTab: Int
     
     var iPhoneConnection: IPhoneConnection
     @ObservedObject var customIncrementTutorial = Constants.shared.tutorialManager.customIncrement
+    @ObservedObject var tabViewTutorial = Constants.shared.tutorialManager.tabViewTutorial
     
     //MARK: - View
     var body: some View {
@@ -32,7 +34,6 @@ struct TeamInfoView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.bottom, 5)
-//                    .animation(.easeInOut(duration: 0.5), value: teamInfo.score)
                 
                 /// Buttons
                 HStack(spacing: 20) {
@@ -60,13 +61,27 @@ struct TeamInfoView: View {
                 }
             }
             .onAppear {
-                if incrementValue == 0 && !customIncrementTutorial.hasBeenDisplayed {
-                    print("tutorial.hasBeenDisplayed = \(customIncrementTutorial.hasBeenDisplayed)")
-                    customIncrementTutorial.displayTutorial = true
+                /// ** Tutorials Triggers
+                
+                // Custom Increment Value Tutorial
+                if incrementValue == 0 {
+                    let _ = customIncrementTutorial.checkAndDisplayTutorial()
+                }
+                
+                // Tab View Tutorial
+                if tabViewTutorial.checkAndDisplayTutorial() {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        withAnimation {
+                            selectedTab = 1
+                        }
+                        tabViewTutorial.dismissTutorial()
+                    }
                 }
             }
             
-            // Tutorial
+            /// ** Tutorials Views
+
+            // Custom Increment Value Tutorial
             if customIncrementTutorial.displayTutorial {
                 ZStack() {
                     Color.black
@@ -79,9 +94,7 @@ struct TeamInfoView: View {
                         """)
                         .multilineTextAlignment(.center)
                         Button(action: {
-                            customIncrementTutorial.hasBeenDisplayed = true
-                            customIncrementTutorial.displayTutorial = false
-                            print("tutorial.hasBeenDisplayed = \(customIncrementTutorial.hasBeenDisplayed)")
+                            customIncrementTutorial.dismissTutorial()
                         }) {
                             Text("Okay")
                         }
@@ -135,6 +148,8 @@ struct TeamInfoView: View {
 #Preview {
     @State var teamInfo = Constants().defaultTeams
     @State var incrementValue = 1
+    @State var selectedTab = 0
+
     @ObservedObject var customIncrementTutorial = TutorialManager().customIncrement
-    return TeamInfoView(teamInfo: $teamInfo[0], incrementValue: $incrementValue, iPhoneConnection: IPhoneConnection(), customIncrementTutorial: customIncrementTutorial)
+    return TeamInfoView(teamInfo: $teamInfo[0], incrementValue: $incrementValue, selectedTab: $selectedTab, iPhoneConnection: IPhoneConnection(), customIncrementTutorial: customIncrementTutorial)
 }
