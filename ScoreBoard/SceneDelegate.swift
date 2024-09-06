@@ -19,28 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let _ = (scene as? UIWindowScene) else { return }
         
-//        if windowScene.session.role == .windowApplication {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if let initialViewController = storyboard.instantiateInitialViewController() {
-//                let window = UIWindow(windowScene: windowScene)
-//                window.rootViewController = initialViewController
-//                self.window = window
-//                window.makeKeyAndVisible()
-//            }
-            
-//        } else if windowScene.session.role == .windowExternalDisplayNonInteractive {
-//            print("Configuring external display")
-//            let storyboard = UIStoryboard(name: "External Display", bundle: nil)
-//            if let externalViewController = storyboard.instantiateInitialViewController() as? MainDisplayViewController {
-//                let externalWindow = UIWindow(windowScene: windowScene)
-//                externalWindow.rootViewController = externalViewController
-//                self.externalWindow = externalWindow
-//                externalWindow.isHidden = false
-//                externalWindow.makeKeyAndVisible()
-//                print("External display window configured and made key, \(externalWindow.isKeyWindow)")
-//                print("External display window configured and made key with rootViewController: \(String(describing: externalWindow.rootViewController))")
-//            }
-//        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

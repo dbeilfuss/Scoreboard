@@ -68,7 +68,7 @@ class ThemeGroupChooserViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("user chose theme category \(groupKeys[indexPath.row])")
+        if Constants().printThemeFlow { print("user chose theme category \(groupKeys[indexPath.row])") }
         groupChosen = groupKeys[indexPath.row]
         self.performSegue(withIdentifier: "ThemeChooser", sender: self)
     }

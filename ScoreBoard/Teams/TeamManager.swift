@@ -56,15 +56,11 @@ class TeamManager {
     
     func fetchTeamsFromDataStorage() {
         if !teamDataIsFetched {
-            if constants.printTeamFlow {
-                print("fetching teams from dataStorage, \(#fileID)")
-            }
+            if constants.printTeamFlow { print("fetching teams from dataStorage, \(#fileID)") }
             if let storedTeams = databaseManager?.requestData().teamScores {
                 teamList = storedTeams
             } else {
-                if constants.printTeamFlowDetailed {
-                    print("failed to fetch teams from dataStorage, using default teamList \(#fileID)")
-                }
+                if constants.printTeamFlowDetailed { print("failed to fetch teams from dataStorage, using default teamList \(#fileID)") }
                 teamList = constants.defaultTeams
                 saveTeamsToDataStorage()
             }
@@ -73,76 +69,58 @@ class TeamManager {
     }
     
     func fetchTeamList() -> [Team] {
-        if constants.printTeamFlowDetailed {
-            print("fetching teamList, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching teamList, \(#fileID)") }
         fetchTeamsFromDataStorage()
         return teamList
     }
     
     func fetchTeamInfo(teamNumber: Int) -> Team? {
-        if constants.printTeamFlowDetailed {
-            print("fetching teamInfo, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching teamInfo, \(#fileID)") }
         fetchTeamsFromDataStorage()
         return teamList.first() {$0.number == teamNumber}
     }
     
     func fetchScores() -> [Int] {
-        if constants.printTeamFlowDetailed {
-            print("fetching scores, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching scores, \(#fileID)") }
         fetchTeamsFromDataStorage()
         let scores = teamList.map { $0.score }
         return scores
     }
     
     func fetchTeamIsActive(teamNumber: Int) -> Bool {
-        if constants.printTeamFlowDetailed {
-            print("fetching teamIsActive, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching teamIsActive, \(#fileID)") }
         fetchTeamsFromDataStorage()
         return teamList[teamNumber - 1].isActive
     }
     
     func fetchTeamIsActive(indexNumber: Int) -> Bool {
-        if constants.printTeamFlowDetailed {
-            print("fetching teamIsActive, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching teamIsActive, \(#fileID)") }
         fetchTeamsFromDataStorage()
         return teamList[indexNumber].isActive
     }
     
     func fetchActiveTeams() -> [Team] {
-        if constants.printTeamFlowDetailed {
-            print("fetching activeTeams, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching activeTeams, \(#fileID)") }
         fetchTeamsFromDataStorage()
         let activeTeamList = teamList.filter { $0.isActive }
         return activeTeamList
     }
     
     func fetchActiveTeamNumbers() -> [Int] {
-        if constants.printTeamFlowDetailed {
-            print("fetching activeTeamNumbers, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching activeTeamNumbers, \(#fileID)") }
         fetchTeamsFromDataStorage()
         let activeTeamNumbers = teamList.filter({ $0.isActive }).map() {$0.number}
         return activeTeamNumbers
     }
     
     func fetchTeamName(teamNumber: Int) -> String { // Deprecate?
-        if constants.printTeamFlowDetailed {
-            print("fetching teamName, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching teamName, \(#fileID)") }
         fetchTeamsFromDataStorage()
         return teamList[teamNumber].name // Shouldn't this be teamNumber - 1 ?
     }
     
     func fetchTeamNames() -> [String] {
-        if constants.printTeamFlowDetailed {
-            print("fetching teamNames, \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("fetching teamNames, \(#fileID)") }
         fetchTeamsFromDataStorage()
         let names = teamList.map { $0.name }
         return names
@@ -151,37 +129,26 @@ class TeamManager {
     //MARK: - Update
     
     func saveTeamsToDataStorage() {
-        if constants.printTeamFlow {
-            print("savingTeamsToDataStorage - \(#fileID)")
-        }
+        if constants.printTeamFlow { print("savingTeamsToDataStorage - \(#fileID)") }
         
-        if constants.printTeamFlowDetailed {
-            print("‼️ databaseManager == nil: \(databaseManager == nil) - \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("‼️ databaseManager == nil: \(databaseManager == nil) - \(#fileID)") }
         databaseManager?.saveTeams(teamList)
     }
     
     func replaceScore(teamNumber: Int, newScore: Int) {
-        if constants.printTeamFlow {
-            print("replacing score, \(#fileID)")
-        }
+        if constants.printTeamFlow { print("replacing score, \(#fileID)") }
         teamList[teamNumber - 1].score = newScore
         saveTeamsToDataStorage()
     }
     
     func addToScore(teamNumber: Int, scoreToAdd: Int) {
-        if constants.printTeamFlow {
-            print("adding to score, \(#fileID)")
-        }
+        if constants.printTeamFlow { print("adding to score, \(#fileID)") }
         teamList[teamNumber - 1].score += scoreToAdd
         saveTeamsToDataStorage()
     }
     
     func saveTeam(_ team: Team) {
-        
-        if constants.printTeamFlow {
-            print("saving team, \(#fileID)")
-        }
+        if constants.printTeamFlow { print("saving team, \(#fileID)") }
         
         let teamIndex = team.number - 1
         teamList[teamIndex] = team
@@ -190,17 +157,13 @@ class TeamManager {
     }
     
     func updateTeamIsActive(teamNumber: Int, isActive: Bool){
-        if constants.printTeamFlow {
-            print("updating teamIsActive, \(#fileID)")
-        }
+        if constants.printTeamFlow { print("updating teamIsActive, \(#fileID)") }
         teamList[teamNumber - 1].isActive = isActive
         saveTeamsToDataStorage()
     }
     
     func updateTeamName(teamNumber: Int, name: String){
-        if constants.printTeamFlow {
-            print("updating team, \(#fileID)")
-        }
+        if constants.printTeamFlow { print("updating team, \(#fileID)") }
         teamList[teamNumber - 1].name = name
         saveTeamsToDataStorage()
     }
@@ -214,9 +177,7 @@ extension TeamManager: MVCDelegate {
         databaseManager = mvcArrangement.databaseManager
         
         if viewController == nil || databaseManager == nil {
-            print("failed to initializeMVCs: \(#fileID)")
-        } else {
-            print("initializeMVCs successful: \(#fileID)")
+            print("⛔️ failed to initializeMVCs: \(#fileID)")
         }
     }
 }
@@ -227,9 +188,7 @@ extension TeamManager: TeamManagerProtocol {
 extension TeamManager: DataStorageDelegate {
     
     func dataStorageUpdated(_ updatedData: DataStorageBundle) {
-        if constants.printTeamFlow {
-            print("refreshing Data - \(#fileID)")
-        }
+        if constants.printTeamFlow { print("refreshing Data - \(#fileID)") }
         
         let receivedTeamList = updatedData.teamScores
         teamList = receivedTeamList

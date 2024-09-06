@@ -10,10 +10,10 @@ import WatchConnectivity
 import Firebase
 
 class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
-    var printFunctions = true
 
     var session: WCSession
     var teamManager: TeamManagerProtocol?
+    let constants = Constants()
     
     //MARK: - Init
     init(session: WCSession = .default) {
@@ -24,7 +24,7 @@ class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
     }
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
-        print(printFunctions ? "watch session did complete with \(activationState)":"")
+        print("watch session did complete with \(activationState) - \(#fileID)")
         
         if activationState == .activated {
             let data = createDataStorageBundleForWatch(nil)
@@ -34,11 +34,11 @@ class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        print(printFunctions ? "watch session did become active":"")
+        print("watch session did become active - \(#fileID)")
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        print(printFunctions ? "watch session did deactivate":"")
+        print("watch session did deactivate - \(#fileID)")
     }
     
     //MARK: - Messages Enum
@@ -74,13 +74,13 @@ class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
         if let data = message[watchMessage.dataStorageBundle(Data()).rawValue] as? Data {
             let decodedData = decodeDataStorageBundle(data)
             if decodedData != nil {
-                print("received data from watch")
+                if constants.printTeamFlow { print("received data from watch - \(#fileID)") }
                 updateLocalData(decodedData!)
 
             }
-        } else if let data = message[watchMessage.requestTeamList.rawValue] as? Bool {
+        } else if let _ = message[watchMessage.requestTeamList.rawValue] as? Bool {
             let data = self.createDataStorageBundleForWatch(nil)
-            print("received team data request from watch")
+            if constants.printTeamFlow { print("received team data request from watch - \(#fileID)") }
             sendTeamDataToWatch(data)
         }
         
@@ -91,16 +91,16 @@ class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
     
     // Send Team Data to Watch
     func sendTeamDataToWatch(_ dataBundle: DataStorageBundleForWatch) {
-        print("sendingTeamDataToWatch")
+        if constants.printTeamFlow { print("sendingTeamDataToWatch") }
         if WCSession.default.isReachable {
             do {
                 let data = try JSONEncoder().encode(dataBundle)
                 let message = ["dataStorageBundle": data]
                 WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-                    print("Error sending message: \(error.localizedDescription)")
+                    print("⛔️ Error sending message: \(error.localizedDescription)")
                 })
             } catch {
-                print("Failed to encode team data: \(error.localizedDescription)")
+                print("⛔️ Failed to encode team data: \(error.localizedDescription)")
             }
         }
     }
@@ -124,11 +124,10 @@ class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
     func decodeDataStorageBundle(_ data: Data) -> DataStorageBundleForWatch? {
         do {
             let dataStorageBundle = try JSONDecoder().decode(DataStorageBundleForWatch.self, from: data)
-            print(dataStorageBundle)
             return dataStorageBundle
         } catch {
-            print("Failed to decode team data: \(error.localizedDescription)")
-            print(data)
+            print("⛔️ Failed to decode team data: \(error.localizedDescription)")
+            if constants.printTeamFlowDetailed { print(data) }
         }
         return nil
     }
@@ -153,7 +152,6 @@ class WatchConnection: NSObject, WCSessionDelegate, DataStorageDelegate {
     
     /// Update Local Data
     func updateLocalData(_ dataStorageBundle: DataStorageBundleForWatch) {
-        print("Updating Team Info")
         let teamList = dataStorageBundle.teamScores.filter(){$0.isActive}
         DispatchQueue.main.async {
             for team in teamList {

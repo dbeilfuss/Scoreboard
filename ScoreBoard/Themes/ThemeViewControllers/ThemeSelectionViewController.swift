@@ -26,9 +26,7 @@ class ThemeSelectionViewController: UITableViewController {
             }
             themeList = themeList.sorted()
         }
-        
-        print(themeList)
-        
+                
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -88,7 +86,7 @@ class ThemeSelectionViewController: UITableViewController {
         }
         
         if themeSelected != nil {
-            print("ThemeSelected: \(themeSelected!.name), File: \(#fileID)")
+            if Constants().printThemeFlow { print("ThemeSelected: \(themeSelected!.name), File: \(#fileID)") }
             delegate?.saveTheme(named: themeSelected!.name)
             let deviceType = Utilities.DeviceInfo().deviceType
             if deviceType == .iPhone {

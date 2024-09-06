@@ -84,7 +84,7 @@ class WelcomeViewController: UIViewController {
         case .iPad:
             iPadUIChanges()
         case .unknown:
-            print("unknown device, no UI Changes")
+            print("⛔️ unknown device, no UI Changes")
         }
         
         func iphoneUIChanges() {
@@ -122,8 +122,10 @@ class WelcomeViewController: UIViewController {
         /// Get Current User
         let _ = Auth.auth().addStateDidChangeListener { auth, user in
             if let user: User = Auth.auth().currentUser {
-                print("user signed in")
-                print(user.email!)
+                if self.constants.printStateFlow {
+                    print("user signed in")
+                    print(user.email!)
+                }
                 self.signInButton.setTitle("Sign Out", for: .normal)
                 self.userFeedbackLabel.text = user.email
             } else {

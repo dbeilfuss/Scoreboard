@@ -23,7 +23,6 @@ struct Utilities {
         var deviceType: DeviceType {
             get {
                 if let savedType = UserDefaults.standard.string(forKey: "deviceType") {
-                    print("deviceType: \(savedType) - \(#fileID)")
                     return DeviceType(rawValue: savedType) ?? .unknown
                 } else {
                     determineDeviceType()
@@ -44,7 +43,6 @@ struct Utilities {
             } else {
                 deviceType = .unknown
             }
-            print("deviceType: \(self.deviceType) - \(#fileID)")
 
         }
         

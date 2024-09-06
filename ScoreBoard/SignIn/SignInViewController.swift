@@ -193,8 +193,10 @@ class SignInViewController: UIViewController {
         let usernameStatus = KeychainManager.save(dataType: .username, data: usernameData)
         let passwordStatus = KeychainManager.save(dataType: .password, data: passwordData)
         
-        print("usernameStatus: \(usernameStatus) - \(#fileID)")
-        print("passwordStatus: \(passwordStatus) - \(#fileID)")
+        if constants.printStateFlow {
+            print("usernameStatus: \(usernameStatus) - \(#fileID)")
+            print("passwordStatus: \(passwordStatus) - \(#fileID)")
+        }
 
     }
     

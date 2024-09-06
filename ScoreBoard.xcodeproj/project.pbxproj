@@ -113,7 +113,6 @@
 		77D98FEC297B09ED00927949 /* FractalLandscapeWhite2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */; };
 		77DC6B222C39F09400327D59 /* External Display.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77DC6B212C39F09400327D59 /* External Display.storyboard */; };
 		77DC6B262C39F81400327D59 /* ExternalDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B252C39F81400327D59 /* ExternalDisplayViewController.swift */; };
-		77DC6B292C3B1EB700327D59 /* RemoteConnectionV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */; };
 		77DC6B2B2C3B26B600327D59 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */; };
 		77DC6B2D2C3CA3C300327D59 /* DataStorageBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DC6B2C2C3CA3C300327D59 /* DataStorageBundle.swift */; };
 		77E024402C27D3DC00112591 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0243F2C27D3DC00112591 /* KeychainManager.swift */; };
@@ -253,7 +252,6 @@
 		77D98FEB297B09ED00927949 /* FractalLandscapeWhite2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscapeWhite2.swift; sourceTree = "<group>"; };
 		77DC6B212C39F09400327D59 /* External Display.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "External Display.storyboard"; sourceTree = "<group>"; };
 		77DC6B252C39F81400327D59 /* ExternalDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayViewController.swift; sourceTree = "<group>"; };
-		77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConnectionV1.swift; sourceTree = "<group>"; };
 		77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		77DC6B2C2C3CA3C300327D59 /* DataStorageBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageBundle.swift; sourceTree = "<group>"; };
 		77E0243E2C27D3A400112591 /* ScoreBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScoreBoard.entitlements; sourceTree = "<group>"; };
@@ -373,7 +371,6 @@
 				77DC6B2C2C3CA3C300327D59 /* DataStorageBundle.swift */,
 				771913D92C1738C000BA2D9F /* DataStorageManager.swift */,
 				778484FE2956116E004A3B32 /* RemoteStorageManager.swift */,
-				77DC6B282C3B1EB700327D59 /* RemoteConnectionV1.swift */,
 				77DC6B2A2C3B26B600327D59 /* LocalStorageManager.swift */,
 				7759DB022C5ECEEA0018A074 /* WatchConnection.swift */,
 			);
@@ -786,7 +783,6 @@
 				771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */,
 				77D0907A298991FD0034D200 /* WelcomeOptionsCell.swift in Sources */,
 				77CEA6FE297CA9F800E853DC /* ThemeManager.swift in Sources */,
-				77DC6B292C3B1EB700327D59 /* RemoteConnectionV1.swift in Sources */,
 				7797E96F2C0510F0007D7EEF /* CustomDataTypes.swift in Sources */,
 				7776DDE72BF642EA008E9C65 /* TeamView.swift in Sources */,
 				77DC6B2B2C3B26B600327D59 /* LocalStorageManager.swift in Sources */,

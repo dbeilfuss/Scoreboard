@@ -37,6 +37,12 @@ class ExternalDisplayViewController: ScoreBoardViewController {
         // Create Teams
         refreshUIForTeams()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
+            self.teamScoresStackView.forceResetBoard = true
+            self.refreshUIForTeams()
+            self.teamScoresStackView.forceResetBoard = false
+        }
+        
     }
     
     //MARK: - Update UI
@@ -64,9 +70,7 @@ class ExternalDisplayViewController: ScoreBoardViewController {
     override func refreshUIForTeams() {
         super.refreshUIForTeams()
         
-        if constants.printTeamFlowDetailed {
-            print("implementingTeams, File: \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("implementingTeams, File: \(#fileID)") }
         
         var state = themeManager.fetchScoreboardState()
         state.uiIsHidden = true

@@ -26,14 +26,15 @@ class RemoteStorageManager: DataStorageProtocol {
         
     //MARK: - Save
     func saveData(_ dataBundle: DataStorageBundle) {
-        print("saving data - \(#fileID)")
+        let constants = Constants()
+        if constants.printTeamFlow || constants.printThemeFlow { print("saving data - \(#fileID)") }
         if let user: User = Auth.auth().currentUser {
             let bundleRef = db.collection(user.email!).document("dataBundle")
             
             do {
                 try bundleRef.setData(from: dataBundle)
             } catch let error {
-                print("Error writing data bundle to Firestore: \(error)")
+                print("⛔️ Error writing data bundle to Firestore: \(error)")
             }
         } else {
             print("not signed in - \(#fileID)")
@@ -57,11 +58,11 @@ class RemoteStorageManager: DataStorageProtocol {
                     do {
                         dataStorageBundle = try document.data(as: DataStorageBundle.self)
                     } catch let error {
-                        print("Error decoding data bundle: \(error)")
+                        print("⛔️ Error decoding data bundle: \(error)")
                         dataStorageBundle = nil
                     }
                 } else {
-                    print("Document does not exist")
+                    print("⛔️ Document does not exist")
                 }
             }
         }
@@ -76,7 +77,7 @@ class RemoteStorageManager: DataStorageProtocol {
             
             listener = bundleRef.addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
+                    print("⛔️ Error fetching document: \(error!)")
                     return
                 }
                 
@@ -84,7 +85,7 @@ class RemoteStorageManager: DataStorageProtocol {
                     let dataBundle = try document.data(as: DataStorageBundle.self)
                     completion(dataBundle)
                 } catch let error {
-                    print("Error decoding data bundle: \(error)")
+                    print("⛔️ Error decoding data bundle: \(error)")
                 }
             }
         }

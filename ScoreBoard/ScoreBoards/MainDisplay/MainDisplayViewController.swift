@@ -69,7 +69,6 @@ class MainDisplayViewController: ScoreBoardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad: \(#fileID)")
         
         userFeedbackLabel.text = ""
         
@@ -93,12 +92,17 @@ class MainDisplayViewController: ScoreBoardViewController {
     //MARK: - ViewAppearing
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear - \(#fileID)")
         lockOrientation(to: .landscapeLeft)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         refreshUIForTeams()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
+            self.teamScoresStackView.forceResetBoard = true
+            self.refreshUIForTeams()
+            self.teamScoresStackView.forceResetBoard = false
+        }
     }
     
     //MARK: - TeamViews
@@ -112,9 +116,7 @@ class MainDisplayViewController: ScoreBoardViewController {
     override func refreshUIForTheme() {
         super.refreshUIForTheme()
         
-        if constants.printThemeFlow {
-            print("implementingActiveTheme, File: \(#fileID)")
-        }
+        if constants.printThemeFlow { print("implementingActiveTheme, File: \(#fileID)") }
         
         /// Properties
         let activeTheme = themeManager.fetchActiveTheme()
@@ -272,7 +274,6 @@ extension ScoreBoardViewController: MVCDelegate {
 extension MainDisplayViewController: TeamCellDelegate {
     
     func updateScore(newScore: Int, teamIndex: Int) {
-        print("updateScore Called: \(#fileID)")
         teamManager.replaceScore(teamNumber: teamIndex, newScore: newScore)
         refreshUIForTeams()
     }

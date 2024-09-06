@@ -50,10 +50,10 @@ extension DataStorageManager: MVCDelegate {
 extension DataStorageManager: DataStorageManagerProtocol {
     
     func saveData(_ data: DataStorageBundle) {
-        print("saving data - \(#fileID)")
+        if constants.printTeamFlow { print("saving data - \(#fileID)") }
         localStorageManager.saveData(data)
         remoteStorageManager.saveData(data)
-        print("sending to Watch")
+        if constants.printTeamFlow { print("sending to Watch - \(#fileID)") }
     }
     
     func requestData() -> DataStorageBundle {
@@ -143,9 +143,7 @@ extension DataStorageManager: DataStorageManagerProtocol {
     //MARK: - Teams
     
     func saveTeams(_ teams: [Team]) {
-        if constants.printTeamFlow {
-            print("saving teams to dataStorage - \(#fileID)")
-        }
+        if constants.printTeamFlow { print("saving teams to dataStorage - \(#fileID)") }
         if constants.printTeamFlowDetailed {
             print(teams)
         }
@@ -154,9 +152,7 @@ extension DataStorageManager: DataStorageManagerProtocol {
         dataStorageBundle.timeStamp = Timestamp(date: Date())
         
         saveData(dataStorageBundle)
-        if constants.printTeamFlowDetailed {
-            print("‼️ teamManager == nil:  \(teamManager == nil) - \(#fileID)")
-        }
+        if constants.printTeamFlowDetailed { print("‼️ teamManager == nil:  \(teamManager == nil) - \(#fileID)") }
         teamManager?.dataStorageUpdated(dataStorageBundle)
     }
     
@@ -196,16 +192,10 @@ extension DataStorageManager: DataStorageManagerProtocol {
         
         if let encoded = try? JSONEncoder().encode(state) {
             defaults.set(encoded, forKey: key)
-            if constants.printStateFlow {
-                print("ScoreboardState saved successfully. File: \(#fileID), Func: \(#function)")
-            }
-        } else {
-            print("Failed to encode scoreboardState. File: \(#fileID)")
-        }
+            if constants.printStateFlow { print("ScoreboardState saved successfully. File: \(#fileID), Func: \(#function)") }
+        } else { print("Failed to encode scoreboardState. File: \(#fileID)") }
         
-        if constants.printStateFlow {
-            print("Updated ScoreboardState: \(String(describing: loadScoreboardState())), File: \(#fileID), Func: \(#function)")
-        }
+        if constants.printStateFlow { print("Updated ScoreboardState: \(String(describing: loadScoreboardState())), File: \(#fileID), Func: \(#function)") }
     }
     
     func savePointIncrement(_ pointIncrement: Double) {

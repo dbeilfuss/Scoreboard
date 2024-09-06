@@ -13,6 +13,7 @@ class TeamScoresStackView: UIStackView {
     
     // Settings
     let idealTeamsPerRow = 3
+    var forceResetBoard = false
     
     // Data Storage
     private var teamViews: [TeamView] = []
@@ -108,7 +109,7 @@ class TeamScoresStackView: UIStackView {
             }
         }
         
-        if Constants().printTeamFlow {
+        if Constants().printTeamFlowDetailed {
             for scoreboardStack in self.arrangedSubviews as! [UIStackView] {
                 print("scoreboardStack.arrangedSubviews.count: \(scoreboardStack.arrangedSubviews.count) - \(#fileID)")
             }
@@ -131,6 +132,7 @@ class TeamScoresStackView: UIStackView {
     }
     
     private func shouldResetBoard(activeTeamList: [Team]) -> Bool {
+        if forceResetBoard { return true }
         
         // Gather Information
         let teamManagerTeamNumbers = activeTeamList.map({$0.number})
@@ -140,7 +142,8 @@ class TeamScoresStackView: UIStackView {
         if teamViewTeamNumbers == teamManagerTeamNumbers {
             return false
         } else {
-            print("should reset board") // if this is called every time, try not reversing the teamViewTeamNumber a few lines up
+            let constants = Constants()
+            if constants.printTeamFlow || constants.printThemeFlow { print("should reset board") }
             return true
         }
         
@@ -233,7 +236,6 @@ class TeamScoresStackView: UIStackView {
             } else {
                 fontSizes = teamView.fontSizes
                 teamView.fontSizes = fontSizes!
-                print("fontSize: \(String(describing: fontSizes))")
             }
         }
     }

@@ -131,10 +131,8 @@ class Remotev2ViewController: ScoreBoardViewController {
 
         // Force DarkMode
         if theme.darkMode {
-            print("setting dark theme")
             self.overrideUserInterfaceStyle = .dark
         } else {
-            print("setting light theme")
             self.overrideUserInterfaceStyle = .light
         }
         
@@ -251,7 +249,7 @@ extension Remotev2ViewController: TeamCellDelegate {
     }
     
     func updateIsActive(isActive: Bool, teamIndex: Int) {
-        print("updating isActive status for team \(teamIndex + 1), \(isActive)")
+        if constants.printTeamFlow { print("updating isActive status for team \(teamIndex + 1), \(isActive)") }
         teamManager.updateTeamIsActive(teamNumber: teamIndex + 1, isActive: isActive)
         refreshUIForTeams()
     }

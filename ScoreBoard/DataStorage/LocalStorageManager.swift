@@ -28,7 +28,7 @@ class LocalStorageManager: DataStorageProtocol {
             let data = try encoder.encode(dataStorageBundle)
             UserDefaults.standard.set(data, forKey: "DataStorageBundle")
         } catch {
-            print("Error encoding DataStorageBundle: \(error)")
+            print("⛔️ Error encoding DataStorageBundle: \(error)")
         }
     }
     
@@ -45,7 +45,7 @@ class LocalStorageManager: DataStorageProtocol {
                         let dataBundle = try decoder.decode(DataStorageBundle.self, from: data)
                         return dataBundle
                     } catch {
-                        print("Error decoding DataStorageBundle: \(error)")
+                        print("⛔️ Error decoding DataStorageBundle: \(error)")
                         return nil
                     }
                 }

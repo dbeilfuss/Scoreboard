@@ -114,7 +114,6 @@ class TeamView: UIView {
     
     //MARK: - Visual Adjustments
     private func adjustNameLabelFontToFitHeight() -> CGFloat {
-        print(#function)
         
         if teamStackViewHeightConstraint != nil {
             let ratio = nameLabelHeightConstraint.multiplier
@@ -131,7 +130,6 @@ class TeamView: UIView {
     }
     
     private func adjustScoreLabelFontToFitHeight() -> CGFloat {
-        print(#function)
         
         if teamStackViewHeightConstraint != nil {
             var height = teamStackViewHeightConstraint!.constant * 0.4
@@ -152,7 +150,6 @@ class TeamView: UIView {
     //MARK: - Actions
     
     @IBAction func scoreStepperPressed(_ sender: UIStepper) {
-        print(#function)
 
         let newScore = Int(sender.value)
         let teamNumber = teamInfo.number

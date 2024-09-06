@@ -66,9 +66,7 @@ class ThemeManager {
     ]
     
     private func fetchThemeFromDataStorage() {
-        if constants.printThemeFlow {
-            print("fetching theme from dataStorage, \(#fileID)")
-        }
+        if constants.printThemeFlow { print("fetching theme from dataStorage, \(#fileID)") }
         
         if let themeName = dataStorageManager?.requestData().themeName {
             
@@ -77,8 +75,7 @@ class ThemeManager {
             themeDataIsRetrieved = true
             activeTheme = theme
         } else {
-//            let themeName = constants.defaultDataStorageBundle.themeName
-            print("databaseManager == nil, \(#fileID)")
+            print("⛔️ databaseManager == nil, \(#fileID)")
         }
     }
     
@@ -112,11 +109,7 @@ extension ThemeManager: MVCDelegate {
         dataStorageManager = mvcArrangement.databaseManager
         
         if viewController == nil || dataStorageManager == nil {
-            print("failed to initializeMVCs: \(#fileID)")
-        } else {
-            if constants.printThemeFlow {
-                print("initializeMVCs successful: \(#fileID)")
-            }
+            print("⛔️ failed to initializeMVCs: \(#fileID)")
         }
     }
 }
@@ -124,39 +117,24 @@ extension ThemeManager: MVCDelegate {
 extension ThemeManager: ThemeManagerProtocol {
     
     //MARK: - Themes
-//    func refreshData() {
-//        if constants.printThemeFlow {
-//            print("refreshing theme data, \(#fileID)")
-//        }
-//        
-//        themeDataIsRetrieved = false
-//        activeTheme = fetchActiveTheme()
-//        viewController?.refreshUIForTheme()
-//    }
     
     func fetchActiveTheme() -> Theme {
         if !themeDataIsRetrieved {
             fetchThemeFromDataStorage()
         }
-        if constants.printThemeFlow {
-            print("ActiveTheme: \(activeTheme.name), File: \(#fileID)")
-        }
+        if constants.printThemeFlow { print("ActiveTheme: \(activeTheme.name), File: \(#fileID)") }
         return activeTheme
     }
     
     func saveTheme(named themeName: String) {
-        if constants.printThemeFlow {
-            print("Saving Theme: \(themeName), File: \(#fileID)")
-        }
+        if constants.printThemeFlow { print("Saving Theme: \(themeName), File: \(#fileID)") }
         
         dataStorageManager?.saveTheme(named: themeName)
         
         let theme = fetchTheme(named: themeName)
         activeTheme = theme
         
-        if constants.printThemeFlow {
-            print("Setting ActiveTheme: \(theme.name), File: \(#fileID)")
-        }
+        if constants.printThemeFlow { print("Setting ActiveTheme: \(theme.name), File: \(#fileID)") }
         
         viewController?.refreshUIForTheme()
     }
@@ -178,7 +156,7 @@ extension ThemeManager: ThemeManagerProtocol {
         if let scoreboardState = dataStorageManager?.loadScoreboardState() {
             return scoreboardState
         } else {
-            print("databaseManager == nil, \(#fileID)")
+            print("⛔️ databaseManager == nil, \(#fileID)")
             return constants.defaultScoreboardState
         }
     }
@@ -196,9 +174,7 @@ extension ThemeManager: ThemeManagerProtocol {
 extension ThemeManager: DataStorageDelegate {
     
     func dataStorageUpdated(_ updatedData: DataStorageBundle) {
-        if constants.printThemeFlow {
-            print("refreshing theme data, \(#fileID)")
-        }
+        if constants.printThemeFlow { print("refreshing theme data, \(#fileID)") }
         
         themeDataIsRetrieved = false
         let receivedThemeName = updatedData.themeName
