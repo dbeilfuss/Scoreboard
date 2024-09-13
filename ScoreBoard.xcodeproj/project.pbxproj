@@ -152,6 +152,7 @@
 		770105742C5C56AF0016AF20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770105772C5C56AF0016AF20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStepper.swift; sourceTree = "<group>"; };
+		7712623A2C93BB180084C7A2 /* ScoreBoard_AppleWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ScoreBoard_AppleWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
 		771913D92C1738C000BA2D9F /* DataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
 		771913DB2C19430100BA2D9F /* ScoreBoard.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScoreBoard.xctestplan; sourceTree = "<group>"; };
@@ -289,6 +290,7 @@
 		7701056F2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				7712623A2C93BB180084C7A2 /* ScoreBoard_AppleWatch Watch App.entitlements */,
 				77790F762C76C00B001F8F2B /* ContentView.swift */,
 				770105702C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift */,
 				7759DAFB2C5ECBCD0018A074 /* Constants.swift */,
@@ -851,6 +853,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ScoreBoard_AppleWatch Watch App/ScoreBoard_AppleWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
@@ -884,6 +887,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "ScoreBoard_AppleWatch Watch App/ScoreBoard_AppleWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
