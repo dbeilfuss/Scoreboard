@@ -11,14 +11,29 @@ struct ContentView: View {
     //MARK: - Properties
     @State var incrementValue: Int = 1
     @StateObject var iPhoneConnection = IPhoneConnection()
+    @Environment(\.scenePhase) var scenePhase
 
     //MARK: - Data Management
 
     let columns = [
         GridItem(.flexible())
     ]
+    
+//    var body: some View {
+//            Text("Hello, world!")
+//                .onChange(of: scenePhase) { oldPhase, newPhase in
+//                    if newPhase == .active {
+//                        print("Active")
+//                    } else if newPhase == .inactive {
+//                        print("Inactive")
+//                    } else if newPhase == .background {
+//                        print("Background")
+//                    }
+//                }
+//        }
 
     var body: some View {
+
         NavigationStack {
             ScrollView {
                 ZStack {
@@ -54,6 +69,7 @@ struct ContentView: View {
                                 Spacer()
                                 Text(connectionMessage)
                                     .multilineTextAlignment(.center)
+                                    .frame(height: 40)
                                 ProgressView()
                                 Spacer()
                             }
@@ -64,6 +80,27 @@ struct ContentView: View {
                 }
             }
         }
+        .onChange(of: scenePhase) {oldPhase, newPhase in
+            var printStatement = ""
+            
+            switch newPhase {
+            case .background:
+                printStatement = ".background"
+            case .inactive:
+                printStatement = ".inactive"
+            case .active:
+                printStatement = ".active"
+            @unknown default:
+                printStatement = ".unknown default"
+            }
+            
+            print(printStatement)
+            
+            if newPhase == .active {
+                iPhoneConnection.requestTeamDataFromPhone()
+            }
+            
+        }
     }
     
     // User Feedback Message Based on Connection State
@@ -73,7 +110,7 @@ struct ContentView: View {
         switch iPhoneConnection.connectionState {
         case .initializingConnection:
             return """
-                    Connecting to iPhone...
+                    Connecting to iPhone
                     \(appInstructions)
                     """
         case .active:
@@ -82,15 +119,12 @@ struct ContentView: View {
             return ""
         case .noResponse:
             return """
-                    iPhone Failed to Respond
-                    \(reconnectInstructions)
-                    \(appInstructions)
+                    Reconnecting to iPhone
                     """
         case .critical:
             return """
                     iPhone Connection Lost
                     \(reconnectInstructions)
-                    \(appInstructions)
                     """
         }
     }

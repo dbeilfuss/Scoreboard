@@ -11,6 +11,7 @@ import WatchConnectivity
 class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     
     var session: WCSession
+    var wkExtensionDelegate: WKExtensionDelegate?
     
     //MARK: - Observable Properties
     @Published var teamList: [Team] = Constants().defaultTeams.filter(){$0.isActive}
@@ -24,7 +25,7 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
         case critical
     }
     @Published var connectionState: ConnectionState = .initializingConnection
-    
+      
     var timeStamp: Date?
     
     
@@ -32,9 +33,11 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     init(session: WCSession = .default) {
         self.session = session
         super.init()
-        session.delegate = self
-        session.activate()
-        print("activated session")
+        if WCSession.isSupported() {
+            session.delegate = self
+            session.activate()
+            print("activated session")
+        }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
@@ -77,11 +80,26 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     
     func sendMessageToiPhone(messageType: iPhoneMessage) {
         if session.isReachable {
-            
+            sendMessage()
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if self.session.isReachable {
+                    sendMessage()
+                } else {
+                    print("⛔️ unable to reach iPhone")
+                    DispatchQueue.main.async {
+                        self.connectionState = .pendingReponse
+                    }
+                    self.noResponseHandler()
+                }
+            }
+        }
+        
+        func sendMessage() {
             /// Parameters
             let message = messageType.dictionaryValue
             print("message: \(message)")
-
+            
             /// Send Message
             session.sendMessage(message, replyHandler: { response in
                 self.responseHandler(response)
@@ -92,7 +110,6 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
                 }
                 self.noResponseHandler()
             })
-            
         }
         
     }
@@ -120,6 +137,7 @@ class IPhoneConnection: NSObject, WCSessionDelegate, ObservableObject {
     }
     
     func requestTeamDataFromPhone() {
+        print("requesting Team Data")
         sendMessageToiPhone(messageType: .requestTeamList)
     }
     

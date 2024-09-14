@@ -94,27 +94,27 @@ extension DataStorageManager: DataStorageManagerProtocol {
     }
     
     func localDataUpdated(_ localDataStorageBundle: DataStorageBundle) {
-            let localData = localDataStorageBundle
-        updateDelegates(localDataStorageBundle, dataSource: .local) // Update the UI immediately with local data
-
-            // Fetch remote data asynchronously
-            remoteStorageManager.fetchData { remoteData in
-                guard let remoteData = remoteData else {
-                    print("Error fetching remote data - \(#fileID)")
-                    return
-                }
-
-                // Compare local and remote data
-                let mostRecentData = self.compareData(dataBundle1: localData, dataBundle2: remoteData)
-                let mostRecentDataSource: DataSource = mostRecentData.timeStamp == remoteData.timeStamp ? .cloud : .local
-
-                if mostRecentDataSource == .cloud {
-                    self.localStorageManager.saveData(mostRecentData)
-                } else {
-                    self.remoteStorageManager.saveData(mostRecentData)
-                }
+        let localData = localDataStorageBundle
+        updateDelegates(localDataStorageBundle, dataSource: .local)
+        
+        // Fetch remote data asynchronously
+        remoteStorageManager.fetchData { remoteData in
+            guard let remoteData = remoteData else {
+                print("Error fetching remote data - \(#fileID)")
+                return
+            }
+            
+            // Compare local and remote data
+            let mostRecentData = self.compareData(dataBundle1: localData, dataBundle2: remoteData)
+            let mostRecentDataSource: DataSource = mostRecentData.timeStamp == remoteData.timeStamp ? .cloud : .local
+            
+            if mostRecentDataSource == .cloud {
+                self.localStorageManager.saveData(mostRecentData)
+            } else {
+                self.remoteStorageManager.saveData(mostRecentData)
             }
         }
+    }
     
     func compareData(dataBundle1: DataStorageBundle, dataBundle2: DataStorageBundle) -> DataStorageBundle {
         var mostRecentData: DataStorageBundle = dataBundle1

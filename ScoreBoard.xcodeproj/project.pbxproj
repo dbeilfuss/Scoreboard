@@ -12,6 +12,7 @@
 		770105782C5C56AF0016AF20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770105772C5C56AF0016AF20 /* Preview Assets.xcassets */; };
 		7701057B2C5C56AF0016AF20 /* ScoreBoard_AppleWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7701056E2C5C56AE0016AF20 /* ScoreBoard_AppleWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7705C6642C2CEB67004CB7F6 /* ScoreStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */; };
+		770935F62C9475DF001A1CF2 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770935F52C9475DF001A1CF2 /* ExtensionDelegate.swift */; };
 		77149322297A255F0040ABD3 /* FractalLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77149321297A255F0040ABD3 /* FractalLandscape.swift */; };
 		771913DA2C1738C000BA2D9F /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913D92C1738C000BA2D9F /* DataStorageManager.swift */; };
 		771913DD2C1A689C00BA2D9F /* MVCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771913DC2C1A689C00BA2D9F /* MVCManager.swift */; };
@@ -152,6 +153,7 @@
 		770105742C5C56AF0016AF20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770105772C5C56AF0016AF20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7705C6632C2CEB67004CB7F6 /* ScoreStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStepper.swift; sourceTree = "<group>"; };
+		770935F52C9475DF001A1CF2 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		7712623A2C93BB180084C7A2 /* ScoreBoard_AppleWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ScoreBoard_AppleWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		77149321297A255F0040ABD3 /* FractalLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalLandscape.swift; sourceTree = "<group>"; };
 		771913D92C1738C000BA2D9F /* DataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				7712623A2C93BB180084C7A2 /* ScoreBoard_AppleWatch Watch App.entitlements */,
+				770935F52C9475DF001A1CF2 /* ExtensionDelegate.swift */,
 				77790F762C76C00B001F8F2B /* ContentView.swift */,
 				770105702C5C56AE0016AF20 /* ScoreBoard_AppleWatchApp.swift */,
 				7759DAFB2C5ECBCD0018A074 /* Constants.swift */,
@@ -736,6 +739,7 @@
 			files = (
 				7759DAFA2C5ECBBD0018A074 /* Team.swift in Sources */,
 				7751E5E12C86493700A0DE02 /* TutorialManager.swift in Sources */,
+				770935F62C9475DF001A1CF2 /* ExtensionDelegate.swift in Sources */,
 				7759DAF32C5ECB060018A074 /* TeamInfoView.swift in Sources */,
 				77790F772C76C00B001F8F2B /* ContentView.swift in Sources */,
 				7759DB072C6259B80018A074 /* IPhoneConnection.swift in Sources */,
@@ -855,7 +859,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "ScoreBoard_AppleWatch Watch App/ScoreBoard_AppleWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				ENABLE_PREVIEWS = YES;
@@ -889,7 +893,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "ScoreBoard_AppleWatch Watch App/ScoreBoard_AppleWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ScoreBoard_AppleWatch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				ENABLE_PREVIEWS = YES;
@@ -1041,7 +1045,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreBoard/Info.plist;
@@ -1053,6 +1057,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1077,7 +1082,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ScoreBoard/ScoreBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 5FV24G4L5K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScoreBoard/Info.plist;
@@ -1089,6 +1094,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
